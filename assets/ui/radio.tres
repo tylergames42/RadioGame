@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dt4phpwx86dol"]
+
+[ext_resource type="Shader" path="res://assets/shaders/viewmodel_shader.gdshader" id="1_md5us"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_md5us")
+shader_parameter/albedo = Color(0.466181, 0.466181, 0.466181, 1)
+shader_parameter/point_size = null
+shader_parameter/normal_scale = null
+shader_parameter/fov = 80.0

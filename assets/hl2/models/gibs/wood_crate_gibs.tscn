@@ -1,0 +1,48 @@
+[gd_scene load_steps=12 format=3 uid="uid://b0w1tn8yd1e20"]
+
+[ext_resource type="PackedScene" uid="uid://bkql8sova4kuy" path="res://assets/hl2/models/gibs/wood_crate_chunk01.tscn" id="1_idh0o"]
+[ext_resource type="AudioStream" uid="uid://dnx0b45ij8usi" path="res://assets/hl2/sound/physics/wood/wood_box_break1.wav" id="1_m26i4"]
+[ext_resource type="AudioStream" uid="uid://dlv4taan1pqgk" path="res://assets/hl2/sound/physics/wood/wood_box_break2.wav" id="2_n0mww"]
+[ext_resource type="PackedScene" uid="uid://bxw64m65cola4" path="res://assets/hl2/models/gibs/wood_crate_chunk02.tscn" id="2_wpmwg"]
+[ext_resource type="PackedScene" uid="uid://don7ighetjoji" path="res://assets/hl2/models/gibs/wood_crate_chunk03.tscn" id="3_4eym0"]
+[ext_resource type="PackedScene" uid="uid://bktgq0rh3vd4f" path="res://assets/hl2/models/gibs/wood_crate_chunk04.tscn" id="4_0b24q"]
+[ext_resource type="PackedScene" uid="uid://c4w4cxphgltj" path="res://assets/hl2/models/gibs/wood_crate_chunk05.tscn" id="5_70jsr"]
+[ext_resource type="PackedScene" uid="uid://crsr2d377k2f8" path="res://assets/hl2/models/gibs/wood_crate_chunk06.tscn" id="6_8b30u"]
+[ext_resource type="PackedScene" uid="uid://piuaqomy6fq4" path="res://assets/hl2/models/gibs/wood_crate_chunk07.tscn" id="7_155xm"]
+[ext_resource type="PackedScene" uid="uid://ckhsj6qk4vy82" path="res://assets/hl2/models/gibs/wood_crate_chunk08.tscn" id="8_b6da3"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l2o1t"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("1_m26i4")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_n0mww")
+stream_1/weight = 1.0
+
+[node name="Node3D" type="AudioStreamPlayer3D"]
+stream = SubResource("AudioStreamRandomizer_l2o1t")
+autoplay = true
+
+[node name="wood_crate_chunk01" parent="." instance=ExtResource("1_idh0o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00802749, -0.56846, 0.038)
+
+[node name="wood_crate_chunk02" parent="." instance=ExtResource("2_wpmwg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.420288, -0.0907933, 0.0976143)
+
+[node name="wood_crate_chunk03" parent="." instance=ExtResource("3_4eym0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.576295, 0.126654, -0.159566)
+
+[node name="wood_crate_chunk04" parent="." instance=ExtResource("4_0b24q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001991, -0.120366, -0.540401)
+
+[node name="wood_crate_chunk05" parent="." instance=ExtResource("5_70jsr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.530005, 0.586424, -0.0581343)
+
+[node name="wood_crate_chunk06" parent="." instance=ExtResource("6_8b30u")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00280215, 0.235221, 0.583563)
+
+[node name="wood_crate_chunk07" parent="." instance=ExtResource("7_155xm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19881, 0.04419, 0.562128)
+
+[node name="wood_crate_chunk08" parent="." instance=ExtResource("8_b6da3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.153998, 0.576396, -0.200069)

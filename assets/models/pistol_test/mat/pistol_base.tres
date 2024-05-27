@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" load_steps=4 format=3 uid="uid://c6yw2q6blqbmb"]
+
+[ext_resource type="Texture2D" uid="uid://c10ijitgsjoir" path="res://assets/models/pistol_test/mat/pistol_base_pistol_color.png" id="1_8on2s"]
+[ext_resource type="Texture2D" uid="uid://bi73qurs1d0lk" path="res://assets/models/pistol_test/mat/pistol_base_pistol_normal.png" id="2_ivcc3"]
+[ext_resource type="Texture2D" uid="uid://du4ql1p12m2gg" path="res://assets/models/pistol_test/mat/pistol_base_pistol_orm.png" id="3_0pmem"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_8on2s")
+orm_texture = ExtResource("3_0pmem")
+normal_enabled = true
+normal_texture = ExtResource("2_ivcc3")
+rim_tint = 0.0
+texture_filter = 4

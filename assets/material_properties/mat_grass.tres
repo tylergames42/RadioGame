@@ -1,0 +1,24 @@
+[gd_resource type="PhysicsMaterial" script_class="MaterialProperties" load_steps=7 format=3 uid="uid://dctekap8ufaro"]
+
+[ext_resource type="AudioStream" uid="uid://15smgc4ir2fw" path="res://assets/hl2/sound/footsteps/grass1.wav" id="1_vvojw"]
+[ext_resource type="AudioStream" uid="uid://b1pt46g6qd7g" path="res://assets/hl2/sound/footsteps/grass2.wav" id="2_gdyj6"]
+[ext_resource type="AudioStream" uid="uid://bp76fkmu7eehw" path="res://assets/hl2/sound/footsteps/grass3.wav" id="3_7a8s1"]
+[ext_resource type="AudioStream" uid="uid://c4cwltv08kupq" path="res://assets/hl2/sound/footsteps/grass4.wav" id="4_dhklu"]
+[ext_resource type="Script" path="res://scripts/MaterialProperties.gd" id="5_ss1ac"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5rmou"]
+streams_count = 4
+stream_0/stream = ExtResource("1_vvojw")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_gdyj6")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_7a8s1")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_dhklu")
+stream_3/weight = 1.0
+
+[resource]
+script = ExtResource("5_ss1ac")
+DISABLE_COLLISIONS = false
+SFX_STEP = SubResource("AudioStreamRandomizer_5rmou")
+SFX_JUMP = ExtResource("4_dhklu")

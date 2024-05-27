@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://byb80ue5o088n"]
+
+[ext_resource type="Shader" path="res://assets/shaders/viewmodel_shader.gdshader" id="1_ut7qh"]
+[ext_resource type="Texture2D" uid="uid://c10ijitgsjoir" path="res://assets/models/pistol_test/mat/pistol_base_pistol_color.png" id="2_6r7tv"]
+[ext_resource type="Texture2D" uid="uid://bi73qurs1d0lk" path="res://assets/models/pistol_test/mat/pistol_base_pistol_normal.png" id="3_cs1p0"]
+[ext_resource type="Texture2D" uid="uid://du4ql1p12m2gg" path="res://assets/models/pistol_test/mat/pistol_base_pistol_orm.png" id="4_2opfb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ut7qh")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = null
+shader_parameter/normal_scale = null
+shader_parameter/fov = 75.0
+shader_parameter/texture_albedo = ExtResource("2_6r7tv")
+shader_parameter/texture_orm = ExtResource("4_2opfb")
+shader_parameter/texture_normal = ExtResource("3_cs1p0")

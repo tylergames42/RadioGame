@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" load_steps=5 format=3 uid="uid://y05wi24adfxc"]
+
+[ext_resource type="Texture2D" uid="uid://keoocwswsxuk" path="res://assets/materials/marble/marble_03_color.png" id="1_2nsc5"]
+[ext_resource type="PhysicsMaterial" uid="uid://qnmr1hqg7ho4" path="res://assets/material_properties/mat_default.tres" id="2_3n1lm"]
+[ext_resource type="Texture2D" uid="uid://c8ypmrd6f6bi8" path="res://assets/materials/marble/marble_03_normal.png" id="3_6akxj"]
+[ext_resource type="Texture2D" uid="uid://duwhraxybtkpt" path="res://assets/materials/marble/marble_03_orm.png" id="4_fqi5k"]
+
+[resource]
+albedo_texture = ExtResource("1_2nsc5")
+orm_texture = ExtResource("4_fqi5k")
+normal_enabled = true
+normal_texture = ExtResource("3_6akxj")
+texture_filter = 4
+metadata/MaterialProperties = ExtResource("2_3n1lm")

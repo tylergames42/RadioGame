@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://bglt81ay663ym"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://6lowwx078yi7" path="res://assets/material_properties/mat_wood_crate.tres" id="1_mqqd1"]
+[ext_resource type="ArrayMesh" uid="uid://bf04rpfnoocc1" path="res://assets/hl2/models/props/wood_crate.res" id="2_70vn7"]
+[ext_resource type="PackedScene" uid="uid://b0w1tn8yd1e20" path="res://assets/hl2/models/gibs/wood_crate_gibs.tscn" id="2_a0qoh"]
+[ext_resource type="Script" path="res://scripts/entities/PhysicsProp.gd" id="2_lb4bv"]
+[ext_resource type="Script" path="res://scripts/components/HealthComponent.gd" id="5_mqlgw"]
+[ext_resource type="Script" path="res://scripts/components/InteractableComponent.gd" id="6_x2hb2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lf1gr"]
+size = Vector3(1.2, 1.2, 1.2)
+
+[node name="wood_crate" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017819, 0, -0.00132465)
+mass = 15.0
+physics_material_override = ExtResource("1_mqqd1")
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("2_lb4bv")
+GIBS = ExtResource("2_a0qoh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_lf1gr")
+
+[node name="WoodCrate" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = ExtResource("2_70vn7")
+skeleton = NodePath("../..")
+
+[node name="InteractableComponent" type="Node" parent="."]
+script = ExtResource("6_x2hb2")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("5_mqlgw")
+MAX_HEALTH = 10
+STARTING_HEALTH = 10
+
+[connection signal="interacted" from="InteractableComponent" to="." method="_on_interactable_component_interacted"]
+[connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]

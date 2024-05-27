@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://piuaqomy6fq4"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://6lowwx078yi7" path="res://assets/material_properties/mat_wood_crate.tres" id="1_403f8"]
+[ext_resource type="Script" path="res://scripts/entities/PhysicsProp.gd" id="1_jm0rh"]
+[ext_resource type="ArrayMesh" uid="uid://bd6q0qn6xgdph" path="res://assets/hl2/models/gibs/wood_crate001a_Chunk01_reference_wood_crate001a_Chunk07_reference.res" id="2_mjti6"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_32ngr"]
+points = PackedVector3Array(-0.407546, 0.427231, 0.049949, 0.242549, 0.427231, 0.0483355, 0.267202, 0.4585, 0.0483649, -0.407546, 0.516786, 0.049949, -0.401801, 0.427231, -0.0499489, -0.400923, 0.0330897, -0.0499489, -0.401482, 0.0373397, 0.0400433, -0.329994, -0.516887, 0.0400433, -0.211193, -0.501607, 0.0434267, 0.208081, -0.383011, 0.0434267, 0.403077, 0.516887, 0.0153426, 0.218054, 0.516786, 0.0483942, 0.257947, -0.290117, 0.0434267, -0.403556, 0.516887, 0.0153426, -0.373397, 0.516887, -0.00785217, -0.371801, 0.427231, -0.0499489, -0.329994, -0.516887, -0.0499489, -0.300234, -0.513143, 0.013426, -0.211193, -0.501607, 0.013426, -0.300234, -0.513143, -0.0499489, 0.288425, -0.180931, -0.00785217, 0.407546, 0.516887, -0.00785217, 0.296484, -0.174859, 0.0153426)
+
+[node name="wood_crate_chunk07" type="RigidBody3D"]
+collision_layer = 5
+mass = 2.0
+physics_material_override = ExtResource("1_403f8")
+script = ExtResource("1_jm0rh")
+
+[node name="WoodCrate001aChunk01ReferenceWoodCrate001aChunk07Reference" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_mjti6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_32ngr")

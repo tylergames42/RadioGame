@@ -1,0 +1,397 @@
+[gd_scene load_steps=27 format=3 uid="uid://bdrd7rx11vacv"]
+
+[ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_gnuhl"]
+[ext_resource type="Script" path="res://scenes/DebugInfo.gd" id="2_pbxns"]
+[ext_resource type="Texture2D" uid="uid://chwwq3rkwc7ly" path="res://assets/ui/crosshair.png" id="3_8nfak"]
+[ext_resource type="PackedScene" uid="uid://dx0yww78yb1bm" path="res://assets/ui/radio_test.tscn" id="4_2s58g"]
+[ext_resource type="PackedScene" uid="uid://cwmsox5vbvfud" path="res://scenes/flashlight.tscn" id="6_cukaf"]
+[ext_resource type="Script" path="res://scripts/components/HealthComponent.gd" id="6_lmlc4"]
+[ext_resource type="Script" path="res://scripts/state_machine.gd" id="6_nodv1"]
+[ext_resource type="PackedScene" uid="uid://c5xtba7v1ovft" path="res://scenes/reciever.tscn" id="6_tyst3"]
+[ext_resource type="PackedScene" uid="uid://bpwl58ebdmdxn" path="res://assets/models/legs_test.glb" id="7_gp4dq"]
+[ext_resource type="Script" path="res://scripts/player/states/PlayerIdleState.gd" id="7_hu5mr"]
+[ext_resource type="AudioStream" uid="uid://ki0tnb4wlui3" path="res://assets/sounds/static/radio_static.tres" id="8_41u7i"]
+[ext_resource type="Script" path="res://scripts/player/states/PlayerWalkingState.gd" id="8_mmf44"]
+[ext_resource type="Script" path="res://scripts/player/states/PlayerSprintingState.gd" id="9_6khpb"]
+[ext_resource type="Script" path="res://scripts/player/states/PlayerNoclipState.gd" id="9_fvox2"]
+[ext_resource type="Script" path="res://scripts/player/states/PlayerCrouchingState.gd" id="10_3yhk7"]
+[ext_resource type="Script" path="res://scripts/player/states/PlayerSlidingState.gd" id="11_b4e4x"]
+[ext_resource type="Script" path="res://scripts/player/states/PlayerJumpingState.gd" id="11_idaac"]
+[ext_resource type="Script" path="res://scripts/player/states/PlayerSwimmingState.gd" id="18_d5830"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_74fkp"]
+friction = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q06ui"]
+top_radius = 0.4
+bottom_radius = 0.4
+height = 1.8
+radial_segments = 16
+rings = 1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w5mwi"]
+height = 1.8
+radius = 0.4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jx86m"]
+height = 0.05
+radius = 0.375
+
+[sub_resource type="Animation" id="Animation_iypg4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collider:shape:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collider:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.75, -0.2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColliderVisualizer:mesh:height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.8]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColliderVisualizer:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_llvy1"]
+resource_name = "player_crouch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collider:shape:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.8, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collider:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.4, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.75, -0.2), Vector3(0, -0.0495735, -0.2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColliderVisualizer:mesh:height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.8, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColliderVisualizer:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lb33v"]
+resource_name = "player_uncrouch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collider:shape:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collider:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.4, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0495735, -0.2), Vector3(0, 0.75, -0.2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColliderVisualizer:mesh:height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.8]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColliderVisualizer:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.4, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dcjiq"]
+_data = {
+"RESET": SubResource("Animation_iypg4"),
+"player_crouch": SubResource("Animation_llvy1"),
+"player_uncrouch": SubResource("Animation_lb33v")
+}
+
+[node name="Player" type="RigidBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_74fkp")
+can_sleep = false
+lock_rotation = true
+continuous_cd = true
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_gnuhl")
+
+[node name="ColliderVisualizer" type="CSGMesh3D" parent="."]
+visible = false
+mesh = SubResource("CylinderMesh_q06ui")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_w5mwi")
+
+[node name="Root" type="Node3D" parent="."]
+
+[node name="Head" type="Node3D" parent="Root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.2)
+
+[node name="Camera" type="Camera3D" parent="Root/Head"]
+current = true
+fov = 90.0
+
+[node name="UI" type="Control" parent="Root/Head/Camera"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugInfo" type="Label" parent="Root/Head/Camera/UI"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 510.0
+offset_bottom = 310.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+script = ExtResource("2_pbxns")
+
+[node name="Crosshair" type="TextureRect" parent="Root/Head/Camera/UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("3_8nfak")
+
+[node name="radio_test" parent="Root/Head/Camera" instance=ExtResource("4_2s58g")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -0.3, -0.2, -0.4)
+visible = false
+
+[node name="hold_point" type="Node3D" parent="Root/Head"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.5)
+
+[node name="interactcast" type="RayCast3D" parent="Root/Head"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -2.5, 0)
+collision_mask = 5
+hit_back_faces = false
+
+[node name="Flashlight" parent="Root/Head" instance=ExtResource("6_cukaf")]
+visible = false
+
+[node name="legs_test" parent="Root" instance=ExtResource("7_gp4dq")]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 0.75, 0, -1.50996e-07, 0, -1, 0, -0.844603, 0.2)
+visible = false
+
+[node name="Skeleton3D" parent="Root/legs_test/Armature" index="0"]
+bones/0/rotation = Quaternion(-7.10543e-15, -5.69993e-15, 1, 7.54979e-08)
+bones/1/rotation = Quaternion(-0.0267518, -0.706601, -0.0107043, 0.707026)
+bones/2/rotation = Quaternion(0.0334134, -0.00175326, 0.0244522, 0.999141)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.0267519, 0.7066, 0.0107044, 0.707026)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.0334135, 0.00175332, -0.0244522, 0.999141)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.513068, 0.486581, 0.486581, 0.513068)
+bones/6/rotation = Quaternion(0.507981, -0.492017, 0.500833, -0.49904)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.0193021, -0.0110751, 0.955716, -0.293447)
+bones/7/scale = Vector3(0.999999, 1, 1)
+bones/8/rotation = Quaternion(0.0221988, 0.0286914, -0.163898, 0.98581)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.513068, -0.486581, -0.486581, 0.513068)
+bones/10/rotation = Quaternion(0.507981, 0.492017, -0.500833, -0.49904)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(-0.0193021, -0.0110751, 0.955716, 0.293447)
+bones/11/scale = Vector3(0.999999, 1, 1)
+bones/12/rotation = Quaternion(0.0221988, -0.0286914, 0.163898, 0.98581)
+bones/12/scale = Vector3(1, 1, 1)
+
+[node name="Reciever" parent="Root" instance=ExtResource("6_tyst3")]
+STATIC = ExtResource("8_41u7i")
+
+[node name="headcast" type="ShapeCast3D" parent="."]
+shape = SubResource("CylinderShape3D_jx86m")
+target_position = Vector3(0, 0.875, 0)
+max_results = 1
+
+[node name="groundcast" type="ShapeCast3D" parent="."]
+shape = SubResource("CylinderShape3D_jx86m")
+target_position = Vector3(0, -0.9, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dcjiq")
+}
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("6_lmlc4")
+
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("6_nodv1")
+CURRENT_STATE = NodePath("PlayerIdleState")
+
+[node name="PlayerIdleState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("7_hu5mr")
+
+[node name="PlayerNoclipState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("9_fvox2")
+
+[node name="PlayerWalkingState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("8_mmf44")
+
+[node name="PlayerJumpingState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("11_idaac")
+
+[node name="PlayerSprintingState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("9_6khpb")
+
+[node name="PlayerCrouchingState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("10_3yhk7")
+
+[node name="PlayerSlidingState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("11_b4e4x")
+CANCEL_SLIDE_SPEED = 1.0
+
+[node name="PlayerSwimmingState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("18_d5830")
+
+[connection signal="hurt" from="HealthComponent" to="." method="_on_health_component_hurt"]
+[connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
+
+[editable path="Root/legs_test"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5xtba7v1ovft"]
+
+[ext_resource type="Script" path="res://scripts/signal_reciever.gd" id="1_ytafj"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_ytafj")

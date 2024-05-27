@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bu315s74qja4p"]
+
+[ext_resource type="Texture2D" uid="uid://b31adu1q2q4jl" path="res://assets/hl2/materials/models/props/plasticcrate01e.png" id="1_v52ld"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_v52ld")
+texture_filter = 4

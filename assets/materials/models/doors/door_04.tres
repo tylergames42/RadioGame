@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" load_steps=5 format=3 uid="uid://cn30wg2kgu74l"]
+
+[ext_resource type="Texture2D" uid="uid://tn0imbqleqdk" path="res://assets/materials/models/doors/door_04_color.png" id="1_mifrb"]
+[ext_resource type="PhysicsMaterial" uid="uid://qnmr1hqg7ho4" path="res://assets/material_properties/mat_default.tres" id="2_x0lgq"]
+[ext_resource type="Texture2D" uid="uid://df10xyo2rwjtm" path="res://assets/materials/models/doors/door_04_normal.png" id="3_jxq4o"]
+[ext_resource type="Texture2D" uid="uid://dfegncpo8e3tc" path="res://assets/materials/models/doors/door_04_orm.png" id="4_si5ws"]
+
+[resource]
+albedo_texture = ExtResource("1_mifrb")
+orm_texture = ExtResource("4_si5ws")
+normal_enabled = true
+normal_texture = ExtResource("3_jxq4o")
+texture_filter = 4
+metadata/MaterialProperties = ExtResource("2_x0lgq")

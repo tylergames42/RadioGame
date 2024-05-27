@@ -1,0 +1,150 @@
+[gd_scene load_steps=8 format=3 uid="uid://deirext4m4h2c"]
+
+[ext_resource type="PackedScene" uid="uid://dux1rcxcyvy2v" path="res://assets/models/pistol_test/pistol.glb" id="1_47t2w"]
+[ext_resource type="Script" path="res://assets/models/pistol_test/pistol_test.gd" id="2_x1x5e"]
+
+[sub_resource type="Animation" id="Animation_avtx8"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:stock")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.460887, -0.459951, -0.536268, 0.537071)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:base")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.0762506, -0.000869477, 6.64917e-05, 0.997088)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:rack")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.862013, 8.92196, -10.3148)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:trigger")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.460887, -0.459951, -0.536268, 0.537071)
+tracks/4/type = "position_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D:eject_cover")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.651791, 8.29013, 1.02659)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature/Skeleton3D:mode_selector")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -0.459951, 0.460887, 0.537071, 0.536268)
+
+[sub_resource type="Animation" id="Animation_ywjud"]
+resource_name = "fire"
+length = 0.3
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:base")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.0762506, -0.000869477, 6.64917e-05, 0.997088, 0.05, 1, 0, 0, 0, 1, 0.3, 1, -0.0762506, -0.000869477, 6.64917e-05, 0.997088)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:rack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.862013, 8.92196, -10.3148, 0.05, 1, 0.862475, 8.24148, -6.28453, 0.15, 1, 0.862013, 8.92196, -10.3148)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:trigger")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.460887, -0.459951, -0.536268, 0.537071, 0.1, 1, -0.580525, -0.579525, -0.403525, 0.404475, 0.2, 1, -0.460887, -0.459951, -0.536268, 0.537071)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:eject_cover")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.651791, 8.29013, 1.02659, 0.05, 1, 0.651475, 7.94548, 3.15148, 0.15, 1, 0.651791, 8.29013, 1.02659)
+
+[sub_resource type="Animation" id="Animation_ywlsu"]
+resource_name = "stock_close"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:stock")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.581475, 0.582475, -0.402525, 0.401475, 0.2, 1, 0.047475, 0.046475, 0.705475, -0.705525, 0.5, 1, -0.460887, -0.459951, -0.536268, 0.537071)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:mode_selector")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.542525, 0.541475, -0.454525, -0.454525, 0.3, 1, -0.459951, 0.460887, 0.537071, 0.536268)
+
+[sub_resource type="Animation" id="Animation_dnhxw"]
+resource_name = "stock_open"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:stock")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.460887, -0.459951, -0.536268, 0.537071, 0.2, 1, 0.047475, 0.046475, 0.705475, -0.705525, 0.5, 1, 0.581475, 0.582475, -0.402525, 0.401475)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:mode_selector")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.459951, 0.460887, 0.537071, 0.536268, 0.3, 1, -0.542525, 0.541475, -0.454525, -0.454525)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j781c"]
+_data = {
+"RESET": SubResource("Animation_avtx8"),
+"fire": SubResource("Animation_ywjud"),
+"stock_close": SubResource("Animation_ywlsu"),
+"stock_open": SubResource("Animation_dnhxw")
+}
+
+[node name="pistol" instance=ExtResource("1_47t2w")]
+script = ExtResource("2_x1x5e")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(-0.0762506, -0.000869477, 6.64917e-05, 0.997088)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/position = Vector3(0.651791, 8.29013, 1.02659)
+bones/1/rotation = Quaternion(0.0480634, 0.0597676, -0.70467, 0.705378)
+bones/2/rotation = Quaternion(-0.460887, -0.459951, -0.536268, 0.537071)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.460887, -0.459951, -0.536268, 0.537071)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.65113, 0.00066192, 0.000567719, 0.758965)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-0.460887, -0.459951, -0.536268, 0.537071)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(-0.459951, 0.460887, 0.537071, 0.536268)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/position = Vector3(0.862013, 8.92196, -10.3148)
+bones/7/rotation = Quaternion(-0.459951, 0.460887, 0.537071, 0.536268)
+bones/7/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_j781c")
+}

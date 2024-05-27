@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://dx0yww78yb1bm"]
+
+[ext_resource type="PackedScene" uid="uid://ycixx4tjm2n1" path="res://assets/ui/radio_test.glb" id="1_8wswu"]
+[ext_resource type="Script" path="res://scripts/update_display.gd" id="2_kwkqc"]
+
+[sub_resource type="Animation" id="Animation_sgoma"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:indicator")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.145, -0.005, -0.00507501)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/indi:mesh:surface_1/material:shader_parameter/freq")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [25.0]
+}
+
+[sub_resource type="Animation" id="Animation_lsrbp"]
+resource_name = "indicator_move"
+loop_mode = 2
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:indicator")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.145, -0.005, -0.00507501, 1, 1, -0.144525, -0.00452503, -0.00552503)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/indi:mesh:surface_1/material:shader_parameter/freq")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 50.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lfvtf"]
+_data = {
+"RESET": SubResource("Animation_sgoma"),
+"indicator_move": SubResource("Animation_lsrbp")
+}
+
+[node name="radio_test" node_paths=PackedStringArray("anim_player") instance=ExtResource("1_8wswu")]
+script = ExtResource("2_kwkqc")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/position = Vector3(0.145, -0.005, -0.00507501)
+bones/2/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_lfvtf")
+}
+speed_scale = 0.0

@@ -1,0 +1,59 @@
+[gd_resource type="PhysicsMaterial" script_class="MaterialProperties" load_steps=18 format=3 uid="uid://6lowwx078yi7"]
+
+[ext_resource type="AudioStream" uid="uid://c18bydsgv738k" path="res://assets/hl2/sound/physics/plastic/plastic_box_impact_hard1.wav" id="1_1jrdo"]
+[ext_resource type="AudioStream" uid="uid://bhfmvw6tb3ol6" path="res://assets/hl2/sound/physics/plastic/plastic_box_impact_hard2.wav" id="2_ugdhw"]
+[ext_resource type="AudioStream" uid="uid://dnbcysafhqux8" path="res://assets/hl2/sound/physics/plastic/plastic_box_impact_hard3.wav" id="3_0qdeb"]
+[ext_resource type="AudioStream" uid="uid://i0pfrkk1a1jo" path="res://assets/hl2/sound/physics/plastic/plastic_box_impact_hard4.wav" id="4_ljaat"]
+[ext_resource type="AudioStream" uid="uid://dmhqv1b7at0xc" path="res://assets/hl2/sound/physics/plastic/plastic_box_impact_soft1.wav" id="5_l17rd"]
+[ext_resource type="AudioStream" uid="uid://dufi1jf8e6mxp" path="res://assets/hl2/sound/physics/plastic/plastic_box_impact_soft2.wav" id="6_xa2cy"]
+[ext_resource type="Script" path="res://scripts/MaterialProperties.gd" id="7_65f1h"]
+[ext_resource type="AudioStream" uid="uid://dftuphyhgkgys" path="res://assets/hl2/sound/physics/plastic/plastic_box_impact_soft3.wav" id="7_nvsx0"]
+[ext_resource type="AudioStream" uid="uid://1r6whsb18mmv" path="res://assets/hl2/sound/physics/plastic/plastic_box_impact_soft4.wav" id="8_cyvxp"]
+[ext_resource type="AudioStream" uid="uid://bybh3d03dlubg" path="res://assets/hl2/sound/physics/wood/wood_solid_scrape_rough_loop1.wav" id="9_bkq0s"]
+[ext_resource type="AudioStream" uid="uid://brebtynvp3flj" path="res://assets/hl2/sound/footsteps/woodpanel1.wav" id="10_golwh"]
+[ext_resource type="AudioStream" uid="uid://38slg32chvm4" path="res://assets/hl2/sound/footsteps/woodpanel2.wav" id="11_mpkgu"]
+[ext_resource type="AudioStream" uid="uid://ck8nodn6j08iu" path="res://assets/hl2/sound/footsteps/woodpanel3.wav" id="12_dolw8"]
+[ext_resource type="AudioStream" uid="uid://86v776udo1d3" path="res://assets/hl2/sound/footsteps/woodpanel4.wav" id="13_t666d"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_52l1e"]
+streams_count = 4
+stream_0/stream = ExtResource("1_1jrdo")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_ugdhw")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_0qdeb")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_ljaat")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nq4gw"]
+streams_count = 4
+stream_0/stream = ExtResource("5_l17rd")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_xa2cy")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("7_nvsx0")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("8_cyvxp")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_22isy"]
+streams_count = 4
+stream_0/stream = ExtResource("10_golwh")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("11_mpkgu")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("12_dolw8")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("13_t666d")
+stream_3/weight = 1.0
+
+[resource]
+bounce = 0.1
+script = ExtResource("7_65f1h")
+DISABLE_COLLISIONS = false
+SFX_STEP = SubResource("AudioStreamRandomizer_22isy")
+SFX_JUMP = ExtResource("13_t666d")
+SFX_IMPACT_SOFT = SubResource("AudioStreamRandomizer_nq4gw")
+SFX_IMPACT_HARD = SubResource("AudioStreamRandomizer_52l1e")
+SFX_SCRAPE = ExtResource("9_bkq0s")

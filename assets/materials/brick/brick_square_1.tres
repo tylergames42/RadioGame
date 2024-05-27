@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" load_steps=5 format=3 uid="uid://dpnqfgpyh41am"]
+
+[ext_resource type="Texture2D" uid="uid://dubybycwvg8dd" path="res://assets/materials/brick/brick_square_1_color.png" id="1_gudnj"]
+[ext_resource type="PhysicsMaterial" uid="uid://qnmr1hqg7ho4" path="res://assets/material_properties/mat_default.tres" id="2_2wts6"]
+[ext_resource type="Texture2D" uid="uid://chpwtywf7xdrw" path="res://assets/materials/brick/brick_square_1_normal.png" id="3_2vlbn"]
+[ext_resource type="Texture2D" uid="uid://cybnblmv8j06y" path="res://assets/materials/brick/brick_square_1_orm.png" id="4_bmfom"]
+
+[resource]
+albedo_texture = ExtResource("1_gudnj")
+orm_texture = ExtResource("4_bmfom")
+normal_enabled = true
+normal_texture = ExtResource("3_2vlbn")
+texture_filter = 4
+metadata/MaterialProperties = ExtResource("2_2wts6")

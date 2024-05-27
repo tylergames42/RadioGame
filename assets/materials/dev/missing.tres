@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://5783vdy47054"]
+
+[ext_resource type="Texture2D" uid="uid://dpmdrlfas0xvy" path="res://assets/materials/dev/missing_color.png" id="1_5apjn"]
+[ext_resource type="PhysicsMaterial" uid="uid://qnmr1hqg7ho4" path="res://assets/material_properties/mat_default.tres" id="2_h8pxi"]
+
+[resource]
+shading_mode = 0
+disable_ambient_light = true
+albedo_texture = ExtResource("1_5apjn")
+texture_filter = 4
+metadata/MaterialProperties = ExtResource("2_h8pxi")

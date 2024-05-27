@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://crsr2d377k2f8"]
+
+[ext_resource type="Script" path="res://scripts/entities/PhysicsProp.gd" id="1_ig2rm"]
+[ext_resource type="PhysicsMaterial" uid="uid://6lowwx078yi7" path="res://assets/material_properties/mat_wood_crate.tres" id="1_kyupx"]
+[ext_resource type="ArrayMesh" uid="uid://botaub7ru37fg" path="res://assets/hl2/models/gibs/wood_crate001a_Chunk01_reference_wood_crate001a_Chunk06_reference.res" id="2_r2i47"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qm1rl"]
+points = PackedVector3Array(0.0195997, 0.243301, 0.0487813, 0.0195997, 0.243301, -0.0412162, -0.0104023, 0.243301, 0.0487813, 0.0193964, -0.180904, 0.041923, 0.0193964, -0.212578, -0.0484374, -0.0104023, 0.243301, -0.0412162, -0.0195998, -0.219342, -0.0219979, -0.0106019, -0.145895, 0.0423338, -0.0106019, -0.243301, -0.0487908)
+
+[node name="wood_crate_chunk06" type="RigidBody3D"]
+collision_layer = 5
+mass = 2.0
+physics_material_override = ExtResource("1_kyupx")
+script = ExtResource("1_ig2rm")
+
+[node name="WoodCrate001aChunk01ReferenceWoodCrate001aChunk06Reference" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_r2i47")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_qm1rl")

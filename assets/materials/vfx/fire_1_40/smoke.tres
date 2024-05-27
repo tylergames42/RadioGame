@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://r4ucqog2243q"]
+
+[ext_resource type="Texture2D" uid="uid://b4twf7ieutjax" path="res://assets/materials/vfx/fire_1_40/Smoke15Frames.png" id="1_1rua6"]
+
+[resource]
+transparency = 1
+shading_mode = 0
+disable_ambient_light = true
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_1rua6")
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 5
+particles_anim_v_frames = 3
+particles_anim_loop = true

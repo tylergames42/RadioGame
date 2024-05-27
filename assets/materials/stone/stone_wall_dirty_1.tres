@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" load_steps=5 format=3 uid="uid://br6ao0naos04v"]
+
+[ext_resource type="Texture2D" uid="uid://b4rqja66tq22u" path="res://assets/materials/stone/stone_wall_dirty_1_color.png" id="1_f6fcf"]
+[ext_resource type="PhysicsMaterial" uid="uid://qnmr1hqg7ho4" path="res://assets/material_properties/mat_default.tres" id="2_uxkcu"]
+[ext_resource type="Texture2D" uid="uid://bb2bed28ybfhu" path="res://assets/materials/stone/stone_wall_dirty_1_normal.png" id="3_w7e8j"]
+[ext_resource type="Texture2D" uid="uid://drkqcpwsb6ub" path="res://assets/materials/stone/stone_wall_dirty_1_orm.png" id="4_2u0hi"]
+
+[resource]
+albedo_texture = ExtResource("1_f6fcf")
+orm_texture = ExtResource("4_2u0hi")
+normal_enabled = true
+normal_texture = ExtResource("3_w7e8j")
+texture_filter = 4
+metadata/MaterialProperties = ExtResource("2_uxkcu")

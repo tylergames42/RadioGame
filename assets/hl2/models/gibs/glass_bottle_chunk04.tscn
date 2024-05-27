@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqnn056vg042i"]
+
+[ext_resource type="Script" path="res://scripts/entities/PhysicsProp.gd" id="1_qa5n1"]
+[ext_resource type="ArrayMesh" uid="uid://ce2iwyd8urkt3" path="res://assets/hl2/models/gibs/glass_bottle001_chunk04.res" id="2_05bns"]
+[ext_resource type="Material" uid="uid://b6b4ygs7gfuy1" path="res://assets/hl2/materials/models/props/glass_bottle.tres" id="2_e2440"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fs4sl"]
+points = PackedVector3Array(-2.40997, 2.81621, -0.622039, -1.86541, 1.32447, -1.78909, 1.8112, -2.87264, -1.67809, 2.5974, 3.35501, -0.582508, -1.86541, 4.84751, -1.78909, -2.04285, 3.35501, -1.61149, 0.0250931, -1.28115, -2.57192, 0.0309749, -1.28115, -2.38692, 1.9156, -2.87264, -1.78909, 1.94403, 4.07972, -1.79941, 1.83962, 4.08275, -1.6886, 0.0309749, 4.67143, -2.38653, 0.0250931, 4.66841, -2.57153, 0.0250931, 3.35501, -2.57192)
+
+[node name="glass_bottle_chunk04" type="RigidBody3D"]
+mass = 0.4
+script = ExtResource("1_qa5n1")
+
+[node name="GlassBottle" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+material_override = ExtResource("2_e2440")
+mesh = ExtResource("2_05bns")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_fs4sl")

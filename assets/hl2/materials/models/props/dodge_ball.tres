@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dm3jrq4ibilul"]
+
+[ext_resource type="Texture2D" uid="uid://wchxiyvkt0vm" path="res://assets/hl2/materials/concrete/concreteceiling001a.png" id="1_57j7n"]
+
+[resource]
+albedo_color = Color(0.929412, 0, 0.145098, 1)
+roughness_texture = ExtResource("1_57j7n")
+clearcoat = 0.2
+uv1_scale = Vector3(5, 5, 5)
+texture_filter = 4

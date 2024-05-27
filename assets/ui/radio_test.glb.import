@@ -1,0 +1,53 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://ycixx4tjm2n1"
+path="res://.godot/imported/radio_test.glb-895853281bff066c2b5fe1c8ad1cf12c.scn"
+
+[deps]
+
+source_file="res://assets/ui/radio_test.glb"
+dest_files=["res://.godot/imported/radio_test.glb-895853281bff066c2b5fe1c8ad1cf12c.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=0.05
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=false
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"base": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/ui/radio.tres"
+},
+"glass": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/dev/player_clip.tres"
+},
+"osc": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/ui/osc_vm.tres"
+},
+"spectro": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/ui/spectrogram.tres"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

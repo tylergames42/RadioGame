@@ -1,0 +1,15 @@
+[gd_resource type="ORMMaterial3D" load_steps=5 format=3 uid="uid://dglqj74nw0oqk"]
+
+[ext_resource type="Texture2D" uid="uid://djvtqb0ag3bgj" path="res://assets/materials/glass/window_test_color.png" id="1_glsah"]
+[ext_resource type="PhysicsMaterial" uid="uid://qnmr1hqg7ho4" path="res://assets/material_properties/mat_default.tres" id="2_je01g"]
+[ext_resource type="Texture2D" uid="uid://cbcg1x216ffob" path="res://assets/materials/glass/window_test_normal.png" id="3_11d3f"]
+[ext_resource type="Texture2D" uid="uid://dkd5koj00i3pq" path="res://assets/materials/glass/window_test_orm.png" id="4_65yxv"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_glsah")
+orm_texture = ExtResource("4_65yxv")
+normal_enabled = true
+normal_texture = ExtResource("3_11d3f")
+texture_filter = 4
+metadata/MaterialProperties = ExtResource("2_je01g")

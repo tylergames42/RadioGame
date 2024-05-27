@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwmsox5vbvfud"]
+
+[ext_resource type="Texture2D" uid="uid://bwth51v4hqboi" path="res://assets/materials/decals/light_01.png" id="1_ti0nw"]
+
+[node name="Flashlight" type="Node3D"]
+transform = Transform3D(0.984808, -0.0449434, 0.167731, 2.64416e-09, 0.965926, 0.258819, -0.173648, -0.254887, 0.951251, 0.1, -0.1, 0)
+
+[node name="MainBeam" type="SpotLight3D" parent="."]
+transform = Transform3D(1, -1.11759e-08, 2.98023e-08, 7.45058e-09, 1, 0, 0, -1.49012e-08, 1, 0, 0, 0)
+light_color = Color(0.980392, 0.941176, 0.882353, 1)
+light_projector = ExtResource("1_ti0nw")
+light_bake_mode = 0
+shadow_enabled = true
+spot_range = 8.0
+spot_angle = 20.0
+
+[node name="BounceLighting" type="SpotLight3D" parent="."]
+transform = Transform3D(1, -7.45058e-09, 0, 3.72529e-09, 1, 0, 2.98023e-08, -1.49012e-08, 1, 0, 0, 0)
+light_color = Color(0.980392, 0.941176, 0.882353, 1)
+light_energy = 0.3
+light_bake_mode = 0
+spot_range = 9.0
+spot_angle = 75.0
