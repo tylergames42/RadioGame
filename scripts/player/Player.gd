@@ -68,7 +68,6 @@ func _input(event):
 			radio.visible = false
 		else:
 			radio.visible = true
-			$Root/Head/radio/AnimationPlayer.play("radio_turn_on")
 		
 	if event.is_action_pressed("noclip"):
 		if state_machine.CURRENT_STATE.name != "PlayerNoclipState":

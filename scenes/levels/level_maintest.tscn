@@ -136,19 +136,10 @@ light_data = ExtResource("4_d0goh")
 [node name="Player" parent="level" instance=ExtResource("5_mb7ru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, -10)
 
-[node name="radio" parent="level/Player/Root/Head" index="4" node_paths=PackedStringArray("SIGNAL_MANAGER")]
+[node name="radio" parent="level/Player/Root/Head" index="4" node_paths=PackedStringArray("SIGNAL_MANAGER", "ANIM_TREE")]
+transform = Transform3D(0.5, -1.11759e-08, -0.866025, 0.0754791, 0.996195, 0.0435778, 0.86273, -0.0871558, 0.498097, -0.265, -0.135, -0.24)
 SIGNAL_MANAGER = NodePath("../../../../SignalManager")
-
-[node name="Skeleton3D" parent="level/Player/Root/legs_test/Armature" index="0"]
-bones/0/position = Vector3(6.29149e-08, -1.11111, 3.23117e-28)
-bones/1/rotation = Quaternion(0.403434, -0.674919, -0.564302, 0.251574)
-bones/2/rotation = Quaternion(0.741176, -0.000694124, 0.542399, 0.395551)
-bones/3/rotation = Quaternion(0.403433, 0.674919, 0.564302, 0.251573)
-bones/4/rotation = Quaternion(0.741177, 0.000694135, -0.542399, 0.39555)
-bones/6/position = Vector3(0.922624, -3.91895, -0.199599)
-bones/7/position = Vector3(4.99954e-05, 8.80544e-05, -4.40801e-06)
-bones/10/position = Vector3(-0.922624, -3.91895, -0.199599)
-bones/11/position = Vector3(-4.95669e-05, 8.82825e-05, -4.40206e-06)
+ANIM_TREE = NodePath("AnimationTree")
 
 [node name="props" type="Node3D" parent="level"]
 

@@ -7,14 +7,18 @@ extends Node3D
 @export_range(-20.0, 0.0, 1.0) var STATIC_VOLUME : float = -10.0
 
 @export_group("Visuals")
-@export var ANIM_PLAYER : AnimationPlayer
+@export var ANIM_TREE : AnimationTree
 @export var MAT_OSC : ShaderMaterial
+@export var MAT_STRENGTH_IND : ShaderMaterial
 
 @onready var static_player = AudioStreamPlayer.new()
 
 var reciever_signal_strength = 0.0
 var connected_signal : SignalTransmitter
 var signal_strengths : float
+
+var tune_speed : float = 0.0
+var anim_time : float = 0.0
 
 func _ready():
 	add_child(static_player)
@@ -24,31 +28,32 @@ func _ready():
 	static_player.volume_db = STATIC_VOLUME
 
 func _input(event):
-	Global.frequency = FREQUENCY
 	if event.is_action_pressed("tune_up"):
 		if Input.is_action_pressed("tune_modifiy"):
-			FREQUENCY += 1.0
+			tune_speed = 0.65
 		else:
-			FREQUENCY += 0.1
-		if FREQUENCY > 100.0:
-			FREQUENCY = 100.0
-		else:
-			update_visuals()
-			static_player.play()
-			static_player.seek(randf_range(0.0, 10.0))
+			tune_speed = 0.01
+		static_player.play()
+		static_player.seek(randf_range(0.0, 10.0))
 	if event.is_action_pressed("tune_down"):
 		if Input.is_action_pressed("tune_modifiy"):
-			FREQUENCY -= 1.0
+			tune_speed = -0.65
 		else:
-			FREQUENCY -= 0.1
-		if FREQUENCY < 1.0:
-			FREQUENCY = 1.0
-		else:
-			update_visuals()
-			static_player.play()
-			static_player.seek(randf_range(0.0, 10.0))
+			tune_speed = -0.01
+		static_player.play()
+		static_player.seek(randf_range(0.0, 10.0))
 
 func _process(delta):
+	tune_speed = lerp(tune_speed, 0.0, delta * 5)
+		
+	if ANIM_TREE["parameters/tune_anim/time"] != null:
+		ANIM_TREE["parameters/tune_speed/scale"] = tune_speed
+		anim_time = ANIM_TREE["parameters/tune_anim/time"]
+		FREQUENCY = remap(anim_time, 0.0, 1.25, 0.1, 100.0)
+		Global.frequency = FREQUENCY
+		update_visuals()
+	#
+	
 	reciever_signal_strength = 0.0
 	find_signals()
 	
@@ -83,7 +88,14 @@ func find_signals():
 				if sig == connected_signal:
 					connected_signal = null
 					
+func tune(amount : float):
+	if amount > 0.0:
+		pass
+	elif amount < 0.0:
+		pass
+	else:
+		return
+					
 func update_visuals():
 	MAT_OSC.set_shader_parameter("freq", FREQUENCY)
-	ANIM_PLAYER.play("radio_tune", -1, 0.0)
-	ANIM_PLAYER.seek(remap(Global.frequency, 1.0, 100.0, 0.0, 2.0))
+	#MAT_STRENGTH_IND.set_shader_parameter("strength", reciever_signal_strength)
