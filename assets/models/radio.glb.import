@@ -45,15 +45,15 @@ _subresources={
 },
 "radio_power_light": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/ui/radio.tres"
+"use_external/path": "res://assets/materials/dev/toolsplayerclip.tres"
 },
 "radio_spectrogram": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/ui/radio.tres"
+"use_external/path": "res://assets/materials/dev/toolsplayerclip.tres"
 },
 "radio_strength_light": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/ui/radio.tres"
+"use_external/path": "res://assets/materials/dev/toolsplayerclip.tres"
 }
 },
 "nodes": {
