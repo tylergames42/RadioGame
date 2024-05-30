@@ -28,8 +28,10 @@ func iterate(node):
 				st.create_from(original_mesh, surface_index)
 				var mesh = st.commit()
 				var shape = CollisionShape3D.new()
+				shape.name = "[shape]" + material_name
 				shape.shape = mesh.create_trimesh_shape()
 				var body = StaticBody3D.new()
+				body.name = "[col]" + material_name
 				body.add_child(shape, true)
 				node.add_child(body, true)
 				

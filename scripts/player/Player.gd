@@ -11,7 +11,7 @@ extends RigidBody3D
 @onready var state_machine = $PlayerStateMachine #State machine for player
 @onready var flashlight = $Root/Head/Flashlight
 @onready var leg_anim_player = $Root/legs_test/AnimationPlayer
-@onready var radio = $Root/Head/Camera/radio_test
+@onready var radio = $Root/Head/radio
 
 @onready var AudioPlayer = AudioStreamPlayer3D.new() #Audio player for footsteps, jump sounds, etc.
 
@@ -68,6 +68,7 @@ func _input(event):
 			radio.visible = false
 		else:
 			radio.visible = true
+			$Root/Head/radio/AnimationPlayer.play("radio_turn_on")
 		
 	if event.is_action_pressed("noclip"):
 		if state_machine.CURRENT_STATE.name != "PlayerNoclipState":
@@ -85,6 +86,7 @@ func _input(event):
 		root.rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY_HORIZONTAL))
 		head.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY_VERTICAL))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+			
 	#Set input direction vector
 	input_dir = Vector3(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),

@@ -45,6 +45,7 @@ radius = 0.45
 
 [node name="oildrum" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00193262, -1.19209e-07, -0.0112462)
+mass = 15.0
 script = ExtResource("1_bqh6k")
 BUOYANCY = 0.6
 

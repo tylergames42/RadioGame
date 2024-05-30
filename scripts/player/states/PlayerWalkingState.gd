@@ -24,7 +24,7 @@ func input_update(_event):
 		transition.emit("PlayerJumpingState")
 
 func physics_update(_delta):
-	#player.slopeSliding(false)
+	player.slopeSliding(false)
 	player.stair_step_down()
 	player.stair_step_up()
 

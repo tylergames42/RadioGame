@@ -1,0 +1,69 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://c6h07q5hlr7wl"
+path="res://.godot/imported/radio.glb-2025cab88708789cadd6773e0dec2d5b.scn"
+
+[deps]
+
+source_file="res://assets/models/radio.glb"
+dest_files=["res://.godot/imported/radio.glb-2025cab88708789cadd6773e0dec2d5b.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=0.1
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"radio_base": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/ui/radio.tres"
+},
+"radio_glass": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/dev/toolsplayerclip.tres"
+},
+"radio_osc": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/ui/osc_vm.tres"
+},
+"radio_power_light": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/ui/radio.tres"
+},
+"radio_spectrogram": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/ui/radio.tres"
+},
+"radio_strength_light": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/ui/radio.tres"
+}
+},
+"nodes": {
+"PATH:Armature/Skeleton3D": {
+"retarget/bone_map": null
+},
+"PATH:Armature/Skeleton3D/radio": {
+"mesh_instance/cast_shadow": 0
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

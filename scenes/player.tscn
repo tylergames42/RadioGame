@@ -1,16 +1,14 @@
-[gd_scene load_steps=27 format=3 uid="uid://bdrd7rx11vacv"]
+[gd_scene load_steps=25 format=3 uid="uid://bdrd7rx11vacv"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_gnuhl"]
 [ext_resource type="Script" path="res://scenes/DebugInfo.gd" id="2_pbxns"]
 [ext_resource type="Texture2D" uid="uid://chwwq3rkwc7ly" path="res://assets/ui/crosshair.png" id="3_8nfak"]
-[ext_resource type="PackedScene" uid="uid://dx0yww78yb1bm" path="res://assets/ui/radio_test.tscn" id="4_2s58g"]
+[ext_resource type="PackedScene" uid="uid://im2obulcl5vg" path="res://assets/models/radio.tscn" id="5_ky4k5"]
 [ext_resource type="PackedScene" uid="uid://cwmsox5vbvfud" path="res://scenes/flashlight.tscn" id="6_cukaf"]
 [ext_resource type="Script" path="res://scripts/components/HealthComponent.gd" id="6_lmlc4"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="6_nodv1"]
-[ext_resource type="PackedScene" uid="uid://c5xtba7v1ovft" path="res://scenes/reciever.tscn" id="6_tyst3"]
 [ext_resource type="PackedScene" uid="uid://bpwl58ebdmdxn" path="res://assets/models/legs_test.glb" id="7_gp4dq"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerIdleState.gd" id="7_hu5mr"]
-[ext_resource type="AudioStream" uid="uid://ki0tnb4wlui3" path="res://assets/sounds/static/radio_static.tres" id="8_41u7i"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerWalkingState.gd" id="8_mmf44"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerSprintingState.gd" id="9_6khpb"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerNoclipState.gd" id="9_fvox2"]
@@ -298,10 +296,6 @@ scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(32, 32)
 texture = ExtResource("3_8nfak")
 
-[node name="radio_test" parent="Root/Head/Camera" instance=ExtResource("4_2s58g")]
-transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -0.3, -0.2, -0.4)
-visible = false
-
 [node name="hold_point" type="Node3D" parent="Root/Head"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.5)
 
@@ -312,7 +306,11 @@ collision_mask = 5
 hit_back_faces = false
 
 [node name="Flashlight" parent="Root/Head" instance=ExtResource("6_cukaf")]
+transform = Transform3D(0.984808, -0.0449434, 0.167731, 2.64416e-09, 0.965926, 0.258819, -0.173648, -0.254887, 0.951251, 0.1, -0.1, -0.5)
 visible = false
+
+[node name="radio" parent="Root/Head" instance=ExtResource("5_ky4k5")]
+transform = Transform3D(0.5, 7.19671e-09, -0.866025, 0.0754791, 0.996195, 0.0435779, 0.86273, -0.0871557, 0.498097, -0.265, -0.135, -0.24)
 
 [node name="legs_test" parent="Root" instance=ExtResource("7_gp4dq")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 0.75, 0, -1.50996e-07, 0, -1, 0, -0.844603, 0.2)
@@ -341,9 +339,6 @@ bones/11/rotation = Quaternion(-0.0193021, -0.0110751, 0.955716, 0.293447)
 bones/11/scale = Vector3(0.999999, 1, 1)
 bones/12/rotation = Quaternion(0.0221988, -0.0286914, 0.163898, 0.98581)
 bones/12/scale = Vector3(1, 1, 1)
-
-[node name="Reciever" parent="Root" instance=ExtResource("6_tyst3")]
-STATIC = ExtResource("8_41u7i")
 
 [node name="headcast" type="ShapeCast3D" parent="."]
 shape = SubResource("CylinderShape3D_jx86m")

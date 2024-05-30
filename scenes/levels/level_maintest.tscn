@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cvdvb3r0hoj7f"]
+[gd_scene load_steps=38 format=3 uid="uid://cvdvb3r0hoj7f"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_qy1pw"]
 [ext_resource type="Texture2D" uid="uid://bieyv6v2fhlhj" path="res://assets/hdris/mud_road_puresky_2k.hdr" id="2_fhhgn"]
@@ -59,9 +59,6 @@ size = Vector3(3, 0.1, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yr4bb"]
 bounce = 0.5
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_x5cgt"]
-size = Vector3(3, 0.5, 3)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_63o2b"]
 
@@ -139,32 +136,19 @@ light_data = ExtResource("4_d0goh")
 [node name="Player" parent="level" instance=ExtResource("5_mb7ru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, -10)
 
-[node name="Skeleton3D" parent="level/Player/Root/legs_test/Armature" index="0"]
-bones/0/rotation = Quaternion(-7.10543e-15, -5.69993e-15, 1, 7.54979e-08)
-bones/1/rotation = Quaternion(-0.0267518, -0.706601, -0.0107043, 0.707026)
-bones/2/rotation = Quaternion(0.0334134, -0.00175326, 0.0244522, 0.999141)
-bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(-0.0267519, 0.7066, 0.0107044, 0.707026)
-bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(0.0334135, 0.00175332, -0.0244522, 0.999141)
-bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.513068, 0.486581, 0.486581, 0.513068)
-bones/6/rotation = Quaternion(0.507981, -0.492017, 0.500833, -0.49904)
-bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(0.0193021, -0.0110751, 0.955716, -0.293447)
-bones/7/scale = Vector3(0.999999, 1, 1)
-bones/8/rotation = Quaternion(0.0221988, 0.0286914, -0.163898, 0.98581)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.513068, -0.486581, -0.486581, 0.513068)
-bones/10/rotation = Quaternion(0.507981, 0.492017, -0.500833, -0.49904)
-bones/10/scale = Vector3(1, 1, 1)
-bones/11/rotation = Quaternion(-0.0193021, -0.0110751, 0.955716, 0.293447)
-bones/11/scale = Vector3(0.999999, 1, 1)
-bones/12/rotation = Quaternion(0.0221988, -0.0286914, 0.163898, 0.98581)
-bones/12/scale = Vector3(1, 1, 1)
+[node name="radio" parent="level/Player/Root/Head" index="4" node_paths=PackedStringArray("SIGNAL_MANAGER")]
+SIGNAL_MANAGER = NodePath("../../../../SignalManager")
 
-[node name="Reciever" parent="level/Player/Root" index="2" node_paths=PackedStringArray("SIGNAL_MANAGER")]
-SIGNAL_MANAGER = NodePath("../../../SignalManager")
+[node name="Skeleton3D" parent="level/Player/Root/legs_test/Armature" index="0"]
+bones/0/position = Vector3(6.29149e-08, -1.11111, 3.23117e-28)
+bones/1/rotation = Quaternion(0.403434, -0.674919, -0.564302, 0.251574)
+bones/2/rotation = Quaternion(0.741176, -0.000694124, 0.542399, 0.395551)
+bones/3/rotation = Quaternion(0.403433, 0.674919, 0.564302, 0.251573)
+bones/4/rotation = Quaternion(0.741177, 0.000694135, -0.542399, 0.39555)
+bones/6/position = Vector3(0.922624, -3.91895, -0.199599)
+bones/7/position = Vector3(4.99954e-05, 8.80544e-05, -4.40801e-06)
+bones/10/position = Vector3(-0.922624, -3.91895, -0.199599)
+bones/11/position = Vector3(-4.95669e-05, 8.82825e-05, -4.40206e-06)
 
 [node name="props" type="Node3D" parent="level"]
 
@@ -315,16 +299,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7152, 3.21336, -1.1099)
 [node name="plastic_crate4" parent="level/props" instance=ExtResource("23_6f8xq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7152, 3.21336, -1.1099)
 
-[node name="Test_plat" type="AnimatableBody3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.81564, 0.210433, 17.2771)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Test_plat"]
-shape = SubResource("BoxShape3D_x5cgt")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="level/Test_plat"]
-material_override = ExtResource("6_2tmjs")
-size = Vector3(3, 0.5, 3)
-
 [node name="CSGBox3D" type="CSGBox3D" parent="level"]
 transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 31.75, -17.5, 74.125)
 material_override = ExtResource("13_f82mo")
@@ -426,19 +400,11 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.81,
 [node name="door" parent="level/door_test7" index="0"]
 material_override = ExtResource("21_cmdnc")
 
-[node name="Skeleton3D" parent="level/door_test7/door/Armature" index="0"]
-bones/0/rotation = Quaternion(0.707106, 0.707106, -0.00101725, 0.00108891)
-bones/2/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-
 [node name="door_test8" parent="level" instance=ExtResource("16_gx084")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00999993, 9.54173, 9.9376)
 
 [node name="door" parent="level/door_test8" index="0"]
 material_override = ExtResource("18_wx82b")
-
-[node name="Skeleton3D" parent="level/door_test8/door/Armature" index="0"]
-bones/0/rotation = Quaternion(0.707106, 0.707106, -0.00101725, 0.00108891)
-bones/2/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
 [node name="door_test2" parent="level" instance=ExtResource("16_gx084")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6362, 1.43256, -25.146)
@@ -469,8 +435,9 @@ transform = Transform3D(4.37114e-08, -1, 8.74228e-08, 4.37114e-08, 8.74228e-08, 
 gravity_point_center = Vector3(1, 0, 0)
 gravity_direction = Vector3(1, 0, 0)
 linear_damp_space_override = 1
-linear_damp = 0.05
+linear_damp = 0.3
 angular_damp_space_override = 1
+angular_damp = 0.2
 script = ExtResource("24_sbpmf")
 SPLASH = ExtResource("25_p0smd")
 

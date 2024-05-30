@@ -2,7 +2,7 @@ extends State
 
 @export var NOCLIP_SPEED = 12.0 ##Noclip speed
 @export var NOCLIP_SLOW_SPEED = 5.0 ##Noclip speed while walk is held
-@export var NOCLIP_FAST_SPEED = 22.0 ##Noclip speed while sprint is held
+@export var NOCLIP_FAST_SPEED = 28.0 ##Noclip speed while sprint is held
 
 var player
 var speed_mult = NOCLIP_SPEED

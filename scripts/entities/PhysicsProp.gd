@@ -35,7 +35,7 @@ func _integrate_forces(state):
 		var target_velocity = (holder.hold_point.global_transform.origin - global_transform.origin) * velocity_multipler
 		var impulse_vector = target_velocity - linear_velocity
 		apply_central_impulse(impulse_vector + holder.linear_velocity)
-		look_follow(state, global_transform, holder.global_position)
+		#look_follow(state, global_transform, holder.global_position)
 		#rotation = holder.hold_point.global_rotation * DEFAULT_HOLD_VECTOR
 			
 	if get_colliding_bodies() != [] and get_colliding_bodies()[0]: #Scrape sfx (kinda jank rn)

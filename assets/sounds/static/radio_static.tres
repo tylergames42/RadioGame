@@ -1,16 +1,18 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://ki0tnb4wlui3"]
+[gd_resource type="AudioStreamRandomizer" load_steps=8 format=3 uid="uid://ki0tnb4wlui3"]
 
 [ext_resource type="AudioStream" uid="uid://b5pc40kfb02r" path="res://assets/sounds/static/static_pink.wav" id="1_g407i"]
 [ext_resource type="AudioStream" uid="uid://edii06amxshv" path="res://assets/sounds/static/static_white.wav" id="2_64erw"]
 [ext_resource type="AudioStream" uid="uid://b4xupq40uh3s1" path="res://assets/sounds/static/static_01.wav" id="3_nn804"]
 [ext_resource type="AudioStream" uid="uid://c8i8hy8w056qo" path="res://assets/sounds/static/static_quiet_01.wav" id="4_p3s1y"]
+[ext_resource type="AudioStream" uid="uid://coy6cvtxlun2b" path="res://assets/sounds/static/static_lowhowl_02.wav" id="6_618jh"]
+[ext_resource type="AudioStream" uid="uid://c2872y03ywv8l" path="res://assets/sounds/static/static_screech_01.wav" id="7_mh5yn"]
 [ext_resource type="AudioStream" uid="uid://ih116d24yyer" path="res://assets/sounds/static/static_lowhowl_01.wav" id="8_182n4"]
 
 [resource]
 playback_mode = 1
 random_pitch = 1.2
 random_volume_offset_db = 2.0
-streams_count = 5
+streams_count = 8
 stream_0/stream = ExtResource("2_64erw")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("1_g407i")
@@ -21,3 +23,8 @@ stream_3/stream = ExtResource("4_p3s1y")
 stream_3/weight = 1.0
 stream_4/stream = ExtResource("8_182n4")
 stream_4/weight = 1.0
+stream_5/stream = ExtResource("6_618jh")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("7_mh5yn")
+stream_6/weight = 1.0
+stream_7/weight = 1.0

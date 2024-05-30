@@ -1,9 +1,16 @@
 extends Node3D
 
-@export var anim_player : AnimationPlayer
+var anim_player
+var mesh
 
 func _ready():
-	anim_player.play("indicator_move", -1, 0.0)
+	for child in get_children():
+		if child is AnimationPlayer:
+			anim_player = child
+		elif child is MeshInstance3D:
+			mesh = child
+	anim_player.play("radio_tune", -1, 0.0)
 	
 func _input(event):
-	anim_player.seek(remap(Global.frequency, 1.0, 100.0, 0.0, 1.0))
+	anim_player.play("radio_tune", -1, 0.0)
+	anim_player.seek(remap(Global.frequency, 1.0, 100.0, 0.0, 2.0))

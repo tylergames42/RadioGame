@@ -5,9 +5,9 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_s8jqd")
-shader_parameter/albedo = Color(0.466181, 0.466181, 0.466181, 1)
+shader_parameter/albedo = Color(1.51612e-06, 0.463139, 0.364838, 1)
 shader_parameter/point_size = 0.0
-shader_parameter/roughness = null
+shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = null
 shader_parameter/specular = null
 shader_parameter/metallic = null
