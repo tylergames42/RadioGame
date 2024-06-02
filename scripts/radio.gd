@@ -50,6 +50,8 @@ func _input(event):
 				
 		static_player.play()
 		static_player.seek(randf_range(0.0, 10.0))
+	if event.is_action_released("tune_modifiy"):
+		desired_frequency = frequency
 
 func _process(delta):
 	print(desired_frequency)
