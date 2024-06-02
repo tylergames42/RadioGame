@@ -34,9 +34,11 @@ radius = 0.4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_skehm"]
 shader = ExtResource("2_vtxyt")
-shader_parameter/wave_speed = 3.0
-shader_parameter/wave_freq = 10.0
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_freq = 5.0
 shader_parameter/wave_width = 1.0
+shader_parameter/blur = 0.1
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jx86m"]
 height = 0.05
@@ -268,6 +270,7 @@ current = true
 fov = 90.0
 
 [node name="ScreenEffects" type="Control" parent="Root/Head/Camera"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -275,7 +278,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Root/Head/Camera/ScreenEffects"]
+[node name="Underwater" type="ColorRect" parent="Root/Head/Camera/ScreenEffects"]
 material = SubResource("ShaderMaterial_skehm")
 layout_mode = 1
 anchors_preset = 15
