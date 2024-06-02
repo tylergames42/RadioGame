@@ -21,20 +21,15 @@ func exit():
 	player.collider.disabled = false
 	player.set_collision_layer_value(1, true)
 	player.freeze = false
-
-func input_update(event):
-	#if event.is_action_pressed("noclip"):
-		#transition.emit("PlayerIdleState")
-	if event.is_action_pressed("tune_modifiy"):
-		speed_mult = NOCLIP_SLOW_SPEED
-	elif event.is_action_pressed("sprint"):
-		speed_mult = NOCLIP_FAST_SPEED
-	else:
-		speed_mult = NOCLIP_SPEED
 		
 func update(delta):
 	var direction = player.head.global_transform.basis * player.input_dir.normalized()
-	
+	if Input.is_action_pressed("tune_modifiy"):
+		speed_mult = NOCLIP_SLOW_SPEED
+	elif Input.is_action_pressed("sprint"):
+		speed_mult = NOCLIP_FAST_SPEED
+	else:
+		speed_mult = NOCLIP_SPEED
 	if Input.is_action_pressed("jump"):
 		direction += Vector3.UP
 	elif Input.is_action_pressed("crouch"):

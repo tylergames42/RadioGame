@@ -1,0 +1,76 @@
+[gd_scene load_steps=14 format=3 uid="uid://cn848pt85gwr6"]
+
+[ext_resource type="Texture2D" uid="uid://mkuycxvv8c0u" path="res://assets/materials/vfx/water/splash_test.png" id="1_67d25"]
+[ext_resource type="AudioStream" uid="uid://b8v6bc2glwmkc" path="res://assets/sounds/water/splashes/splash_test.wav" id="2_0qdwl"]
+[ext_resource type="Script" path="res://scripts/ParticleManager.gd" id="2_yax1o"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6b67d"]
+direction = Vector3(0, 1, 0)
+spread = 25.0
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qwtx6"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_leag7"]
+noise = SubResource("FastNoiseLite_qwtx6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1to5"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.435294)
+albedo_texture = SubResource("NoiseTexture2D_leag7")
+texture_filter = 2
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pmt27"]
+material = SubResource("StandardMaterial3D_i1to5")
+size = Vector2(0.1, 0.1)
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_skp1m"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qlgoi"]
+width = 32
+curve = SubResource("Curve_skp1m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l5q04"]
+particle_flag_rotate_y = true
+angle_max = 360.0
+angular_velocity_min = 100.0
+angular_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_qlgoi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrj73"]
+transparency = 1
+albedo_texture = ExtResource("1_67d25")
+heightmap_texture = ExtResource("1_67d25")
+texture_filter = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bfsxp"]
+material = SubResource("StandardMaterial3D_lrj73")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D"]
+stream = ExtResource("2_0qdwl")
+autoplay = true
+script = ExtResource("2_yax1o")
+
+[node name="particle_splash" type="GPUParticles3D" parent="."]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_6b67d")
+draw_pass_1 = SubResource("PlaneMesh_pmt27")
+
+[node name="particle_wave" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_l5q04")
+draw_pass_1 = SubResource("PlaneMesh_bfsxp")

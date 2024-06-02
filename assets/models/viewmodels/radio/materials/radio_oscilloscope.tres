@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://otve6lmskaud"]
+
+[ext_resource type="Shader" uid="uid://bexsnbiyvabr5" path="res://assets/shaders/oscilloscope_viewmodel.tres" id="1_2cjk1"]
+[ext_resource type="Texture2D" uid="uid://c3f51ajg2ikdl" path="res://assets/models/viewmodels/radio/materials/oscilloscope_background.png" id="2_qo2c3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_2cjk1")
+shader_parameter/albedo = Color(0.501961, 1, 0.588235, 1)
+shader_parameter/point_size = null
+shader_parameter/roughness = null
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/clearcoat = null
+shader_parameter/clearcoat_roughness = null
+shader_parameter/fov = 80.0
+shader_parameter/freq = 25.0
+shader_parameter/ampl = 0.5
+shader_parameter/vel = 5.0
+shader_parameter/tightness = 20.0
+shader_parameter/quality_signal = true
+shader_parameter/wave_color = Color(0, 1, 0, 1)
+shader_parameter/texture_albedo = ExtResource("2_qo2c3")

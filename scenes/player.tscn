@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://bdrd7rx11vacv"]
+[gd_scene load_steps=27 format=3 uid="uid://bdrd7rx11vacv"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_gnuhl"]
 [ext_resource type="Script" path="res://scenes/DebugInfo.gd" id="2_pbxns"]
+[ext_resource type="Shader" path="res://assets/shaders/screen_underwater.gdshader" id="2_vtxyt"]
 [ext_resource type="Texture2D" uid="uid://chwwq3rkwc7ly" path="res://assets/ui/crosshair.png" id="3_8nfak"]
-[ext_resource type="PackedScene" uid="uid://im2obulcl5vg" path="res://assets/models/radio.tscn" id="5_ky4k5"]
+[ext_resource type="PackedScene" uid="uid://im2obulcl5vg" path="res://scenes/viewmodels/radio.tscn" id="5_ky4k5"]
 [ext_resource type="PackedScene" uid="uid://cwmsox5vbvfud" path="res://scenes/flashlight.tscn" id="6_cukaf"]
 [ext_resource type="Script" path="res://scripts/components/HealthComponent.gd" id="6_lmlc4"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="6_nodv1"]
@@ -30,6 +31,12 @@ rings = 1
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_w5mwi"]
 height = 1.8
 radius = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_skehm"]
+shader = ExtResource("2_vtxyt")
+shader_parameter/wave_speed = 3.0
+shader_parameter/wave_freq = 10.0
+shader_parameter/wave_width = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jx86m"]
 height = 0.05
@@ -260,6 +267,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.2)
 current = true
 fov = 90.0
 
+[node name="ScreenEffects" type="Control" parent="Root/Head/Camera"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Root/Head/Camera/ScreenEffects"]
+material = SubResource("ShaderMaterial_skehm")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="UI" type="Control" parent="Root/Head/Camera"]
 layout_mode = 3
 anchors_preset = 15
@@ -305,12 +329,13 @@ target_position = Vector3(0, -2.5, 0)
 collision_mask = 5
 hit_back_faces = false
 
+[node name="radio2" parent="Root/Head" instance=ExtResource("5_ky4k5")]
+transform = Transform3D(0.3417, -0.00759611, -0.939779, 0.084186, 0.996195, 0.0225576, 0.936031, -0.0868241, 0.341039, -0.21632, -0.108573, -0.2)
+STATIC_VOLUME = -20.0
+
 [node name="Flashlight" parent="Root/Head" instance=ExtResource("6_cukaf")]
 transform = Transform3D(0.984808, -0.0449434, 0.167731, 2.64416e-09, 0.965926, 0.258819, -0.173648, -0.254887, 0.951251, 0.1, -0.1, -0.5)
 visible = false
-
-[node name="radio" parent="Root/Head" instance=ExtResource("5_ky4k5")]
-transform = Transform3D(0.5, 7.19671e-09, -0.866025, 0.0754791, 0.996195, 0.0435779, 0.86273, -0.0871557, 0.498097, -0.265, -0.135, -0.24)
 
 [node name="legs_test" parent="Root" instance=ExtResource("7_gp4dq")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 0.75, 0, -1.50996e-07, 0, -1, 0, -0.844603, 0.2)

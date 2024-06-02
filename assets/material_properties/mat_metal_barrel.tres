@@ -63,3 +63,6 @@ SFX_JUMP = ExtResource("15_wjoj1")
 SFX_IMPACT_SOFT = SubResource("AudioStreamRandomizer_nq4gw")
 SFX_IMPACT_HARD = SubResource("AudioStreamRandomizer_52l1e")
 SFX_SCRAPE = ExtResource("11_pn2ph")
+REVERB_CONTRIBUTION = 1.0
+DAMPING = 0.5
+OCCLUSION = 1.0

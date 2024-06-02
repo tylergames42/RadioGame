@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cdg02quu68bda"
+path="res://.godot/imported/Sonata No. 14 in C Sharp Minor Moonlight, Op. 27.mp3-23a6b4eb23dce4215e8cdeeb2298900f.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/music/Sonata No. 14 in C Sharp Minor Moonlight, Op. 27.mp3"
+dest_files=["res://.godot/imported/Sonata No. 14 in C Sharp Minor Moonlight, Op. 27.mp3-23a6b4eb23dce4215e8cdeeb2298900f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

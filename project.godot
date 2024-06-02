@@ -16,11 +16,25 @@ run/main_scene="res://scenes/levels/level_maintest.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/show_image=false
 boot_splash/use_filter=false
-config/icon="res://icon.svg"
+config/icon="res://assets/ui/editor/icons/icon.svg"
 
 [autoload]
 
 Global="*res://scripts/global.gd"
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "gray",
+"res://assets/": "blue",
+"res://assets/materials/": "green",
+"res://assets/materials/vfx/": "yellow",
+"res://assets/models/": "orange",
+"res://assets/shaders/": "pink",
+"res://assets/sounds/": "teal",
+"res://scenes/": "purple",
+"res://scripts/": "teal"
+}
 
 [input]
 
@@ -111,6 +125,11 @@ tune_modifiy={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194328,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_4="spatial"
 
 [physics]
 

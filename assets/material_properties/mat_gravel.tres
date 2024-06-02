@@ -22,3 +22,6 @@ script = ExtResource("5_dj0up")
 DISABLE_COLLISIONS = false
 SFX_STEP = SubResource("AudioStreamRandomizer_5rmou")
 SFX_JUMP = ExtResource("1_n4f0b")
+REVERB_CONTRIBUTION = 1.0
+DAMPING = 0.5
+OCCLUSION = 1.0

@@ -16,7 +16,7 @@ extends RigidBody3D
 @export var CLOSE_SOUND : AudioStream
 @export var LOCKED_SOUND : AudioStream
 
-@onready var AudioPlayer = AudioStreamPlayer3D.new() #Create new 3D Audio Player for door sounds
+@onready var AudioPlayer = SpatialAudioPlayer3D.new() #Create new 3D Audio Player for door sounds
 @onready var angle_offset : float = rotation_degrees[AXIS]
 @onready var hinge_global_transform: Transform3D
 
@@ -47,7 +47,7 @@ func open(side : bool):
 	
 	freeze = false
 	AudioPlayer.stream = OPEN_SOUND
-	AudioPlayer.play()
+	AudioPlayer.spatial_play()
 	impulse_vector[AXIS] = OPEN_STRENGTH
 	if side:
 		impulse_vector[AXIS] *= -1
@@ -61,7 +61,7 @@ func close():
 	freeze = true
 	rotation_degrees[AXIS] = angle_offset
 	AudioPlayer.stream = CLOSE_SOUND
-	AudioPlayer.play()
+	AudioPlayer.spatial_play()
 	is_open = false
 	ANIMATION_PLAYER.play("door_close")
 
@@ -95,5 +95,5 @@ func _on_interactable_component_interacted(interactor):
 
 func _on_interactable_component_interacted_locked(_interactor):
 	AudioPlayer.stream = LOCKED_SOUND
-	AudioPlayer.play()
+	AudioPlayer.spatial_play()
 	ANIMATION_PLAYER.play("door_locked", -1, 1.4)

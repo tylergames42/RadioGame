@@ -1,0 +1,7 @@
+[gd_resource type="PhysicsMaterial" script_class="MaterialProperties" load_steps=2 format=3 uid="uid://ib3vftan8cgo"]
+
+[ext_resource type="Script" path="res://scripts/MaterialProperties.gd" id="1_feixi"]
+
+[resource]
+script = ExtResource("1_feixi")
+DISABLE_COLLISIONS = false

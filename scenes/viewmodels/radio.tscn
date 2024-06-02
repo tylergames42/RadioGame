@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://im2obulcl5vg"]
+
+[ext_resource type="PackedScene" uid="uid://c6h07q5hlr7wl" path="res://assets/models/viewmodels/radio/radio.glb" id="1_da10i"]
+[ext_resource type="Script" path="res://scripts/radio.gd" id="2_86hsg"]
+[ext_resource type="AudioStream" uid="uid://ki0tnb4wlui3" path="res://assets/sounds/static/radio_static.tres" id="3_4tomf"]
+[ext_resource type="Material" uid="uid://otve6lmskaud" path="res://assets/models/viewmodels/radio/materials/radio_oscilloscope.tres" id="4_6rftn"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cpx2t"]
+animation = &"radio_tune"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_50hpx"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xfd58"]
+graph_offset = Vector2(-608, -20)
+nodes/output/position = Vector2(60, 60)
+nodes/tune_anim/node = SubResource("AnimationNodeAnimation_cpx2t")
+nodes/tune_anim/position = Vector2(-380, 80)
+nodes/tune_speed/node = SubResource("AnimationNodeTimeScale_50hpx")
+nodes/tune_speed/position = Vector2(-140, 60)
+node_connections = [&"output", 0, &"tune_speed", &"tune_speed", 0, &"tune_anim"]
+
+[node name="radio2" node_paths=PackedStringArray("ANIM_TREE") instance=ExtResource("1_da10i")]
+script = ExtResource("2_86hsg")
+STATIC = ExtResource("3_4tomf")
+ANIM_TREE = NodePath("AnimationTree")
+MAT_OSC = ExtResource("4_6rftn")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/2/rotation = Quaternion(-6.13072e-07, -0.00066461, -1.86457e-09, 1)
+bones/3/rotation = Quaternion(0.000322864, 2.44211e-07, -4.22022e-07, 1)
+bones/4/rotation = Quaternion(-0.000644336, 2.08612e-07, 0.00101554, 0.999999)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.000320112, 1.39428e-07, -0.00198147, 0.999998)
+bones/5/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_xfd58")
+anim_player = NodePath("../AnimationPlayer")
+parameters/tune_speed/scale = 0.0

@@ -1,0 +1,17 @@
+[gd_resource type="ORMMaterial3D" load_steps=5 format=3 uid="uid://bb2brdcx15p7t"]
+
+[ext_resource type="Texture2D" uid="uid://nt0hh5cyrvsc" path="res://assets/models/props/plastic_crate/materials/plastic_crate_01_color.png" id="1_tba77"]
+[ext_resource type="PhysicsMaterial" uid="uid://dj0rpvhujht5b" path="res://assets/material_properties/mat_metal_barrel.tres" id="2_csu8y"]
+[ext_resource type="Texture2D" uid="uid://d4b541di34epa" path="res://assets/models/props/plastic_crate/materials/plastic_crate_01_normal.png" id="3_j26sr"]
+[ext_resource type="Texture2D" uid="uid://dnvnvgc5ilmkh" path="res://assets/models/props/plastic_crate/materials/plastic_crate_01_orm.png" id="4_86k5t"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.15
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_tba77")
+orm_texture = ExtResource("4_86k5t")
+normal_enabled = true
+normal_texture = ExtResource("3_j26sr")
+texture_filter = 4
+metadata/MaterialProperties = ExtResource("2_csu8y")

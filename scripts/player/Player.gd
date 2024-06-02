@@ -11,9 +11,9 @@ extends RigidBody3D
 @onready var state_machine = $PlayerStateMachine #State machine for player
 @onready var flashlight = $Root/Head/Flashlight
 @onready var leg_anim_player = $Root/legs_test/AnimationPlayer
-@onready var radio = $Root/Head/radio
+@onready var radio = $Root/Head/radio2
 
-@onready var AudioPlayer = AudioStreamPlayer3D.new() #Audio player for footsteps, jump sounds, etc.
+@onready var AudioPlayer = SpatialAudioPlayer3D.new() #Audio player for footsteps, jump sounds, etc.
 
 @export_category("Player")
 @export var MAX_STEP_HEIGHT = 0.5 ##Maximum distance the player can step up / down
@@ -239,11 +239,12 @@ func play_step_sfx():
 	if grounded:
 		var material = load("res://assets/material_properties/mat_default.tres")
 		var ground = groundcast.get_collider(0)
-		if "physics_material_override" in ground and ground.physics_material_override is MaterialProperties:
-			if ground.physics_material_override.SFX_STEP != null:
-				material = ground.physics_material_override
+		if "physics_material_override" in ground:
+			if ground.physics_material_override is MaterialProperties:
+				if ground.physics_material_override.SFX_STEP != null:
+					material = ground.physics_material_override
 		AudioPlayer.stream = material.SFX_STEP
-		AudioPlayer.play()
+		AudioPlayer.spatial_play()
 
 func _on_health_component_hurt(damage):
 	pass

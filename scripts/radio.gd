@@ -2,7 +2,7 @@ extends Node3D
 
 
 @export var SIGNAL_MANAGER : Node3D
-@export var FREQUENCY = 10.0 ##The frequency the reciever starts at
+@export var FREQUENCY = 10.0
 @export var STATIC : AudioStream
 @export_range(-20.0, 0.0, 1.0) var STATIC_VOLUME : float = -10.0
 
@@ -32,16 +32,18 @@ func _input(event):
 		if Input.is_action_pressed("tune_modifiy"):
 			tune_speed = 0.65
 		else:
-			tune_speed = 0.01
-		static_player.play()
-		static_player.seek(randf_range(0.0, 10.0))
+			tune_speed += 0.01
+		if FREQUENCY < 99.9:
+			static_player.play()
+			static_player.seek(randf_range(0.0, 10.0))
 	if event.is_action_pressed("tune_down"):
 		if Input.is_action_pressed("tune_modifiy"):
 			tune_speed = -0.65
 		else:
-			tune_speed = -0.01
-		static_player.play()
-		static_player.seek(randf_range(0.0, 10.0))
+			tune_speed -= 0.01
+		if FREQUENCY > 0.1:
+			static_player.play()
+			static_player.seek(randf_range(0.0, 10.0))
 
 func _process(delta):
 	tune_speed = lerp(tune_speed, 0.0, delta * 5)
@@ -77,7 +79,7 @@ func find_signals():
 				#var signal_strength = 1 - ((freq_diff + distance)/2) #Calculate signal strength OLD
 				var signal_strength = (1-distance) * (1-freq_diff) #New signal strength calculation
 				sig.update_strength(signal_strength) #Update signal strength for reciever
-				static_player.volume_db = remap(signal_strength, 1.0, 0.0, -80.0, STATIC_VOLUME)
+				static_player.volume_db = remap(signal_strength, 1.0, 0.0, -60.0, STATIC_VOLUME)
 				if signal_strength >= 0.9: #Set connected signal if strength is high enough
 					connected_signal = sig
 				elif sig == connected_signal:

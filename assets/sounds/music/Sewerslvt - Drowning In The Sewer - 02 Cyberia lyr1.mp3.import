@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ca0oubnj0fgj7"
+path="res://.godot/imported/Sewerslvt - Drowning In The Sewer - 02 Cyberia lyr1.mp3-cea66902ac81e8446e77d1d1533fd1ba.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/music/Sewerslvt - Drowning In The Sewer - 02 Cyberia lyr1.mp3"
+dest_files=["res://.godot/imported/Sewerslvt - Drowning In The Sewer - 02 Cyberia lyr1.mp3-cea66902ac81e8446e77d1d1533fd1ba.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

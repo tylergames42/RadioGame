@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b56wm35nf4j4o"
+path="res://.godot/imported/Sewerslvt - Drowning In The Sewer - 03 Luciferians.mp3-db4d7fcc9ac560f2cd94ae763ad7b4c2.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/music/Sewerslvt - Drowning In The Sewer - 03 Luciferians.mp3"
+dest_files=["res://.godot/imported/Sewerslvt - Drowning In The Sewer - 03 Luciferians.mp3-db4d7fcc9ac560f2cd94ae763ad7b4c2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

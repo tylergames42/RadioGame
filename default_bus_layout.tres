@@ -1,12 +1,7 @@
-[gd_resource type="AudioBusLayout" load_steps=7 format=3 uid="uid://elivpgv5blcv"]
-
-[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_qxjq0"]
-resource_name = "SpectrumAnalyzer"
-fft_size = 0
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://elivpgv5blcv"]
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_5meig"]
 resource_name = "Compressor"
-mix = 0.0
 sidechain = &"Radio"
 
 [sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_0h134"]
@@ -32,9 +27,7 @@ mix = 0.5
 sidechain = &"RadioStatic"
 
 [resource]
-bus/0/volume_db = -0.330477
-bus/0/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_qxjq0")
-bus/0/effect/0/enabled = true
+bus/0/volume_db = -0.725993
 bus/1/name = &"RadioStatic"
 bus/1/solo = false
 bus/1/mute = false

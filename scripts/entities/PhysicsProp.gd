@@ -12,7 +12,7 @@ extends RigidBody3D
 @export var DEFAULT_HOLD_VECTOR : Vector3 = Vector3.UP ##Default orientation when picked up
 @export var THROW_FORCE : float = 6 ##Throwing force multipler
 
-@onready var AudioPlayer = AudioStreamPlayer3D.new() #Create new 3D Audio Player for physics sounds
+@onready var AudioPlayer = SpatialAudioPlayer3D.new() #Create new 3D Audio Player for physics sounds
 
 var holder
 var distance : float
@@ -31,12 +31,14 @@ func _ready(): #Set up physics prop properties
 func _integrate_forces(state):
 	if held:
 		distance = global_transform.origin.distance_to(holder.hold_point.global_transform.origin)
-		var velocity_multipler = 10 / (snapped(distance, 0.1) + 0.3)
+		var velocity_multipler = 10 / (snapped(distance, 0.2) + 0.3)
 		var target_velocity = (holder.hold_point.global_transform.origin - global_transform.origin) * velocity_multipler
 		var impulse_vector = target_velocity - linear_velocity
 		apply_central_impulse(impulse_vector + holder.linear_velocity)
-		#look_follow(state, global_transform, holder.global_position)
 		#rotation = holder.hold_point.global_rotation * DEFAULT_HOLD_VECTOR
+		var angle_difference = global_basis.y.angle_to(-holder.hold_point.global_basis.z)
+		var rotation_axis = global_basis.y.cross(-holder.hold_point.global_basis.z.normalized())
+		apply_torque_impulse((rotation_axis * angle_difference * 3) / angle_difference)
 			
 	if get_colliding_bodies() != [] and get_colliding_bodies()[0]: #Scrape sfx (kinda jank rn)
 		if held:
@@ -46,7 +48,7 @@ func _integrate_forces(state):
 			if linear_velocity.length() > 4 and angular_velocity.length() < 2.5: #Angular velocity check is to prevent rolling objects from scraping (could seperate for rolling sfx later if wanted)
 				if !AudioPlayer.playing:
 					AudioPlayer.stream = physics_material_override.SFX_SCRAPE
-					AudioPlayer.play()
+					AudioPlayer.spatial_play()
 			elif AudioPlayer.stream == physics_material_override.SFX_SCRAPE:
 				AudioPlayer.stop()
 	
@@ -55,12 +57,14 @@ func carry():
 	can_sleep = false
 	held = true
 	holder.held_object = self
+	add_collision_exception_with(holder)
 	
 func drop():
 	sleeping = false
 	can_sleep = true
 	held = false
 	holder.held_object = null
+	remove_collision_exception_with(holder)
 	
 func throw(throw_dir):
 	drop()
@@ -83,19 +87,11 @@ func _on_body_entered(body):
 	elif velocity > 2: #Do soft physics impact
 		if physics_material_override != null and !AudioPlayer.playing:
 			AudioPlayer.stream = physics_material_override.SFX_IMPACT_SOFT
-			AudioPlayer.play()
+			AudioPlayer.spatial_play()
 			
 func _on_body_exited(_body):
 	if AudioPlayer.playing and AudioPlayer.stream == physics_material_override.SFX_SCRAPE: #Fix for scrape noises still playing after object is pciked up
 		AudioPlayer.stop()
-
-func look_follow(state: PhysicsDirectBodyState3D, current_transform: Transform3D, target_position: Vector3) -> void: #TEMP: Took this shit from the wiki
-	var forward_local_axis: Vector3 = Vector3(1, 0, 0)
-	var forward_dir: Vector3 = (current_transform.basis * forward_local_axis).normalized()
-	var target_dir: Vector3 = (target_position - current_transform.origin).normalized()
-	var local_speed: float = clampf(0.2, 0, acos(forward_dir.dot(target_dir)))
-	if forward_dir.dot(target_dir) > 1e-4:
-		state.angular_velocity = local_speed * forward_dir.cross(target_dir) / state.step
 
 func _on_interactable_component_interacted(interacter):
 	holder = interacter

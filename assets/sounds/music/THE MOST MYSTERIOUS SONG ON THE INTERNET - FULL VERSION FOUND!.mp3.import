@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjwvkymqoirxx"
+path="res://.godot/imported/THE MOST MYSTERIOUS SONG ON THE INTERNET - FULL VERSION FOUND!.mp3-ae224112a3f6526e0b9f29eb6c8394be.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/music/THE MOST MYSTERIOUS SONG ON THE INTERNET - FULL VERSION FOUND!.mp3"
+dest_files=["res://.godot/imported/THE MOST MYSTERIOUS SONG ON THE INTERNET - FULL VERSION FOUND!.mp3-ae224112a3f6526e0b9f29eb6c8394be.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

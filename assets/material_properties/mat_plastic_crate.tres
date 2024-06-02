@@ -41,3 +41,6 @@ script = ExtResource("10_oiew6")
 DISABLE_COLLISIONS = false
 SFX_IMPACT_SOFT = SubResource("AudioStreamRandomizer_nq4gw")
 SFX_IMPACT_HARD = SubResource("AudioStreamRandomizer_52l1e")
+REVERB_CONTRIBUTION = 1.0
+DAMPING = 0.5
+OCCLUSION = 1.0
