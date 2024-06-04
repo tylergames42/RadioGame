@@ -1,8 +1,22 @@
 extends RigidBody3D
 
+@export_category("Player")
+@export_group("Visuals")
+@export_range(0.01, 0.1) var VIEW_TILT_MULTIPLIER : float = 0.01
+@export_group("Controls")
+@export var TOGGLE_CROUCH : bool = false ##If crouching should be a toggle
+@export var TOGGLE_SPRINT : bool = false ##If sprinting should be a toggle
+@export_range(0.01, 1.0) var MOUSE_SENSITIVITY_HORIZONTAL : float = 0.3 ##Mouse sensitivity on X axis
+@export_range(0.01, 1.0) var MOUSE_SENSITIVITY_VERTICAL : float = 0.3 ##Mouse sensitivity on Y axis
+@export_group("Movement:")
+@export var MAX_STEP_HEIGHT : float = 0.5 ##Maximum distance the player can step up / down
+@export var MAX_SLOPE_ANGLE : float = 44 ##Maximum angle slope the player can go up before sliding down it (I think this shit is broken, just keep it at 44)
+@export var AIR_CONTROL_MULTIPLIER : float = 0.1 ##Multiplier to player input in air
+
 @onready var collider = $Collider #Player collider
 @onready var root = $Root #Root of character (this rotates horizontally)
 @onready var head = $Root/Head #Character head (this rotates vertically)
+@onready var camera = $Root/Head/Camera
 @onready var headcast = $headcast  #Shapecast to check if can uncrouch
 @onready var groundcast = $groundcast #Shapecast to check if grounded
 @onready var interactcast = $Root/Head/interactcast #Raycast to do interaction checks
@@ -11,32 +25,13 @@ extends RigidBody3D
 @onready var state_machine = $PlayerStateMachine #State machine for player
 @onready var flashlight = $Root/Head/Flashlight
 @onready var leg_anim_player = $Root/legs_test/AnimationPlayer
-@onready var radio = $Root/Head/radio2
+@onready var radio = $Root/Head/ViewmodelManager/radio2
 
 @onready var AudioPlayer = SpatialAudioPlayer3D.new() #Audio player for footsteps, jump sounds, etc.
 
-@export_category("Player")
-@export var MAX_STEP_HEIGHT = 0.5 ##Maximum distance the player can step up / down
-@export_group("Controls")
-@export var TOGGLE_CROUCH = false ##If crouching should be a toggle
-@export var TOGGLE_SPRINT = false ##If sprinting should be a toggle
-@export var MOUSE_SENSITIVITY_HORIZONTAL = 0.3 ##Mouse sensitivity on X axis (Negative values are inverted)
-@export var MOUSE_SENSITIVITY_VERTICAL = 0.3 ##Mouse sensitivity on Y axis (Negative values are inverted)
-@export_group("Jumping")
-@export var JUMP_FORCE = 5.0 ##Jumping force
-@export var AIR_CONTROL_MULTIPLIER = 0.1 ##Multiplier to player input in air
-@export_group("Sliding")
-@export var MAX_SLOPE_ANGLE = 44 ##Maximum angle slope the player can go up before sliding down it (I think this shit is broken, just keep it at 44)
-@export var SLIDING_CONTROL_MULTIPLIER = 0.3 ##Multiplier to player input while sliding
-@export var SLIDING_SLOPE_SPEED_MULTIPLIER = 10 ##Speed multipler to give player while sliding down slope
-@export_group("Kick")
-@export var KICK_FORCE = 50
-@export var KICK_DISTANCE = 3
-@export var KICK_COOLDOWN = 1
-
-var grounded = false
-var can_climb = true
-var current_speed
+var grounded : bool = false
+var can_climb : bool = true
+var current_speed : float
 var held_object : PhysicsProp
 var control_multiplier : float = 1.0
 var direction : Vector3
@@ -93,9 +88,8 @@ func _input(event):
 		Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward"))
 	direction = root.transform.basis * input_dir.normalized()
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	was_grounded = grounded
-	
 	grounded = groundcast.is_colliding() #Get if on ground
 	
 	if grounded && groundcast.get_collider(0) == held_object: #Prevent holding stood on objects TODO: Buggy rn
@@ -111,9 +105,9 @@ func _physics_process(_delta):
 	var impulse_vector = target_velocity - Vector3(linear_velocity.x,0,linear_velocity.z)
 	apply_central_impulse(impulse_vector * control_multiplier)
 	
-	apply_central_impulse(Vector3.DOWN * 0.1)
+	camera_tilt(delta)
 
-func slopeSliding(in_slide_state: bool):
+func slopeSliding():
 	var normal_average = Vector3.ZERO
 	if grounded:
 		for collision in groundcast.get_collision_count(): #Get average normal of floor stood on
@@ -128,10 +122,6 @@ func slopeSliding(in_slide_state: bool):
 			can_climb = false
 		else:
 			can_climb = true
-		
-		if in_slide_state && normal_average.dot(Vector3.UP) != 1: #Slide down any slope while in slide
-			if slide_normal.is_finite(): #Fix required or jumping while sliding breaks player
-				apply_central_impulse(slide_normal.normalized() * SLIDING_SLOPE_SPEED_MULTIPLIER)
 
 func stair_step_down():
 	# If we're falling from a step
@@ -167,7 +157,6 @@ func stair_step_up():
 
 	# Pre-check: Are we colliding?
 	if !PhysicsServer3D.body_test_motion(self.get_rid(), body_test_params, body_test_result):
-
 		## If we don't collide, return
 		return
 
@@ -215,7 +204,7 @@ func stair_step_up():
 
 	# 5. Check floor normal for un-walkable slope
 	var surface_normal = body_test_result.get_collision_normal()
-	var temp_floor_max_angle = deg_to_rad(45)
+	var temp_floor_max_angle = deg_to_rad(MAX_SLOPE_ANGLE)
 	if (snappedf(surface_normal.angle_to(Vector3.UP), 0.001) > temp_floor_max_angle):
 		return
 
@@ -224,6 +213,8 @@ func stair_step_up():
 	var step_up_dist = test_transform.origin.y - global_pos.y
 
 	global_pos.y = test_transform.origin.y
+	global_pos.x += direction.x * 0.05
+	global_pos.z += direction.z * 0.05
 	global_position = global_pos
 
 func interact():
@@ -231,9 +222,6 @@ func interact():
 		var interacted_object = interactcast.get_collider()
 		if interacted_object.has_meta("InteractableComponent"):
 			interacted_object.get_meta("InteractableComponent", null).interact(self)
-
-func _on_health_component_killed():
-	print("PLACEHOLDER (KILL PLAYER)")
 
 func play_step_sfx():
 	if grounded:
@@ -245,6 +233,6 @@ func play_step_sfx():
 					material = ground.physics_material_override
 		AudioPlayer.stream = material.SFX_STEP
 		AudioPlayer.spatial_play()
-
-func _on_health_component_hurt(damage):
-	pass
+		
+func camera_tilt(delta):
+	camera.rotation.z = lerp(camera.rotation.z, -input_dir.x * VIEW_TILT_MULTIPLIER, 10 * delta)

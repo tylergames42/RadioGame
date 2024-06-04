@@ -1,6 +1,5 @@
 extends Node3D
 
-
 @export var SIGNAL_MANAGER : Node3D
 @export var STARTING_FREQUENCY = 10.0
 @export var STATIC : AudioStream
@@ -30,32 +29,51 @@ func _ready():
 func _input(event):
 	if frequency < 99.9 and event.is_action_pressed("tune_up"):
 		if Input.is_action_pressed("tune_modifiy"):
-			desired_frequency += 10
+			desired_frequency += 5
 		else:
 			desired_frequency += 0.1
-			
-		if desired_frequency > 99.9:
-				desired_frequency = 99.9
 				
 		static_player.play()
 		static_player.seek(randf_range(0.0, 10.0))
 	if frequency > 0.1 and event.is_action_pressed("tune_down"):
 		if Input.is_action_pressed("tune_modifiy"):
-			desired_frequency -= 10
+			desired_frequency -= 5
 		else:
 			desired_frequency -= 0.1
-			
-		if desired_frequency < 0.1:
-				desired_frequency = 0.1
 				
 		static_player.play()
 		static_player.seek(randf_range(0.0, 10.0))
-	if event.is_action_released("tune_modifiy"):
-		desired_frequency = frequency
-
-func _process(delta):
-	print(desired_frequency)
+		
+	if event.is_action_pressed("tune_up_large", true):
+		desired_frequency += 10
+	if event.is_action_pressed("tune_down_large", true):
+		desired_frequency -= 10
 	
+	if Input.is_key_pressed(KEY_1):
+		desired_frequency = 10
+	if Input.is_key_pressed(KEY_2):
+		desired_frequency = 20
+	if Input.is_key_pressed(KEY_3):
+		desired_frequency = 30
+	if Input.is_key_pressed(KEY_4):
+		desired_frequency = 40
+	if Input.is_key_pressed(KEY_5):
+		desired_frequency = 50
+	if Input.is_key_pressed(KEY_6):
+		desired_frequency = 60
+	if Input.is_key_pressed(KEY_7):
+		desired_frequency = 60
+	if Input.is_key_pressed(KEY_8):
+		desired_frequency = 80
+	if Input.is_key_pressed(KEY_9):
+		desired_frequency = 90
+		
+	desired_frequency = clamp(desired_frequency, 0.1, 99.9)
+	
+	if event.is_action_released("tune_modifiy") or event.is_action_released("tune_up_large") or event.is_action_released("tune_down_large"):
+		desired_frequency = frequency
+		
+func _process(delta):
 	var freq_diff = (desired_frequency - frequency)
 	var tune_speed = clamp(desired_frequency - frequency, -1, 1) * 0.5
 	
@@ -110,5 +128,5 @@ func tune(amount : float):
 		return
 					
 func update_visuals():
-	MAT_OSC.set_shader_parameter("freq", frequency)
+	MAT_OSC.set_shader_parameter("freq", frequency * 0.5)
 	#MAT_STRENGTH_IND.set_shader_parameter("strength", reciever_signal_strength)

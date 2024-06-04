@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bdrd7rx11vacv"]
+[gd_scene load_steps=26 format=3 uid="uid://bdrd7rx11vacv"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_gnuhl"]
 [ext_resource type="Script" path="res://scenes/DebugInfo.gd" id="2_pbxns"]
@@ -6,15 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://chwwq3rkwc7ly" path="res://assets/ui/crosshair.png" id="3_8nfak"]
 [ext_resource type="PackedScene" uid="uid://im2obulcl5vg" path="res://scenes/viewmodels/radio.tscn" id="5_ky4k5"]
 [ext_resource type="PackedScene" uid="uid://cwmsox5vbvfud" path="res://scenes/flashlight.tscn" id="6_cukaf"]
-[ext_resource type="Script" path="res://scripts/components/HealthComponent.gd" id="6_lmlc4"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="6_nodv1"]
 [ext_resource type="PackedScene" uid="uid://bpwl58ebdmdxn" path="res://assets/models/legs_test.glb" id="7_gp4dq"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerIdleState.gd" id="7_hu5mr"]
+[ext_resource type="Script" path="res://scripts/player/ViewModel.gd" id="7_kjtma"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerWalkingState.gd" id="8_mmf44"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerSprintingState.gd" id="9_6khpb"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerNoclipState.gd" id="9_fvox2"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerCrouchingState.gd" id="10_3yhk7"]
-[ext_resource type="Script" path="res://scripts/player/states/PlayerSlidingState.gd" id="11_b4e4x"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerJumpingState.gd" id="11_idaac"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerSwimmingState.gd" id="18_d5830"]
 
@@ -332,13 +331,17 @@ target_position = Vector3(0, -2.5, 0)
 collision_mask = 5
 hit_back_faces = false
 
-[node name="radio2" parent="Root/Head" instance=ExtResource("5_ky4k5")]
+[node name="Flashlight" parent="Root/Head" instance=ExtResource("6_cukaf")]
+transform = Transform3D(0.984808, -0.0449434, 0.167731, 2.64416e-09, 0.965926, 0.258819, -0.173648, -0.254887, 0.951251, 0.1, -0.1, 1.49012e-08)
+visible = false
+
+[node name="ViewmodelManager" type="Node3D" parent="Root/Head" node_paths=PackedStringArray("PLAYER")]
+script = ExtResource("7_kjtma")
+PLAYER = NodePath("../../..")
+
+[node name="radio2" parent="Root/Head/ViewmodelManager" instance=ExtResource("5_ky4k5")]
 transform = Transform3D(0.3417, -0.00759611, -0.939779, 0.084186, 0.996195, 0.0225576, 0.936031, -0.0868241, 0.341039, -0.21632, -0.108573, -0.2)
 STATIC_VOLUME = -20.0
-
-[node name="Flashlight" parent="Root/Head" instance=ExtResource("6_cukaf")]
-transform = Transform3D(0.984808, -0.0449434, 0.167731, 2.64416e-09, 0.965926, 0.258819, -0.173648, -0.254887, 0.951251, 0.1, -0.1, -0.5)
-visible = false
 
 [node name="legs_test" parent="Root" instance=ExtResource("7_gp4dq")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 0.75, 0, -1.50996e-07, 0, -1, 0, -0.844603, 0.2)
@@ -382,9 +385,6 @@ libraries = {
 "": SubResource("AnimationLibrary_dcjiq")
 }
 
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("6_lmlc4")
-
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
 script = ExtResource("6_nodv1")
 CURRENT_STATE = NodePath("PlayerIdleState")
@@ -407,14 +407,7 @@ script = ExtResource("9_6khpb")
 [node name="PlayerCrouchingState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("10_3yhk7")
 
-[node name="PlayerSlidingState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("11_b4e4x")
-CANCEL_SLIDE_SPEED = 1.0
-
 [node name="PlayerSwimmingState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("18_d5830")
-
-[connection signal="hurt" from="HealthComponent" to="." method="_on_health_component_hurt"]
-[connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
 
 [editable path="Root/legs_test"]

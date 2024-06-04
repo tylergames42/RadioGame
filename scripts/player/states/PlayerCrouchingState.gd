@@ -26,9 +26,9 @@ func input_update(_event):
 		wants_to_uncrouch = true
 
 func physics_update(_delta):
-	player.slopeSliding(false)
-	player.stair_step_down()
 	player.stair_step_up()
+	player.stair_step_down()
+	player.slopeSliding()
 
 func update(_delta):
 	if wants_to_uncrouch && !player.headcast.is_colliding():

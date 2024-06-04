@@ -182,9 +182,11 @@ light_data = ExtResource("4_d0goh")
 
 [node name="Player" parent="level" instance=ExtResource("5_mb7ru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, -10)
+TOGGLE_CROUCH = true
+TOGGLE_SPRINT = true
 
-[node name="radio2" parent="level/Player/Root/Head" index="3" node_paths=PackedStringArray("SIGNAL_MANAGER")]
-SIGNAL_MANAGER = NodePath("../../../../SignalManager")
+[node name="radio2" parent="level/Player/Root/Head/ViewmodelManager" index="0" node_paths=PackedStringArray("SIGNAL_MANAGER")]
+SIGNAL_MANAGER = NodePath("../../../../../SignalManager")
 
 [node name="props" type="Node3D" parent="level"]
 
