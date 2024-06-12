@@ -1,8 +1,9 @@
-[gd_scene load_steps=48 format=3 uid="uid://cvdvb3r0hoj7f"]
+[gd_scene load_steps=50 format=3 uid="uid://cvdvb3r0hoj7f"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_qy1pw"]
 [ext_resource type="Texture2D" uid="uid://bieyv6v2fhlhj" path="res://assets/hdris/mud_road_puresky_2k.hdr" id="2_fhhgn"]
 [ext_resource type="PackedScene" uid="uid://bgymsig42c8vi" path="res://scenes/levels/level_test.glb" id="3_6uhm8"]
+[ext_resource type="Script" path="res://scenes/levels/SignalManager.gd" id="3_7u5qg"]
 [ext_resource type="Script" path="res://scripts/signal_transmitter.gd" id="3_15v7b"]
 [ext_resource type="LightmapGIData" uid="uid://cbnnf70l3bn3u" path="res://scenes/levels/test_level.lmbake" id="4_d0goh"]
 [ext_resource type="AudioStream" uid="uid://beqlpyifn1m5q" path="res://assets/sounds/music/Oli koivu kosken rannalla.mp3" id="4_iwhdb"]
@@ -25,13 +26,14 @@
 [ext_resource type="Material" uid="uid://bmbl7oqp4xdct" path="res://assets/models/doors/materials/door_02.tres" id="21_cmdnc"]
 [ext_resource type="PackedScene" uid="uid://bwdk1aws5e147" path="res://scenes/physics_props/plastic_crate.tscn" id="23_6f8xq"]
 [ext_resource type="Material" uid="uid://b7mole64wg27c" path="res://assets/materials/vfx/water/water_test.tres" id="24_5adkb"]
-[ext_resource type="Script" path="res://scripts/water_test.tres.gd" id="24_sbpmf"]
+[ext_resource type="Script" path="res://scripts/WaterArea.gd" id="24_sbpmf"]
 [ext_resource type="PackedScene" uid="uid://cn848pt85gwr6" path="res://scenes/particles/splash.tscn" id="25_p0smd"]
 [ext_resource type="PackedScene" uid="uid://bfhdx2mig656s" path="res://assets/models/room_test.glb" id="26_01i44"]
 [ext_resource type="Material" uid="uid://mqwcvw131x0r" path="res://assets/materials/metal/metal_plates_rusted.tres" id="27_j4nrs"]
 [ext_resource type="PhysicsMaterial" uid="uid://bho2aunoj375l" path="res://assets/material_properties/mat_reflect_test.tres" id="27_yttpw"]
 [ext_resource type="PhysicsMaterial" uid="uid://btupykdprxygc" path="res://assets/material_properties/mat_absorb_test.tres" id="28_1uvbh"]
 [ext_resource type="Material" uid="uid://didp6yqh0dx65" path="res://assets/materials/nature/dirt_1.tres" id="29_7arhb"]
+[ext_resource type="PackedScene" uid="uid://daxhwm2jlqsx2" path="res://scenes/viewmodels/radio_world.tscn" id="36_thjfg"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hbfcm"]
 panorama = ExtResource("2_fhhgn")
@@ -134,6 +136,7 @@ shadow_enabled = true
 [node name="level" type="Node3D" parent="."]
 
 [node name="SignalManager" type="Node3D" parent="level"]
+script = ExtResource("3_7u5qg")
 
 [node name="test radio" type="Node3D" parent="level/SignalManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.7021, 9, -19)
@@ -184,9 +187,6 @@ light_data = ExtResource("4_d0goh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, -10)
 TOGGLE_CROUCH = true
 TOGGLE_SPRINT = true
-
-[node name="radio2" parent="level/Player/Root/Head/ViewmodelManager" index="0" node_paths=PackedStringArray("SIGNAL_MANAGER")]
-SIGNAL_MANAGER = NodePath("../../../../../SignalManager")
 
 [node name="props" type="Node3D" parent="level"]
 
@@ -304,6 +304,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 1, -5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.2152, 8.51336, 10.7901)
 
 [node name="SpatialAudioPlayer3D" type="AudioStreamPlayer3D" parent="level/props/plastic_crate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 stream = ExtResource("5_10bxb")
 volume_db = -30.0
 autoplay = true
@@ -510,6 +511,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.8308, 1.29994, 38.921)
 
 [node name="plastic_crate2" parent="." instance=ExtResource("23_6f8xq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.4994, 1.29994, 39.5385)
+
+[node name="radio_pickup" parent="." instance=ExtResource("36_thjfg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0037, 4.52995e-06, -17.0338)
 
 [connection signal="toggled_off" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_off"]
 [connection signal="toggled_on" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_on"]

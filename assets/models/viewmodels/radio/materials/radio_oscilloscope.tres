@@ -1,11 +1,11 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://otve6lmskaud"]
 
-[ext_resource type="Shader" uid="uid://bexsnbiyvabr5" path="res://assets/shaders/oscilloscope_viewmodel.tres" id="1_2cjk1"]
+[ext_resource type="Shader" uid="uid://bexsnbiyvabr5" path="res://assets/shaders/radio/oscilloscope_viewmodel.tres" id="1_8gk5x"]
 [ext_resource type="Texture2D" uid="uid://c3f51ajg2ikdl" path="res://assets/models/viewmodels/radio/materials/oscilloscope_background.png" id="2_qo2c3"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_2cjk1")
+shader = ExtResource("1_8gk5x")
 shader_parameter/albedo = Color(0.501961, 1, 0.588235, 1)
 shader_parameter/point_size = null
 shader_parameter/roughness = null

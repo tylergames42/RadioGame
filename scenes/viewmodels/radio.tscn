@@ -1,40 +1,94 @@
-[gd_scene load_steps=8 format=3 uid="uid://im2obulcl5vg"]
+[gd_scene load_steps=16 format=3 uid="uid://im2obulcl5vg"]
 
-[ext_resource type="PackedScene" uid="uid://c6h07q5hlr7wl" path="res://assets/models/viewmodels/radio/radio.glb" id="1_da10i"]
+[ext_resource type="PackedScene" uid="uid://c6h07q5hlr7wl" path="res://assets/models/viewmodels/radio/radio.glb" id="1_rc01t"]
 [ext_resource type="Script" path="res://scripts/radio.gd" id="2_86hsg"]
 [ext_resource type="AudioStream" uid="uid://ki0tnb4wlui3" path="res://assets/sounds/static/radio_static.tres" id="3_4tomf"]
 [ext_resource type="Material" uid="uid://otve6lmskaud" path="res://assets/models/viewmodels/radio/materials/radio_oscilloscope.tres" id="4_6rftn"]
+[ext_resource type="Material" uid="uid://bmgxi81m2etkr" path="res://assets/models/viewmodels/radio/materials/radio_power_light.tres" id="5_5mlxi"]
+[ext_resource type="Material" uid="uid://bqt4pytlhhw00" path="res://assets/models/viewmodels/radio/materials/radio_strength_light.tres" id="5_j816w"]
+[ext_resource type="Script" path="res://addons/jigglebones/jigglebone.gd" id="5_lfofe"]
+[ext_resource type="Material" uid="uid://d1k4hw402wm55" path="res://assets/models/viewmodels/radio/materials/radio_spectrogram.tres" id="5_tols3"]
+
+[sub_resource type="Gradient" id="Gradient_ducej"]
+offsets = PackedFloat32Array(0, 0.266667, 0.911111, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.25098, 0, 1, 0.301961, 1, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uvrtj"]
+animation = &"radio_pickup"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_ltgvx"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:antenna_base", "Armature/Skeleton3D:antenna_bottom", "Armature/Skeleton3D:antenna_hinge", "Armature/Skeleton3D:antenna_mid", "Armature/Skeleton3D:antenna_top", "Armature/Skeleton3D:base", "Armature/Skeleton3D:power_switch"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_y3j3i"]
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_8fvpi"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cpx2t"]
 animation = &"radio_tune"
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_50hpx"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xfd58"]
-graph_offset = Vector2(-608, -20)
-nodes/output/position = Vector2(60, 60)
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kqrbs"]
+graph_offset = Vector2(-256.784, 143.053)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_uvrtj")
+nodes/Animation/position = Vector2(180, 360)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_ltgvx")
+nodes/Blend2/position = Vector2(420, 200)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_y3j3i")
+nodes/TimeScale/position = Vector2(20, 200)
+nodes/TimeSeek/node = SubResource("AnimationNodeTimeSeek_8fvpi")
+nodes/TimeSeek/position = Vector2(200, 200)
+nodes/output/position = Vector2(640, 220)
 nodes/tune_anim/node = SubResource("AnimationNodeAnimation_cpx2t")
-nodes/tune_anim/position = Vector2(-380, 80)
-nodes/tune_speed/node = SubResource("AnimationNodeTimeScale_50hpx")
-nodes/tune_speed/position = Vector2(-140, 60)
-node_connections = [&"output", 0, &"tune_speed", &"tune_speed", 0, &"tune_anim"]
+nodes/tune_anim/position = Vector2(-200, 200)
+node_connections = [&"Blend2", 0, &"TimeSeek", &"Blend2", 1, &"Animation", &"TimeScale", 0, &"tune_anim", &"TimeSeek", 0, &"TimeScale", &"output", 0, &"Blend2"]
 
-[node name="radio2" node_paths=PackedStringArray("ANIM_TREE") instance=ExtResource("1_da10i")]
+[node name="radio" node_paths=PackedStringArray("ANIM_TREE") instance=ExtResource("1_rc01t")]
 script = ExtResource("2_86hsg")
 STATIC = ExtResource("3_4tomf")
-ANIM_TREE = NodePath("AnimationTree")
+MAT_STRENGTH_GRADIENT = SubResource("Gradient_ducej")
 MAT_OSC = ExtResource("4_6rftn")
+MAT_SPECTROGRAM = ExtResource("5_tols3")
+MAT_STRENGTH_IND = ExtResource("5_5mlxi")
+MAT_AUDIO_IND = ExtResource("5_j816w")
+WEAPON_NAME = "radio"
+ANIM_TREE = NodePath("AnimationTree")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/2/rotation = Quaternion(-6.13072e-07, -0.00066461, -1.86457e-09, 1)
-bones/3/rotation = Quaternion(0.000322864, 2.44211e-07, -4.22022e-07, 1)
-bones/4/rotation = Quaternion(-0.000644336, 2.08612e-07, 0.00101554, 0.999999)
+bones/0/position = Vector3(-1.75084, -1.2, -1.83)
+bones/0/rotation = Quaternion(-0.0367882, -0.536788, 0.0234367, 0.842589)
+bones/1/rotation = Quaternion(5.90253e-07, 0.130526, -7.69135e-08, 0.991445)
+bones/2/rotation = Quaternion(2.83805e-05, -0.000663994, 0.0436193, 0.999048)
+bones/3/position = Vector3(3.43803e-07, 0.409953, -6.24443e-08)
+bones/3/rotation = Quaternion(0.000322833, 2.43977e-07, -4.2891e-07, 1)
+bones/4/position = Vector3(-8.33415e-08, 0.399954, -9.53801e-08)
+bones/4/rotation = Quaternion(-0.000644317, 2.09443e-07, 0.00101554, 0.999999)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.000320112, 1.39428e-07, -0.00198147, 0.999998)
+bones/5/position = Vector3(1.26216e-08, 0.399955, 1.33147e-07)
+bones/5/rotation = Quaternion(0.000320129, 1.39198e-07, -0.00198148, 0.999998)
 bones/5/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/7/position = Vector3(0.169, 0.946002, 0.325)
+bones/9/rotation = Quaternion(0.152344, 0.988326, -0.000261091, 0.00169382)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.114329, 0.244538, 0.953571, 0.133539)
+bones/10/scale = Vector3(1, 1, 0.999999)
+
+[node name="Jigglebone" type="Node3D" parent="Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.0399803, 0.0126229, 0.0907868, 0.0222116, 0.0974293, -0.00376498, -0.0889282, 0.01866, -0.0417563, -1.04373, -0.0110962, 0.191533)
+top_level = true
+script = ExtResource("5_lfofe")
+bone_name = "wire_jiggle_top"
+stiffness = 8.0
+
+[node name="Jigglebone2" type="Node3D" parent="Armature/Skeleton3D" index="2"]
+transform = Transform3D(-0.0535243, -0.0533973, -0.0654513, 0.024048, -0.0839111, 0.0487915, -0.0809743, 0.0103756, 0.0577538, 0.518372, -0.535525, -0.803827)
+top_level = true
+script = ExtResource("5_lfofe")
+bone_name = "wire_jiggle_bot"
+stiffness = 8.0
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
-tree_root = SubResource("AnimationNodeBlendTree_xfd58")
+tree_root = SubResource("AnimationNodeBlendTree_kqrbs")
 anim_player = NodePath("../AnimationPlayer")
-parameters/tune_speed/scale = 0.0
+parameters/Blend2/blend_amount = 1.0
+parameters/TimeScale/scale = 0.0
+parameters/TimeSeek/seek_request = -1.0

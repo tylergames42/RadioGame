@@ -1,15 +1,19 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://fer61es4r1pv"]
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://fer61es4r1pv"]
 
 [ext_resource type="Shader" path="res://assets/shaders/advanced_viewmodel_shader.gdshader" id="1_4w5tp"]
+[ext_resource type="Texture2D" uid="uid://dsjwlbtdscsxs" path="res://assets/models/viewmodels/radio/materials/radio_base_color.png" id="2_7g7nm"]
+[ext_resource type="Texture2D" uid="uid://p1gy02df0wm1" path="res://assets/models/viewmodels/radio/materials/radio_base_selfillum.png" id="3_jdatt"]
+[ext_resource type="Texture2D" uid="uid://c6q3gslmev0fp" path="res://assets/models/viewmodels/radio/materials/radio_base_normal.png" id="3_mhnkj"]
+[ext_resource type="Texture2D" uid="uid://c8i2ul8gdunev" path="res://assets/models/viewmodels/radio/materials/radio_base_orm.png" id="4_8l587"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_4w5tp")
-shader_parameter/albedo = Color(0.2688, 0.32, 0.2688, 1)
+shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/point_size = null
 shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = null
-shader_parameter/normal_scale = null
+shader_parameter/emission_energy = 0.5
+shader_parameter/normal_scale = 1.0
 shader_parameter/clearcoat = null
 shader_parameter/clearcoat_roughness = null
 shader_parameter/uv1_scale = null
@@ -17,3 +21,7 @@ shader_parameter/uv1_offset = null
 shader_parameter/uv2_scale = null
 shader_parameter/uv2_offset = null
 shader_parameter/fov = 80.0
+shader_parameter/texture_albedo = ExtResource("2_7g7nm")
+shader_parameter/texture_orm = ExtResource("4_8l587")
+shader_parameter/texture_emission = ExtResource("3_jdatt")
+shader_parameter/texture_normal = ExtResource("3_mhnkj")

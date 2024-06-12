@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkiaja4th1hpl"]
+
+[ext_resource type="Script" path="res://scripts/player/WeaponBase.gd" id="1_utvl4"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(0.3417, -0.00759611, -0.939779, 0.084186, 0.996195, 0.0225576, 0.936031, -0.0868241, 0.341039, -0.21632, -0.108573, -0.2)
+script = ExtResource("1_utvl4")
+WEAPON_NAME = "jizz"
+
+[node name="testweapon" type="CSGBox3D" parent="."]
+transform = Transform3D(0.3417, 0.0841859, 0.936031, -0.00759609, 0.996194, -0.0868241, -0.939778, 0.0225576, 0.341039, 0.0919636, 0.11292, -0.516881)
+size = Vector3(0.1, 0.2, 0.5)

@@ -6,7 +6,6 @@ sidechain = &"Radio"
 
 [sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_0h134"]
 resource_name = "SpectrumAnalyzer"
-fft_size = 0
 
 [sub_resource type="AudioEffectEQ10" id="AudioEffectEQ10_le1gx"]
 resource_name = "EQ10"
@@ -27,7 +26,7 @@ mix = 0.5
 sidechain = &"RadioStatic"
 
 [resource]
-bus/0/volume_db = -0.725993
+bus/0/volume_db = -5.04224
 bus/1/name = &"RadioStatic"
 bus/1/solo = false
 bus/1/mute = false

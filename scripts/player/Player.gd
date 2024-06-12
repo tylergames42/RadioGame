@@ -23,9 +23,9 @@ extends RigidBody3D
 @onready var hold_point = $Root/Head/hold_point #Point at which to position held objects
 @onready var animation_player = $AnimationPlayer #Animation player
 @onready var state_machine = $PlayerStateMachine #State machine for player
+@onready var weapon_manager = $Root/Head/WeaponManager
 @onready var flashlight = $Root/Head/Flashlight
 @onready var leg_anim_player = $Root/legs_test/AnimationPlayer
-@onready var radio = $Root/Head/ViewmodelManager/radio2
 
 @onready var AudioPlayer = SpatialAudioPlayer3D.new() #Audio player for footsteps, jump sounds, etc.
 
@@ -57,12 +57,6 @@ func _input(event):
 		if held_object != null: #If holding an object throw it
 			var throw_vector = -head.global_transform.basis.z
 			held_object.throw(throw_vector)
-			
-	if event.is_action_pressed("fire_alt"):
-		if radio.visible:
-			radio.visible = false
-		else:
-			radio.visible = true
 		
 	if event.is_action_pressed("noclip"):
 		if state_machine.CURRENT_STATE.name != "PlayerNoclipState":

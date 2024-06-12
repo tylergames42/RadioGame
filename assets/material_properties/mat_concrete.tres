@@ -5,3 +5,6 @@
 [resource]
 script = ExtResource("1_feixi")
 DISABLE_COLLISIONS = false
+REVERB_CONTRIBUTION = 1.0
+DAMPING = 0.5
+OCCLUSION = 1.0

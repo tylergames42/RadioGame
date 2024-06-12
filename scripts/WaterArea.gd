@@ -1,4 +1,5 @@
 extends Area3D
+class_name WaterArea
 
 @export var SPLASH : PackedScene
 

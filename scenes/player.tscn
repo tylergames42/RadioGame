@@ -1,15 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://bdrd7rx11vacv"]
+[gd_scene load_steps=25 format=3 uid="uid://bdrd7rx11vacv"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_gnuhl"]
 [ext_resource type="Script" path="res://scenes/DebugInfo.gd" id="2_pbxns"]
 [ext_resource type="Shader" path="res://assets/shaders/screen_underwater.gdshader" id="2_vtxyt"]
 [ext_resource type="Texture2D" uid="uid://chwwq3rkwc7ly" path="res://assets/ui/crosshair.png" id="3_8nfak"]
-[ext_resource type="PackedScene" uid="uid://im2obulcl5vg" path="res://scenes/viewmodels/radio.tscn" id="5_ky4k5"]
 [ext_resource type="PackedScene" uid="uid://cwmsox5vbvfud" path="res://scenes/flashlight.tscn" id="6_cukaf"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="6_nodv1"]
 [ext_resource type="PackedScene" uid="uid://bpwl58ebdmdxn" path="res://assets/models/legs_test.glb" id="7_gp4dq"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerIdleState.gd" id="7_hu5mr"]
-[ext_resource type="Script" path="res://scripts/player/ViewModel.gd" id="7_kjtma"]
+[ext_resource type="Script" path="res://scripts/player/WeaponManager.gd" id="7_kjtma"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerWalkingState.gd" id="8_mmf44"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerSprintingState.gd" id="9_6khpb"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerNoclipState.gd" id="9_fvox2"]
@@ -335,13 +334,9 @@ hit_back_faces = false
 transform = Transform3D(0.984808, -0.0449434, 0.167731, 2.64416e-09, 0.965926, 0.258819, -0.173648, -0.254887, 0.951251, 0.1, -0.1, 1.49012e-08)
 visible = false
 
-[node name="ViewmodelManager" type="Node3D" parent="Root/Head" node_paths=PackedStringArray("PLAYER")]
+[node name="WeaponManager" type="Node3D" parent="Root/Head" node_paths=PackedStringArray("PLAYER")]
 script = ExtResource("7_kjtma")
 PLAYER = NodePath("../../..")
-
-[node name="radio2" parent="Root/Head/ViewmodelManager" instance=ExtResource("5_ky4k5")]
-transform = Transform3D(0.3417, -0.00759611, -0.939779, 0.084186, 0.996195, 0.0225576, 0.936031, -0.0868241, 0.341039, -0.21632, -0.108573, -0.2)
-STATIC_VOLUME = -20.0
 
 [node name="legs_test" parent="Root" instance=ExtResource("7_gp4dq")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 0.75, 0, -1.50996e-07, 0, -1, 0, -0.844603, 0.2)

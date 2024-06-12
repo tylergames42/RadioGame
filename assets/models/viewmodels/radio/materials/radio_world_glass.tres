@@ -1,0 +1,10 @@
+[gd_resource type="ORMMaterial3D" load_steps=2 format=3 uid="uid://conkndym6w4dn"]
+
+[ext_resource type="Texture2D" uid="uid://b113tslx8vss2" path="res://assets/models/viewmodels/radio/materials/grunge_test.png" id="1_3sre7"]
+
+[resource]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.0941176)
+rim_enabled = true
+rim_texture = ExtResource("1_3sre7")
+texture_filter = 4

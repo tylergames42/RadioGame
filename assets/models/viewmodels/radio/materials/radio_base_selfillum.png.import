@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b113tslx8vss2"
-path.s3tc="res://.godot/imported/grunge_test.png-5afa224001c1e923fbdcebe52d4e617e.s3tc.ctex"
+uid="uid://p1gy02df0wm1"
+path.s3tc="res://.godot/imported/radio_base_selfillum.png-b52857f468dbd66fa3a79f931661ef35.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/models/viewmodels/radio/materials/grunge_test.png"
-dest_files=["res://.godot/imported/grunge_test.png-5afa224001c1e923fbdcebe52d4e617e.s3tc.ctex"]
+source_file="res://assets/models/viewmodels/radio/materials/radio_base_selfillum.png"
+dest_files=["res://.godot/imported/radio_base_selfillum.png-b52857f468dbd66fa3a79f931661ef35.s3tc.ctex"]
 
 [params]
 

@@ -1,27 +1,42 @@
-[gd_resource type="PhysicsMaterial" script_class="MaterialProperties" load_steps=7 format=3 uid="uid://btupykdprxygc"]
+[gd_resource type="PhysicsMaterial" script_class="MaterialProperties" load_steps=12 format=3 uid="uid://btupykdprxygc"]
 
-[ext_resource type="AudioStream" uid="uid://dafpk4prfhdh7" path="res://assets/hl2/sound/footsteps/concrete4.wav" id="1_331ri"]
-[ext_resource type="AudioStream" uid="uid://b3dqa8vdwipj5" path="res://assets/hl2/sound/footsteps/concrete1.wav" id="2_ftx5t"]
-[ext_resource type="AudioStream" uid="uid://wg1nqvuy05fv" path="res://assets/hl2/sound/footsteps/concrete2.wav" id="3_40t2n"]
-[ext_resource type="AudioStream" uid="uid://cddsr4nkqo4bj" path="res://assets/hl2/sound/footsteps/concrete3.wav" id="4_75qsh"]
+[ext_resource type="AudioStream" uid="uid://dqhejid4asjbh" path="res://assets/sounds/footsteps/metal/step_metal_01.wav" id="1_f3yff"]
+[ext_resource type="AudioStream" uid="uid://c25o2m1xrxnr1" path="res://assets/sounds/footsteps/metal/step_metal_02.wav" id="2_i2u6x"]
+[ext_resource type="AudioStream" uid="uid://bnri84qdnf054" path="res://assets/sounds/footsteps/metal/step_metal_03.wav" id="3_u7iq0"]
+[ext_resource type="AudioStream" uid="uid://cj5rhsfmdmgp3" path="res://assets/sounds/footsteps/metal/step_metal_04.wav" id="4_84a5e"]
+[ext_resource type="AudioStream" uid="uid://cgpvlwpes1fqk" path="res://assets/sounds/footsteps/metal/step_metal_05.wav" id="5_7w48e"]
 [ext_resource type="Script" path="res://scripts/MaterialProperties.gd" id="5_mcy48"]
+[ext_resource type="AudioStream" uid="uid://cid6x0xttk8hv" path="res://assets/sounds/footsteps/metal/step_metal_06.wav" id="6_b2d55"]
+[ext_resource type="AudioStream" uid="uid://dkcvcoqr3tuvw" path="res://assets/sounds/footsteps/metal/step_metal_07.wav" id="7_537gn"]
+[ext_resource type="AudioStream" uid="uid://cjlyk3dtd3sh3" path="res://assets/sounds/footsteps/metal/step_metal_08.wav" id="8_qln3a"]
+[ext_resource type="AudioStream" uid="uid://b45wy4fvfp5r2" path="res://assets/sounds/footsteps/metal/step_metal_09.wav" id="9_do6vk"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5rmou"]
-streams_count = 4
-stream_0/stream = ExtResource("2_ftx5t")
+streams_count = 9
+stream_0/stream = ExtResource("1_f3yff")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("3_40t2n")
+stream_1/stream = ExtResource("2_i2u6x")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("4_75qsh")
+stream_2/stream = ExtResource("3_u7iq0")
 stream_2/weight = 1.0
-stream_3/stream = ExtResource("1_331ri")
+stream_3/stream = ExtResource("4_84a5e")
 stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_7w48e")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("6_b2d55")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("7_537gn")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("8_qln3a")
+stream_7/weight = 1.0
+stream_8/stream = ExtResource("9_do6vk")
+stream_8/weight = 1.0
 
 [resource]
 script = ExtResource("5_mcy48")
 DISABLE_COLLISIONS = false
 SFX_STEP = SubResource("AudioStreamRandomizer_5rmou")
-SFX_JUMP = ExtResource("1_331ri")
+SFX_JUMP = ExtResource("1_f3yff")
 REVERB_CONTRIBUTION = 0.4
 DAMPING = 1.0
 OCCLUSION = 1.0
