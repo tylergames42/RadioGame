@@ -321,8 +321,15 @@ scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(32, 32)
 texture = ExtResource("3_8nfak")
 
-[node name="hold_point" type="Node3D" parent="Root/Head"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.5)
+[node name="hold_point" type="JoltGeneric6DOFJoint3D" parent="Root/Head"]
+linear_limit_x/enabled = false
+linear_limit_y/enabled = false
+linear_limit_z/enabled = false
+node_a = NodePath("../hold_orientation")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[node name="hold_orientation" type="StaticBody3D" parent="Root/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 
 [node name="interactcast" type="RayCast3D" parent="Root/Head"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

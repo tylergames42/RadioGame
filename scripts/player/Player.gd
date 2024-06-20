@@ -21,6 +21,7 @@ extends RigidBody3D
 @onready var groundcast = $groundcast #Shapecast to check if grounded
 @onready var interactcast = $Root/Head/interactcast #Raycast to do interaction checks
 @onready var hold_point = $Root/Head/hold_point #Point at which to position held objects
+@onready var hold_orientation = $Root/Head/hold_orientation
 @onready var animation_player = $AnimationPlayer #Animation player
 @onready var state_machine = $PlayerStateMachine #State machine for player
 @onready var weapon_manager = $Root/Head/WeaponManager
@@ -39,6 +40,7 @@ var input_dir : Vector3
 var target_velocity : Vector3
 
 var was_grounded : bool = false
+var rotating_held : bool = false
 
 func _ready():
 	Global.player = self
@@ -50,6 +52,7 @@ func _input(event):
 	if event.is_action_pressed("interact"):
 		if held_object != null: #If holding an object drop it
 			held_object.drop()
+			rotating_held = false
 		else:
 			interact()
 		
@@ -57,6 +60,14 @@ func _input(event):
 		if held_object != null: #If holding an object throw it
 			var throw_vector = -head.global_transform.basis.z
 			held_object.throw(throw_vector)
+			rotating_held = false
+			
+	if event.is_action_pressed("fire_alt"):
+		if held_object != null:
+			rotating_held = true
+		
+	if event.is_action_released("fire_alt"):
+		rotating_held = false
 		
 	if event.is_action_pressed("noclip"):
 		if state_machine.CURRENT_STATE.name != "PlayerNoclipState":
@@ -71,9 +82,13 @@ func _input(event):
 			flashlight.visible = true
 	
 	if event is InputEventMouseMotion: #Get mouse input
-		root.rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY_HORIZONTAL))
-		head.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY_VERTICAL))
-		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+		if rotating_held:
+			hold_orientation.rotate_y(clamp(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY_HORIZONTAL * 0.5), -0.4, 0.4))
+			hold_orientation.rotate_x(clamp(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY_VERTICAL * 0.5), -0.4, 0.4))
+		else:
+			root.rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY_HORIZONTAL))
+			head.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY_VERTICAL))
+			head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 			
 	#Set input direction vector
 	input_dir = Vector3(
@@ -220,6 +235,8 @@ func interact():
 func play_step_sfx():
 	if grounded:
 		var material = load("res://assets/material_properties/mat_default.tres")
+		if !groundcast.is_colliding():
+			return
 		var ground = groundcast.get_collider(0)
 		if "physics_material_override" in ground:
 			if ground.physics_material_override is MaterialProperties:

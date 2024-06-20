@@ -33,6 +33,8 @@ func update(delta):
 
 func play_jump_sfx():
 	var material = load("res://assets/material_properties/mat_default.tres")
+	if player.groundcast.is_colliding():
+		return
 	var ground = player.groundcast.get_collider(0)
 	if "physics_material_override" in ground and ground.physics_material_override is MaterialProperties:
 		if ground.physics_material_override.SFX_JUMP != null:

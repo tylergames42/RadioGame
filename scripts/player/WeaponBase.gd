@@ -11,7 +11,7 @@ class_name WeaponBase
 var active : bool
 
 func pickup() -> void:
-	ANIM_TREE["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	ANIM_TREE["parameters/pickup/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	active = true
 	show()
 

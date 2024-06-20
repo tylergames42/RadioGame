@@ -68,6 +68,15 @@ func setup_direction_array(): #Create array of directions to use in spatial audi
 	direction_array.append(Vector3(MAX_RAYCAST_DISTANCE,0,MAX_RAYCAST_DISTANCE)) #Add SE direction
 	direction_array.append(Vector3(-MAX_RAYCAST_DISTANCE,0,MAX_RAYCAST_DISTANCE)) #Add SW direction
 	direction_array.append(Vector3(-MAX_RAYCAST_DISTANCE,0,-MAX_RAYCAST_DISTANCE)) #Add NW direction
+	##more directions (temp?):
+	direction_array.append(Vector3(0,MAX_RAYCAST_DISTANCE,-MAX_RAYCAST_DISTANCE)) #Add UP NORTH direction
+	direction_array.append(Vector3(MAX_RAYCAST_DISTANCE,MAX_RAYCAST_DISTANCE,0)) #Add UP EAST direction
+	direction_array.append(Vector3(0,MAX_RAYCAST_DISTANCE,MAX_RAYCAST_DISTANCE)) #Add UP SOUTH direction
+	direction_array.append(Vector3(-MAX_RAYCAST_DISTANCE,MAX_RAYCAST_DISTANCE,0)) #Add UP WEST direction
+	direction_array.append(Vector3(0,-MAX_RAYCAST_DISTANCE,-MAX_RAYCAST_DISTANCE)) #Add DOWN NORTH direction
+	direction_array.append(Vector3(MAX_RAYCAST_DISTANCE,-MAX_RAYCAST_DISTANCE,0)) #Add DOWN EAST direction
+	direction_array.append(Vector3(0,-MAX_RAYCAST_DISTANCE,MAX_RAYCAST_DISTANCE)) #Add DOWN SOUTH direction
+	direction_array.append(Vector3(-MAX_RAYCAST_DISTANCE,-MAX_RAYCAST_DISTANCE,0)) #Add DOWN WEST direction
 
 func update_reverb(): #Update reverb effect parameters
 	var room_size = 0.0

@@ -1,8 +1,9 @@
 @tool
 extends EditorScenePostImport
 
-@export var material_search_path = "res://assets/materials"
-@export var fallback_mat_path = "res://assets/materials/dev/missing.tres"
+@export var material_search_path : String = "res://assets/materials"
+@export var material_file_extension : String = ".vmat"
+@export var fallback_mat_path : String = "res://assets/materials/dev/missing.tres"
 
 var material_path
 
@@ -18,7 +19,7 @@ func iterate(node):
 			var original_mesh = node.mesh
 			for surface_index in original_mesh.get_surface_count():
 				var material_name = original_mesh.get("surface_" + str(surface_index) + "/name") # Get path for material of surface
-				material_name = material_name.replace(".vmat", "")
+				material_name = material_name.replace(material_file_extension, "")
 				material_path = fallback_mat_path
 				get_material_path(material_search_path, material_name)
 				if material_path == fallback_mat_path:
@@ -50,16 +51,6 @@ func iterate(node):
 				else: #If the material was not found
 					push_error("DEFAULT MATERIAL NOT FOUND! Should be in " + fallback_mat_path)
 			
-			#var body = StaticBody3D.new()
-			#var collision_shape = node.mesh.create_convex_shape(true, true)
-			#var shape = CollisionShape3D.new()
-			#shape.shape = collision_shape
-			#body.add_child(shape, true)
-			#node.add_child(body, true)
-			#body.set_collision_layer_value(1, true)
-			#body.set_collision_mask_value(1, true)
-			#body.owner = node.owner
-			#shape.owner = node.owner
 		for child in node.get_children():
 			iterate(child)
 	

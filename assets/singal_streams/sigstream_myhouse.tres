@@ -1,0 +1,10 @@
+[gd_resource type="AudioStream" script_class="SignalStream" load_steps=4 format=3 uid="uid://dcoijap03kcfi"]
+
+[ext_resource type="Texture2D" uid="uid://2rvpiwi17nqg" path="res://assets/singal_streams/spectro_myhouse.png" id="1_170ol"]
+[ext_resource type="Script" path="res://scripts/SignalStream.gd" id="1_d7fs0"]
+[ext_resource type="AudioStream" uid="uid://cjwvkymqoirxx" path="res://assets/sounds/music/THE MOST MYSTERIOUS SONG ON THE INTERNET - FULL VERSION FOUND!.mp3" id="1_ont8g"]
+
+[resource]
+script = ExtResource("1_d7fs0")
+AUDIO = ExtResource("1_ont8g")
+SPECTROGRAM = ExtResource("1_170ol")

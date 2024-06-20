@@ -35,10 +35,9 @@ func _integrate_forces(state):
 		var target_velocity = (holder.hold_point.global_transform.origin - global_transform.origin) * velocity_multipler
 		var impulse_vector = target_velocity - linear_velocity
 		apply_central_impulse(impulse_vector + holder.linear_velocity)
-		#rotation = holder.hold_point.global_rotation * DEFAULT_HOLD_VECTOR
-		var angle_difference = global_basis.y.angle_to(-holder.hold_point.global_basis.z)
-		var rotation_axis = global_basis.y.cross(-holder.hold_point.global_basis.z.normalized())
-		apply_torque_impulse((rotation_axis * angle_difference * 3) / angle_difference)
+		#var angle_difference = global_basis.y.angle_to(-holder.hold_point.global_basis.z)
+		#var rotation_axis = global_basis.y.cross(-holder.hold_point.global_basis.z.normalized())
+		#apply_torque_impulse((rotation_axis * angle_difference * 3) / angle_difference)
 			
 	if get_colliding_bodies() != [] and get_colliding_bodies()[0]: #Scrape sfx (kinda jank rn)
 		if held:
@@ -56,6 +55,7 @@ func carry():
 	sleeping = false
 	can_sleep = false
 	held = true
+	holder.hold_point.set_node_b(get_path())
 	holder.held_object = self
 	add_collision_exception_with(holder)
 	
@@ -63,6 +63,7 @@ func drop():
 	sleeping = false
 	can_sleep = true
 	held = false
+	holder.hold_point.set_node_b("")
 	holder.held_object = null
 	remove_collision_exception_with(holder)
 	

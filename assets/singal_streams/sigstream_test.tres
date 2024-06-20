@@ -1,0 +1,10 @@
+[gd_resource type="AudioStream" script_class="SignalStream" load_steps=4 format=3 uid="uid://coqv7iqqm4pp1"]
+
+[ext_resource type="Texture2D" uid="uid://cwhmnla6npbrv" path="res://assets/singal_streams/spectro_test.png" id="1_o11re"]
+[ext_resource type="AudioStream" uid="uid://c6veu57jywho0" path="res://assets/sounds/spectogram_test.mp3" id="2_55dcx"]
+[ext_resource type="Script" path="res://scripts/SignalStream.gd" id="2_piqpt"]
+
+[resource]
+script = ExtResource("2_piqpt")
+AUDIO = ExtResource("2_55dcx")
+SPECTROGRAM = ExtResource("1_o11re")
