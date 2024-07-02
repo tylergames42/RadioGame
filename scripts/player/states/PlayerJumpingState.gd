@@ -39,5 +39,5 @@ func play_jump_sfx():
 	if "physics_material_override" in ground and ground.physics_material_override is MaterialProperties:
 		if ground.physics_material_override.SFX_JUMP != null:
 			material = ground.physics_material_override
-	player.AudioPlayer.stream = material.SFX_JUMP
-	player.AudioPlayer.spatial_play()
+	player.audio_player.stream = material.SFX_JUMP
+	player.audio_player.spatial_play()

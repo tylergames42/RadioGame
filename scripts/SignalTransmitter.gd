@@ -1,7 +1,8 @@
+@icon("res://assets/ui/editor/icons/radio_tower.svg")
 class_name SignalTransmitter
 extends Node3D
 
-@export var STREAMS : Array[SignalStream]
+@export var STREAMS : Array[AudioStream]
 @export_range(-20.0, 1.0, 0.1) var VOLUME : float = 0.0
 @export_range(0.0, 100.0, 1.0) var FREQUENCY : float ##TODO: change to use range of frequencies instead?
 													##Then some signals could be broader than others or take up whole range for scripted events.
@@ -11,7 +12,7 @@ extends Node3D
 
 @onready var AudioPlayer = AudioStreamPlayer.new()
 
-var current_stream : SignalStream
+var current_stream : AudioStream
 var rand_counter : int = 0
 
 func _ready():
@@ -24,9 +25,9 @@ func _ready():
 func update_strength(new_strength : float):
 	if !AudioPlayer.playing:
 			play_audio_random()
-	if new_strength >= 0.9:
+	if new_strength > 0.9:
 		AudioPlayer.volume_db = VOLUME
-	elif new_strength <= 0.1:
+	elif new_strength < 0.01:
 		AudioPlayer.volume_db = -80.0
 	else:
 		AudioPlayer.volume_db = remap(new_strength, 0.0, 1.0, VOLUME - 20.0, VOLUME)
@@ -37,7 +38,7 @@ func play_audio_random(): ##TODO add weight?
 		return
 	
 	current_stream = STREAMS[0]
-	AudioPlayer.stream = current_stream.AUDIO
+	AudioPlayer.stream = current_stream
 	AudioPlayer.play()
 	STREAMS.remove_at(0)
 	STREAMS.append(current_stream)

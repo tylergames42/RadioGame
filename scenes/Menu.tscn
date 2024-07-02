@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://b01a18qy38ssi"]
+
+[ext_resource type="Script" path="res://Menu.gd" id="1_gxm66"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gxm66")
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -128.0
+offset_right = 192.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "QUIT"
+
+[node name="ReloadButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -200.0
+offset_right = 192.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "RELOAD SCENE"
+
+[node name="RadioButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 256.0
+offset_bottom = 128.0
+text = "GIVE RADIO"
+
+[node name="CameraButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 64.0
+offset_top = 144.0
+offset_right = 256.0
+offset_bottom = 208.0
+text = "GIVE CAMERA"
+
+[node name="DebugInfoToggle" type="CheckButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = 128.0
+grow_horizontal = 0
+text = "Debug GUI"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -152.0
+offset_top = 16.0
+offset_right = 168.0
+offset_bottom = 80.0
+grow_horizontal = 2
+text = "epic dogsh*t debug menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ReloadButton" to="." method="_on_reload_button_pressed"]
+[connection signal="pressed" from="RadioButton" to="." method="_on_radio_button_pressed"]
+[connection signal="pressed" from="CameraButton" to="." method="_on_camera_button_pressed"]
+[connection signal="toggled" from="DebugInfoToggle" to="." method="_on_debug_info_toggle_toggled"]

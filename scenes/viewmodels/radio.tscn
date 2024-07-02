@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://im2obulcl5vg"]
+[gd_scene load_steps=17 format=3 uid="uid://im2obulcl5vg"]
 
 [ext_resource type="PackedScene" uid="uid://c6h07q5hlr7wl" path="res://assets/models/viewmodels/radio/radio.glb" id="1_rc01t"]
-[ext_resource type="Script" path="res://scripts/radio.gd" id="2_86hsg"]
+[ext_resource type="Script" path="res://scripts/player/weapons/WeaponRadio.gd" id="2_kf3eb"]
 [ext_resource type="AudioStream" uid="uid://ki0tnb4wlui3" path="res://assets/sounds/static/radio_static.tres" id="3_4tomf"]
 [ext_resource type="Material" uid="uid://otve6lmskaud" path="res://assets/models/viewmodels/radio/materials/radio_oscilloscope.tres" id="4_6rftn"]
 [ext_resource type="Material" uid="uid://bmgxi81m2etkr" path="res://assets/models/viewmodels/radio/materials/radio_power_light.tres" id="5_5mlxi"]
@@ -9,9 +9,13 @@
 [ext_resource type="Script" path="res://addons/jigglebones/jigglebone.gd" id="5_lfofe"]
 [ext_resource type="Material" uid="uid://d1k4hw402wm55" path="res://assets/models/viewmodels/radio/materials/radio_spectrogram.tres" id="5_tols3"]
 
-[sub_resource type="Gradient" id="Gradient_ducej"]
-offsets = PackedFloat32Array(0, 0.266667, 0.911111, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 0.25098, 0, 1, 0.301961, 1, 0, 1, 0, 1, 0, 1)
+[sub_resource type="Gradient" id="Gradient_mxjtf"]
+offsets = PackedFloat32Array(0, 0.366667, 0.866667, 0.983333)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_h6g60"]
+offsets = PackedFloat32Array(0, 0.533333, 1)
+colors = PackedColorArray(0, 0, 0.196078, 1, 1, 0, 0.0941176, 1, 1, 1, 0, 1)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4rnr7"]
 animation = &"radio_pickup"
@@ -28,7 +32,7 @@ filters = ["Armature/Skeleton3D:antenna_base", "Armature/Skeleton3D:antenna_bott
 animation = &"radio_tune"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kqrbs"]
-graph_offset = Vector2(-286.642, 102.066)
+graph_offset = Vector2(-622.473, 154.035)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_4rnr7")
 nodes/Animation/position = Vector2(-200, 340)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_ltgvx")
@@ -43,14 +47,15 @@ nodes/tune_anim/position = Vector2(-200, 200)
 node_connections = [&"Blend2", 0, &"TimeSeek", &"Blend2", 1, &"Animation", &"TimeScale", 0, &"tune_anim", &"TimeSeek", 0, &"TimeScale", &"output", 0, &"Blend2"]
 
 [node name="radio" node_paths=PackedStringArray("ANIM_TREE") instance=ExtResource("1_rc01t")]
-script = ExtResource("2_86hsg")
+script = ExtResource("2_kf3eb")
 STATIC = ExtResource("3_4tomf")
-MAT_STRENGTH_GRADIENT = SubResource("Gradient_ducej")
+GRADIENT_STRENGTH = SubResource("Gradient_mxjtf")
+GRADIENT_SPECTROGRAM = SubResource("Gradient_h6g60")
 MAT_OSC = ExtResource("4_6rftn")
 MAT_SPECTROGRAM = ExtResource("5_tols3")
 MAT_STRENGTH_IND = ExtResource("5_5mlxi")
 MAT_AUDIO_IND = ExtResource("5_j816w")
-WEAPON_NAME = "radio"
+WEAPON_NAME = "Radio"
 ANIM_TREE = NodePath("AnimationTree")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
@@ -58,12 +63,12 @@ bones/0/position = Vector3(-1.85084, -1.3, -1.83)
 bones/0/rotation = Quaternion(-0.0367882, -0.536788, 0.0234367, 0.842589)
 bones/1/rotation = Quaternion(5.90253e-07, 0.130526, -7.69135e-08, 0.991445)
 bones/2/rotation = Quaternion(2.83805e-05, -0.000663994, 0.0436193, 0.999048)
-bones/3/position = Vector3(2.05952e-07, 0.359402, 1.00872e-07)
+bones/3/position = Vector3(7.55827e-08, 0.409953, 7.17529e-08)
 bones/3/rotation = Quaternion(0.000322833, 2.43977e-07, -4.2891e-07, 1)
-bones/4/position = Vector3(-6.86728e-08, 0.349404, 3.24927e-05)
+bones/4/position = Vector3(-2.17497e-07, 0.399954, -6.56063e-08)
 bones/4/rotation = Quaternion(-0.000644317, 2.09443e-07, 0.00101554, 0.999999)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/position = Vector3(-0.000102177, 0.349404, -3.23696e-05)
+bones/5/position = Vector3(7.16943e-08, 0.399955, 1.55413e-07)
 bones/5/rotation = Quaternion(0.000320129, 1.39198e-07, -0.00198148, 0.999998)
 bones/7/position = Vector3(0.169, 0.946002, 0.325)
 bones/9/rotation = Quaternion(0.152344, 0.988326, -0.000261091, 0.00169382)
@@ -72,14 +77,14 @@ bones/10/rotation = Quaternion(0.114329, 0.244538, 0.953571, 0.133539)
 bones/10/scale = Vector3(1, 1, 0.999999)
 
 [node name="Jigglebone" type="Node3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.0400213, 0.0126435, 0.0907659, 0.0220963, 0.0974529, -0.00383207, -0.0889385, 0.0185223, -0.0417956, -1.05365, -0.0215254, 0.191492)
+transform = Transform3D(-0.0400114, 0.0126296, 0.0907722, 0.0222039, 0.0974309, -0.00376884, -0.0889161, 0.018647, -0.0417878, -1.0537, -0.0198184, 0.191544)
 top_level = true
 script = ExtResource("5_lfofe")
 bone_name = "wire_jiggle_top"
 stiffness = 8.0
 
 [node name="Jigglebone2" type="Node3D" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.053531, -0.0533999, -0.0654437, 0.024032, -0.0839065, 0.0488074, -0.0809747, 0.0103997, 0.057749, 0.508391, -0.545632, -0.803837)
+transform = Transform3D(-0.0535914, -0.0533425, -0.0654411, 0.0239325, -0.0839307, 0.0488147, -0.0809641, 0.0104988, 0.0577458, 0.508452, -0.545445, -0.803908)
 top_level = true
 script = ExtResource("5_lfofe")
 bone_name = "wire_jiggle_bot"

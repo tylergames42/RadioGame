@@ -3,7 +3,7 @@
 shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color,filter_nearest_mipmap_anisotropic,repeat_enable;
+uniform sampler2D texture_albedo : source_color,repeat_enable;
 uniform float point_size : hint_range(0,128);
 uniform sampler2D texture_orm : hint_roughness_g,filter_nearest_mipmap_anisotropic,repeat_enable;
 uniform sampler2D texture_emission : source_color, hint_default_black,filter_nearest_mipmap_anisotropic,repeat_enable;

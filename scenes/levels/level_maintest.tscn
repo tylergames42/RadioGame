@@ -1,17 +1,18 @@
-[gd_scene load_steps=67 format=3 uid="uid://cvdvb3r0hoj7f"]
+[gd_scene load_steps=76 format=3 uid="uid://cvdvb3r0hoj7f"]
 
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_qy1pw"]
 [ext_resource type="Texture2D" uid="uid://bieyv6v2fhlhj" path="res://assets/hdris/mud_road_puresky_2k.hdr" id="2_fhhgn"]
 [ext_resource type="PackedScene" uid="uid://bgymsig42c8vi" path="res://scenes/levels/level_test.glb" id="3_6uhm8"]
 [ext_resource type="Script" path="res://scenes/levels/SignalManager.gd" id="3_7u5qg"]
 [ext_resource type="Script" path="res://scripts/SignalTransmitter.gd" id="3_15v7b"]
 [ext_resource type="LightmapGIData" uid="uid://cbnnf70l3bn3u" path="res://scenes/levels/test_level.lmbake" id="4_d0goh"]
 [ext_resource type="AudioStream" uid="uid://ble5hd82ncslc" path="res://assets/sounds/music/04 - Buddy Holly.mp3" id="5_10bxb"]
-[ext_resource type="AudioStream" uid="uid://b4tjmy5qr8ucl" path="res://assets/singal_streams/sigstream_weezer.tres" id="5_ds0gf"]
+[ext_resource type="AudioStream" uid="uid://b6ehphhw8c3sn" path="res://assets/sounds/music/Weihnachten Am Klavier 1929.mp3" id="5_egyus"]
 [ext_resource type="PackedScene" uid="uid://bdrd7rx11vacv" path="res://scenes/player.tscn" id="5_mb7ru"]
 [ext_resource type="Material" uid="uid://ckv2tca1kl3qf" path="res://assets/materials/dev/dev_measuregeneric01.tres" id="6_2tmjs"]
-[ext_resource type="AudioStream" uid="uid://dcoijap03kcfi" path="res://assets/singal_streams/sigstream_myhouse.tres" id="6_nu16n"]
-[ext_resource type="AudioStream" uid="uid://coqv7iqqm4pp1" path="res://assets/singal_streams/sigstream_test.tres" id="7_nec7d"]
+[ext_resource type="AudioStream" uid="uid://b56wm35nf4j4o" path="res://assets/sounds/music/Sewerslvt - Drowning In The Sewer - 03 Luciferians.mp3" id="6_bfw82"]
+[ext_resource type="AudioStream" uid="uid://beqlpyifn1m5q" path="res://assets/sounds/music/Oli koivu kosken rannalla.mp3" id="6_h15b5"]
+[ext_resource type="AudioStream" uid="uid://cxgrh2vlk4cvg" path="res://assets/sounds/imagetoaudio(1)(1).wav" id="7_bh3f1"]
+[ext_resource type="AudioStream" uid="uid://ca0oubnj0fgj7" path="res://assets/sounds/music/Sewerslvt - Drowning In The Sewer - 02 Cyberia lyr1.mp3" id="7_ge2td"]
 [ext_resource type="Material" uid="uid://csepy367610dt" path="res://assets/materials/dev/dev_measuregeneric01c.tres" id="13_f82mo"]
 [ext_resource type="PackedScene" uid="uid://b7h2r5sq5385d" path="res://scenes/physics_props/oildrum.tscn" id="14_kxiho"]
 [ext_resource type="Script" path="res://scripts/components/ToggleableComponent.gd" id="14_mod8d"]
@@ -31,6 +32,7 @@
 [ext_resource type="PhysicsMaterial" uid="uid://bho2aunoj375l" path="res://assets/material_properties/mat_reflect_test.tres" id="27_yttpw"]
 [ext_resource type="PhysicsMaterial" uid="uid://btupykdprxygc" path="res://assets/material_properties/mat_absorb_test.tres" id="28_1uvbh"]
 [ext_resource type="Material" uid="uid://didp6yqh0dx65" path="res://assets/materials/nature/dirt_1.tres" id="29_7arhb"]
+[ext_resource type="PackedScene" uid="uid://dn6bdjv8t7mcc" path="res://scenes/viewmodels/camera.tscn" id="35_vy852"]
 [ext_resource type="Material" uid="uid://fer61es4r1pv" path="res://assets/models/viewmodels/radio/materials/radio_base.tres" id="36_pwp2h"]
 [ext_resource type="PackedScene" uid="uid://daxhwm2jlqsx2" path="res://scenes/viewmodels/radio_world.tscn" id="36_thjfg"]
 [ext_resource type="Script" path="res://scripts/entities/PhysicsProp.gd" id="36_yvtb5"]
@@ -43,7 +45,11 @@
 [ext_resource type="Material" uid="uid://conkndym6w4dn" path="res://assets/models/viewmodels/radio/materials/radio_world_glass.tres" id="43_6wxmk"]
 [ext_resource type="Material" uid="uid://bi6doxwgwq5vo" path="res://assets/models/viewmodels/radio/materials/radio_world_display.tres" id="44_6e4dd"]
 [ext_resource type="Script" path="res://scripts/components/InteractableComponent.gd" id="45_nwjcu"]
+[ext_resource type="PackedScene" uid="uid://cyc5oipv4atav" path="res://assets/models/mat_test.glb" id="47_4fchk"]
 [ext_resource type="PackedScene" uid="uid://b0kg55fr0tvpj" path="res://scenes/physics_props/sphere_test.tscn" id="47_jw63w"]
+[ext_resource type="Material" uid="uid://dnhbqo2osagse" path="res://assets/materials/tile/tile_floor_01.tres" id="48_sxy8e"]
+[ext_resource type="Material" uid="uid://dxeed7px6a52u" path="res://assets/materials/concrete/concrete_panels_light_color.tres" id="49_8cwg4"]
+[ext_resource type="Material" uid="uid://dfx5mi3fpvnxa" path="res://assets/materials/concrete/concrete_panels_dark_color.tres" id="50_oaksu"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hbfcm"]
 panorama = ExtResource("2_fhhgn")
@@ -77,8 +83,6 @@ size = Vector2(30, 30)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wexe3"]
 size = Vector3(30, 30, 7.2)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uiuek"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cx2rw"]
 resource_name = "test"
@@ -554,8 +558,35 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_3y8lw"]
 size = Vector3(0.04, 0.18, 0.11)
 
+[sub_resource type="GDScript" id="GDScript_rnvlo"]
+script/source = "extends StaticBody3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_interactable_component_interacted(interactor):
+	if interactor == Global.player:
+		interactor.state_machine.on_child_transition(\"PlayerClimbingState\")
+"
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wj002"]
+data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_22ahm"]
+data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jiq2g"]
+data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
+
 [node name="world" type="Node3D"]
-script = ExtResource("1_qy1pw")
 
 [node name="env" type="Node3D" parent="."]
 
@@ -563,7 +594,7 @@ script = ExtResource("1_qy1pw")
 environment = SubResource("Environment_2ewyn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
-transform = Transform3D(0.866025, 0.433013, -0.25, 0, 0.5, 0.866026, 0.5, -0.75, 0.433013, 0, 0, 0)
+transform = Transform3D(0.866025, 0.433013, -0.25, 0, 0.5, 0.866025, 0.5, -0.75, 0.433013, 0, 0, 0)
 light_color = Color(0.95, 0.95, 0.95, 1)
 light_energy = 0.7
 shadow_enabled = true
@@ -576,24 +607,24 @@ script = ExtResource("3_7u5qg")
 [node name="test radio" type="Node3D" parent="level/SignalManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.7021, 9, -19)
 script = ExtResource("3_15v7b")
-STREAMS = Array[Resource("res://scripts/SignalStream.gd")]([ExtResource("5_ds0gf")])
+STREAMS = Array[AudioStream]([ExtResource("5_egyus"), ExtResource("6_h15b5")])
 FREQUENCY = 45.0
 RANGE_PARTIAL = 100.0
 RANGE_FULL = 45.0
 
-[node name="jizz radio" type="Node3D" parent="level/SignalManager"]
+[node name="spectrogram test" type="Node3D" parent="level/SignalManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7021, 1, 11)
 script = ExtResource("3_15v7b")
-STREAMS = Array[Resource("res://scripts/SignalStream.gd")]([ExtResource("6_nu16n")])
+STREAMS = Array[AudioStream]([ExtResource("7_bh3f1")])
 VOLUME = -10.0
 FREQUENCY = 13.0
 RANGE_PARTIAL = 30.0
 RANGE_FULL = 10.0
 
-[node name="piss radio" type="Node3D" parent="level/SignalManager"]
+[node name="epic breakcore" type="Node3D" parent="level/SignalManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7021, 1, -19)
 script = ExtResource("3_15v7b")
-STREAMS = Array[Resource("res://scripts/SignalStream.gd")]([ExtResource("7_nec7d")])
+STREAMS = Array[AudioStream]([ExtResource("6_bfw82"), ExtResource("7_ge2td")])
 VOLUME = -20.0
 FREQUENCY = 11.0
 RANGE_PARTIAL = 15.0
@@ -680,17 +711,6 @@ material_override = ExtResource("6_2tmjs")
 use_collision = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level/props/RigidBody3D6"]
-shape = SubResource("BoxShape3D_03s0d")
-
-[node name="RigidBody3D7" type="RigidBody3D" parent="level/props"]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -20.9942, 1.5, -5.74866)
-metadata/_edit_group_ = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="level/props/RigidBody3D7"]
-material_override = ExtResource("6_2tmjs")
-use_collision = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="level/props/RigidBody3D7"]
 shape = SubResource("BoxShape3D_03s0d")
 
 [node name="RigidBody3D8" type="RigidBody3D" parent="level/props"]
@@ -870,8 +890,10 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -66.70
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23.622, 1.2192, -10.5613)
 LOCKED = true
 
+[node name="CSGMesh3D" type="CSGMesh3D" parent="level"]
+
 [node name="Water_test" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9152, 2.61336, -48.9099)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9152, 2.61336, -10.9099)
 mesh = SubResource("PlaneMesh_e0f1o")
 skeleton = NodePath("../level/props/plastic_crate")
 surface_material_override/0 = ExtResource("24_5adkb")
@@ -895,13 +917,6 @@ shape = SubResource("BoxShape3D_wexe3")
 transform = Transform3D(1, 0, 2.68659e-16, 0, 1, 0, 2.68659e-16, 0, 1, 0, -3.6, 0)
 size = Vector3(30, 7.2, 30)
 material = ExtResource("24_5adkb")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_uiuek")
 
 [node name="room_test" parent="." instance=ExtResource("26_01i44")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -35.3125, -6.48499e-05, 36.4386)
@@ -938,7 +953,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.8308, 1.29994, 38.921)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.4994, 1.29994, 39.5385)
 
 [node name="radio_pickup" parent="." instance=ExtResource("36_thjfg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0037, 4.52995e-06, -17.0338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0037, 0.100005, -17.0338)
+
+[node name="radio_pickup3" parent="." instance=ExtResource("36_thjfg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0037, 0.100005, -17.0338)
+weapon = ExtResource("35_vy852")
 
 [node name="radio_pickup2" type="RigidBody3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.8037, 1.1, -17.4488)
@@ -1075,11 +1094,49 @@ transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -47.6118, 3.26013, 3
 [node name="PhysicsProp6" parent="." instance=ExtResource("47_jw63w")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -47.6118, 3.5573, 39.4897)
 
+[node name="mat_test" parent="." instance=ExtResource("47_4fchk")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 37.4514, -0.791284, -13.4904)
+
+[node name="Cube" parent="mat_test" index="0"]
+material_override = ExtResource("48_sxy8e")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="mat_test/Cube" index="0"]
+script = SubResource("GDScript_rnvlo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mat_test/Cube/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wj002")
+
+[node name="InteractableComponent" type="Node" parent="mat_test/Cube/StaticBody3D"]
+script = ExtResource("45_nwjcu")
+
+[node name="mat_test2" parent="." instance=ExtResource("47_4fchk")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 37.4514, -0.791284, 10.5096)
+
+[node name="Cube" parent="mat_test2" index="0"]
+material_override = ExtResource("49_8cwg4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="mat_test2/Cube" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mat_test2/Cube/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_22ahm")
+
+[node name="mat_test3" parent="." instance=ExtResource("47_4fchk")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 37.4514, -0.791284, 34.5096)
+
+[node name="Cube" parent="mat_test3" index="0"]
+material_override = ExtResource("50_oaksu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="mat_test3/Cube" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mat_test3/Cube/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jiq2g")
+
 [connection signal="toggled_off" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_off"]
 [connection signal="toggled_on" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_on"]
 [connection signal="body_entered" from="Water_test/Area3D" to="Water_test/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Water_test/Area3D" to="Water_test/Area3D" method="_on_body_exited"]
 [connection signal="interacted" from="radio_pickup2/InteractableComponent" to="radio_pickup2" method="_on_interactable_component_interacted"]
+[connection signal="interacted" from="mat_test/Cube/StaticBody3D/InteractableComponent" to="mat_test/Cube/StaticBody3D" method="_on_interactable_component_interacted"]
 
 [editable path="level/Player"]
 [editable path="level/Player/Root/legs_test"]
@@ -1087,3 +1144,6 @@ transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -47.6118, 3.5573, 39
 [editable path="level/door_test8"]
 [editable path="room_test"]
 [editable path="room_test2"]
+[editable path="mat_test"]
+[editable path="mat_test2"]
+[editable path="mat_test3"]

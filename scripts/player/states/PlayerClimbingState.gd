@@ -19,9 +19,9 @@ func exit():
 
 func input_update(event):
 	if Input.is_action_pressed("slow_walk"):
-		speed_mult = CLIMBING_SPEED
-	else:
 		speed_mult = CLIMBING_SLOW_SPEED
+	else:
+		speed_mult = CLIMBING_SPEED
 		
 func update(delta):
 	var direction = player.head.global_transform.basis * player.input_dir.normalized()

@@ -12,15 +12,15 @@ extends RigidBody3D
 @export var DEFAULT_HOLD_VECTOR : Vector3 = Vector3.UP ##Default orientation when picked up
 @export var THROW_FORCE : float = 6 ##Throwing force multipler
 
-@onready var AudioPlayer = SpatialAudioPlayer3D.new() #Create new 3D Audio Player for physics sounds
+@onready var audio_player = SpatialAudioPlayer3D.new() #Create new 3D Audio Player for physics sounds
 
 var holder
 var distance : float
 var held : bool = false
 
 func _ready(): #Set up physics prop properties
-	add_child(AudioPlayer)
-	AudioPlayer.doppler_tracking = AudioPlayer.DOPPLER_TRACKING_PHYSICS_STEP
+	add_child(audio_player)
+	audio_player.doppler_tracking = audio_player.DOPPLER_TRACKING_PHYSICS_STEP
 	max_contacts_reported = 1
 	contact_monitor = true
 	self.body_entered.connect(_on_body_entered)
@@ -45,11 +45,11 @@ func _integrate_forces(state):
 				drop()
 		if physics_material_override != null:
 			if linear_velocity.length() > 4 and angular_velocity.length() < 2.5: #Angular velocity check is to prevent rolling objects from scraping (could seperate for rolling sfx later if wanted)
-				if !AudioPlayer.playing:
-					AudioPlayer.stream = physics_material_override.SFX_SCRAPE
-					AudioPlayer.spatial_play()
-			elif AudioPlayer.stream == physics_material_override.SFX_SCRAPE:
-				AudioPlayer.stop()
+				if !audio_player.playing:
+					audio_player.stream = physics_material_override.SFX_SCRAPE
+					audio_player.spatial_play()
+			elif audio_player.stream == physics_material_override.SFX_SCRAPE:
+				audio_player.stop()
 	
 func carry():
 	sleeping = false
@@ -58,6 +58,7 @@ func carry():
 	holder.hold_point.set_node_b(get_path())
 	holder.held_object = self
 	add_collision_exception_with(holder)
+	holder.weapon_manager.holster_active()
 	
 func drop():
 	sleeping = false
@@ -66,6 +67,7 @@ func drop():
 	holder.hold_point.set_node_b("")
 	holder.held_object = null
 	remove_collision_exception_with(holder)
+	holder.weapon_manager.draw_active()
 	
 func throw(throw_dir):
 	drop()
@@ -78,21 +80,21 @@ func _on_body_entered(body):
 	if held: #Fix for held props breaking while moving
 		velocity *= 0.5
 	if velocity > 6: #Do hard physics impact
-		if physics_material_override != null and !AudioPlayer.playing:
-			AudioPlayer.stream = physics_material_override.SFX_IMPACT_HARD
-			AudioPlayer.play()
+		if physics_material_override != null and !audio_player.playing:
+			audio_player.stream = physics_material_override.SFX_IMPACT_HARD
+			audio_player.play()
 		if body.has_meta("HealthComponent"):
 			body.get_meta("HealthComponent", null).damage(velocity * OTHER_PHYS_DAMAGE_MULTIPLIER)
 		if self.has_meta("HealthComponent"):
 			self.get_meta("HealthComponent", null).damage(velocity * SELF_PHYS_DAMAGE_MULTIPLIER)
 	elif velocity > 2: #Do soft physics impact
-		if physics_material_override != null and !AudioPlayer.playing:
-			AudioPlayer.stream = physics_material_override.SFX_IMPACT_SOFT
-			AudioPlayer.spatial_play()
+		if physics_material_override != null and !audio_player.playing:
+			audio_player.stream = physics_material_override.SFX_IMPACT_SOFT
+			audio_player.spatial_play()
 			
 func _on_body_exited(_body):
-	if AudioPlayer.playing and AudioPlayer.stream == physics_material_override.SFX_SCRAPE: #Fix for scrape noises still playing after object is pciked up
-		AudioPlayer.stop()
+	if audio_player.playing and audio_player.stream == physics_material_override.SFX_SCRAPE: #Fix for scrape noises still playing after object is pciked up
+		audio_player.stop()
 
 func _on_interactable_component_interacted(interacter):
 	holder = interacter

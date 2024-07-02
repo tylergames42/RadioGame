@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/spectogram_test.mp3-a3513e0ba86ed2b246ee2df76
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0.0
 bpm=0.0
 beat_count=0

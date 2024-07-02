@@ -1,21 +1,22 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://da065ilc07jka"]
 
-[ext_resource type="Shader" path="res://assets/shaders/transparent_viewmodel_shader.gdshader" id="1_7xij0"]
+[ext_resource type="Shader" path="res://assets/shaders/viewmodel_glass.gdshader" id="1_qebmv"]
 [ext_resource type="Texture2D" uid="uid://b113tslx8vss2" path="res://assets/models/viewmodels/radio/materials/grunge_test.png" id="2_2yg68"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_7xij0")
-shader_parameter/albedo = Color(1, 1, 1, 0.0784314)
+shader = ExtResource("1_qebmv")
+shader_parameter/albedo = Color(0.501961, 0.501961, 0.501961, 0.12549)
 shader_parameter/point_size = null
-shader_parameter/emission = null
-shader_parameter/emission_energy = null
-shader_parameter/normal_scale = 1.0
-shader_parameter/clearcoat = 1.0
-shader_parameter/clearcoat_roughness = 0.1
+shader_parameter/roughness = 0.075
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/refraction = null
+shader_parameter/refraction_texture_channel = null
 shader_parameter/uv1_scale = null
 shader_parameter/uv1_offset = null
 shader_parameter/uv2_scale = null
 shader_parameter/uv2_offset = null
 shader_parameter/fov = 80.0
-shader_parameter/texture_clearcoat = ExtResource("2_2yg68")
+shader_parameter/texture_roughness = ExtResource("2_2yg68")

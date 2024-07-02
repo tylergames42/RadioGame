@@ -28,7 +28,7 @@ extends RigidBody3D
 @onready var flashlight = $Root/Head/Flashlight
 @onready var leg_anim_player = $Root/legs_test/AnimationPlayer
 
-@onready var AudioPlayer = SpatialAudioPlayer3D.new() #Audio player for footsteps, jump sounds, etc.
+@onready var audio_player = SpatialAudioPlayer3D.new() #Audio player for footsteps, jump sounds, etc.
 
 var grounded : bool = false
 var can_climb : bool = true
@@ -42,13 +42,17 @@ var target_velocity : Vector3
 var was_grounded : bool = false
 var rotating_held : bool = false
 
+var camera_punch : Vector3
+
 func _ready():
 	Global.player = self
 	current_speed = 0.0
-	
-	add_child(AudioPlayer)
+	add_child(audio_player)
 
 func _input(event):
+	if Global.paused:
+		return
+	
 	if event.is_action_pressed("interact"):
 		if held_object != null: #If holding an object drop it
 			held_object.drop()
@@ -74,12 +78,6 @@ func _input(event):
 			state_machine.on_child_transition("PlayerNoclipState")
 		else:
 			state_machine.on_child_transition("PlayerIdleState")
-		
-	if event.is_action_pressed("flashlight"):
-		if flashlight.visible:
-			flashlight.visible = false
-		else:
-			flashlight.visible = true
 	
 	if event is InputEventMouseMotion: #Get mouse input
 		if rotating_held:
@@ -101,6 +99,8 @@ func _physics_process(delta):
 	was_grounded = grounded
 	grounded = groundcast.is_colliding() #Get if on ground
 	
+	camera_tilt(delta)
+	
 	if grounded && groundcast.get_collider(0) == held_object: #Prevent holding stood on objects TODO: Buggy rn
 		grounded = false
 		held_object.drop()
@@ -113,8 +113,6 @@ func _physics_process(delta):
 	target_velocity = direction * current_speed
 	var impulse_vector = target_velocity - Vector3(linear_velocity.x,0,linear_velocity.z)
 	apply_central_impulse(impulse_vector * control_multiplier)
-	
-	camera_tilt(delta)
 
 func slopeSliding():
 	var normal_average = Vector3.ZERO
@@ -242,8 +240,17 @@ func play_step_sfx():
 			if ground.physics_material_override is MaterialProperties:
 				if ground.physics_material_override.SFX_STEP != null:
 					material = ground.physics_material_override
-		AudioPlayer.stream = material.SFX_STEP
-		AudioPlayer.spatial_play()
+		audio_player.stream = material.SFX_STEP
+		audio_player.spatial_play()
 		
 func camera_tilt(delta):
+	#View tilt
 	camera.rotation.z = lerp(camera.rotation.z, -input_dir.x * VIEW_TILT_MULTIPLIER, 10 * delta)
+	#View punch - TODO BUGGY
+	camera.rotation = lerp(camera.rotation, camera_punch, 6 * delta)
+	camera_punch = lerp(camera_punch, Vector3(0, 0, 0), 4 * delta)
+
+func _on_body_entered(body): #View punch - TODO BUGGY
+	var vel = linear_velocity
+	if vel.z < -2.0:
+		camera_punch = vel * 0.04

@@ -1,9 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d1k4hw402wm55"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d1k4hw402wm55"]
 
 [ext_resource type="Shader" path="res://assets/shaders/advanced_viewmodel_shader.gdshader" id="1_nio40"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ikqpn"]
-size = Vector2(32, 32)
 
 [resource]
 render_priority = 0
@@ -20,4 +17,3 @@ shader_parameter/uv1_offset = null
 shader_parameter/uv2_scale = null
 shader_parameter/uv2_offset = null
 shader_parameter/fov = 80.0
-shader_parameter/texture_albedo = SubResource("PlaceholderTexture2D_ikqpn")

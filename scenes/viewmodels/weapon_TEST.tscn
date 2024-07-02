@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bkiaja4th1hpl"]
 
-[ext_resource type="Script" path="res://scripts/player/WeaponBase.gd" id="1_utvl4"]
+[ext_resource type="Script" path="res://scripts/player/weapons/WeaponBase.gd" id="1_utvl4"]
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(0.3417, -0.00759611, -0.939779, 0.084186, 0.996195, 0.0225576, 0.936031, -0.0868241, 0.341039, -0.21632, -0.108573, -0.2)

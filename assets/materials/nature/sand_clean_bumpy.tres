@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" load_steps=5 format=3 uid="uid://df821xbqawm52"]
+
+[ext_resource type="Texture2D" uid="uid://86kn5ivjiph2" path="res://assets/materials/nature/sand_clean_bumpy_color.png" id="1_w0h3d"]
+[ext_resource type="PhysicsMaterial" uid="uid://sfpjl627dhnw" path="res://assets/material_properties/mat_gravel.tres" id="2_t6oa0"]
+[ext_resource type="Texture2D" uid="uid://be8t7ybtwe1oo" path="res://assets/materials/nature/sand_clean_bumpy_normal.png" id="3_ly5yp"]
+[ext_resource type="Texture2D" uid="uid://6gpq1vkokom" path="res://assets/materials/nature/sand_clean_bumpy_orm.png" id="4_845r1"]
+
+[resource]
+albedo_texture = ExtResource("1_w0h3d")
+orm_texture = ExtResource("4_845r1")
+normal_enabled = true
+normal_texture = ExtResource("3_ly5yp")
+texture_filter = 4
+metadata/MaterialProperties = ExtResource("2_t6oa0")
