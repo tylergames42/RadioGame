@@ -17,6 +17,9 @@ func add_weapon(weapon : PackedScene) -> void:
 	print("ADDED " + new_weapon.WEAPON_NAME)
 
 func swap_to_weapon(weapon_name : String) -> void:
+	if active_weapon != null:
+		if active_weapon.WEAPON_NAME == weapon_name:
+			return
 	for child in get_children():
 		if child is WeaponBase:
 			if weapon_name == child.WEAPON_NAME:
@@ -44,18 +47,21 @@ func draw_active():
 func _process(delta):
 	if active_weapon == null:
 		return
-	active_weapon.update(delta)
-	view_sway(delta)
+	if active_weapon.active:
+		active_weapon.update(delta)
+		view_sway(delta)
 	
 func _physics_process(delta):
 	if active_weapon == null:
 		return
-	active_weapon.physics_update(delta)
+	if active_weapon.active:
+		active_weapon.physics_update(delta)
 	
 func _input(event):
 	if active_weapon == null:
 		return
-	active_weapon.input_update(event)
+	if active_weapon.active:
+		active_weapon.input_update(event)
 	
 	if event.is_action_pressed("ui_right"):
 		swap_to_weapon("Camera")
@@ -63,5 +69,5 @@ func _input(event):
 		swap_to_weapon("Radio")
 	
 func view_sway(delta) -> void:
-	rotation.y = lerp(rotation.y, -PLAYER.linear_velocity.y * 0.01, 10 * delta)
-	rotation.z = lerp(rotation.x, (PLAYER.linear_velocity.x + PLAYER.linear_velocity.z) * 0.01, 10 * delta)
+	rotation.y = lerp(rotation.y, -PLAYER.prev_velocity.y * 0.01, 10 * delta)
+	rotation.z = lerp(rotation.x, (PLAYER.prev_velocity.x + PLAYER.prev_velocity.z) * 0.01, 10 * delta)

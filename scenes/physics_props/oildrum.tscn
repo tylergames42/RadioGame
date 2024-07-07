@@ -62,5 +62,6 @@ shape = SubResource("CylinderShape3D_kud3g")
 
 [node name="InteractableComponent" type="Node" parent="."]
 script = ExtResource("2_6ejy5")
+COOLDOWN = 0.25
 
 [connection signal="interacted" from="InteractableComponent" to="." method="_on_interactable_component_interacted"]

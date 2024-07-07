@@ -17,6 +17,7 @@ extends RigidBody3D
 var holder
 var distance : float
 var held : bool = false
+var prev_velocity : Vector3
 
 func _ready(): #Set up physics prop properties
 	add_child(audio_player)
@@ -28,16 +29,15 @@ func _ready(): #Set up physics prop properties
 	OTHER_PHYS_DAMAGE_MULTIPLIER = OTHER_PHYS_DAMAGE_MULTIPLIER * (mass * 0.05)
 	BUOYANCY = BUOYANCY * mass
 			
-func _integrate_forces(state):
+func _integrate_forces(_state):
+	prev_velocity = linear_velocity
+	
 	if held:
 		distance = global_transform.origin.distance_to(holder.hold_point.global_transform.origin)
 		var velocity_multipler = 10 / (snapped(distance, 0.2) + 0.3)
 		var target_velocity = (holder.hold_point.global_transform.origin - global_transform.origin) * velocity_multipler
 		var impulse_vector = target_velocity - linear_velocity
 		apply_central_impulse(impulse_vector + holder.linear_velocity)
-		#var angle_difference = global_basis.y.angle_to(-holder.hold_point.global_basis.z)
-		#var rotation_axis = global_basis.y.cross(-holder.hold_point.global_basis.z.normalized())
-		#apply_torque_impulse((rotation_axis * angle_difference * 3) / angle_difference)
 			
 	if get_colliding_bodies() != [] and get_colliding_bodies()[0]: #Scrape sfx (kinda jank rn)
 		if held:
@@ -74,7 +74,7 @@ func throw(throw_dir):
 	apply_central_impulse(throw_dir * mass * THROW_FORCE)
 
 func _on_body_entered(body):
-	var velocity = linear_velocity.length()
+	var velocity = prev_velocity.length()
 	if body is PhysicsProp:
 		velocity = abs(linear_velocity - body.linear_velocity).length()
 	if held: #Fix for held props breaking while moving

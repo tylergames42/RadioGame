@@ -1,6 +1,6 @@
-[gd_scene load_steps=76 format=3 uid="uid://cvdvb3r0hoj7f"]
+[gd_scene load_steps=72 format=3 uid="uid://cvdvb3r0hoj7f"]
 
-[ext_resource type="Texture2D" uid="uid://bieyv6v2fhlhj" path="res://assets/hdris/mud_road_puresky_2k.hdr" id="2_fhhgn"]
+[ext_resource type="Environment" uid="uid://tdvlqoyf7qjy" path="res://scenes/env_main.tres" id="1_as7pu"]
 [ext_resource type="PackedScene" uid="uid://bgymsig42c8vi" path="res://scenes/levels/level_test.glb" id="3_6uhm8"]
 [ext_resource type="Script" path="res://scenes/levels/SignalManager.gd" id="3_7u5qg"]
 [ext_resource type="Script" path="res://scripts/SignalTransmitter.gd" id="3_15v7b"]
@@ -32,7 +32,6 @@
 [ext_resource type="PhysicsMaterial" uid="uid://bho2aunoj375l" path="res://assets/material_properties/mat_reflect_test.tres" id="27_yttpw"]
 [ext_resource type="PhysicsMaterial" uid="uid://btupykdprxygc" path="res://assets/material_properties/mat_absorb_test.tres" id="28_1uvbh"]
 [ext_resource type="Material" uid="uid://didp6yqh0dx65" path="res://assets/materials/nature/dirt_1.tres" id="29_7arhb"]
-[ext_resource type="PackedScene" uid="uid://dn6bdjv8t7mcc" path="res://scenes/viewmodels/camera.tscn" id="35_vy852"]
 [ext_resource type="Material" uid="uid://fer61es4r1pv" path="res://assets/models/viewmodels/radio/materials/radio_base.tres" id="36_pwp2h"]
 [ext_resource type="PackedScene" uid="uid://daxhwm2jlqsx2" path="res://scenes/viewmodels/radio_world.tscn" id="36_thjfg"]
 [ext_resource type="Script" path="res://scripts/entities/PhysicsProp.gd" id="36_yvtb5"]
@@ -50,23 +49,6 @@
 [ext_resource type="Material" uid="uid://dnhbqo2osagse" path="res://assets/materials/tile/tile_floor_01.tres" id="48_sxy8e"]
 [ext_resource type="Material" uid="uid://dxeed7px6a52u" path="res://assets/materials/concrete/concrete_panels_light_color.tres" id="49_8cwg4"]
 [ext_resource type="Material" uid="uid://dfx5mi3fpvnxa" path="res://assets/materials/concrete/concrete_panels_dark_color.tres" id="50_oaksu"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hbfcm"]
-panorama = ExtResource("2_fhhgn")
-filter = false
-
-[sub_resource type="Sky" id="Sky_uwdcb"]
-sky_material = SubResource("PanoramaSkyMaterial_hbfcm")
-
-[sub_resource type="Environment" id="Environment_2ewyn"]
-background_mode = 2
-sky = SubResource("Sky_uwdcb")
-ambient_light_source = 3
-ambient_light_sky_contribution = 0.8
-ambient_light_energy = 0.8
-reflected_light_source = 2
-ssao_enabled = true
-fog_density = 0.0675
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_03s0d"]
 
@@ -561,17 +543,6 @@ size = Vector3(0.04, 0.18, 0.11)
 [sub_resource type="GDScript" id="GDScript_rnvlo"]
 script/source = "extends StaticBody3D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_interactable_component_interacted(interactor):
 	if interactor == Global.player:
 		interactor.state_machine.on_child_transition(\"PlayerClimbingState\")
@@ -591,7 +562,7 @@ data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 
 [node name="env" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
-environment = SubResource("Environment_2ewyn")
+environment = ExtResource("1_as7pu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
 transform = Transform3D(0.866025, 0.433013, -0.25, 0, 0.5, 0.866025, 0.5, -0.75, 0.433013, 0, 0, 0)
@@ -636,7 +607,8 @@ RANGE_FULL = 5.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96998, -4.00001, 9.93774)
 
 [node name="LightmapGI" type="LightmapGI" parent="level"]
-generate_probes_subdiv = 3
+quality = 2
+generate_probes_subdiv = 4
 light_data = ExtResource("4_d0goh")
 
 [node name="Player" parent="level" instance=ExtResource("5_mb7ru")]
@@ -954,10 +926,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.4994, 1.29994, 39.5385)
 
 [node name="radio_pickup" parent="." instance=ExtResource("36_thjfg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0037, 0.100005, -17.0338)
-
-[node name="radio_pickup3" parent="." instance=ExtResource("36_thjfg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0037, 0.100005, -17.0338)
-weapon = ExtResource("35_vy852")
 
 [node name="radio_pickup2" type="RigidBody3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.8037, 1.1, -17.4488)

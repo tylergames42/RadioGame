@@ -25,8 +25,8 @@ extends RigidBody3D
 @onready var animation_player = $AnimationPlayer #Animation player
 @onready var state_machine = $PlayerStateMachine #State machine for player
 @onready var weapon_manager = $Root/Head/WeaponManager
-@onready var flashlight = $Root/Head/Flashlight
 @onready var leg_anim_player = $Root/legs_test/AnimationPlayer
+@onready var ui = $Root/Head/Camera/UI
 
 @onready var audio_player = SpatialAudioPlayer3D.new() #Audio player for footsteps, jump sounds, etc.
 
@@ -42,6 +42,7 @@ var target_velocity : Vector3
 var was_grounded : bool = false
 var rotating_held : bool = false
 
+var prev_velocity : Vector3
 var camera_punch : Vector3
 
 func _ready():
@@ -96,6 +97,8 @@ func _input(event):
 	direction = root.transform.basis * input_dir.normalized()
 
 func _physics_process(delta):
+	prev_velocity = linear_velocity
+	
 	was_grounded = grounded
 	grounded = groundcast.is_colliding() #Get if on ground
 	
@@ -246,11 +249,10 @@ func play_step_sfx():
 func camera_tilt(delta):
 	#View tilt
 	camera.rotation.z = lerp(camera.rotation.z, -input_dir.x * VIEW_TILT_MULTIPLIER, 10 * delta)
-	#View punch - TODO BUGGY
+	#View punch
 	camera.rotation = lerp(camera.rotation, camera_punch, 6 * delta)
 	camera_punch = lerp(camera_punch, Vector3(0, 0, 0), 4 * delta)
 
-func _on_body_entered(body): #View punch - TODO BUGGY
-	var vel = linear_velocity
-	if vel.z < -2.0:
-		camera_punch = vel * 0.04
+func _on_body_entered(_body): #View punch
+	if prev_velocity.y < -4.4:
+		camera_punch = prev_velocity * 0.02

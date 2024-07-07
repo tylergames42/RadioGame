@@ -9,7 +9,7 @@ var speed_mult = CLIMBING_SPEED
 func _ready():
 	player = get_owner()
 
-func enter(last_state):
+func enter(_last_state):
 	player.collider.disabled = true
 	player.freeze = true
 	

@@ -1,0 +1,20 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://tdvlqoyf7qjy"]
+
+[ext_resource type="Texture2D" uid="uid://bieyv6v2fhlhj" path="res://assets/hdris/mud_road_puresky_2k.hdr" id="1_k158p"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hbfcm"]
+panorama = ExtResource("1_k158p")
+filter = false
+
+[sub_resource type="Sky" id="Sky_uwdcb"]
+sky_material = SubResource("PanoramaSkyMaterial_hbfcm")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_uwdcb")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.8
+ambient_light_energy = 0.8
+reflected_light_source = 2
+ssao_enabled = true
+fog_density = 0.0675

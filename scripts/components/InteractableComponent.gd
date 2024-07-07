@@ -7,7 +7,7 @@ signal interacted_locked ##Emitted when the object is interacted while it is loc
 
 @export var ENABLED = true ##Should interactable start enabled
 @export var LOCKED = false ##Should interactable be locked (locked interactables emit a different signal when interacted with)
-@export var COOLDOWN : float = 0.1 ##Cooldown until interactable can be interacted with again (if set to zero this is disabled)
+@export var COOLDOWN : float = 0.2 ##Cooldown until interactable can be interacted with again (if set to zero this is disabled)
 
 @onready var timer = Timer.new()
 

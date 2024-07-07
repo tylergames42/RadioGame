@@ -128,14 +128,6 @@ func find_signals():
 					if sig == connected_signal:
 						connected_signal = null
 					
-func tune(amount : float):
-	if amount > 0.0:
-		pass
-	elif amount < 0.0:
-		pass
-	else:
-		return
-					
 func update_visuals(delta):
 	var strength = reciever_signal_strength
 	if in_range_of_signals:
