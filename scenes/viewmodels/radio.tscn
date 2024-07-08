@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://im2obulcl5vg"]
+[gd_scene load_steps=24 format=3 uid="uid://im2obulcl5vg"]
 
 [ext_resource type="PackedScene" uid="uid://c6h07q5hlr7wl" path="res://assets/models/viewmodels/radio/radio.glb" id="1_rc01t"]
 [ext_resource type="Script" path="res://scripts/player/weapons/WeaponRadio.gd" id="2_kf3eb"]
@@ -27,49 +27,31 @@ animation = &"radio_deploy"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3rqba"]
 animation = &"radio_holster"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oo2u5"]
-animation = &"radio_idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vgben"]
-animation = &"radio_idle_holstered"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qu78v"]
 animation = &"radio_pickup"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tgmw8"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k18vj"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_llgrp"]
 advance_mode = 0
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_janbw"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vmc4e"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7l4lw"]
 advance_mode = 0
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a4e6y"]
-switch_mode = 2
-advance_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jblex"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_octvi"]
+advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_sitda"]
 states/End/position = Vector2(991, 100)
 states/draw/node = SubResource("AnimationNodeAnimation_6mgc4")
 states/draw/position = Vector2(655, 171)
 states/holster/node = SubResource("AnimationNodeAnimation_3rqba")
-states/holster/position = Vector2(655, 39)
-states/idle/node = SubResource("AnimationNodeAnimation_oo2u5")
-states/idle/position = Vector2(497, 100)
-states/idle_holstered/node = SubResource("AnimationNodeAnimation_vgben")
-states/idle_holstered/position = Vector2(834, 100)
+states/holster/position = Vector2(655, 47)
 states/pickup/node = SubResource("AnimationNodeAnimation_qu78v")
 states/pickup/position = Vector2(333, 100)
-transitions = ["Start", "pickup", SubResource("AnimationNodeStateMachineTransition_tgmw8"), "holster", "idle_holstered", SubResource("AnimationNodeStateMachineTransition_k18vj"), "idle_holstered", "draw", SubResource("AnimationNodeStateMachineTransition_llgrp"), "pickup", "idle", SubResource("AnimationNodeStateMachineTransition_janbw"), "idle", "holster", SubResource("AnimationNodeStateMachineTransition_vmc4e"), "draw", "idle", SubResource("AnimationNodeStateMachineTransition_a4e6y")]
+transitions = ["Start", "pickup", SubResource("AnimationNodeStateMachineTransition_tgmw8"), "pickup", "holster", SubResource("AnimationNodeStateMachineTransition_7l4lw"), "holster", "draw", SubResource("AnimationNodeStateMachineTransition_jblex"), "draw", "holster", SubResource("AnimationNodeStateMachineTransition_octvi")]
+graph_offset = Vector2(-153, -91)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_y3j3i"]
 
@@ -105,28 +87,27 @@ MAT_AUDIO_IND = ExtResource("5_j816w")
 WEAPON_NAME = "Radio"
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(-1.85084, -1.3, -1.83)
-bones/0/rotation = Quaternion(-0.0367882, -0.536788, 0.0234367, 0.842589)
-bones/2/rotation = Quaternion(2.83833e-05, -0.000663958, 0.0436193, 0.999048)
+bones/2/rotation = Quaternion(-5.96047e-07, -0.00066461, 3.95903e-10, 1)
 bones/3/rotation = Quaternion(0.000322833, 2.43977e-07, -4.2891e-07, 1)
 bones/4/rotation = Quaternion(-0.000644317, 2.09443e-07, 0.00101554, 0.999999)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/rotation = Quaternion(0.000320129, 1.39198e-07, -0.00198148, 0.999998)
 bones/7/position = Vector3(0.169, 0.946002, 0.325)
+bones/8/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/9/rotation = Quaternion(0.152344, 0.988326, -0.000261091, 0.00169382)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(0.114329, 0.244538, 0.953571, 0.133539)
 bones/10/scale = Vector3(1, 1, 0.999999)
 
 [node name="Jigglebone" type="Node3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.0399931, 0.0126276, 0.0907805, 0.0222805, 0.0974148, -0.00373487, -0.0889052, 0.0187326, -0.0417727, -1.05372, -0.0196752, 0.191575)
+transform = Transform3D(-0.0953579, 0.0301129, 0.00030724, 0.0301127, 0.0953584, -0.000103029, -0.000324004, -5.72843e-06, -0.0999995, -0.0175394, 0.0374235, 0.946129)
 top_level = true
 script = ExtResource("5_lfofe")
 bone_name = "wire_jiggle_top"
 stiffness = 8.0
 
 [node name="Jigglebone2" type="Node3D" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.053531, -0.0534048, -0.0654397, 0.0240278, -0.0839023, 0.0488166, -0.0809759, 0.0104083, 0.0577457, 0.508394, -0.545214, -0.80384)
+transform = Transform3D(-0.0938158, -0.0198776, 0.0283456, 0.0310655, -0.0844731, 0.0435802, 0.0152817, 0.0496909, 0.0854241, -0.297624, -0.399443, -0.908125)
 top_level = true
 script = ExtResource("5_lfofe")
 bone_name = "wire_jiggle_bot"

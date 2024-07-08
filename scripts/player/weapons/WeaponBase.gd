@@ -9,27 +9,24 @@ class_name WeaponBase
 var active : bool
 
 func pickup() -> void:
-	show()
+	hide()
 	active = true
+	await get_tree().create_timer(0.4).timeout
+	ANIM_TREE["parameters/StateMachine/playback"].travel("pickup")
 	visible = active
 
 func draw() -> void:
 	if active:
 		return
 	active = true
-	visible = active
-	for child in get_children(): #Workaround because UI shit doesn't want to hide for some reason
-		if child is Control:
-			child.show()
+	await get_tree().create_timer(0.2).timeout
 	ANIM_TREE["parameters/StateMachine/playback"].travel("draw")
+	visible = active
 	
 func holster() -> void:
 	if !active:
 		return
 	active = false
-	for child in get_children(): #Workaround because UI shit doesn't want to hide for some reason
-		if child is Control:
-			child.hide()
 	ANIM_TREE["parameters/StateMachine/playback"].travel("holster")
 	await ANIM_TREE.animation_finished
 	visible = active

@@ -10,13 +10,21 @@ func add_weapon(weapon : PackedScene) -> void:
 	for child in get_children(): #Don't give duplicate weapons
 		if child is WeaponBase:
 			if child.WEAPON_NAME == new_weapon.WEAPON_NAME:
+				swap_to_weapon(child.WEAPON_NAME)
 				new_weapon.queue_free()
 				return
 	add_child(new_weapon)
-	swap_to_weapon(new_weapon.WEAPON_NAME)
+	if active_weapon != null:
+		active_weapon.holster()
+	active_weapon = new_weapon
+	new_weapon.pickup()
 	print("ADDED " + new_weapon.WEAPON_NAME)
 
 func swap_to_weapon(weapon_name : String) -> void:
+	if weapon_name == null:
+		if active_weapon != null:
+					active_weapon.holster()
+		active_weapon = null
 	if active_weapon != null:
 		if active_weapon.WEAPON_NAME == weapon_name:
 			return

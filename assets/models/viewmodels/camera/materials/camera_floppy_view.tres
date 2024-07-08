@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bpw2lmbn17sbo"]
+
+[ext_resource type="Shader" path="res://assets/shaders/advanced_viewmodel_shader.gdshader" id="1_2p2ak"]
+[ext_resource type="Texture2D" uid="uid://bk871pqmmvd00" path="res://assets/models/viewmodels/camera/materials/floppy_disk_color.png" id="2_hoeth"]
+[ext_resource type="Texture2D" uid="uid://dai882c1d58a1" path="res://assets/models/viewmodels/camera/materials/floppy_disk_normal.png" id="3_1su58"]
+[ext_resource type="Texture2D" uid="uid://bslixnolvhwg8" path="res://assets/models/viewmodels/camera/materials/floppy_disk_orm.png" id="4_c1f2r"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_2p2ak")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = null
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.5
+shader_parameter/normal_scale = 1.0
+shader_parameter/clearcoat = null
+shader_parameter/clearcoat_roughness = 1.0
+shader_parameter/uv1_scale = null
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/fov = 80.0
+shader_parameter/texture_albedo = ExtResource("2_hoeth")
+shader_parameter/texture_orm = ExtResource("4_c1f2r")
+shader_parameter/texture_normal = ExtResource("3_1su58")

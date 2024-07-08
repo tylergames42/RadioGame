@@ -1,0 +1,13 @@
+[gd_resource type="ORMMaterial3D" load_steps=4 format=3 uid="uid://d1p7lqro76x8l"]
+
+[ext_resource type="Texture2D" uid="uid://dyn1025t3c4pw" path="res://assets/models/viewmodels/camera/materials/camera_glass_color.png" id="1_hbqle"]
+[ext_resource type="Texture2D" uid="uid://nuejioaygwn6" path="res://assets/models/viewmodels/camera/materials/camera_glass_normal.png" id="2_que46"]
+[ext_resource type="Texture2D" uid="uid://c4xds7fruw3x5" path="res://assets/models/viewmodels/camera/materials/camera_glass_orm.png" id="3_4sgo1"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_hbqle")
+orm_texture = ExtResource("3_4sgo1")
+normal_enabled = true
+normal_texture = ExtResource("2_que46")
+texture_filter = 4

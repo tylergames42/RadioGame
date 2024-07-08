@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cvdvb3r0hoj7f"]
+[gd_scene load_steps=73 format=3 uid="uid://cvdvb3r0hoj7f"]
 
 [ext_resource type="Environment" uid="uid://tdvlqoyf7qjy" path="res://scenes/env_main.tres" id="1_as7pu"]
 [ext_resource type="PackedScene" uid="uid://bgymsig42c8vi" path="res://scenes/levels/level_test.glb" id="3_6uhm8"]
@@ -49,6 +49,7 @@
 [ext_resource type="Material" uid="uid://dnhbqo2osagse" path="res://assets/materials/tile/tile_floor_01.tres" id="48_sxy8e"]
 [ext_resource type="Material" uid="uid://dxeed7px6a52u" path="res://assets/materials/concrete/concrete_panels_light_color.tres" id="49_8cwg4"]
 [ext_resource type="Material" uid="uid://dfx5mi3fpvnxa" path="res://assets/materials/concrete/concrete_panels_dark_color.tres" id="50_oaksu"]
+[ext_resource type="PackedScene" uid="uid://cjc7tvi6axd4a" path="res://scenes/viewmodels/camera_world.tscn" id="53_psnvk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_03s0d"]
 
@@ -616,6 +617,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, -10)
 TOGGLE_CROUCH = true
 TOGGLE_SPRINT = true
 
+[node name="UI" parent="level/Player/Root/Head/Camera" index="1"]
+visibility_layer = 2
+
 [node name="props" type="Node3D" parent="level"]
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="level/props"]
@@ -1098,6 +1102,12 @@ material_override = ExtResource("50_oaksu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mat_test3/Cube/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jiq2g")
+
+[node name="camera" parent="." instance=ExtResource("53_psnvk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6, 0.4, -16.6)
+
+[node name="camera2" parent="." instance=ExtResource("53_psnvk")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -17.1999, 2.22758, -17.0688)
 
 [connection signal="toggled_off" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_off"]
 [connection signal="toggled_on" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_on"]

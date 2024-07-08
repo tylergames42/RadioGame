@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://scripts/player/states/PlayerCrouchingState.gd" id="10_3yhk7"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerJumpingState.gd" id="11_idaac"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerClimbingState.gd" id="16_e4hen"]
-[ext_resource type="PackedScene" uid="uid://b01a18qy38ssi" path="res://scenes/Menu.tscn" id="16_o3ao0"]
+[ext_resource type="PackedScene" uid="uid://b01a18qy38ssi" path="res://scenes/user_interface/Menu.tscn" id="17_nyi1l"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerSwimmingState.gd" id="18_d5830"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_74fkp"]
@@ -418,7 +418,7 @@ script = ExtResource("18_d5830")
 [node name="PlayerClimbingState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("16_e4hen")
 
-[node name="Control" parent="." instance=ExtResource("16_o3ao0")]
+[node name="Control" parent="." instance=ExtResource("17_nyi1l")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 

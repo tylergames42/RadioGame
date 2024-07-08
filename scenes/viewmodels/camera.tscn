@@ -1,130 +1,145 @@
-[gd_scene load_steps=31 format=3 uid="uid://nlaewn14u6oa"]
+[gd_scene load_steps=25 format=3 uid="uid://chjd02ne6t0l3"]
 
-[ext_resource type="PackedScene" uid="uid://c6h07q5hlr7wl" path="res://assets/models/viewmodels/radio/radio.glb" id="1_c4a8x"]
+[ext_resource type="PackedScene" uid="uid://cntgjphjq4wvp" path="res://assets/models/viewmodels/camera/camera.glb" id="1_b7amg"]
 [ext_resource type="Script" path="res://scripts/player/weapons/WeaponCamera.gd" id="2_0nn4m"]
-[ext_resource type="CameraAttributesPhysical" uid="uid://iwpr4pliu1yp" path="res://scenes/viewmodels/camera_attributes.tres" id="3_5ee67"]
 [ext_resource type="Texture2D" uid="uid://dj4avucnygc1h" path="res://assets/ui/camera/ui_flash_on.svg" id="3_txqx4"]
-[ext_resource type="Texture2D" uid="uid://bieyv6v2fhlhj" path="res://assets/hdris/mud_road_puresky_2k.hdr" id="3_w5xc0"]
-[ext_resource type="AudioStream" uid="uid://5nhs1786j6ea" path="res://assets/sounds/camera/camera_take_photo.wav" id="4_so7j8"]
 [ext_resource type="Texture2D" uid="uid://c6w14p7iavni2" path="res://assets/ui/camera/ui_plus_minus.svg" id="5_gcg6h"]
-[ext_resource type="AudioStream" uid="uid://ljaffnubgmcj" path="res://assets/sounds/camera/camera_take_photo_flash.wav" id="5_renyc"]
+[ext_resource type="AudioStream" uid="uid://5nhs1786j6ea" path="res://assets/sounds/camera/camera_take_photo.wav" id="5_n6k0b"]
 [ext_resource type="Texture2D" uid="uid://2r038uj01xx1" path="res://assets/ui/camera/ui_corner.png" id="6_fwf5d"]
+[ext_resource type="AudioStream" uid="uid://ljaffnubgmcj" path="res://assets/sounds/camera/camera_take_photo_flash.wav" id="6_ibl13"]
 [ext_resource type="Texture2D" uid="uid://qr4dcpgmubvi" path="res://assets/ui/camera/ui_thirds.png" id="7_esqsb"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hbfcm"]
-panorama = ExtResource("3_w5xc0")
-filter = false
-
-[sub_resource type="Sky" id="Sky_uwdcb"]
-sky_material = SubResource("PanoramaSkyMaterial_hbfcm")
-
-[sub_resource type="Environment" id="Environment_tx262"]
-background_mode = 2
-sky = SubResource("Sky_uwdcb")
-ambient_light_source = 3
-ambient_light_sky_contribution = 0.8
-ambient_light_energy = 0.8
-reflected_light_source = 2
-ssao_enabled = true
-glow_enabled = true
-glow_bloom = 0.5
-fog_density = 0.0675
-adjustment_enabled = true
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_ltgvx"]
-filter_enabled = true
-filters = ["Armature/Skeleton3D:antenna_base", "Armature/Skeleton3D:antenna_bottom", "Armature/Skeleton3D:antenna_hinge", "Armature/Skeleton3D:antenna_mid", "Armature/Skeleton3D:antenna_top", "Armature/Skeleton3D:base", "Armature/Skeleton3D:power_switch"]
+[ext_resource type="Shader" path="res://assets/shaders/crt.gdshader" id="11_n432g"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6mgc4"]
-animation = &"radio_deploy"
+animation = &"camera_deploy"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3rqba"]
-animation = &"radio_holster"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oo2u5"]
-animation = &"radio_idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vgben"]
-animation = &"radio_idle_holstered"
+animation = &"camera_holster"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qu78v"]
-animation = &"radio_pickup"
+animation = &"camera_pickup"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8exeq"]
+animation = &"camera_view_enter"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dsss4"]
+animation = &"camera_view_exit"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tgmw8"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k18vj"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_llgrp"]
 advance_mode = 0
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_janbw"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vmc4e"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_moxk7"]
 advance_mode = 0
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a4e6y"]
-switch_mode = 2
-advance_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_888rk"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_we2k6"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kevnk"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tqqp5"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xar5y"]
+advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_sitda"]
 states/End/position = Vector2(991, 100)
+states/Start/position = Vector2(167, 100)
 states/draw/node = SubResource("AnimationNodeAnimation_6mgc4")
 states/draw/position = Vector2(655, 171)
 states/holster/node = SubResource("AnimationNodeAnimation_3rqba")
 states/holster/position = Vector2(655, 39)
-states/idle/node = SubResource("AnimationNodeAnimation_oo2u5")
-states/idle/position = Vector2(497, 100)
-states/idle_holstered/node = SubResource("AnimationNodeAnimation_vgben")
-states/idle_holstered/position = Vector2(834, 100)
 states/pickup/node = SubResource("AnimationNodeAnimation_qu78v")
-states/pickup/position = Vector2(333, 100)
-transitions = ["Start", "pickup", SubResource("AnimationNodeStateMachineTransition_tgmw8"), "holster", "idle_holstered", SubResource("AnimationNodeStateMachineTransition_k18vj"), "idle_holstered", "draw", SubResource("AnimationNodeStateMachineTransition_llgrp"), "pickup", "idle", SubResource("AnimationNodeStateMachineTransition_janbw"), "idle", "holster", SubResource("AnimationNodeStateMachineTransition_vmc4e"), "draw", "idle", SubResource("AnimationNodeStateMachineTransition_a4e6y")]
+states/pickup/position = Vector2(331, 100)
+states/view_enter/node = SubResource("AnimationNodeAnimation_8exeq")
+states/view_enter/position = Vector2(534, -80)
+states/view_exit/node = SubResource("AnimationNodeAnimation_dsss4")
+states/view_exit/position = Vector2(780, -80)
+transitions = ["Start", "pickup", SubResource("AnimationNodeStateMachineTransition_tgmw8"), "pickup", "holster", SubResource("AnimationNodeStateMachineTransition_moxk7"), "holster", "draw", SubResource("AnimationNodeStateMachineTransition_888rk"), "draw", "holster", SubResource("AnimationNodeStateMachineTransition_we2k6"), "holster", "view_enter", SubResource("AnimationNodeStateMachineTransition_kevnk"), "view_enter", "view_exit", SubResource("AnimationNodeStateMachineTransition_tqqp5"), "view_exit", "holster", SubResource("AnimationNodeStateMachineTransition_xar5y")]
+graph_offset = Vector2(26, -136)
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_y3j3i"]
-
-[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_8fvpi"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cpx2t"]
-animation = &"radio_tune"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kqrbs"]
-graph_offset = Vector2(-315.331, 27.3594)
-nodes/Blend2/node = SubResource("AnimationNodeBlend2_ltgvx")
-nodes/Blend2/position = Vector2(420, 200)
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wyg0n"]
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_sitda")
 nodes/StateMachine/position = Vector2(180, 260)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_y3j3i")
-nodes/TimeScale/position = Vector2(40, 80)
-nodes/TimeSeek/node = SubResource("AnimationNodeTimeSeek_8fvpi")
-nodes/TimeSeek/position = Vector2(200, 80)
 nodes/output/position = Vector2(640, 220)
-nodes/tune_anim/node = SubResource("AnimationNodeAnimation_cpx2t")
-nodes/tune_anim/position = Vector2(-140, 80)
-node_connections = [&"Blend2", 0, &"TimeSeek", &"Blend2", 1, &"StateMachine", &"TimeScale", 0, &"tune_anim", &"TimeSeek", 0, &"TimeScale", &"output", 0, &"Blend2"]
+node_connections = [&"output", 0, &"StateMachine"]
 
-[node name="Camera" node_paths=PackedStringArray("CAMERA_MESH", "CAMERA_UI", "CAMERA_FLASH") instance=ExtResource("1_c4a8x")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ib47l"]
+shader = ExtResource("11_n432g")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.2
+shader_parameter/noise_amount = 0.06
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 2.0
+shader_parameter/vignette_amount = 0.5
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.7
+shader_parameter/roll_line_amount = 0.1
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[node name="camera" node_paths=PackedStringArray("VIEW_FADE", "CAMERA_MESH", "CAMERA_CAM", "CAMERA_UI", "CAMERA_EFFECTS", "CAMERA_FLASH") instance=ExtResource("1_b7amg")]
 script = ExtResource("2_0nn4m")
-CAMERA_MESH = NodePath("Armature/Skeleton3D/mesh")
-CAMERA_UI = NodePath("CameraUI")
-CAMERA_FLASH = NodePath("Flash")
-CAMERA_ENVIRONMENT = SubResource("Environment_tx262")
-CAMERA_ATTRIBUTES = ExtResource("3_5ee67")
-SHOOT_SFX = ExtResource("4_so7j8")
-SHOOT_FLASH_SFX = ExtResource("5_renyc")
-WEAPON_NAME = "Camera"
+VIEW_FADE = NodePath("ColorRect")
+CAMERA_MESH = NodePath("Armature/Skeleton3D/camera")
+CAMERA_CAM = NodePath("Camera3D")
+CAMERA_UI = NodePath("Camera3D/CameraUI")
+CAMERA_EFFECTS = NodePath("Camera3D/CameraEffects")
+CAMERA_FLASH = NodePath("Camera3D/Flash")
+SHOOT_SFX = ExtResource("5_n6k0b")
+SHOOT_FLASH_SFX = ExtResource("6_ibl13")
+WEAPON_NAME = "camera"
 
-[node name="Flash" type="SpotLight3D" parent="." index="0"]
-light_energy = 2.0
-shadow_enabled = true
-spot_range = 16.0
-spot_angle = 80.0
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/2/rotation = Quaternion(-0.5, 0.5, 0.5, 0.5)
 
-[node name="CameraUI" type="Control" parent="." index="1"]
+[node name="camera" parent="Armature/Skeleton3D" index="0"]
+layers = 2
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_wyg0n")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="." index="3"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." index="4"]
+cull_mask = 1048573
+fov = 37.8493
+
+[node name="CameraEffects" type="Control" parent="Camera3D" index="0"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="ColorRect" parent="Camera3D/CameraEffects" index="0"]
+material = SubResource("ShaderMaterial_ib47l")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CameraUI" type="Control" parent="Camera3D" index="1"]
+visibility_layer = 4
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,7 +147,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Thirds" type="TextureRect" parent="CameraUI" index="0"]
+[node name="Thirds" type="TextureRect" parent="Camera3D/CameraUI" index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -143,7 +158,7 @@ texture = ExtResource("7_esqsb")
 flip_h = true
 flip_v = true
 
-[node name="CornerTR" type="TextureRect" parent="CameraUI" index="1"]
+[node name="CornerTR" type="TextureRect" parent="Camera3D/CameraUI" index="1"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -158,7 +173,7 @@ expand_mode = 1
 flip_h = true
 flip_v = true
 
-[node name="CornerTL" type="TextureRect" parent="CameraUI" index="2"]
+[node name="CornerTL" type="TextureRect" parent="Camera3D/CameraUI" index="2"]
 layout_mode = 1
 offset_left = 16.0
 offset_top = 16.0
@@ -168,7 +183,7 @@ texture = ExtResource("6_fwf5d")
 expand_mode = 1
 flip_v = true
 
-[node name="CornerBR" type="TextureRect" parent="CameraUI" index="3"]
+[node name="CornerBR" type="TextureRect" parent="Camera3D/CameraUI" index="3"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -185,7 +200,7 @@ texture = ExtResource("6_fwf5d")
 expand_mode = 1
 flip_h = true
 
-[node name="CornerBL" type="TextureRect" parent="CameraUI" index="4"]
+[node name="CornerBL" type="TextureRect" parent="Camera3D/CameraUI" index="4"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -198,7 +213,7 @@ grow_vertical = 0
 texture = ExtResource("6_fwf5d")
 expand_mode = 1
 
-[node name="HSlider" type="HSlider" parent="CameraUI" index="5"]
+[node name="HSlider" type="HSlider" parent="Camera3D/CameraUI" index="5"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -219,23 +234,20 @@ editable = false
 scrollable = false
 tick_count = 15
 
-[node name="FlashIndicator" type="TextureRect" parent="CameraUI" index="6"]
+[node name="FlashIndicator" type="TextureRect" parent="Camera3D/CameraUI" index="6"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1096.0
+offset_left = 56.0
 offset_top = -104.0
-offset_right = -1048.0
+offset_right = 104.0
 offset_bottom = -56.0
-grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("3_txqx4")
 expand_mode = 1
 
-[node name="PlusMinus" type="TextureRect" parent="CameraUI" index="7"]
+[node name="PlusMinus" type="TextureRect" parent="Camera3D/CameraUI" index="7"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -251,25 +263,8 @@ grow_vertical = 0
 texture = ExtResource("5_gcg6h")
 expand_mode = 1
 
-[node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(-1.85084, -1.3, -1.83)
-bones/0/rotation = Quaternion(-0.0367882, -0.536788, 0.0234367, 0.842589)
-bones/2/rotation = Quaternion(2.83833e-05, -0.000663958, 0.0436193, 0.999048)
-bones/3/rotation = Quaternion(0.000322833, 2.43977e-07, -4.2891e-07, 1)
-bones/4/rotation = Quaternion(-0.000644317, 2.09443e-07, 0.00101554, 0.999999)
-bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.000320129, 1.39198e-07, -0.00198148, 0.999998)
-bones/7/position = Vector3(0.169, 0.946002, 0.325)
-bones/9/rotation = Quaternion(0.152344, 0.988326, -0.000261091, 0.00169382)
-bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(0.114329, 0.244538, 0.953571, 0.133539)
-bones/10/scale = Vector3(1, 1, 0.999999)
-
-[node name="AnimationTree" type="AnimationTree" parent="." index="4"]
-tree_root = SubResource("AnimationNodeBlendTree_kqrbs")
-anim_player = NodePath("../AnimationPlayer")
-parameters/Blend2/blend_amount = 1.0
-parameters/TimeScale/scale = 0.0
-parameters/TimeSeek/seek_request = -1.0
-
-[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[node name="Flash" type="SpotLight3D" parent="Camera3D" index="2"]
+light_energy = 2.0
+shadow_enabled = true
+spot_range = 16.0
+spot_angle = 80.0

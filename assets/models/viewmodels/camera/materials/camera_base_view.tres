@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dpqtwxocva0k0"]
+
+[ext_resource type="Shader" path="res://assets/shaders/advanced_viewmodel_shader.gdshader" id="1_6rbet"]
+[ext_resource type="Texture2D" uid="uid://q7c6wihqr207" path="res://assets/models/viewmodels/camera/materials/camera_base_color.png" id="2_rkh72"]
+[ext_resource type="Texture2D" uid="uid://cb6hva7ch4kx0" path="res://assets/models/viewmodels/camera/materials/camera_base_normal.png" id="3_1gcci"]
+[ext_resource type="Texture2D" uid="uid://plufwv05yfe6" path="res://assets/models/viewmodels/camera/materials/camera_base_orm.png" id="4_rvu1q"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6rbet")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = null
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.5
+shader_parameter/normal_scale = 1.0
+shader_parameter/clearcoat = null
+shader_parameter/clearcoat_roughness = 1.0
+shader_parameter/uv1_scale = null
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/fov = 80.0
+shader_parameter/texture_albedo = ExtResource("2_rkh72")
+shader_parameter/texture_orm = ExtResource("4_rvu1q")
+shader_parameter/texture_normal = ExtResource("3_1gcci")
