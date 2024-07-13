@@ -1,7 +1,7 @@
 extends State
 
 @export var JUMP_FORCE = 4.0 ##Upward force of jump
-@export var JUMP_HELPER = 0.01 ##Upward force applied while jump is still held
+@export var JUMP_HELPER = 1.2 ##Upward force applied while jump is still held
 @export var CROUCH_JUMP_FORCE = 2.0 ##Upward force applied while crouch-jumping
 
 var player
@@ -25,7 +25,7 @@ func input_update(event):
 		
 func update(delta):
 	if Input.is_action_pressed("jump"):
-		player.apply_central_impulse(Vector3.UP * JUMP_HELPER * player.mass)
+		player.apply_central_impulse(Vector3.UP * JUMP_HELPER * player.mass * delta)
 	if player.grounded and timer < 0:
 		transition.emit("PlayerIdleState")
 	else:

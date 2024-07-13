@@ -84,7 +84,7 @@ MAT_OSC = ExtResource("4_6rftn")
 MAT_SPECTROGRAM = ExtResource("5_tols3")
 MAT_STRENGTH_IND = ExtResource("5_5mlxi")
 MAT_AUDIO_IND = ExtResource("5_j816w")
-WEAPON_NAME = "Radio"
+WEAPON_NAME = "radio"
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/2/rotation = Quaternion(-5.96047e-07, -0.00066461, 3.95903e-10, 1)
@@ -100,14 +100,14 @@ bones/10/rotation = Quaternion(0.114329, 0.244538, 0.953571, 0.133539)
 bones/10/scale = Vector3(1, 1, 0.999999)
 
 [node name="Jigglebone" type="Node3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.0953579, 0.0301129, 0.00030724, 0.0301127, 0.0953584, -0.000103029, -0.000324004, -5.72843e-06, -0.0999995, -0.0175394, 0.0374235, 0.946129)
+transform = Transform3D(-0.0953579, 0.0301129, 0.00030724, 0.0301127, 0.0953584, -0.000103029, -0.000324004, -5.72843e-06, -0.0999995, -0.0175353, 0.0374264, 0.946134)
 top_level = true
 script = ExtResource("5_lfofe")
 bone_name = "wire_jiggle_top"
 stiffness = 8.0
 
 [node name="Jigglebone2" type="Node3D" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.0938158, -0.0198776, 0.0283456, 0.0310655, -0.0844731, 0.0435802, 0.0152817, 0.0496909, 0.0854241, -0.297624, -0.399443, -0.908125)
+transform = Transform3D(-0.0938158, -0.0198776, 0.0283456, 0.0310655, -0.0844731, 0.0435802, 0.0152817, 0.0496909, 0.0854241, -0.29762, -0.39944, -0.90812)
 top_level = true
 script = ExtResource("5_lfofe")
 bone_name = "wire_jiggle_bot"

@@ -67,7 +67,7 @@ func drop():
 	holder.hold_point.set_node_b("")
 	holder.held_object = null
 	remove_collision_exception_with(holder)
-	holder.weapon_manager.draw_active()
+	holder.weapon_manager.deploy_active()
 	
 func throw(throw_dir):
 	drop()

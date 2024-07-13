@@ -22,9 +22,13 @@ config/icon="res://assets/ui/editor/icons/icon.svg"
 
 Global="*res://scripts/global.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/jigglebones/plugin.cfg")
+enabled=PackedStringArray("res://addons/advanced_radial_menu/plugin.cfg", "res://addons/jigglebones/plugin.cfg")
 
 [file_customization]
 
@@ -152,8 +156,9 @@ weapon_select={
 2d_render/layer_2="UI"
 3d_render/layer_2="Viewmodels"
 2d_render/layer_4="Camera UI"
-3d_physics/layer_1="world"
-3d_physics/layer_4="spatial"
+3d_physics/layer_1="World"
+3d_physics/layer_2="Player"
+3d_physics/layer_4="Spatial"
 
 [physics]
 

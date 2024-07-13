@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bdrd7rx11vacv"]
+[gd_scene load_steps=29 format=3 uid="uid://bdrd7rx11vacv"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_gnuhl"]
 [ext_resource type="Environment" uid="uid://tdvlqoyf7qjy" path="res://scenes/env_main.tres" id="2_7og4h"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bpwl58ebdmdxn" path="res://assets/models/legs_test.glb" id="7_gp4dq"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerIdleState.gd" id="7_hu5mr"]
 [ext_resource type="Script" path="res://scripts/player/WeaponManager.gd" id="7_kjtma"]
+[ext_resource type="PackedScene" uid="uid://bwa01k1gb5nx2" path="res://scenes/user_interface/NewWeaponSelect.tscn" id="8_2ko3q"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerWalkingState.gd" id="8_mmf44"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerSprintingState.gd" id="9_6khpb"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerNoclipState.gd" id="9_fvox2"]
@@ -33,6 +34,8 @@ height = 1.8
 radius = 0.4
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_e20wb"]
+auto_exposure_scale = 0.2
+auto_exposure_speed = 0.8
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_skehm"]
 shader = ExtResource("2_vtxyt")
@@ -243,6 +246,7 @@ _data = {
 }
 
 [node name="Player" type="RigidBody3D"]
+collision_layer = 3
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -347,6 +351,8 @@ hit_back_faces = false
 [node name="WeaponManager" type="Node3D" parent="Root/Head" node_paths=PackedStringArray("PLAYER")]
 script = ExtResource("7_kjtma")
 PLAYER = NodePath("../../..")
+
+[node name="NewWeaponSelect" parent="Root/Head" instance=ExtResource("8_2ko3q")]
 
 [node name="legs_test" parent="Root" instance=ExtResource("7_gp4dq")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 0.75, 0, -1.50996e-07, 0, -1, 0, -0.844603, 0.2)

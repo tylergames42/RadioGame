@@ -10,10 +10,12 @@ func _input(event):
 		if Global.paused:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			Global.paused = false
+			Global.player.weapon_manager.input_enabled = true
 			hide()
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			Global.paused = true
+			Global.player.weapon_manager.input_enabled = false
 			show()
 
 func _on_reload_button_pressed():
@@ -23,10 +25,10 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 func _on_radio_button_pressed():
-	Global.player.weapon_manager.add_weapon(load("res://scenes/viewmodels/radio.tscn"))
+	Global.player.weapon_manager.add_weapon(load("res://scenes/weapons/radio.tscn"))
 
 func _on_camera_button_pressed():
-	Global.player.weapon_manager.add_weapon(load("res://scenes/viewmodels/camera.tscn"))
+	Global.player.weapon_manager.add_weapon(load("res://scenes/weapons/camera.tscn"))
 
 func _on_debug_info_toggle_toggled(toggled_on):
 	Global.debug_gui.visible = toggled_on

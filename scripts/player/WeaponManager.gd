@@ -4,6 +4,7 @@ extends Node3D
 @export var PLAYER : RigidBody3D
 
 var active_weapon : WeaponBase
+var input_enabled : bool = true
 
 func add_weapon(weapon : PackedScene) -> void:
 	var new_weapon = weapon.instantiate()
@@ -21,12 +22,13 @@ func add_weapon(weapon : PackedScene) -> void:
 	print("ADDED " + new_weapon.WEAPON_NAME)
 
 func swap_to_weapon(weapon_name : String) -> void:
-	if weapon_name == null:
+	if weapon_name == "null":
 		if active_weapon != null:
 					active_weapon.holster()
 		active_weapon = null
 	if active_weapon != null:
 		if active_weapon.WEAPON_NAME == weapon_name:
+			deploy_active()
 			return
 	for child in get_children():
 		if child is WeaponBase:
@@ -34,7 +36,7 @@ func swap_to_weapon(weapon_name : String) -> void:
 				if active_weapon != null:
 					active_weapon.holster()
 				active_weapon = child
-				active_weapon.draw()
+				active_weapon.deploy()
 				
 func drop_weapon(weapon_name : String) -> void:
 	for child in get_children():
@@ -43,14 +45,14 @@ func drop_weapon(weapon_name : String) -> void:
 				if weapon_name == active_weapon.WEAPON_NAME:
 					active_weapon.holster()
 				child.queue_free()
-				
+	
+func deploy_active():
+	if active_weapon != null:
+		active_weapon.deploy()
+		
 func holster_active():
 	if active_weapon != null:
 		active_weapon.holster()
-		
-func draw_active():
-	if active_weapon != null:
-		active_weapon.draw()
 
 func _process(delta):
 	if active_weapon == null:
@@ -67,6 +69,8 @@ func _physics_process(delta):
 	
 func _input(event):
 	if active_weapon == null:
+		return
+	if !input_enabled:
 		return
 	if active_weapon.active:
 		active_weapon.input_update(event)

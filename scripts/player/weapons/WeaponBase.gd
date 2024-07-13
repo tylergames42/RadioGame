@@ -1,5 +1,6 @@
-extends Node3D
+@icon("res://assets/ui/editor/icons/gun.svg")
 class_name WeaponBase
+extends Node3D
 
 @export var WEAPON_NAME : String
 @export_group("Animation")
@@ -15,7 +16,7 @@ func pickup() -> void:
 	ANIM_TREE["parameters/StateMachine/playback"].travel("pickup")
 	visible = active
 
-func draw() -> void:
+func deploy() -> void:
 	if active:
 		return
 	active = true
@@ -37,5 +38,5 @@ func update(_delta: float) -> void:
 func physics_update(_delta: float) -> void:
 	pass
 
-func input_update(event: InputEvent) -> void:
+func input_update(_event: InputEvent) -> void:
 	pass

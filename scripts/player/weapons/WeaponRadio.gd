@@ -152,3 +152,11 @@ func update_spectrogram():
 		hz_prev = hz_current
 		spectrogram_img.set_pixel(0, height - i - 1, GRADIENT_SPECTROGRAM.sample(1000 * radio_bus_listener.get_magnitude_for_frequency_range(hz_prev, hz_current).length()))
 	spectrogram_texture = ImageTexture.create_from_image(spectrogram_img)
+
+func deploy():
+	super()
+	static_player.play()
+
+func holster():
+	super()
+	static_player.stop()

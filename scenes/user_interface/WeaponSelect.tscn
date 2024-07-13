@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnsg1mtwetrxa"]
+
+[ext_resource type="Script" path="res://scripts/WeaponSelect.gd" id="1_2grxr"]
+[ext_resource type="Script" path="res://addons/advanced_radial_menu/radial_menu_class.gd" id="1_pwusl"]
+[ext_resource type="Texture2D" uid="uid://capk40t4q43k5" path="res://assets/ui/hand_icon.svg" id="3_tlb55"]
+[ext_resource type="Texture2D" uid="uid://bcbq0gm8b1pj8" path="res://assets/ui/radio_icon.svg" id="4_7cg3q"]
+[ext_resource type="Texture2D" uid="uid://g84ym4qj5im3" path="res://assets/ui/cam_icon.svg" id="5_cfcw4"]
+
+[node name="WeaponSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2grxr")
+
+[node name="RadialMenuAdvanced" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 394.0
+offset_top = 159.0
+offset_right = -394.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pwusl")
+select_action_name = "fire_main"
+first_in_center = true
+arc_inner_radius = 64
+arc_detail = 9
+arc_line_width = 4
+children_size = 64
+
+[node name="null" type="TextureRect" parent="RadialMenuAdvanced"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 133.0
+offset_right = 214.0
+offset_bottom = 197.0
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("3_tlb55")
+expand_mode = 3
+
+[node name="radio" type="TextureRect" parent="RadialMenuAdvanced"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 247.5
+offset_right = 214.0
+offset_bottom = 311.5
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("4_7cg3q")
+expand_mode = 3
+
+[node name="camera" type="TextureRect" parent="RadialMenuAdvanced"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 18.5
+offset_right = 214.0
+offset_bottom = 82.5
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("5_cfcw4")
+expand_mode = 3
+
+[connection signal="slot_selected" from="RadialMenuAdvanced" to="." method="_on_radial_menu_advanced_slot_selected"]

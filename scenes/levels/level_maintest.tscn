@@ -33,7 +33,7 @@
 [ext_resource type="PhysicsMaterial" uid="uid://btupykdprxygc" path="res://assets/material_properties/mat_absorb_test.tres" id="28_1uvbh"]
 [ext_resource type="Material" uid="uid://didp6yqh0dx65" path="res://assets/materials/nature/dirt_1.tres" id="29_7arhb"]
 [ext_resource type="Material" uid="uid://fer61es4r1pv" path="res://assets/models/viewmodels/radio/materials/radio_base.tres" id="36_pwp2h"]
-[ext_resource type="PackedScene" uid="uid://daxhwm2jlqsx2" path="res://scenes/viewmodels/radio_world.tscn" id="36_thjfg"]
+[ext_resource type="PackedScene" uid="uid://daxhwm2jlqsx2" path="res://scenes/weapons/radio_world.tscn" id="36_thjfg"]
 [ext_resource type="Script" path="res://scripts/entities/PhysicsProp.gd" id="36_yvtb5"]
 [ext_resource type="Material" uid="uid://da065ilc07jka" path="res://assets/models/viewmodels/radio/materials/radio_glass.tres" id="37_2coty"]
 [ext_resource type="Material" uid="uid://bmgxi81m2etkr" path="res://assets/models/viewmodels/radio/materials/radio_power_light.tres" id="38_r3exm"]
@@ -49,7 +49,7 @@
 [ext_resource type="Material" uid="uid://dnhbqo2osagse" path="res://assets/materials/tile/tile_floor_01.tres" id="48_sxy8e"]
 [ext_resource type="Material" uid="uid://dxeed7px6a52u" path="res://assets/materials/concrete/concrete_panels_light_color.tres" id="49_8cwg4"]
 [ext_resource type="Material" uid="uid://dfx5mi3fpvnxa" path="res://assets/materials/concrete/concrete_panels_dark_color.tres" id="50_oaksu"]
-[ext_resource type="PackedScene" uid="uid://cjc7tvi6axd4a" path="res://scenes/viewmodels/camera_world.tscn" id="53_psnvk"]
+[ext_resource type="PackedScene" uid="uid://cjc7tvi6axd4a" path="res://scenes/weapons/camera_world.tscn" id="53_psnvk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_03s0d"]
 
@@ -1104,7 +1104,7 @@ material_override = ExtResource("50_oaksu")
 shape = SubResource("ConcavePolygonShape3D_jiq2g")
 
 [node name="camera" parent="." instance=ExtResource("53_psnvk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6, 0.4, -16.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5449, 0.300004, -17.1401)
 
 [node name="camera2" parent="." instance=ExtResource("53_psnvk")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -17.1999, 2.22758, -17.0688)

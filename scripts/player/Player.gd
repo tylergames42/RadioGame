@@ -40,6 +40,7 @@ var input_dir : Vector3
 var target_velocity : Vector3
 
 var was_grounded : bool = false
+var view_locked : bool = false
 var rotating_held : bool = false
 
 var prev_velocity : Vector3
@@ -81,6 +82,8 @@ func _input(event):
 			state_machine.on_child_transition("PlayerIdleState")
 	
 	if event is InputEventMouseMotion: #Get mouse input
+		if view_locked:
+			return
 		if rotating_held:
 			hold_orientation.rotate_y(clamp(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY_HORIZONTAL * 0.5), -0.4, 0.4))
 			hold_orientation.rotate_x(clamp(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY_VERTICAL * 0.5), -0.4, 0.4))
@@ -104,7 +107,7 @@ func _physics_process(delta):
 	
 	camera_tilt(delta)
 	
-	if grounded && groundcast.get_collider(0) == held_object: #Prevent holding stood on objects TODO: Buggy rn
+	if grounded && groundcast.get_collider(0) == held_object: #Prevent holding stood on objects
 		grounded = false
 		held_object.drop()
 	
@@ -125,7 +128,6 @@ func slopeSliding():
 				normal_average = groundcast.get_collision_normal(collision)
 		normal_average /= groundcast.get_collision_count()
 		var slide_normal = Vector3(normal_average.x, -1, normal_average.z).normalized() #Vector to slide down
-		#DebugDraw3D.draw_arrow_ray(position, slide_normal, 3.0, Color(255,0,0))
 		
 		if slide_normal.dot(Vector3.DOWN) <= deg_to_rad(90 - MAX_SLOPE_ANGLE): #Check if slope is too steep
 			apply_central_impulse(slide_normal * (current_speed * 0.6))

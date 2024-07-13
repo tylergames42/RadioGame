@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qr4dcpgmubvi"
-path="res://.godot/imported/ui_thirds.png-fe2e068d4550696f02d1bfb31d356d4a.ctex"
+uid="uid://g84ym4qj5im3"
+path="res://.godot/imported/cam_icon.svg-6c96e032956eaf3244ffe43c8ee21cae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/camera/ui_thirds.png"
-dest_files=["res://.godot/imported/ui_thirds.png-fe2e068d4550696f02d1bfb31d356d4a.ctex"]
+source_file="res://assets/ui/cam_icon.svg"
+dest_files=["res://.godot/imported/cam_icon.svg-6c96e032956eaf3244ffe43c8ee21cae.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

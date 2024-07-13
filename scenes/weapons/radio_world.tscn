@@ -1,7 +1,8 @@
 [gd_scene load_steps=21 format=3 uid="uid://daxhwm2jlqsx2"]
 
+[ext_resource type="Script" path="res://scripts/entities/WeaponCollectable.gd" id="1_enle4"]
 [ext_resource type="Material" uid="uid://fer61es4r1pv" path="res://assets/models/viewmodels/radio/materials/radio_base.tres" id="1_lilff"]
-[ext_resource type="PackedScene" uid="uid://im2obulcl5vg" path="res://scenes/viewmodels/radio.tscn" id="1_md1b3"]
+[ext_resource type="PackedScene" uid="uid://im2obulcl5vg" path="res://scenes/weapons/radio.tscn" id="1_md1b3"]
 [ext_resource type="Material" uid="uid://bybpfx8s1nddg" path="res://assets/models/viewmodels/radio/materials/radio_world_base.tres" id="2_rxloo"]
 [ext_resource type="Material" uid="uid://da065ilc07jka" path="res://assets/models/viewmodels/radio/materials/radio_glass.tres" id="2_s1a6g"]
 [ext_resource type="Material" uid="uid://conkndym6w4dn" path="res://assets/models/viewmodels/radio/materials/radio_world_glass.tres" id="3_4wegq"]
@@ -11,17 +12,6 @@
 [ext_resource type="Material" uid="uid://otve6lmskaud" path="res://assets/models/viewmodels/radio/materials/radio_oscilloscope.tres" id="5_dwrhx"]
 [ext_resource type="Material" uid="uid://d1k4hw402wm55" path="res://assets/models/viewmodels/radio/materials/radio_spectrogram.tres" id="6_xjeec"]
 [ext_resource type="Script" path="res://scripts/components/InteractableComponent.gd" id="10_6hdo7"]
-
-[sub_resource type="GDScript" id="GDScript_8xhmg"]
-script/source = "extends PhysicsProp
-
-@export var weapon : PackedScene
-
-func _on_interactable_component_interacted(interactor):
-	if interactor.weapon_manager != null:
-		interactor.weapon_manager.add_weapon(weapon)
-		queue_free()
-"
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gq6xt"]
 resource_name = "radio_Cube_006"
@@ -458,7 +448,7 @@ size = Vector3(0.04, 0.18, 0.11)
 
 [node name="radio_pickup" type="RigidBody3D"]
 mass = 5.0
-script = SubResource("GDScript_8xhmg")
+script = ExtResource("1_enle4")
 weapon = ExtResource("1_md1b3")
 
 [node name="Armature" type="Node3D" parent="."]
