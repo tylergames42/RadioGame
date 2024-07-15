@@ -163,6 +163,7 @@ nodes/SelectStateMachine/position = Vector2(-280, 280)
 node_connections = [&"Blend2", 0, &"OpenStateMachine", &"Blend2", 1, &"SelectStateMachine", &"output", 0, &"Blend2"]
 
 [node name="NewWeaponSelect" type="Node3D" node_paths=PackedStringArray("BUTTONS", "ANIM_TREE")]
+visible = false
 script = ExtResource("1_i5g32")
 BUTTONS = NodePath("Buttons")
 ANIM_TREE = NodePath("AnimationTree")
@@ -170,6 +171,7 @@ ANIM_OPEN = ExtResource("6_fl3kx")
 ANIM_CLOSE = ExtResource("5_7smbl")
 
 [node name="Buttons" type="HBoxContainer" parent="."]
+visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -201,10 +203,10 @@ focus_mode = 0
 theme = ExtResource("2_0gxlk")
 
 [node name="camera" parent="." instance=ExtResource("1_k68h1")]
-transform = Transform3D(-0.965926, 2.23517e-08, -0.258819, 0.0669873, 0.965926, -0.25, 0.25, -0.258819, -0.933013, -0.4, -0.2, -0.6)
+transform = Transform3D(-0.965927, 1.31875e-06, -0.258815, 0.0669873, 0.965926, -0.25, 0.249995, -0.258819, -0.933014, -0.4, -0.2, -0.6)
 
 [node name="radio" parent="." instance=ExtResource("2_cj0yk")]
-transform = Transform3D(-6.11306e-06, 0, -2.4, 0, 2.4, 0, 2.4, 0, -6.11306e-06, 0, -0.5, -0.6)
+transform = Transform3D(-8.68798e-06, 0, -2.4, 0, 2.4, 0, 2.4, 0, -8.68798e-06, 0, -0.5, -0.6)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)

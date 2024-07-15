@@ -2,6 +2,7 @@ extends WeaponBase
 
 @export var VIEW_FADE : ColorRect
 @export var CAMERA_CAM : Camera3D
+@export var CAMERA_MESH : MeshInstance3D
 @export var CAMERA_UI : Control
 @export var CAMERA_EFFECTS : Control
 @export var CAMERA_FLASH : Light3D
@@ -104,6 +105,7 @@ func update(delta):
 			CAMERA_CAM.attributes.dof_blur_far_distance = focus_distance + (CAMERA_CAM.fov * 0.12)
 
 func take_picture():
+	CAMERA_MESH.hide()
 	CAMERA_UI.hide()
 	Global.player.ui.hide()
 	audio_player.stream = SHOOT_SFX
@@ -117,6 +119,7 @@ func take_picture():
 	capture.save_png(filename)
 	CAMERA_UI.show()
 	if !in_camera_view:
+		CAMERA_MESH.show()
 		Global.player.ui.show()
 	
 func open_camera_view():
@@ -133,6 +136,7 @@ func close_camera_view():
 	ANIM_TREE["parameters/StateMachine/playback"].travel("view_exit")
 	VIEW_FADE.color.a = 1.0
 	Global.player.ui.show()
+	CAMERA_MESH.show()
 	CAMERA_UI.hide()
 	CAMERA_EFFECTS.hide()
 	player_camera.make_current()
