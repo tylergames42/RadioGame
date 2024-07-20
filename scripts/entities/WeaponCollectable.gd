@@ -1,3 +1,4 @@
+@icon("res://assets/ui/editor/icons/gun_pickup.svg")
 class_name WeaponCollectable
 extends PhysicsProp
 
