@@ -3,11 +3,14 @@ class_name SignalTransmitter
 extends Node3D
 
 @export var STREAMS : Array[AudioStream]
+@export var SHUFFLE_AUDIO : bool = true ##If the audio should be played randomly
 @export_range(-20.0, 1.0, 0.1) var VOLUME : float = 0.0
 @export_range(0.0, 100.0, 1.0) var FREQUENCY : float ##TODO: change to use range of frequencies instead?
 													##Then some signals could be broader than others or take up whole range for scripted events.
-@export_range(0.0, 10000.0, 1.0) var RANGE_PARTIAL : float ##Range for when you can start to pick up the signal (make higher)
-@export_range(0.0, 10000.0, 1.0) var RANGE_FULL : float ##Range for when signal gets to full strength (make lower)
+@export_range(0.0, 100.0, 1.0) var FREQUENCY_MIN : float
+@export_range(0.0, 100.0, 1.0) var FREQUENCY_MAX : float
+@export_range(0.0, 10000.0, 1.0) var RANGE_PARTIAL : float ##Range (in meters) for when you can start to pick up the signal (make higher)
+@export_range(0.0, 10000.0, 1.0) var RANGE_FULL : float ##Range (in meters) for when signal gets to full strength (make lower)
 @export_range(0.0, 1.0, 0.1) var STRENGTH_MULTIPLIER : float ##TODO?
 
 @onready var AudioPlayer = AudioStreamPlayer.new()
@@ -20,11 +23,16 @@ func _ready():
 	add_child(AudioPlayer)
 	AudioPlayer.bus = "Radio"
 	AudioPlayer.volume_db = -100.0
-	play_audio_random()
+	play_audio()
+	
+	if RANGE_PARTIAL <= RANGE_FULL: #Make sure any parameters aren't fucked up
+		push_error("Signal " + str(name) + "'s ranges are configured incorrectly!")
+	if FREQUENCY_MIN <= FREQUENCY_MAX:
+		push_error("Signal " + str(name) + "'s frequencies are configured incorrectly!")
 
 func update_strength(new_strength : float):
 	if !AudioPlayer.playing:
-			play_audio_random()
+			play_audio()
 	if new_strength > 0.9:
 		AudioPlayer.volume_db = VOLUME
 	elif new_strength < 0.01:
@@ -32,8 +40,8 @@ func update_strength(new_strength : float):
 	else:
 		AudioPlayer.volume_db = remap(new_strength, 0.0, 1.0, VOLUME - 20.0, VOLUME)
 		
-func play_audio_random(): ##TODO add weight?
-	if STREAMS.size() < 1:
+func play_audio(): ##TODO add weight?
+	if STREAMS.size() < 1: #Make sure signal actually has audio
 		push_error(str(name) + " has no streams assigned!")
 		return
 	
@@ -43,6 +51,9 @@ func play_audio_random(): ##TODO add weight?
 	STREAMS.remove_at(0)
 	STREAMS.append(current_stream)
 	
+	if SHUFFLE_AUDIO == false:
+		return
+	#Shuffle the audio once all streams have played (arrays are goated)	
 	rand_counter += 1
 	if rand_counter > STREAMS.size():
 		STREAMS.shuffle()

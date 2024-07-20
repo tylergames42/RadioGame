@@ -104,6 +104,9 @@ func update(delta):
 		Global.connected_signal_name = "none"
 
 func find_signals():
+	if signal_manager == null:
+		push_error("Signal manager not found!")
+		return
 	for sig in signal_manager.get_children():
 		if sig is SignalTransmitter:
 			var freq_diff = absf(sig.FREQUENCY - frequency) #Get difference in our frequency and transmitter's
