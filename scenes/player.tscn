@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bpwl58ebdmdxn" path="res://assets/models/legs_test.glb" id="7_gp4dq"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerIdleState.gd" id="7_hu5mr"]
 [ext_resource type="Script" path="res://scripts/player/WeaponManager.gd" id="7_kjtma"]
-[ext_resource type="PackedScene" uid="uid://bwa01k1gb5nx2" path="res://scenes/user_interface/NewWeaponSelect.tscn" id="8_2ko3q"]
+[ext_resource type="PackedScene" uid="uid://bwa01k1gb5nx2" path="res://scenes/user_interface/WeaponSelect.tscn" id="8_2ko3q"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerWalkingState.gd" id="8_mmf44"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerSprintingState.gd" id="9_6khpb"]
 [ext_resource type="Script" path="res://scripts/player/states/PlayerNoclipState.gd" id="9_fvox2"]

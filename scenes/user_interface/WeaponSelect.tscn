@@ -1,67 +1,234 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnsg1mtwetrxa"]
+[gd_scene load_steps=28 format=3 uid="uid://bwa01k1gb5nx2"]
 
-[ext_resource type="Script" path="res://scripts/WeaponSelect.gd" id="1_2grxr"]
-[ext_resource type="Script" path="res://addons/advanced_radial_menu/radial_menu_class.gd" id="1_pwusl"]
-[ext_resource type="Texture2D" uid="uid://capk40t4q43k5" path="res://assets/ui/hand_icon.svg" id="3_tlb55"]
-[ext_resource type="Texture2D" uid="uid://bcbq0gm8b1pj8" path="res://assets/ui/radio_icon.svg" id="4_7cg3q"]
-[ext_resource type="Texture2D" uid="uid://g84ym4qj5im3" path="res://assets/ui/cam_icon.svg" id="5_cfcw4"]
+[ext_resource type="Script" path="res://scripts/NewWeaponSelect.gd" id="1_s3ncw"]
+[ext_resource type="Animation" uid="uid://ccwi8y3pmnbtk" path="res://assets/animations/weapon_select/open.anim" id="2_yqflo"]
+[ext_resource type="Animation" uid="uid://bvc8ykof6rp0m" path="res://assets/animations/weapon_select/close.res" id="3_vc4sn"]
+[ext_resource type="Theme" uid="uid://dbht4uecwwlvc" path="res://assets/themes/invisible.tres" id="4_1ve0a"]
+[ext_resource type="PackedScene" uid="uid://cntgjphjq4wvp" path="res://assets/models/viewmodels/camera/camera.glb" id="5_f4n6p"]
+[ext_resource type="PackedScene" uid="uid://c6h07q5hlr7wl" path="res://assets/models/viewmodels/radio/radio.glb" id="6_p8bhk"]
+[ext_resource type="Animation" uid="uid://28el6aio7m7g" path="res://assets/animations/weapon_select/select_radio.res" id="7_8r2js"]
 
-[node name="WeaponSelector" type="Control"]
-layout_mode = 3
-anchors_preset = 15
+[sub_resource type="Animation" id="Animation_yhxd0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.4, -0.2, -0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("radio:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.5, -0.6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("radio:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("camera:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.25268, -2.871, 0.0692395)]
+}
+
+[sub_resource type="Animation" id="Animation_0aihw"]
+resource_name = "select_camera"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.25268, -2.871, 0.0692395), Vector3(0.252876, -6.01262, 0.0695263), Vector3(0.253073, -9.15425, 0.0698132)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2trfa"]
+_data = {
+"RESET": SubResource("Animation_yhxd0"),
+"close": ExtResource("3_vc4sn"),
+"open": ExtResource("2_yqflo"),
+"select_camera": SubResource("Animation_0aihw"),
+"select_radio": ExtResource("7_8r2js")
+}
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_andgx"]
+filter_enabled = true
+filters = ["camera:rotation", "radio:rotation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_804ds"]
+animation = &"close"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ltolj"]
+animation = &"open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cepg3"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jm6mg"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xttaj"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_go3qg"]
+states/End/position = Vector2(601, 72)
+states/Start/position = Vector2(256, 72)
+states/close/node = SubResource("AnimationNodeAnimation_804ds")
+states/close/position = Vector2(428, 142)
+states/open/node = SubResource("AnimationNodeAnimation_ltolj")
+states/open/position = Vector2(428, 7)
+transitions = ["open", "close", SubResource("AnimationNodeStateMachineTransition_cepg3"), "close", "open", SubResource("AnimationNodeStateMachineTransition_jm6mg"), "Start", "close", SubResource("AnimationNodeStateMachineTransition_xttaj")]
+graph_offset = Vector2(-18, -56)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kugur"]
+animation = &"select_camera"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2h8sb"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6juae"]
+animation = &"select_radio"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3n1tv"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bmk4e"]
+xfade_time = 0.1
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ba3jw"]
+xfade_time = 0.1
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u8dsh"]
+xfade_time = 0.1
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w3gob"]
+xfade_time = 0.1
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_njeb7"]
+states/End/position = Vector2(721, 100)
+states/camera/node = SubResource("AnimationNodeAnimation_kugur")
+states/camera/position = Vector2(362, 4)
+states/none/node = SubResource("AnimationNodeAnimation_2h8sb")
+states/none/position = Vector2(362, 105)
+states/radio/node = SubResource("AnimationNodeAnimation_6juae")
+states/radio/position = Vector2(522, 105)
+transitions = ["Start", "none", SubResource("AnimationNodeStateMachineTransition_3n1tv"), "none", "camera", SubResource("AnimationNodeStateMachineTransition_bmk4e"), "none", "radio", SubResource("AnimationNodeStateMachineTransition_ba3jw"), "camera", "none", SubResource("AnimationNodeStateMachineTransition_u8dsh"), "radio", "none", SubResource("AnimationNodeStateMachineTransition_w3gob")]
+graph_offset = Vector2(-147, -56)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wnflw"]
+graph_offset = Vector2(-767.468, 86.3832)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_andgx")
+nodes/Blend2/position = Vector2(-28, 166)
+nodes/OpenStateMachine/node = SubResource("AnimationNodeStateMachine_go3qg")
+nodes/OpenStateMachine/position = Vector2(-280, 120)
+nodes/SelectStateMachine/node = SubResource("AnimationNodeStateMachine_njeb7")
+nodes/SelectStateMachine/position = Vector2(-280, 280)
+node_connections = [&"Blend2", 0, &"OpenStateMachine", &"Blend2", 1, &"SelectStateMachine", &"output", 0, &"Blend2"]
+
+[node name="NewWeaponSelect" type="Node3D" node_paths=PackedStringArray("BUTTONS", "ANIM_TREE")]
+visible = false
+script = ExtResource("1_s3ncw")
+BUTTONS = NodePath("Buttons")
+ANIM_TREE = NodePath("AnimationTree")
+ANIM_OPEN = ExtResource("2_yqflo")
+ANIM_CLOSE = ExtResource("3_vc4sn")
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 229.0
+offset_top = -292.0
+offset_right = -229.0
+offset_bottom = -6.0
 grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_2grxr")
+grow_vertical = 0
+alignment = 1
 
-[node name="RadialMenuAdvanced" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 394.0
-offset_top = 159.0
-offset_right = -394.0
-offset_bottom = -159.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_pwusl")
-select_action_name = "fire_main"
-first_in_center = true
-arc_inner_radius = 64
-arc_detail = 9
-arc_line_width = 4
-children_size = 64
+[node name="CameraButton" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("4_1ve0a")
 
-[node name="null" type="TextureRect" parent="RadialMenuAdvanced"]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 133.0
-offset_right = 214.0
-offset_bottom = 197.0
-pivot_offset = Vector2(32, 32)
-texture = ExtResource("3_tlb55")
-expand_mode = 3
+[node name="RadioButton" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("4_1ve0a")
 
-[node name="radio" type="TextureRect" parent="RadialMenuAdvanced"]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 247.5
-offset_right = 214.0
-offset_bottom = 311.5
-pivot_offset = Vector2(32, 32)
-texture = ExtResource("4_7cg3q")
-expand_mode = 3
+[node name="SpraycanButton" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("4_1ve0a")
 
-[node name="camera" type="TextureRect" parent="RadialMenuAdvanced"]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 18.5
-offset_right = 214.0
-offset_bottom = 82.5
-pivot_offset = Vector2(32, 32)
-texture = ExtResource("5_cfcw4")
-expand_mode = 3
+[node name="camera" parent="." instance=ExtResource("5_f4n6p")]
+transform = Transform3D(-0.965927, 1.31875e-06, -0.258815, 0.0669873, 0.965926, -0.25, 0.249995, -0.258819, -0.933014, -0.4, -0.2, -0.6)
 
-[connection signal="slot_selected" from="RadialMenuAdvanced" to="." method="_on_radial_menu_advanced_slot_selected"]
+[node name="radio" parent="." instance=ExtResource("6_p8bhk")]
+transform = Transform3D(-8.68798e-06, 0, -2.4, 0, 2.4, 0, 2.4, 0, -8.68798e-06, 0, -0.5, -0.6)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2trfa")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_wnflw")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Blend2/blend_amount = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="mouse_entered" from="Buttons/CameraButton" to="." method="_on_camera_button_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/CameraButton" to="." method="_on_camera_button_mouse_exited"]
+[connection signal="pressed" from="Buttons/CameraButton" to="." method="_on_camera_button_pressed"]
+[connection signal="mouse_entered" from="Buttons/RadioButton" to="." method="_on_radio_button_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/RadioButton" to="." method="_on_radio_button_mouse_exited"]
+[connection signal="pressed" from="Buttons/RadioButton" to="." method="_on_radio_button_pressed"]
+[connection signal="pressed" from="Buttons/SpraycanButton" to="." method="_on_spraycan_button_pressed"]
