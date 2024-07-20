@@ -1,14 +1,18 @@
-[gd_resource type="ORMMaterial3D" load_steps=5 format=3 uid="uid://ceg1y62q8boxn"]
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://c545lst6te0j3"]
 
 [ext_resource type="Texture2D" uid="uid://bnkf1vfbbtfsr" path="res://assets/materials/nature/gravel_1_color.png" id="1_dv0mf"]
-[ext_resource type="PhysicsMaterial" uid="uid://sfpjl627dhnw" path="res://assets/material_properties/mat_gravel.tres" id="2_sfmgv"]
+[ext_resource type="Shader" path="res://assets/shaders/new_shader.gdshader" id="1_ltv0e"]
 [ext_resource type="Texture2D" uid="uid://jpwmu3q2npbu" path="res://assets/materials/nature/gravel_1_normal.png" id="3_1l26j"]
-[ext_resource type="Texture2D" uid="uid://c8qttjbkbfao1" path="res://assets/materials/nature/gravel_1_orm.png" id="4_cy7pa"]
+[ext_resource type="Texture2D" uid="uid://be8t7ybtwe1oo" path="res://assets/materials/nature/sand_clean_bumpy_normal.png" id="4_84bba"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u53o6"]
 
 [resource]
-albedo_texture = ExtResource("1_dv0mf")
-orm_texture = ExtResource("4_cy7pa")
-normal_enabled = true
-normal_texture = ExtResource("3_1l26j")
-texture_filter = 4
-metadata/MaterialProperties = ExtResource("2_sfmgv")
+render_priority = 0
+shader = ExtResource("1_ltv0e")
+shader_parameter/blend_raining = 1.0
+shader_parameter/world_up = Vector3(0, 0, 0.7)
+shader_parameter/ground_albedo = ExtResource("1_dv0mf")
+shader_parameter/ground_normal_map = ExtResource("3_1l26j")
+shader_parameter/rain_wet_normal = ExtResource("4_84bba")
+shader_parameter/noise = SubResource("NoiseTexture2D_u53o6")

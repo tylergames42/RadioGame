@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" load_steps=5 format=3 uid="uid://ceg1y62q8boxn"]
+
+[ext_resource type="Texture2D" uid="uid://bnkf1vfbbtfsr" path="res://assets/materials/nature/gravel_1_color.png" id="1_dv0mf"]
+[ext_resource type="PhysicsMaterial" uid="uid://sfpjl627dhnw" path="res://assets/material_properties/mat_gravel.tres" id="2_sfmgv"]
+[ext_resource type="Texture2D" uid="uid://jpwmu3q2npbu" path="res://assets/materials/nature/gravel_1_normal.png" id="3_1l26j"]
+[ext_resource type="Texture2D" uid="uid://c8qttjbkbfao1" path="res://assets/materials/nature/gravel_1_orm.png" id="4_cy7pa"]
+
+[resource]
+albedo_texture = ExtResource("1_dv0mf")
+orm_texture = ExtResource("4_cy7pa")
+normal_enabled = true
+normal_texture = ExtResource("3_1l26j")
+texture_filter = 4
+metadata/MaterialProperties = ExtResource("2_sfmgv")

@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" load_steps=5 format=3 uid="uid://c8xf4bmg84pg7"]
+
+[ext_resource type="Texture2D" uid="uid://5s6y30bk8d5y" path="res://assets/materials/concrete/concrete_wall_dirty_1_color.png" id="1_20vhg"]
+[ext_resource type="PhysicsMaterial" uid="uid://qnmr1hqg7ho4" path="res://assets/material_properties/mat_default.tres" id="2_oq06l"]
+[ext_resource type="Texture2D" uid="uid://dth1ait5q8rk4" path="res://assets/materials/concrete/concrete_wall_dirty_1_normal.png" id="3_6w00m"]
+[ext_resource type="Texture2D" uid="uid://ct7kcjlqh3pym" path="res://assets/materials/concrete/concrete_wall_dirty_1_orm.png" id="4_l4itu"]
+
+[resource]
+albedo_texture = ExtResource("1_20vhg")
+orm_texture = ExtResource("4_l4itu")
+normal_enabled = true
+normal_texture = ExtResource("3_6w00m")
+texture_filter = 4
+metadata/MaterialProperties = ExtResource("2_oq06l")

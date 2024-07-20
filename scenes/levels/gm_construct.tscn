@@ -1,0 +1,105 @@
+[gd_scene load_steps=17 format=3 uid="uid://cl6y6ycrl1iyw"]
+
+[ext_resource type="PackedScene" uid="uid://enx3dm4xsgrv" path="res://scenes/levels/gm_construct.glb" id="1_821s4"]
+[ext_resource type="Environment" uid="uid://tdvlqoyf7qjy" path="res://scenes/env_main.tres" id="1_msorp"]
+[ext_resource type="Script" path="res://scenes/levels/SignalManager.gd" id="2_yktuy"]
+[ext_resource type="Script" path="res://scripts/SignalTransmitter.gd" id="3_hbipu"]
+[ext_resource type="LightmapGIData" uid="uid://k3rgotkg2m2c" path="res://scenes/levels/gm_construct.lmbake" id="3_sib5n"]
+[ext_resource type="AudioStream" uid="uid://b6ehphhw8c3sn" path="res://assets/sounds/music/Weihnachten Am Klavier 1929.mp3" id="4_258kb"]
+[ext_resource type="Material" uid="uid://b7mole64wg27c" path="res://assets/materials/vfx/water/water_test.tres" id="4_yrcla"]
+[ext_resource type="AudioStream" uid="uid://beqlpyifn1m5q" path="res://assets/sounds/music/Oli koivu kosken rannalla.mp3" id="5_5rr3t"]
+[ext_resource type="Script" path="res://scripts/WaterArea.gd" id="5_p0a4m"]
+[ext_resource type="PackedScene" uid="uid://cn848pt85gwr6" path="res://scenes/particles/splash.tscn" id="6_3j0o8"]
+[ext_resource type="AudioStream" uid="uid://cxgrh2vlk4cvg" path="res://assets/sounds/imagetoaudio(1)(1).wav" id="6_b86pq"]
+[ext_resource type="PackedScene" uid="uid://bdrd7rx11vacv" path="res://scenes/player.tscn" id="7_3jm86"]
+[ext_resource type="AudioStream" uid="uid://b56wm35nf4j4o" path="res://assets/sounds/music/Sewerslvt - Drowning In The Sewer - 03 Luciferians.mp3" id="7_hho0x"]
+[ext_resource type="AudioStream" uid="uid://ca0oubnj0fgj7" path="res://assets/sounds/music/Sewerslvt - Drowning In The Sewer - 02 Cyberia lyr1.mp3" id="8_dup7b"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_icqrw"]
+size = Vector2(90, 90)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3aaa"]
+size = Vector3(90, 90, 25)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="env" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
+environment = ExtResource("1_msorp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(0.866025, 0.433013, -0.25, 0, 0.5, 0.866025, 0.5, -0.75, 0.433013, 0, 0, 0)
+light_color = Color(0.95, 0.95, 0.95, 1)
+light_energy = 0.7
+shadow_enabled = true
+
+[node name="SignalManager" type="Node3D" parent="env"]
+script = ExtResource("2_yktuy")
+
+[node name="test radio" type="Node3D" parent="env/SignalManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.7021, 9, -19)
+script = ExtResource("3_hbipu")
+STREAMS = Array[AudioStream]([ExtResource("4_258kb"), ExtResource("5_5rr3t")])
+FREQUENCY = 45.0
+RANGE_PARTIAL = 100.0
+RANGE_FULL = 45.0
+
+[node name="spectrogram test" type="Node3D" parent="env/SignalManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7021, 1, 11)
+script = ExtResource("3_hbipu")
+STREAMS = Array[AudioStream]([ExtResource("6_b86pq")])
+VOLUME = -10.0
+FREQUENCY = 13.0
+RANGE_PARTIAL = 30.0
+RANGE_FULL = 10.0
+
+[node name="epic breakcore" type="Node3D" parent="env/SignalManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7021, 1, -19)
+script = ExtResource("3_hbipu")
+STREAMS = Array[AudioStream]([ExtResource("7_hho0x"), ExtResource("8_dup7b")])
+VOLUME = -20.0
+FREQUENCY = 11.0
+RANGE_PARTIAL = 15.0
+RANGE_FULL = 5.0
+
+[node name="gm_construct" parent="." instance=ExtResource("1_821s4")]
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+quality = 2
+light_data = ExtResource("3_sib5n")
+
+[node name="Water_test" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.915, -1.38664, 6.0901)
+mesh = SubResource("PlaneMesh_icqrw")
+skeleton = NodePath("../level/props/plastic_crate")
+surface_material_override/0 = ExtResource("4_yrcla")
+
+[node name="Area3D" type="Area3D" parent="Water_test"]
+transform = Transform3D(4.37114e-08, -1, 8.74228e-08, 4.37114e-08, 8.74228e-08, 1, -1, -4.37114e-08, 4.37114e-08, 0, 0, 0)
+gravity_point_center = Vector3(1, 0, 0)
+gravity_direction = Vector3(1, 0, 0)
+linear_damp_space_override = 1
+linear_damp = 0.3
+angular_damp_space_override = 1
+angular_damp = 0.2
+script = ExtResource("5_p0a4m")
+SPLASH = ExtResource("6_3j0o8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water_test/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.91069e-15, 0, -1.91069e-15, 1, -7.62939e-06, 0, -12.5)
+shape = SubResource("BoxShape3D_v3aaa")
+
+[node name="Player" parent="." instance=ExtResource("7_3jm86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, -10)
+TOGGLE_CROUCH = true
+TOGGLE_SPRINT = true
+
+[node name="UI" parent="Player/Root/Head/Camera" index="1"]
+visibility_layer = 2
+
+[connection signal="body_entered" from="Water_test/Area3D" to="Water_test/Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Water_test/Area3D" to="Water_test/Area3D" method="_on_body_exited"]
+
+[editable path="Player"]
+[editable path="Player/Root/legs_test"]
