@@ -117,8 +117,9 @@ func take_picture():
 	var capture = get_viewport().get_texture().get_image()
 	var filename = "res://screenshot_test.png"
 	capture.save_png(filename)
-	CAMERA_UI.show()
-	if !in_camera_view:
+	if in_camera_view:
+		CAMERA_UI.show()
+	else:
 		CAMERA_MESH.show()
 		Global.player.ui.show()
 	
