@@ -11,7 +11,7 @@ extends Node3D
 @export_range(0.0, 100.0, 1.0) var FREQUENCY_MAX : float
 @export_range(0.0, 10000.0, 1.0) var RANGE_PARTIAL : float ##Range (in meters) for when you can start to pick up the signal (make higher)
 @export_range(0.0, 10000.0, 1.0) var RANGE_FULL : float ##Range (in meters) for when signal gets to full strength (make lower)
-@export_range(0.0, 1.0, 0.1) var STRENGTH_MULTIPLIER : float ##TODO?
+@export var TEST : Gradient
 
 @onready var AudioPlayer = AudioStreamPlayer.new()
 
@@ -39,6 +39,24 @@ func update_strength(new_strength : float):
 		AudioPlayer.volume_db = -80.0
 	else:
 		AudioPlayer.volume_db = remap(new_strength, 0.0, 1.0, VOLUME - 20.0, VOLUME)
+		
+func get_signal_playback_pos() -> float:
+	return AudioPlayer.get_playback_position()
+		
+func get_signal_stream() -> AudioStream:
+	return current_stream
+	
+func get_signal_strength(pos : Transform3D, frequency : float) -> float:
+	var freq_diff = absf(FREQUENCY - frequency) #Get difference in our frequency and transmitter's
+	freq_diff = clampf(freq_diff, 0.0, 1.0) #Clamp difference to value between 0.0 and 1.0
+	var distance = global_position.distance_to(global_position) #Get distance to transmitter
+	if (distance <= RANGE_PARTIAL): #Start recieving signal if in range and freq
+		distance = clampf(distance, RANGE_FULL, RANGE_PARTIAL)
+		distance = remap(distance, RANGE_FULL, RANGE_PARTIAL, 0.0, 1.0)
+		var signal_strength = (1-distance) * (1-freq_diff) #New signal strength calculation
+		return signal_strength
+	else:
+		return 0.0
 		
 func play_audio(): ##TODO add weight?
 	if STREAMS.size() < 1: #Make sure signal actually has audio

@@ -22,6 +22,10 @@ config/icon="res://assets/ui/editor/icons/icon.svg"
 
 Global="*res://scripts/global.gd"
 
+[debug_draw_3d]
+
+settings/updates/check_for_updates=false
+
 [display]
 
 window/stretch/mode="canvas_items"
