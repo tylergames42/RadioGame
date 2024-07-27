@@ -2,6 +2,7 @@ extends WeaponBase
 
 @export var DESIRED_FREQUENCY = 10.0
 @export var STATIC : AudioStream
+@export_range(-20.0, 0.0, 1.0) var RADIO_VOLUME : float = 0.0
 @export_range(-20.0, 0.0, 1.0) var STATIC_VOLUME : float = -20.0
 
 @export_group("Visuals")
@@ -159,7 +160,9 @@ func update_spectrogram():
 func deploy():
 	super()
 	static_player.play()
+	AudioServer.set_bus_volume_db(2, RADIO_VOLUME)
 
 func holster():
 	super()
 	static_player.stop()
+	AudioServer.set_bus_volume_db(2, -40.0)
