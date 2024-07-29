@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://ce6cy13ptitt8"]
+
+[ext_resource type="PackedScene" uid="uid://lxyem56jrgta" path="res://assets/models/doors/door.glb" id="1_xevl0"]
+[ext_resource type="Script" path="res://scripts/components/InteractableComponent.gd" id="2_fydsm"]
+[ext_resource type="AudioStream" uid="uid://dcn7rwgkoh6hb" path="res://assets/sounds/door/open_01.wav" id="2_s2e1i"]
+[ext_resource type="AudioStream" uid="uid://xioxelsyjmbf" path="res://assets/sounds/door/close_01.wav" id="3_kv3gf"]
+[ext_resource type="AudioStream" uid="uid://4s2b0w4hg34g" path="res://assets/sounds/door/locked_01.wav" id="4_46gqm"]
+[ext_resource type="Material" uid="uid://c4ds3s0wne2qt" path="res://assets/models/doors/materials/door_01.tres" id="5_435tn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oaa2f"]
+points = PackedVector3Array(0.55, 1.235, 0.025, 0.55, 1.235, -0.025, -0.6, 1.235, 0.025, 0.55, -1.235, 0.025, 0.55, -1.235, -0.025, -0.6, 1.235, -0.025, -0.6, -1.235, 0.025, -0.6, -1.235, -0.025, 0.6, -1.235, 0, 0.6, 1.235, 0)
+
+[node name="door_test" node_paths=PackedStringArray("ANIMATION_PLAYER") instance=ExtResource("1_xevl0")]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 10.0
+ANIMATION_PLAYER = NodePath("AnimationPlayer")
+OPEN_SOUND = ExtResource("2_s2e1i")
+CLOSE_SOUND = ExtResource("3_kv3gf")
+LOCKED_SOUND = ExtResource("4_46gqm")
+
+[node name="door" parent="." index="0"]
+material_override = ExtResource("5_435tn")
+
+[node name="Skeleton3D" parent="door/Armature" index="0"]
+bones/0/rotation = Quaternion(0.707106, 0.707106, -0.00101725, 0.00108891)
+bones/2/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.000222325, 0.0030582, 0.00111878)
+shape = SubResource("ConvexPolygonShape3D_oaa2f")
+
+[node name="InteractableComponent" type="Node" parent="." index="3"]
+script = ExtResource("2_fydsm")
+COOLDOWN = 0.9
+
+[node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="." index="4"]
+limit_enabled = true
+limit_upper = 1.74533
+limit_lower = -1.74533
+motor_enabled = true
+motor_max_torque = 15.0
+node_a = NodePath("..")
+transform = Transform3D(1, -1.06581e-14, -4.02341e-21, 0, -4.37114e-08, 1, -1.06581e-14, -1, -4.37114e-08, 0.6096, 0, 0)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="interacted" from="InteractableComponent" to="." method="_on_interactable_component_interacted"]
+[connection signal="interacted_locked" from="InteractableComponent" to="." method="_on_interactable_component_interacted_locked"]

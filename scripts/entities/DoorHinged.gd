@@ -37,7 +37,8 @@ func _ready():
 		is_open = true
 
 func _integrate_forces(_state):
-	if abs(get_angle()) < LATCH_STRENGTH and can_latch:
+	if abs(get_angle()) < LATCH_STRENGTH:
+		if can_latch:
 			close()
 	else:
 		can_latch = true
