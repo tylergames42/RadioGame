@@ -12,13 +12,22 @@ signal interacted_locked ##Emitted when the object is interacted while it is loc
 @onready var timer = Timer.new()
 
 func _ready():
-	get_parent().set_collision_layer_value(3, true)
+	var parent = get_parent()
+	parent.set_collision_layer_value(3, true)
+	#Connect signal automaticaly because I'm lazy
+	if parent.has_method("_on_interactable_component_interacted"):
+		if !interacted.is_connected(parent._on_interactable_component_interacted):
+			interacted.connect(parent._on_interactable_component_interacted)
+	if parent.has_method("_on_interactable_component_interacted_locked"):
+		if !interacted_locked.is_connected(parent._on_interactable_component_interacted_locked):
+			interacted_locked.connect(parent._on_interactable_component_interacted_locked)
+	#Setup cooldown timer
 	if COOLDOWN > 0.0:
 		add_child(timer)
 		timer.autostart = false
 		timer.wait_time = COOLDOWN
 		timer.timeout.connect(enable)
-	else:
+	else: #Remove timer if not needed
 		timer.queue_free()
 
 func _enter_tree() -> void:
