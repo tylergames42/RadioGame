@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://cvdvb3r0hoj7f"]
+[gd_scene load_steps=82 format=3 uid="uid://cvdvb3r0hoj7f"]
 
 [ext_resource type="Environment" uid="uid://tdvlqoyf7qjy" path="res://scenes/env_main.tres" id="1_as7pu"]
 [ext_resource type="PackedScene" uid="uid://bgymsig42c8vi" path="res://scenes/levels/level_test.glb" id="3_6uhm8"]
@@ -52,6 +52,7 @@
 [ext_resource type="Material" uid="uid://brau8p3dh66pp" path="res://assets/models/viewmodels/camera/materials/camera_glass_view.tres" id="53_8x6sf"]
 [ext_resource type="PackedScene" uid="uid://cjc7tvi6axd4a" path="res://scenes/weapons/camera_world.tscn" id="53_psnvk"]
 [ext_resource type="Material" uid="uid://bpw2lmbn17sbo" path="res://assets/models/viewmodels/camera/materials/camera_floppy_view.tres" id="54_bxs2h"]
+[ext_resource type="PackedScene" uid="uid://712cqyq7r23s" path="res://scenes/levels/apartment_test.glb" id="55_d7ojw"]
 [ext_resource type="Material" uid="uid://dhumc2ipipjb5" path="res://assets/models/viewmodels/camera/materials/camera_base_world.tres" id="55_f7v88"]
 [ext_resource type="Material" uid="uid://d1p7lqro76x8l" path="res://assets/models/viewmodels/camera/materials/camera_glass_world.tres" id="56_bkb6n"]
 
@@ -916,6 +917,14 @@ omni_attenuation = 1.5
 [node name="door_test6" parent="level" instance=ExtResource("16_gx084")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81, 1.2192, -8.0772)
 
+[node name="door_test9" parent="level" node_paths=PackedStringArray("ANIMATION_PLAYER") instance=ExtResource("16_gx084")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.731, 1.84872, 2.99186)
+ANIMATION_PLAYER = NodePath("../door_test6/AnimationPlayer")
+
+[node name="door_test10" parent="level" node_paths=PackedStringArray("ANIMATION_PLAYER") instance=ExtResource("16_gx084")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1203, 1.84872, 12.9593)
+ANIMATION_PLAYER = NodePath("../door_test6/AnimationPlayer")
+
 [node name="door_test7" parent="level" instance=ExtResource("16_gx084")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.81, 1.2192, -6.096)
 
@@ -1205,6 +1214,9 @@ shape = SubResource("CylinderShape3D_hu8f5")
 
 [node name="InteractableComponent" type="Node" parent="camera2"]
 script = ExtResource("45_nwjcu")
+
+[node name="apartment_test_vmap_c" parent="." instance=ExtResource("55_d7ojw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.2094, 0.608718, 11.2726)
 
 [connection signal="toggled_off" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_off"]
 [connection signal="toggled_on" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_on"]
