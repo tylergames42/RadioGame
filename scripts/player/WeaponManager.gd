@@ -19,7 +19,6 @@ func add_weapon(weapon : PackedScene) -> void:
 		active_weapon.holster()
 	active_weapon = new_weapon
 	new_weapon.pickup()
-	print("ADDED " + new_weapon.WEAPON_NAME)
 
 func swap_to_weapon(weapon_name : String) -> void:
 	if weapon_name == "null":
