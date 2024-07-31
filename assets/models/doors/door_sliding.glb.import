@@ -1,0 +1,53 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://c2a8tv10xypp3"
+path="res://.godot/imported/door_sliding.glb-8d42fb2f07147a56875fadd79ad4ecf6.scn"
+
+[deps]
+
+source_file="res://assets/models/doors/door_sliding.glb"
+dest_files=["res://.godot/imported/door_sliding.glb-8d42fb2f07147a56875fadd79ad4ecf6.scn"]
+
+[params]
+
+nodes/root_type="DoorSliding"
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=2.5
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"materials/glass/glass_test.vmat": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/glass/glass_test.tres"
+},
+"materials/metal/metal_slats_rusted_02.vmat": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/metal/metal_slats_rusted_02.tres"
+}
+},
+"nodes": {
+"PATH:door_sliding": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/physics_material_override": null,
+"physics/shape_type": 1
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

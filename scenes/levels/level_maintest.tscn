@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://cvdvb3r0hoj7f"]
+[gd_scene load_steps=111 format=3 uid="uid://cvdvb3r0hoj7f"]
 
 [ext_resource type="Environment" uid="uid://tdvlqoyf7qjy" path="res://scenes/env_main.tres" id="1_as7pu"]
 [ext_resource type="PackedScene" uid="uid://bgymsig42c8vi" path="res://scenes/levels/level_test.glb" id="3_6uhm8"]
@@ -60,6 +60,7 @@
 [ext_resource type="AudioStream" uid="uid://xioxelsyjmbf" path="res://assets/sounds/door/close_01.wav" id="58_l26d0"]
 [ext_resource type="PackedScene" uid="uid://dk5tqegv3a5m0" path="res://assets/models/props/ac_unit/ac_unit.glb" id="59_vvcwo"]
 [ext_resource type="Material" uid="uid://drrvy05xius6" path="res://assets/models/props/ac_unit/materials/ac_unit.tres" id="60_elj2g"]
+[ext_resource type="PackedScene" uid="uid://cm5wwggwgkk7o" path="res://scenes/entities/door_sliding.tscn" id="61_l2jyc"]
 
 [sub_resource type="Gradient" id="Gradient_lbjkb"]
 offsets = PackedFloat32Array(0, 0.359375, 1)
@@ -1680,6 +1681,12 @@ transform = Transform3D(0, 0.21, 0, 0, 0, -0.21, -0.21, 0, 0, 0, 0.4, 0.5)
 [node name="InteractableComponent" type="Node" parent="ac_unit2"]
 script = ExtResource("45_nwjcu")
 
+[node name="door_sliding2" parent="." instance=ExtResource("61_l2jyc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.5005, 1.84688, 30.4069)
+
+[node name="SliderJoint3D" parent="door_sliding2" index="2"]
+limit_upper = 1.5
+
 [connection signal="toggled_off" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_off"]
 [connection signal="toggled_on" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_on"]
 [connection signal="body_entered" from="Water_test/Area3D" to="Water_test/Area3D" method="_on_body_entered"]
@@ -1697,3 +1704,4 @@ script = ExtResource("45_nwjcu")
 [editable path="mat_test"]
 [editable path="mat_test2"]
 [editable path="mat_test3"]
+[editable path="door_sliding2"]
