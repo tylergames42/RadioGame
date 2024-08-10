@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bw0g3fjheywl0"]
+
+[ext_resource type="Texture2D" path="res://assets/materials/vfx/caustics_atlas.png" id="1_2tyiu"]
+
+[resource]
+atlas = ExtResource("1_2tyiu")
+region = Rect2(0, 0, 128, 128)

@@ -6,7 +6,7 @@ uniform sampler2D ground_normal_map : hint_normal,filter_nearest_mipmap_anisotro
 uniform sampler2D ground_roughness : filter_nearest_mipmap_anisotropic;
 uniform sampler2D rain_splash : hint_normal,filter_nearest_mipmap_anisotropic;
 uniform sampler2D rain_wet_normal : hint_normal,filter_nearest_mipmap_anisotropic;
-uniform sampler2D noise;
+uniform sampler2D noise : filter_nearest_mipmap_anisotropic;
 
 uniform float blend_raining;
 

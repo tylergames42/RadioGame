@@ -102,14 +102,13 @@ shadow_mesh = SubResource("ArrayMesh_wmjpt")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gjv2x"]
 points = PackedVector3Array(-0.75, -1.225, -0.025, 0.749853, -1.225, -0.025, -0.75, -1.225, 0.0249951, -0.75, 1.225, -0.025, 0.749853, -1.225, 0.025, 0.75, 1.225, -0.025, -0.75, 1.225, 0.0249951, 0.75, 1.225, 0.025)
 
-[node name="door_sliding" type="RigidBody3D" node_paths=PackedStringArray("JOINT")]
+[node name="door_sliding" type="RigidBody3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 10.0
 script = ExtResource("1_wd4tj")
-JOINT = NodePath("SliderJoint3D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

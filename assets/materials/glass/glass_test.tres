@@ -16,4 +16,6 @@ subsurf_scatter_strength = 1.0
 refraction_enabled = true
 refraction_scale = 0.02
 texture_filter = 4
+distance_fade_mode = 1
+distance_fade_min_distance = 25.0
 metadata/MaterialProperties = ExtResource("2_jylr5")

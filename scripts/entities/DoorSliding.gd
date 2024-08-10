@@ -3,7 +3,7 @@ class_name DoorSliding
 extends RigidBody3D
 
 @export var ANIMATION_PLAYER : AnimationPlayer
-@export var JOINT : JoltSliderJoint3D
+@onready var JOINT = $SliderJoint3D
 @export_range(1, 100, 1) var OPEN_STRENGTH : float = 25.0 ##The strength of the force applied to the door when opened
 
 @export_group("Audio")
@@ -21,7 +21,7 @@ var can_latch : bool = true
 
 func _ready():
 	add_child(AudioPlayer)
-	if (global_position.distance_to(closed_pos) < 0.1):
+	if (global_position.distance_to(closed_pos) <= 0.04):
 		freeze = true
 		can_latch = false
 		is_open = false
@@ -31,7 +31,7 @@ func _ready():
 		is_open = true
 
 func _integrate_forces(_state):
-	if (global_position.distance_to(closed_pos) < 0.1):
+	if (global_position.distance_to(closed_pos) <= 0.04):
 		if can_latch:
 			latch()
 	else:

@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://c8nnduev8m8s4"]
+
+[ext_resource type="Shader" path="res://assets/shaders/rain_flow.gdshader" id="1_wg14c"]
+[ext_resource type="Texture2D" uid="uid://cv1p3jttjayvw" path="res://assets/materials/concrete/concrete_base_1_color.png" id="2_1ylwp"]
+[ext_resource type="Texture2D" uid="uid://jx1x5fn1wpfq" path="res://assets/materials/concrete/concrete_base_1_normal.png" id="3_oooce"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ol7qr"]
+seed = 1
+frequency = 0.016
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ylvtk"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_ol7qr")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7561h"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_ol7qr")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_wg14c")
+shader_parameter/blend_raining = 0.695
+shader_parameter/world_up = Vector3(0, 0, 1)
+shader_parameter/ground_albedo = ExtResource("2_1ylwp")
+shader_parameter/ground_normal_map = ExtResource("3_oooce")
+shader_parameter/rain_splash = SubResource("NoiseTexture2D_7561h")
+shader_parameter/rain_wet_normal = SubResource("NoiseTexture2D_7561h")
+shader_parameter/noise = SubResource("NoiseTexture2D_ylvtk")

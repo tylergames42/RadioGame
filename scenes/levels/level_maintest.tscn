@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://cvdvb3r0hoj7f"]
+[gd_scene load_steps=127 format=3 uid="uid://cvdvb3r0hoj7f"]
 
 [ext_resource type="Environment" uid="uid://tdvlqoyf7qjy" path="res://scenes/env_main.tres" id="1_as7pu"]
 [ext_resource type="PackedScene" uid="uid://bgymsig42c8vi" path="res://scenes/levels/level_test.glb" id="3_6uhm8"]
@@ -13,22 +13,39 @@
 [ext_resource type="AudioStream" uid="uid://beqlpyifn1m5q" path="res://assets/sounds/music/Oli koivu kosken rannalla.mp3" id="6_h15b5"]
 [ext_resource type="AudioStream" uid="uid://cxgrh2vlk4cvg" path="res://assets/sounds/imagetoaudio(1)(1).wav" id="7_bh3f1"]
 [ext_resource type="AudioStream" uid="uid://ca0oubnj0fgj7" path="res://assets/sounds/music/Sewerslvt - Drowning In The Sewer - 02 Cyberia lyr1.mp3" id="7_ge2td"]
+[ext_resource type="Script" path="res://scripts/entities/AnimatedLight3D.gd" id="12_dybh7"]
+[ext_resource type="Texture2D" uid="uid://d326f1asd15tq" path="res://assets/materials/vfx/caustics/caust_001.png" id="12_npgrf"]
 [ext_resource type="Material" uid="uid://csepy367610dt" path="res://assets/materials/dev/dev_measuregeneric01c.tres" id="13_f82mo"]
+[ext_resource type="Texture2D" uid="uid://bgtqnql1jmyo1" path="res://assets/materials/vfx/caustics/caust_002.png" id="13_mhcq2"]
 [ext_resource type="PackedScene" uid="uid://b7h2r5sq5385d" path="res://scenes/physics_props/oildrum.tscn" id="14_kxiho"]
+[ext_resource type="Texture2D" uid="uid://bi4s726fiwhqd" path="res://assets/materials/vfx/caustics/caust_003.png" id="14_lp3vi"]
 [ext_resource type="Script" path="res://scripts/components/ToggleableComponent.gd" id="14_mod8d"]
 [ext_resource type="Script" path="res://scenes/LightTest.gd" id="15_bh57x"]
 [ext_resource type="Script" path="res://scripts/entities/SpatialAudioPlayer3D.gd" id="15_ga6ev"]
+[ext_resource type="Texture2D" uid="uid://db7c3jme081iy" path="res://assets/materials/vfx/caustics/caust_004.png" id="15_xaikv"]
 [ext_resource type="PackedScene" uid="uid://ce6cy13ptitt8" path="res://scenes/entities/door_rotating.tscn" id="16_gx084"]
+[ext_resource type="Texture2D" uid="uid://chn7guvtd23ch" path="res://assets/materials/vfx/caustics/caust_005.png" id="16_oluer"]
+[ext_resource type="Texture2D" uid="uid://bgqorhryrddjl" path="res://assets/materials/vfx/caustics/caust_006.png" id="17_xpbur"]
+[ext_resource type="Texture2D" uid="uid://cpgfsuqb5hc3v" path="res://assets/materials/vfx/caustics/caust_007.png" id="18_tgvv5"]
 [ext_resource type="Material" uid="uid://cn30wg2kgu74l" path="res://assets/models/doors/materials/door_04.tres" id="18_wx82b"]
+[ext_resource type="Texture2D" uid="uid://dy6gcnemn3520" path="res://assets/materials/vfx/caustics/caust_008.png" id="19_4uvku"]
 [ext_resource type="PackedScene" uid="uid://c6588gqohbr45" path="res://scenes/lighthouse_redesignv2.glb" id="19_xhvnx"]
 [ext_resource type="Texture2D" uid="uid://2l78dk4e0acj" path="res://assets/materials/vfx/star_05.png" id="20_ipcxw"]
+[ext_resource type="Texture2D" uid="uid://c8q7ot6463wey" path="res://assets/materials/vfx/caustics/caust_009.png" id="20_lfwxj"]
 [ext_resource type="Material" uid="uid://bmbl7oqp4xdct" path="res://assets/models/doors/materials/door_02.tres" id="21_cmdnc"]
+[ext_resource type="Texture2D" uid="uid://bwkammacfmot6" path="res://assets/materials/vfx/caustics/caust_010.png" id="21_tme2p"]
+[ext_resource type="Texture2D" uid="uid://dmuo6u66nbt3q" path="res://assets/materials/vfx/caustics/caust_011.png" id="22_u1wf3"]
 [ext_resource type="PackedScene" uid="uid://bwdk1aws5e147" path="res://scenes/physics_props/plastic_crate.tscn" id="23_6f8xq"]
+[ext_resource type="Texture2D" uid="uid://bpgsdavcerrkk" path="res://assets/materials/vfx/caustics/caust_012.png" id="23_57ab6"]
 [ext_resource type="Material" uid="uid://b7mole64wg27c" path="res://assets/materials/vfx/water/water_test.tres" id="24_5adkb"]
 [ext_resource type="Script" path="res://scripts/entities/DoorSliding.gd" id="24_6tqj1"]
+[ext_resource type="Texture2D" uid="uid://bmewjkshgrmgu" path="res://assets/materials/vfx/caustics/caust_013.png" id="24_pxjs0"]
 [ext_resource type="Script" path="res://scripts/WaterArea.gd" id="24_sbpmf"]
+[ext_resource type="Texture2D" uid="uid://crkecl088euo7" path="res://assets/materials/vfx/caustics/caust_014.png" id="25_3jkk8"]
 [ext_resource type="PackedScene" uid="uid://cn848pt85gwr6" path="res://scenes/particles/splash.tscn" id="25_p0smd"]
 [ext_resource type="PackedScene" uid="uid://bfhdx2mig656s" path="res://assets/models/room_test.glb" id="26_01i44"]
+[ext_resource type="Texture2D" uid="uid://dyp0w8tywta3m" path="res://assets/materials/vfx/caustics/caust_015.png" id="26_l1bi7"]
+[ext_resource type="Texture2D" uid="uid://d2w7hwv2vw7ho" path="res://assets/materials/vfx/caustics/caust_016.png" id="27_gis7n"]
 [ext_resource type="Material" uid="uid://mqwcvw131x0r" path="res://assets/materials/metal/metal_plates_rusted.tres" id="27_j4nrs"]
 [ext_resource type="PhysicsMaterial" uid="uid://bho2aunoj375l" path="res://assets/material_properties/mat_reflect_test.tres" id="27_yttpw"]
 [ext_resource type="PhysicsMaterial" uid="uid://btupykdprxygc" path="res://assets/material_properties/mat_absorb_test.tres" id="28_1uvbh"]
@@ -47,7 +64,6 @@
 [ext_resource type="Script" path="res://scripts/components/InteractableComponent.gd" id="45_nwjcu"]
 [ext_resource type="PackedScene" uid="uid://cyc5oipv4atav" path="res://assets/models/mat_test.glb" id="47_4fchk"]
 [ext_resource type="PackedScene" uid="uid://b0kg55fr0tvpj" path="res://scenes/physics_props/sphere_test.tscn" id="47_jw63w"]
-[ext_resource type="Material" uid="uid://c545lst6te0j3" path="res://assets/materials/nature/gravel_1.tres" id="47_xd0lr"]
 [ext_resource type="Material" uid="uid://dfx5mi3fpvnxa" path="res://assets/materials/concrete/concrete_panels_dark.tres" id="50_oaksu"]
 [ext_resource type="Material" uid="uid://dpqtwxocva0k0" path="res://assets/models/viewmodels/camera/materials/camera_base_view.tres" id="52_kiees"]
 [ext_resource type="Material" uid="uid://brau8p3dh66pp" path="res://assets/models/viewmodels/camera/materials/camera_glass_view.tres" id="53_8x6sf"]
@@ -61,6 +77,8 @@
 [ext_resource type="PackedScene" uid="uid://dk5tqegv3a5m0" path="res://assets/models/props/ac_unit/ac_unit.glb" id="59_vvcwo"]
 [ext_resource type="Material" uid="uid://drrvy05xius6" path="res://assets/models/props/ac_unit/materials/ac_unit.tres" id="60_elj2g"]
 [ext_resource type="PackedScene" uid="uid://cm5wwggwgkk7o" path="res://scenes/entities/door_sliding.tscn" id="61_l2jyc"]
+[ext_resource type="Material" uid="uid://c8nnduev8m8s4" path="res://assets/materials/dev/flow_test.tres" id="66_hgha1"]
+[ext_resource type="Material" uid="uid://dwva31kxf1dnc" path="res://assets/materials/concrete/concrete_panels_light.tres" id="67_akdyd"]
 
 [sub_resource type="Gradient" id="Gradient_lbjkb"]
 offsets = PackedFloat32Array(0, 0.359375, 1)
@@ -73,8 +91,6 @@ size = Vector3(3, 0.1, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yr4bb"]
 bounce = 0.5
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_63o2b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0n3b1"]
 resource_name = "door"
@@ -670,14 +686,6 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_3y8lw"]
 size = Vector3(0.04, 0.18, 0.11)
 
-[sub_resource type="GDScript" id="GDScript_rnvlo"]
-script/source = "extends StaticBody3D
-
-func _on_interactable_component_interacted(interactor):
-	if interactor == Global.player:
-		interactor.state_machine.on_child_transition(\"PlayerClimbingState\")
-"
-
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wj002"]
 data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
 
@@ -956,9 +964,6 @@ TEST = SubResource("Gradient_lbjkb")
 
 [node name="level_test" parent="level" instance=ExtResource("3_6uhm8")]
 
-[node name="lighthouse_redesignv2_vmap_c" parent="level" instance=ExtResource("19_xhvnx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96998, -4.00001, 9.93774)
-
 [node name="apartment_test_vmap_c" parent="level" instance=ExtResource("55_d7ojw")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42.6129, 0.608718, 2.71841)
 
@@ -966,8 +971,116 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42.612
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8504, 1.6224, -3.1376)
 size = Vector3(11.2336, 3.4272, 9.9008)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="level/apartment_test_vmap_c"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.3216, 2.6656, -3.4272)
+light_color = Color(0.999999, 0.997743, 0.804051, 1)
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="level/apartment_test_vmap_c"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.8928, 2.0944, -3.4272)
+light_color = Color(1, 0.0196078, 0, 1)
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="level/apartment_test_vmap_c"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1312, 2.2848, -6.0928)
+light_color = Color(0.280126, 0.500245, 1, 1)
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="level/apartment_test_vmap_c"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2736, 1.904, -1.7136)
+light_color = Color(0.787333, 1, 0.42, 1)
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="level/apartment_test_vmap_c"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.6063, 2.4752, -4.5696)
+light_color = Color(1, 0.12, 0.985333, 1)
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="level/apartment_test_vmap_c"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2271, 2.4752, -5.712)
+light_color = Color(0.281333, 1, 0.12, 1)
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="level/apartment_test_vmap_c"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2271, 1.7136, -0.7616)
+light_color = Color(0.12, 0.604, 1, 1)
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="level/apartment_test_vmap_c"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7023, 2.2848, -0.7616)
+light_color = Color(1, 0.721333, 0.12, 1)
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="level/apartment_test_vmap_c"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4639, 1.7136, -5.9024)
+light_color = Color(0.12, 0.926666, 1, 1)
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="level/apartment_test_vmap_c"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.416, 2.6656, 2.856)
+light_color = Color(0.999999, 0.997743, 0.804051, 1)
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="level/apartment_test_vmap_c"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8, 2.6656, -4.5696)
+light_color = Color(0.917647, 0.909804, 1, 1)
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 6.0
+
+[node name="CausticTest" type="OmniLight3D" parent="level/apartment_test_vmap_c"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8448, 5.5216, -4.5696)
+light_color = Color(0, 0.792157, 1, 1)
+light_projector = ExtResource("12_npgrf")
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+omni_range = 6.0
+script = ExtResource("12_dybh7")
+FRAMES = Array[Texture2D]([ExtResource("12_npgrf"), ExtResource("13_mhcq2"), ExtResource("14_lp3vi"), ExtResource("15_xaikv"), ExtResource("16_oluer"), ExtResource("17_xpbur"), ExtResource("18_tgvv5"), ExtResource("19_4uvku"), ExtResource("20_lfwxj"), ExtResource("21_tme2p"), ExtResource("22_u1wf3"), ExtResource("23_57ab6"), ExtResource("24_pxjs0"), ExtResource("25_3jkk8"), ExtResource("26_l1bi7"), ExtResource("27_gis7n")])
+ANIM_SPEED = 0.1
+
+[node name="OmniLight3D" type="OmniLight3D" parent="level/apartment_test_vmap_c/CausticTest"]
+light_color = Color(0.4121, 0.784729, 0.92472, 1)
+light_energy = 0.4
+light_bake_mode = 1
+shadow_enabled = true
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="level/apartment_test_vmap_c"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9904, 2.4752, -0.571201)
+light_color = Color(0.92549, 0.694118, 1, 1)
+light_specular = 27.905
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 4.0
+
+[node name="lighthouse_redesignv2_vmap_c" parent="level" instance=ExtResource("19_xhvnx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96998, -4.00001, 9.93774)
+
 [node name="LightmapGI" type="LightmapGI" parent="level"]
 quality = 2
+directional = true
+bias = 0.0002
 generate_probes_subdiv = 4
 light_data = ExtResource("4_d0goh")
 
@@ -978,30 +1091,6 @@ TOGGLE_SPRINT = true
 
 [node name="UI" parent="level/Player/Root/Head/Camera" index="1"]
 visibility_layer = 2
-
-[node name="Skeleton3D" parent="level/Player/Root/legs_test/Armature" index="0"]
-bones/0/rotation = Quaternion(-7.10543e-15, -5.69993e-15, 1, 7.54979e-08)
-bones/1/rotation = Quaternion(-0.0267518, -0.706601, -0.0107043, 0.707026)
-bones/2/rotation = Quaternion(0.0334134, -0.00175326, 0.0244522, 0.999141)
-bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(-0.0267519, 0.7066, 0.0107044, 0.707026)
-bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(0.0334135, 0.00175332, -0.0244522, 0.999141)
-bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.513068, 0.486581, 0.486581, 0.513068)
-bones/6/rotation = Quaternion(0.507981, -0.492017, 0.500833, -0.49904)
-bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(0.0193021, -0.0110751, 0.955716, -0.293447)
-bones/7/scale = Vector3(0.999999, 1, 1)
-bones/8/rotation = Quaternion(0.0221988, 0.0286914, -0.163898, 0.98581)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.513068, -0.486581, -0.486581, 0.513068)
-bones/10/rotation = Quaternion(0.507981, 0.492017, -0.500833, -0.49904)
-bones/10/scale = Vector3(1, 1, 1)
-bones/11/rotation = Quaternion(-0.0193021, -0.0110751, 0.955716, 0.293447)
-bones/11/scale = Vector3(0.999999, 1, 1)
-bones/12/rotation = Quaternion(0.0221988, -0.0286914, 0.163898, 0.98581)
-bones/12/scale = Vector3(1, 1, 1)
 
 [node name="props" type="Node3D" parent="level"]
 
@@ -1132,7 +1221,6 @@ size = Vector3(10, 1, 200)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="level"]
 transform = Transform3D(0.642788, -0.766045, 1.29048e-08, 0.61394, 0.515157, -0.598073, 0.458151, 0.384434, 0.801442, 16.25, -61.3148, 105.21)
-material_override = SubResource("ShaderMaterial_63o2b")
 use_collision = true
 size = Vector3(10, 1, 200)
 
@@ -1237,18 +1325,13 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.81,
 [node name="door" parent="level/door_test7" index="0"]
 material_override = ExtResource("21_cmdnc")
 
-[node name="Skeleton3D" parent="level/door_test7/door/Armature" index="0"]
-bones/0/rotation = Quaternion(0.707106, 0.707106, -0.00101725, 0.00108891)
-bones/2/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-
-[node name="door_test11" type="RigidBody3D" parent="level" node_paths=PackedStringArray("JOINT")]
+[node name="door_test11" type="RigidBody3D" parent="level"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.81, 1.2192, -6.096)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 10.0
 script = ExtResource("24_6tqj1")
-JOINT = NodePath("SliderJoint3D")
 
 [node name="door" type="MeshInstance3D" parent="level/door_test11"]
 transform = Transform3D(0.61, 0, 0, 0, 1.236, 0, 0, 0, 0.025, 0, 0, 0)
@@ -1310,10 +1393,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.034
 
 [node name="door" parent="level/door_test8" index="0"]
 material_override = ExtResource("18_wx82b")
-
-[node name="Skeleton3D" parent="level/door_test8/door/Armature" index="0"]
-bones/0/rotation = Quaternion(0.707106, 0.707106, -0.00101725, 0.00108891)
-bones/2/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
 [node name="door_test2" parent="level" instance=ExtResource("16_gx084")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6362, 1.43256, -25.146)
@@ -1537,19 +1616,19 @@ transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -47.6118, 3.5573, 39
 transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 37.4514, -0.791284, -13.4904)
 
 [node name="Cube" parent="mat_test" index="0"]
-material_override = ExtResource("47_xd0lr")
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("66_hgha1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="mat_test/Cube" index="0"]
-script = SubResource("GDScript_rnvlo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mat_test/Cube/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wj002")
 
-[node name="InteractableComponent" type="Node" parent="mat_test/Cube/StaticBody3D"]
-script = ExtResource("45_nwjcu")
-
 [node name="mat_test2" parent="." instance=ExtResource("47_4fchk")]
 transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 37.4514, -0.791284, 10.5096)
+
+[node name="Cube" parent="mat_test2" index="0"]
+material_override = ExtResource("67_akdyd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="mat_test2/Cube" index="0"]
 
@@ -1593,14 +1672,13 @@ shape = SubResource("CylinderShape3D_hu8f5")
 [node name="InteractableComponent" type="Node" parent="camera"]
 script = ExtResource("45_nwjcu")
 
-[node name="door_sliding" type="RigidBody3D" parent="." node_paths=PackedStringArray("JOINT")]
+[node name="door_sliding" type="RigidBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.5771, 1.86592, 7.52093)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 10.0
 script = ExtResource("24_6tqj1")
-JOINT = NodePath("SliderJoint3D")
 OPEN_SOUND = ExtResource("57_66a82")
 CLOSE_SOUND = ExtResource("58_l26d0")
 
@@ -1660,7 +1738,7 @@ limit_spring_enabled = true
 node_a = NodePath("..")
 
 [node name="ac_unit" parent="." instance=ExtResource("59_vvcwo")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 33.9826, 9.80581, 25.3086)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 34.0016, 13.3282, 25.3086)
 
 [node name="ac_unit2" type="RigidBody3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 33.922, 8.39041, 17.64)
@@ -1687,12 +1765,14 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.500
 [node name="SliderJoint3D" parent="door_sliding2" index="2"]
 limit_upper = 1.5
 
+[node name="door_sliding" parent="door_sliding2" index="3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0380802, 0, 0)
+
 [connection signal="toggled_off" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_off"]
 [connection signal="toggled_on" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_on"]
 [connection signal="body_entered" from="Water_test/Area3D" to="Water_test/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Water_test/Area3D" to="Water_test/Area3D" method="_on_body_exited"]
 [connection signal="interacted" from="radio_pickup2/InteractableComponent" to="radio_pickup2" method="_on_interactable_component_interacted"]
-[connection signal="interacted" from="mat_test/Cube/StaticBody3D/InteractableComponent" to="mat_test/Cube/StaticBody3D" method="_on_interactable_component_interacted"]
 [connection signal="interacted" from="camera/InteractableComponent" to="camera" method="_on_interactable_component_interacted"]
 
 [editable path="level/Player"]

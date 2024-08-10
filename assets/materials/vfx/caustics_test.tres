@@ -1,0 +1,53 @@
+[gd_resource type="AnimatedTexture" load_steps=17 format=3 uid="uid://becgwffmu2f1s"]
+
+[ext_resource type="Texture2D" uid="uid://d326f1asd15tq" path="res://assets/materials/vfx/caustics/caust_001.png" id="1_ywep8"]
+[ext_resource type="Texture2D" uid="uid://bgtqnql1jmyo1" path="res://assets/materials/vfx/caustics/caust_002.png" id="2_swvkb"]
+[ext_resource type="Texture2D" uid="uid://dmuo6u66nbt3q" path="res://assets/materials/vfx/caustics/caust_011.png" id="3_hyaqp"]
+[ext_resource type="Texture2D" uid="uid://bpgsdavcerrkk" path="res://assets/materials/vfx/caustics/caust_012.png" id="4_fmv83"]
+[ext_resource type="Texture2D" uid="uid://bmewjkshgrmgu" path="res://assets/materials/vfx/caustics/caust_013.png" id="5_pldjk"]
+[ext_resource type="Texture2D" uid="uid://crkecl088euo7" path="res://assets/materials/vfx/caustics/caust_014.png" id="6_hdytk"]
+[ext_resource type="Texture2D" uid="uid://dyp0w8tywta3m" path="res://assets/materials/vfx/caustics/caust_015.png" id="7_lvti1"]
+[ext_resource type="Texture2D" uid="uid://d2w7hwv2vw7ho" path="res://assets/materials/vfx/caustics/caust_016.png" id="8_6bt0l"]
+[ext_resource type="Texture2D" uid="uid://bi4s726fiwhqd" path="res://assets/materials/vfx/caustics/caust_003.png" id="9_6bdaw"]
+[ext_resource type="Texture2D" uid="uid://db7c3jme081iy" path="res://assets/materials/vfx/caustics/caust_004.png" id="10_ckk38"]
+[ext_resource type="Texture2D" uid="uid://chn7guvtd23ch" path="res://assets/materials/vfx/caustics/caust_005.png" id="11_g5cqe"]
+[ext_resource type="Texture2D" uid="uid://bgqorhryrddjl" path="res://assets/materials/vfx/caustics/caust_006.png" id="12_whx6g"]
+[ext_resource type="Texture2D" uid="uid://cpgfsuqb5hc3v" path="res://assets/materials/vfx/caustics/caust_007.png" id="13_5v0s4"]
+[ext_resource type="Texture2D" uid="uid://dy6gcnemn3520" path="res://assets/materials/vfx/caustics/caust_008.png" id="14_5nwud"]
+[ext_resource type="Texture2D" uid="uid://c8q7ot6463wey" path="res://assets/materials/vfx/caustics/caust_009.png" id="15_0ov6k"]
+[ext_resource type="Texture2D" uid="uid://bwkammacfmot6" path="res://assets/materials/vfx/caustics/caust_010.png" id="16_rvds5"]
+
+[resource]
+frames = 16
+frame_0/texture = ExtResource("1_ywep8")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("2_swvkb")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("9_6bdaw")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("10_ckk38")
+frame_3/duration = 0.1
+frame_4/texture = ExtResource("11_g5cqe")
+frame_4/duration = 0.1
+frame_5/texture = ExtResource("12_whx6g")
+frame_5/duration = 0.1
+frame_6/texture = ExtResource("13_5v0s4")
+frame_6/duration = 0.1
+frame_7/texture = ExtResource("14_5nwud")
+frame_7/duration = 0.1
+frame_8/texture = ExtResource("15_0ov6k")
+frame_8/duration = 0.1
+frame_9/texture = ExtResource("16_rvds5")
+frame_9/duration = 0.1
+frame_10/texture = ExtResource("3_hyaqp")
+frame_10/duration = 0.1
+frame_11/texture = ExtResource("4_fmv83")
+frame_11/duration = 0.1
+frame_12/texture = ExtResource("5_pldjk")
+frame_12/duration = 0.1
+frame_13/texture = ExtResource("6_hdytk")
+frame_13/duration = 0.1
+frame_14/texture = ExtResource("7_lvti1")
+frame_14/duration = 0.1
+frame_15/texture = ExtResource("8_6bt0l")
+frame_15/duration = 0.1

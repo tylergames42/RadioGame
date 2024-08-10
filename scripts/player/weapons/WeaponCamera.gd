@@ -8,6 +8,10 @@ extends WeaponBase
 @export var CAMERA_FLASH : Light3D
 @export var AF_CAST : ShapeCast3D
 #@export var CAMERA_UI_FLASH
+@export_range(1.0, 25.0, 0.1) var ZOOM_MIN : float = 16.0
+@export_range(25.0, 100.0, 0.1) var ZOOM_MAX : float = 94.0
+@export_range(0.1, 5.0, 0.1) var ZOOM_AMOUNT : float = 1.0
+@export_range(0.1, 5.0, 0.1) var ZOOM_LARGE_AMOUNT : float = 2.5
 @export_group("Audio")
 @export var SHOOT_SFX : AudioStream
 @export var SHOOT_FLASH_SFX : AudioStream
@@ -23,6 +27,7 @@ var af_enabled : bool = true
 var desired_zoom : float
 var focus_distance : float
 var desired_focus_dist : float
+var focus_adjust : float
 var current_effect : int = 0
 
 func _ready():
@@ -67,25 +72,33 @@ func input_update(event):
 			flash_enabled = true
 	
 	if event.is_action_pressed("tune_up"):
+		if desired_zoom <= ZOOM_MIN:
+			desired_zoom = ZOOM_MIN
+			return
 		if !audio_player.playing:
 			audio_player.stream = ZOOM_OUT_SFX
 			audio_player.play()
 		if Input.is_action_pressed("tune_modifiy"):
-			desired_zoom -= 2.5
+			desired_zoom -= ZOOM_LARGE_AMOUNT
 		else:
-			desired_zoom -= 1.0
-		desired_zoom = clamp(desired_zoom, 16.0, 60.0)
+			desired_zoom -= ZOOM_AMOUNT
+		desired_zoom = clamp(desired_zoom, ZOOM_MIN, ZOOM_MAX)
+		focus_adjust -= 1.0
 		$Camera3D/CameraUI/HSlider.value = CAMERA_CAM.fov
 			
 	if event.is_action_pressed("tune_down"):
+		if desired_zoom >= ZOOM_MAX:
+			desired_zoom = ZOOM_MAX
+			return
 		if !audio_player.playing:
 			audio_player.stream = ZOOM_IN_SFX
 			audio_player.play()
 		if Input.is_action_pressed("tune_modifiy"):
-			desired_zoom += 2.5
+			desired_zoom += ZOOM_LARGE_AMOUNT
 		else:
-			desired_zoom += 1.0
-		desired_zoom = clamp(desired_zoom, 16.0, 60.0)
+			desired_zoom += ZOOM_AMOUNT
+		desired_zoom = clamp(desired_zoom, ZOOM_MIN, ZOOM_MAX)
+		focus_adjust -= 1.0
 		$Camera3D/CameraUI/HSlider.value = CAMERA_CAM.fov
 		
 	if event.is_action_pressed("tune_up_large"):
@@ -98,11 +111,12 @@ func update(delta):
 	CAMERA_FLASH.light_energy = lerpf(CAMERA_FLASH.light_energy, 0.0, delta * 1.4)
 	if in_camera_view:
 		CAMERA_CAM.fov = lerpf(CAMERA_CAM.fov, desired_zoom, delta * 4.0)
-		if af_enabled:
-			desired_focus_dist = global_position.distance_to(AF_CAST.get_collision_point(0))
-			focus_distance = lerpf(focus_distance, desired_focus_dist, delta * 4.0)
-			CAMERA_CAM.attributes.dof_blur_near_distance = focus_distance - (CAMERA_CAM.fov * 0.08)
-			CAMERA_CAM.attributes.dof_blur_far_distance = focus_distance + (CAMERA_CAM.fov * 0.12)
+		#if af_enabled:
+		desired_focus_dist = global_position.distance_to(AF_CAST.get_collision_point(0))
+		focus_adjust = lerpf(focus_adjust, 0.0, delta * 16.0)
+		focus_distance = lerpf(focus_distance, desired_focus_dist, delta * 4.0) + focus_adjust
+		CAMERA_CAM.attributes.dof_blur_near_distance = focus_distance - (CAMERA_CAM.fov * 0.08)
+		CAMERA_CAM.attributes.dof_blur_far_distance = focus_distance + (CAMERA_CAM.fov * 0.12)
 
 func take_picture():
 	CAMERA_MESH.hide()
