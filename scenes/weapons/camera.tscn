@@ -240,6 +240,7 @@ attributes = SubResource("CameraAttributesPractical_rbp31")
 fov = 37.8493
 
 [node name="AFCast" type="ShapeCast3D" parent="Camera3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020051, 1.19209e-07, -0.00379431)
 shape = SubResource("SphereShape3D_vvsl0")
 target_position = Vector3(0, 0, -100)
 max_results = 1

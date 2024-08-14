@@ -1075,6 +1075,27 @@ light_bake_mode = 1
 shadow_enabled = true
 omni_range = 4.0
 
+[node name="ac_unit3" parent="level/apartment_test_vmap_c" instance=ExtResource("59_vvcwo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35.9328, 12.7193, -8.6265)
+
+[node name="ac_unit4" parent="level/apartment_test_vmap_c" instance=ExtResource("59_vvcwo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -40.312, 16.394, -8.6265)
+
+[node name="ac_unit5" parent="level/apartment_test_vmap_c" instance=ExtResource("59_vvcwo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -53.64, 12.7193, -8.6265)
+
+[node name="ac_unit6" parent="level/apartment_test_vmap_c" instance=ExtResource("59_vvcwo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -65.0639, 16.375, -8.6265)
+
+[node name="ac_unit7" parent="level/apartment_test_vmap_c" instance=ExtResource("59_vvcwo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -76.2975, 23.7054, -8.6265)
+
+[node name="ac_unit8" parent="level/apartment_test_vmap_c" instance=ExtResource("59_vvcwo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -76.3355, 1.75224, -8.6265)
+
+[node name="ac_unit9" parent="level/apartment_test_vmap_c" instance=ExtResource("59_vvcwo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -71.385, 5.40792, -8.6265)
+
 [node name="lighthouse_redesignv2_vmap_c" parent="level" instance=ExtResource("19_xhvnx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96998, -4.00001, 9.93774)
 
@@ -1091,6 +1112,30 @@ TOGGLE_SPRINT = true
 
 [node name="UI" parent="level/Player/Root/Head/Camera" index="1"]
 visibility_layer = 2
+
+[node name="Skeleton3D" parent="level/Player/Root/legs_test/Armature" index="0"]
+bones/0/rotation = Quaternion(-7.10543e-15, -5.69993e-15, 1, 7.54979e-08)
+bones/1/rotation = Quaternion(-0.0267518, -0.706601, -0.0107043, 0.707026)
+bones/2/rotation = Quaternion(0.0334134, -0.00175326, 0.0244522, 0.999141)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.0267519, 0.7066, 0.0107044, 0.707026)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.0334135, 0.00175332, -0.0244522, 0.999141)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.513068, 0.486581, 0.486581, 0.513068)
+bones/6/rotation = Quaternion(0.507981, -0.492017, 0.500833, -0.49904)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.0193021, -0.0110751, 0.955716, -0.293447)
+bones/7/scale = Vector3(0.999999, 1, 1)
+bones/8/rotation = Quaternion(0.0221988, 0.0286914, -0.163898, 0.98581)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.513068, -0.486581, -0.486581, 0.513068)
+bones/10/rotation = Quaternion(0.507981, 0.492017, -0.500833, -0.49904)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(-0.0193021, -0.0110751, 0.955716, 0.293447)
+bones/11/scale = Vector3(0.999999, 1, 1)
+bones/12/rotation = Quaternion(0.0221988, -0.0286914, 0.163898, 0.98581)
+bones/12/scale = Vector3(1, 1, 1)
 
 [node name="props" type="Node3D" parent="level"]
 
@@ -1314,7 +1359,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81, 1.2192, -9.7908)
 material_override = ExtResource("41_f2h5v")
 
 [node name="Skeleton3D" parent="level/door_test9/door/Armature" index="0"]
-bones/0/rotation = Quaternion(0.707106, 0.707106, -0.00101725, 0.00108889)
+bones/0/rotation = Quaternion(0.707106, 0.707106, -0.00101725, 0.00108891)
+bones/2/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
 [node name="door_test10" parent="level" node_paths=PackedStringArray("ANIMATION_PLAYER") instance=ExtResource("16_gx084")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 44.2996, 1.84872, 7.80751)
@@ -1333,6 +1379,10 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.81,
 
 [node name="door" parent="level/door_test7" index="0"]
 material_override = ExtResource("21_cmdnc")
+
+[node name="Skeleton3D" parent="level/door_test7/door/Armature" index="0"]
+bones/0/rotation = Quaternion(0.707106, 0.707106, -0.00101725, 0.00108891)
+bones/2/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
 [node name="door_test11" type="RigidBody3D" parent="level"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.81, 1.2192, -6.096)
@@ -1402,6 +1452,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.034
 
 [node name="door" parent="level/door_test8" index="0"]
 material_override = ExtResource("18_wx82b")
+
+[node name="Skeleton3D" parent="level/door_test8/door/Armature" index="0"]
+bones/0/rotation = Quaternion(0.707106, 0.707106, -0.00101725, 0.00108891)
+bones/2/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
 [node name="door_test2" parent="level" instance=ExtResource("16_gx084")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6362, 1.43256, -25.146)
