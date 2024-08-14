@@ -107,9 +107,10 @@ func _physics_process(delta):
 	
 	camera_tilt(delta)
 	
-	if grounded && groundcast.get_collider(0) == held_object: #Prevent holding stood on objects
-		grounded = false
-		held_object.drop()
+	if held_object != null:
+		if grounded && groundcast.get_collider(0) == held_object: #Prevent holding stood on objects
+			grounded = false
+			held_object.drop()
 	
 	if grounded:
 		control_multiplier = 1

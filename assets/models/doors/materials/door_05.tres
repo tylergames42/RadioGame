@@ -1,0 +1,10 @@
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://dtbgi6brk387j"]
+
+[ext_resource type="Texture2D" uid="uid://tqf78d3ec08q" path="res://assets/models/doors/materials/door_05_color.png" id="1_fulww"]
+[ext_resource type="PhysicsMaterial" uid="uid://qnmr1hqg7ho4" path="res://assets/material_properties/mat_default.tres" id="2_rs6sv"]
+
+[resource]
+albedo_texture = ExtResource("1_fulww")
+normal_enabled = true
+texture_filter = 4
+metadata/MaterialProperties = ExtResource("2_rs6sv")
