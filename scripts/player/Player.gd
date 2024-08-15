@@ -107,9 +107,10 @@ func _physics_process(delta):
 	
 	camera_tilt(delta)
 	
-	if grounded && groundcast.get_collider(0) == held_object: #Prevent holding stood on objects
-		grounded = false
-		held_object.drop()
+	if held_object != null:
+		if grounded && groundcast.get_collider(0) == held_object: #Prevent holding stood on objects
+			grounded = false
+			held_object.drop()
 	
 	if grounded:
 		control_multiplier = 1
@@ -131,6 +132,7 @@ func slopeSliding():
 		
 		if slide_normal.dot(Vector3.DOWN) <= deg_to_rad(90 - MAX_SLOPE_ANGLE): #Check if slope is too steep
 			apply_central_impulse(slide_normal * (current_speed * 0.6))
+			#camera_punch = slide_normal * -0.04
 			can_climb = false
 		else:
 			can_climb = true
@@ -256,5 +258,5 @@ func camera_tilt(delta):
 	camera_punch = lerp(camera_punch, Vector3(0, 0, 0), 4 * delta)
 
 func _on_body_entered(_body): #View punch
-	if prev_velocity.y < -4.4:
+	if linear_velocity.length() - prev_velocity.length() < -6.0:
 		camera_punch = prev_velocity * 0.02
