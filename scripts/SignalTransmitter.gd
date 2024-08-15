@@ -7,8 +7,8 @@ extends Node3D
 @export_range(-20.0, 1.0, 0.1) var VOLUME : float = 0.0
 @export_range(0.0, 100.0, 1.0) var FREQUENCY : float ##TODO: change to use range of frequencies instead?
 													##Then some signals could be broader than others or take up whole range for scripted events.
-@export_range(0.0, 100.0, 1.0) var FREQUENCY_MIN : float
-@export_range(0.0, 100.0, 1.0) var FREQUENCY_MAX : float
+@export_range(0.0, 100.0, 0.1) var FREQUENCY_MIN : float
+@export_range(0.0, 100.0, 0.1) var FREQUENCY_MAX : float
 @export_range(0.0, 10000.0, 1.0) var RANGE_PARTIAL : float ##Range (in meters) for when you can start to pick up the signal (make higher)
 @export_range(0.0, 10000.0, 1.0) var RANGE_FULL : float ##Range (in meters) for when signal gets to full strength (make lower)
 @export var TEST : Gradient
@@ -27,7 +27,7 @@ func _ready():
 	
 	if RANGE_PARTIAL <= RANGE_FULL: #Make sure any parameters aren't fucked up
 		push_error("Signal " + str(name) + "'s ranges are configured incorrectly!")
-	if FREQUENCY_MIN <= FREQUENCY_MAX:
+	if FREQUENCY_MAX <= FREQUENCY_MIN:
 		push_error("Signal " + str(name) + "'s frequencies are configured incorrectly!")
 
 func update_strength(new_strength : float):
