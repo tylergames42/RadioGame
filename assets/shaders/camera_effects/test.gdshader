@@ -27,10 +27,10 @@ void fragment() {
         noise(pixel_uv + TIME + vec2(0.0, 1.0))
     );
     col.rgb += dither * dither_strength;
-    
+
     // Color relaxation
     col.rgb = mix(col.rgb, relaxation_color, color_relaxation);
-    
+
     // Threshold
     if (col.r > threshold_r) {
         col.r = threshold_color.r;
@@ -41,11 +41,11 @@ void fragment() {
     if (col.b > threshold_b) {
         col.b = threshold_color.b;
     }
-    
+
     // Bloom
     if (col.r > bloom_threshold || col.g > bloom_threshold || col.b > bloom_threshold) {
         col.rgb += (col.rgb - bloom_threshold) * bloom_intensity;
     }
-    
+
     COLOR = col;
 }
