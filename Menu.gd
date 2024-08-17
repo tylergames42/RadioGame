@@ -18,17 +18,20 @@ func _input(event):
 			Global.player.weapon_manager.input_enabled = false
 			show()
 
-func _on_reload_button_pressed():
+func _on_reload_button_pressed() -> void:
 	var _reload = get_tree().reload_current_scene()
 
-func _on_quit_button_pressed():
+func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
-func _on_radio_button_pressed():
+func _on_radio_button_pressed() -> void:
 	Global.player.weapon_manager.add_weapon(load("res://scenes/weapons/radio.tscn"))
 
-func _on_camera_button_pressed():
+func _on_camera_button_pressed() -> void:
 	Global.player.weapon_manager.add_weapon(load("res://scenes/weapons/camera.tscn"))
+	
+func _on_mat_test_button_pressed() -> void:
+	Global.player.weapon_manager.add_weapon(load("res://scenes/weapons/WeaponMatTest.tscn"))
 
-func _on_debug_info_toggle_toggled(toggled_on):
+func _on_debug_info_toggle_toggled(toggled_on) -> void:
 	Global.debug_gui.visible = toggled_on
