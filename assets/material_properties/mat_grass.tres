@@ -9,13 +9,9 @@
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5rmou"]
 streams_count = 4
 stream_0/stream = ExtResource("1_vvojw")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("2_gdyj6")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("3_7a8s1")
-stream_2/weight = 1.0
 stream_3/stream = ExtResource("4_dhklu")
-stream_3/weight = 1.0
 
 [resource]
 script = ExtResource("5_ss1ac")

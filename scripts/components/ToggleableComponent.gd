@@ -16,4 +16,3 @@ func interact(interacter):
 		else:
 			TOGGLED = true
 			emit_signal("toggled_on")
-

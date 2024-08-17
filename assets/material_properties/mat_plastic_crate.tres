@@ -14,26 +14,17 @@
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_52l1e"]
 streams_count = 6
 stream_0/stream = ExtResource("1_aqxf5")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("2_nv6b5")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("3_mjwvj")
-stream_2/weight = 1.0
 stream_3/stream = ExtResource("4_vg7qq")
-stream_3/weight = 1.0
 stream_4/stream = ExtResource("5_aurjf")
-stream_4/weight = 1.0
 stream_5/stream = ExtResource("6_jq87h")
-stream_5/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nq4gw"]
 streams_count = 3
 stream_0/stream = ExtResource("7_s5wpf")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("8_wo4yn")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("9_pe7du")
-stream_2/weight = 1.0
 
 [resource]
 friction = 0.95

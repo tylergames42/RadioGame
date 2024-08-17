@@ -14,23 +14,14 @@
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5rmou"]
 streams_count = 9
 stream_0/stream = ExtResource("1_f3yff")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("2_i2u6x")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("3_u7iq0")
-stream_2/weight = 1.0
 stream_3/stream = ExtResource("4_84a5e")
-stream_3/weight = 1.0
 stream_4/stream = ExtResource("5_7w48e")
-stream_4/weight = 1.0
 stream_5/stream = ExtResource("6_b2d55")
-stream_5/weight = 1.0
 stream_6/stream = ExtResource("7_537gn")
-stream_6/weight = 1.0
 stream_7/stream = ExtResource("8_qln3a")
-stream_7/weight = 1.0
 stream_8/stream = ExtResource("9_do6vk")
-stream_8/weight = 1.0
 
 [resource]
 script = ExtResource("5_mcy48")

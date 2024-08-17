@@ -9,13 +9,9 @@
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u1dqn"]
 streams_count = 4
 stream_0/stream = ExtResource("2_mil0y")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("3_oybbo")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("4_ol3pa")
-stream_2/weight = 1.0
 stream_3/stream = ExtResource("1_6405r")
-stream_3/weight = 1.0
 
 [resource]
 friction = 0.1
