@@ -1,13 +1,16 @@
-[gd_scene load_steps=25 format=3 uid="uid://byok4cul3xvqr"]
+[gd_scene load_steps=28 format=3 uid="uid://byok4cul3xvqr"]
 
 [ext_resource type="Script" path="res://scripts/player/weapons/WeaponMatTest.gd" id="1_x51gs"]
-[ext_resource type="Material" uid="uid://c1ulkiwsxkd6e" path="res://assets/materials/brick/brick_painted_1.tres" id="2_r1hp7"]
-[ext_resource type="Material" uid="uid://81wdybp82ykv" path="res://assets/materials/brick/brick_black.tres" id="3_u237f"]
 [ext_resource type="Material" uid="uid://ce562u468j5dk" path="res://assets/materials/metal/metal_slats_rusted_03.tres" id="4_6fcvv"]
 [ext_resource type="Material" uid="uid://c36sb25faioat" path="res://assets/materials/metal/metal_slats_rusted_02.tres" id="4_pem55"]
 [ext_resource type="Material" uid="uid://cea34w27qhaog" path="res://assets/materials/glass/glass_test.tres" id="6_6qxra"]
+[ext_resource type="Material" uid="uid://da0ne76u3xojg" path="res://assets/materials/metal/metal_grate.tres" id="6_yvqts"]
 [ext_resource type="Material" uid="uid://dxvb51htu18si" path="res://assets/materials/stone/stone_face.tres" id="7_3vtcu"]
-[ext_resource type="Material" uid="uid://hcntoqfk0h3h" path="res://assets/materials/marble/marble_01.tres" id="8_ktp17"]
+[ext_resource type="Material" uid="uid://l23c7m24oum4" path="res://assets/materials/metal/metal_grate_panels_01.tres" id="7_xv6yt"]
+[ext_resource type="Material" uid="uid://ci7vbueauusfm" path="res://assets/materials/metal/metal_corrugated_01.tres" id="8_5jxds"]
+[ext_resource type="Material" uid="uid://bunxrm4nkqul4" path="res://assets/materials/metal/metal_panels_rusted_large_01.tres" id="9_dicm5"]
+[ext_resource type="Material" uid="uid://ds1m1h7ucf06n" path="res://assets/materials/concrete/concrete_panels_01.tres" id="10_5dwvb"]
+[ext_resource type="Material" uid="uid://blfpw5iswlt2f" path="res://assets/materials/concrete/concrete_brick_square_01.tres" id="11_vm11q"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n7i3c"]
 animation = &"RESET"
@@ -64,6 +67,45 @@ nodes/StateMachine/position = Vector2(180, 320)
 nodes/output/position = Vector2(640, 220)
 node_connections = [&"output", 0, &"StateMachine"]
 
+[sub_resource type="Animation" id="Animation_ubxdx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGSphere3D2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGSphere3D3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGSphere3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_ul7kw"]
 resource_name = "rotate"
 length = 4.0
@@ -106,45 +148,6 @@ tracks/2/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.28319, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_ubxdx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CSGSphere3D2:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CSGSphere3D3:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CSGSphere3D:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.14159, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bmrmn"]
 _data = {
 "RESET": SubResource("Animation_ubxdx"),
@@ -153,12 +156,12 @@ _data = {
 
 [node name="WeaponMatTest" type="Node3D" node_paths=PackedStringArray("LIGHT")]
 script = ExtResource("1_x51gs")
-MATERIALS = Array[BaseMaterial3D]([ExtResource("2_r1hp7"), ExtResource("3_u237f"), ExtResource("4_6fcvv"), ExtResource("4_pem55"), ExtResource("6_6qxra"), ExtResource("7_3vtcu"), ExtResource("8_ktp17")])
+MATERIALS = Array[Material]([ExtResource("4_6fcvv"), ExtResource("4_pem55"), ExtResource("6_6qxra"), ExtResource("7_3vtcu"), ExtResource("6_yvqts"), ExtResource("7_xv6yt"), ExtResource("8_5jxds"), ExtResource("9_dicm5"), ExtResource("10_5dwvb"), ExtResource("11_vm11q")])
 LIGHT = NodePath("SpotLight3D")
 WEAPON_NAME = "mat_test"
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.456614)
+transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, -0.456614)
 material_override = ExtResource("4_pem55")
 radius = 0.15
 radial_segments = 24
