@@ -17,6 +17,7 @@ nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
@@ -28,6 +29,7 @@ animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
@@ -41,7 +43,7 @@ _subresources={
 },
 "camera_view": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/models/viewmodels/camera/materials/camera_base_view.tres"
+"use_external/path": "res://assets/models/viewmodels/camera/materials/camera_viewfinder.tres"
 },
 "floppy_disk": {
 "use_external/enabled": true,

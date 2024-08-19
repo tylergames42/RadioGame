@@ -112,7 +112,8 @@ func update(delta):
 	if in_camera_view:
 		CAMERA_CAM.fov = lerpf(CAMERA_CAM.fov, desired_zoom, delta * 4.0)
 		#if af_enabled:
-		desired_focus_dist = global_position.distance_to(AF_CAST.get_collision_point(0))
+		if AF_CAST.is_colliding():
+			desired_focus_dist = global_position.distance_to(AF_CAST.get_collision_point(0))
 		focus_adjust = lerpf(focus_adjust, 0.0, delta * 16.0)
 		focus_distance = lerpf(focus_distance, desired_focus_dist, delta * 4.0) + focus_adjust
 		CAMERA_CAM.attributes.dof_blur_near_distance = focus_distance - (CAMERA_CAM.fov * 0.08)
