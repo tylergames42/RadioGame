@@ -60,7 +60,7 @@ func close():
 	linear_velocity *= 0.0
 	apply_central_impulse(impulse_vector)
 
-func _on_interactable_component_interacted(interactor):
+func _on_interactable_component_interacted(_interactor):
 	if is_open:
 		close()
 	else:

@@ -132,7 +132,7 @@ func find_signals():
 					if sig == connected_signal:
 						connected_signal = null
 					
-func update_visuals(delta):
+func update_visuals(_delta):
 	var strength = reciever_signal_strength
 	if in_range_of_signals:
 		strength += 0.05

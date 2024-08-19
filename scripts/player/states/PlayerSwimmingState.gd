@@ -17,6 +17,6 @@ func exit():
 		
 func physics_update(delta):
 	if Input.is_action_pressed("jump"):
-		player.apply_central_impulse(Vector3.UP * SWIM_UP_FORCE * player.mass)
+		player.apply_central_impulse(Vector3.UP * SWIM_UP_FORCE * player.mass * delta)
 	if Input.is_action_pressed("crouch"):
-		player.apply_central_impulse(Vector3.DOWN * SWIM_DOWN_FORCE * player.mass)
+		player.apply_central_impulse(Vector3.DOWN * SWIM_DOWN_FORCE * player.mass * delta)
