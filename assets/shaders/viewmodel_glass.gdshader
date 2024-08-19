@@ -23,11 +23,11 @@ uniform float fov : hint_range(10.0, 170.0) = 80.0;
 
 void vertex() {
 	float scale = 1.0 / tan(fov * 0.5 * PI / 180.0);
-	PROJECTION_MATRIX[0][0] = scale / (VIEWPORT_SIZE.x / VIEWPORT_SIZE.y);
 	PROJECTION_MATRIX[1][1] = -scale;
+	PROJECTION_MATRIX[0][0] = scale / (VIEWPORT_SIZE.x / VIEWPORT_SIZE.y);
 	
 	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
-	POSITION.z = mix(POSITION.z, 0, 0.99);
+	POSITION.z = mix(POSITION.z, 0, -0.999);
 }
 
 void fragment() {
