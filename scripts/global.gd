@@ -6,4 +6,3 @@ var debug_gui
 var frequency = 0.0
 var signal_strength
 var signal_manager
-var connected_signal_name = "none"

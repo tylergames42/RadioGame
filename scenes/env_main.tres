@@ -12,9 +12,7 @@ sky_material = SubResource("PanoramaSkyMaterial_hbfcm")
 [resource]
 background_mode = 2
 sky = SubResource("Sky_uwdcb")
-ambient_light_source = 3
-ambient_light_sky_contribution = 0.8
-ambient_light_energy = 0.8
 reflected_light_source = 2
 ssao_enabled = true
+sdfgi_y_scale = 2
 fog_density = 0.0675

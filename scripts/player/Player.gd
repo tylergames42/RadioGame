@@ -259,4 +259,4 @@ func camera_tilt(delta):
 
 func _on_body_entered(_body): #View punch
 	if linear_velocity.length() - prev_velocity.length() < -6.0:
-		camera_punch = prev_velocity * 0.02
+		camera_punch = (linear_velocity - prev_velocity) * 0.02

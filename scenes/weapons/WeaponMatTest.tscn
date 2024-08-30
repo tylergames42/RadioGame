@@ -1,28 +1,19 @@
-[gd_scene load_steps=28 format=3 uid="uid://byok4cul3xvqr"]
+[gd_scene load_steps=21 format=3 uid="uid://byok4cul3xvqr"]
 
-[ext_resource type="Script" path="res://scripts/player/weapons/WeaponMatTest.gd" id="1_x51gs"]
-[ext_resource type="Material" uid="uid://ce562u468j5dk" path="res://assets/materials/metal/metal_slats_rusted_03.tres" id="4_6fcvv"]
+[ext_resource type="Script" path="res://scripts/player/weapons/WeaponFlashlight.gd" id="1_01d8x"]
 [ext_resource type="Material" uid="uid://c36sb25faioat" path="res://assets/materials/metal/metal_slats_rusted_02.tres" id="4_pem55"]
-[ext_resource type="Material" uid="uid://cea34w27qhaog" path="res://assets/materials/glass/glass_test.tres" id="6_6qxra"]
-[ext_resource type="Material" uid="uid://da0ne76u3xojg" path="res://assets/materials/metal/metal_grate.tres" id="6_yvqts"]
-[ext_resource type="Material" uid="uid://dxvb51htu18si" path="res://assets/materials/stone/stone_face.tres" id="7_3vtcu"]
-[ext_resource type="Material" uid="uid://l23c7m24oum4" path="res://assets/materials/metal/metal_grate_panels_01.tres" id="7_xv6yt"]
-[ext_resource type="Material" uid="uid://ci7vbueauusfm" path="res://assets/materials/metal/metal_corrugated_01.tres" id="8_5jxds"]
-[ext_resource type="Material" uid="uid://bunxrm4nkqul4" path="res://assets/materials/metal/metal_panels_rusted_large_01.tres" id="9_dicm5"]
-[ext_resource type="Material" uid="uid://ds1m1h7ucf06n" path="res://assets/materials/concrete/concrete_panels_01.tres" id="10_5dwvb"]
-[ext_resource type="Material" uid="uid://blfpw5iswlt2f" path="res://assets/materials/concrete/concrete_brick_square_01.tres" id="11_vm11q"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n7i3c"]
 animation = &"RESET"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6mgc4"]
-animation = &"radio_deploy"
+animation = &"draw"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3rqba"]
-animation = &"radio_holster"
+animation = &"holster"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qu78v"]
-animation = &"radio_pickup"
+animation = &"draw"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jtyam"]
 animation = &"rotate"
@@ -61,7 +52,7 @@ transitions = ["Start", "pickup", SubResource("AnimationNodeStateMachineTransiti
 graph_offset = Vector2(86, -8)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kqrbs"]
-graph_offset = Vector2(-330.288, 224.184)
+graph_offset = Vector2(-353.386, 104.346)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_sitda")
 nodes/StateMachine/position = Vector2(180, 320)
 nodes/output/position = Vector2(640, 220)
@@ -104,6 +95,194 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 3.14159, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CSGSphere3D3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.344958, 0, -0.356614)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CSGSphere3D2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.315078, 0, -0.356614)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CSGSphere3D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.456614)]
+}
+
+[sub_resource type="Animation" id="Animation_heh3l"]
+resource_name = "draw"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGSphere3D3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGSphere3D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.5, 0), Vector3(0.344958, 0, -0.356614)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGSphere3D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.5, 0), Vector3(-0.315078, 0, -0.356614)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CSGSphere3D2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CSGSphere3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.5, 0), Vector3(0, 0, -0.456614)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CSGSphere3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u543g"]
+resource_name = "holster"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGSphere3D3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGSphere3D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.344958, 0, -0.356614), Vector3(0, -0.5, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGSphere3D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.315078, 0, -0.356614), Vector3(0, -0.5, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CSGSphere3D2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CSGSphere3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.456614), Vector3(0, -0.5, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CSGSphere3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ul7kw"]
@@ -151,13 +330,13 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bmrmn"]
 _data = {
 "RESET": SubResource("Animation_ubxdx"),
+"draw": SubResource("Animation_heh3l"),
+"holster": SubResource("Animation_u543g"),
 "rotate": SubResource("Animation_ul7kw")
 }
 
-[node name="WeaponMatTest" type="Node3D" node_paths=PackedStringArray("LIGHT")]
-script = ExtResource("1_x51gs")
-MATERIALS = Array[Material]([ExtResource("4_6fcvv"), ExtResource("4_pem55"), ExtResource("6_6qxra"), ExtResource("7_3vtcu"), ExtResource("6_yvqts"), ExtResource("7_xv6yt"), ExtResource("8_5jxds"), ExtResource("9_dicm5"), ExtResource("10_5dwvb"), ExtResource("11_vm11q")])
-LIGHT = NodePath("SpotLight3D")
+[node name="WeaponMatTest" type="Node3D"]
+script = ExtResource("1_01d8x")
 WEAPON_NAME = "mat_test"
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]

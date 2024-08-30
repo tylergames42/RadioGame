@@ -21,7 +21,7 @@ noise = SubResource("FastNoiseLite_ol7qr")
 [resource]
 render_priority = 0
 shader = ExtResource("1_wg14c")
-shader_parameter/blend_raining = 0.695
+shader_parameter/blend_raining = 1.0
 shader_parameter/world_up = Vector3(0, 0, 1)
 shader_parameter/ground_albedo = ExtResource("2_1ylwp")
 shader_parameter/ground_normal_map = ExtResource("3_oooce")

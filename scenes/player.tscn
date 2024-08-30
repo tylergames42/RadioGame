@@ -255,8 +255,8 @@ physics_material_override = SubResource("PhysicsMaterial_74fkp")
 can_sleep = false
 lock_rotation = true
 continuous_cd = true
-max_contacts_reported = 1
 contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_gnuhl")
 
 [node name="ColliderVisualizer" type="CSGMesh3D" parent="."]

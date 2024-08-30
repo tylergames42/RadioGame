@@ -16,10 +16,9 @@ func _process(_delta):
 	var held = player.held_object
 	var freq = Global.frequency
 	var strength = Global.signal_strength
-	var connected_sig = Global.connected_signal_name
 		
 	
 	text = "FPS: " + str(fps) + "\n\nGrounded: " + str(gnd) + "\nCan Climb: " + str(can_climb) + "\nState: " + str(state) + "\nHeight: " + str(height)
 	text += "\nSpeed: " + str(cur_vel.length()) + "m/s" + "\nVelocity: " + str(cur_vel) + "\nDirection: " + str(dir)  + "\nHeld Object: " + str(held)
 	
-	text += "\n\nFrequency: " + str(freq) + "\nSignal Strength: " + str(strength)+ "\nConnected Signal: " + connected_sig
+	text += "\n\nFrequency: " + str(freq) + "\nSignal Strength: " + str(strength)

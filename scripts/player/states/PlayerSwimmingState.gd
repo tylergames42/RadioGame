@@ -1,8 +1,8 @@
 extends State
 
-@export_range(0.0, 1.0, 0.01) var SWIM_GRAV_SCALE : float = 0.01
-@export var SWIM_UP_FORCE = 0.1
-@export var SWIM_DOWN_FORCE = 0.05
+@export_range(0.0, 1.0, 0.01) var SWIM_GRAV_SCALE : float = 0.1
+@export var SWIM_UP_FORCE = 4.0
+@export var SWIM_DOWN_FORCE = 2.0
 
 var player
 

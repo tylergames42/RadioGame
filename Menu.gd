@@ -30,6 +30,9 @@ func _on_radio_button_pressed() -> void:
 func _on_camera_button_pressed() -> void:
 	Global.player.weapon_manager.add_weapon(load("res://scenes/weapons/camera.tscn"))
 	
+func _on_flashlight_button_pressed() -> void:
+	Global.player.weapon_manager.add_weapon(load("res://scenes/weapons/WeaponFlashlight.tscn"))
+	
 func _on_mat_test_button_pressed() -> void:
 	Global.player.weapon_manager.add_weapon(load("res://scenes/weapons/WeaponMatTest.tscn"))
 

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://crm66xeoiged1"]
+
+[ext_resource type="Texture2D" uid="uid://bl446ns6don0g" path="res://assets/materials/window/window_tile_textured.png" id="1_mpir7"]
+
+[resource]
+albedo_texture = ExtResource("1_mpir7")
+texture_filter = 4

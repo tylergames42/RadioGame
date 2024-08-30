@@ -60,10 +60,19 @@ text = "GIVE CAMERA"
 [node name="MatTestButton" type="Button" parent="."]
 layout_mode = 1
 offset_left = 64.0
+offset_top = 304.0
+offset_right = 256.0
+offset_bottom = 368.0
+text = "GIVE MAT TEST"
+
+[node name="FlashlightButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 64.0
 offset_top = 224.0
 offset_right = 256.0
 offset_bottom = 288.0
-text = "GIVE MAT TEST"
+text = "GIVE FLASHLIGHT
+"
 
 [node name="DebugInfoToggle" type="CheckButton" parent="."]
 layout_mode = 1
@@ -97,4 +106,5 @@ uppercase = true
 [connection signal="pressed" from="RadioButton" to="." method="_on_radio_button_pressed"]
 [connection signal="pressed" from="CameraButton" to="." method="_on_camera_button_pressed"]
 [connection signal="pressed" from="MatTestButton" to="." method="_on_mat_test_button_pressed"]
+[connection signal="pressed" from="FlashlightButton" to="." method="_on_flashlight_button_pressed"]
 [connection signal="toggled" from="DebugInfoToggle" to="." method="_on_debug_info_toggle_toggled"]

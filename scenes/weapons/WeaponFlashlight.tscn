@@ -1,0 +1,115 @@
+[gd_scene load_steps=20 format=3 uid="uid://lhib7l0rju6q"]
+
+[ext_resource type="Script" path="res://scripts/player/weapons/WeaponFlashlight.gd" id="1_jilmu"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n7i3c"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6mgc4"]
+animation = &"draw"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3rqba"]
+animation = &"holster"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qu78v"]
+animation = &"draw"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jtyam"]
+animation = &"rotate"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tgmw8"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7l4lw"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jblex"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_octvi"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2r6tr"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hncw4"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_sitda"]
+states/End/position = Vector2(991, 100)
+states/RESET/node = SubResource("AnimationNodeAnimation_n7i3c")
+states/RESET/position = Vector2(817, 151)
+states/draw/node = SubResource("AnimationNodeAnimation_6mgc4")
+states/draw/position = Vector2(655, 171)
+states/holster/node = SubResource("AnimationNodeAnimation_3rqba")
+states/holster/position = Vector2(655, 47)
+states/pickup/node = SubResource("AnimationNodeAnimation_qu78v")
+states/pickup/position = Vector2(333, 100)
+states/rotate/node = SubResource("AnimationNodeAnimation_jtyam")
+states/rotate/position = Vector2(817, 47)
+transitions = ["Start", "pickup", SubResource("AnimationNodeStateMachineTransition_tgmw8"), "pickup", "holster", SubResource("AnimationNodeStateMachineTransition_7l4lw"), "holster", "draw", SubResource("AnimationNodeStateMachineTransition_jblex"), "draw", "holster", SubResource("AnimationNodeStateMachineTransition_octvi"), "RESET", "rotate", SubResource("AnimationNodeStateMachineTransition_2r6tr"), "rotate", "RESET", SubResource("AnimationNodeStateMachineTransition_hncw4")]
+graph_offset = Vector2(86, -8)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kqrbs"]
+graph_offset = Vector2(-353.386, 104.346)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_sitda")
+nodes/StateMachine/position = Vector2(180, 320)
+nodes/output/position = Vector2(640, 220)
+node_connections = [&"output", 0, &"StateMachine"]
+
+[sub_resource type="Animation" id="Animation_ubxdx"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_heh3l"]
+resource_name = "draw"
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_u543g"]
+resource_name = "holster"
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_ul7kw"]
+resource_name = "rotate"
+length = 4.0
+loop_mode = 1
+step = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bmrmn"]
+_data = {
+"RESET": SubResource("Animation_ubxdx"),
+"draw": SubResource("Animation_heh3l"),
+"holster": SubResource("Animation_u543g"),
+"rotate": SubResource("Animation_ul7kw")
+}
+
+[node name="WeaponMatTest" type="Node3D" node_paths=PackedStringArray("LIGHT_MAIN", "LIGHT_BOUNCE")]
+script = ExtResource("1_jilmu")
+LIGHT_MAIN = NodePath("FlashlightMain")
+LIGHT_BOUNCE = NodePath("FlashlightBounce")
+WEAPON_NAME = "mat_test"
+
+[node name="FlashlightMain" type="SpotLight3D" parent="."]
+transform = Transform3D(0.999391, 0.00304168, -0.0347667, 0, 0.996195, 0.0871555, 0.0348995, -0.0871024, 0.995588, -0.06, -0.04, 0)
+light_specular = 1.0
+shadow_enabled = true
+spot_range = 12.0
+spot_attenuation = 1.5
+spot_angle = 35.0
+spot_angle_attenuation = 3.0
+
+[node name="FlashlightBounce" type="SpotLight3D" parent="."]
+transform = Transform3D(0.999391, 0.00304168, -0.0347667, 0, 0.996195, 0.0871555, 0.0348995, -0.0871024, 0.995588, -0.06, -0.04, 0)
+light_color = Color(1, 1, 0.980392, 1)
+spot_range = 16.0
+spot_attenuation = 1.2
+spot_angle = 75.0
+spot_angle_attenuation = 2.0
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_kqrbs")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bmrmn")
+}

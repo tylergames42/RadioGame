@@ -15,17 +15,17 @@ float random (vec2 uv) {
 void fragment()
 {
 	vec2 uv = vec2((UV.x + 0.5) * freq, (UV.y + 0.5) * 0.5);
-    
+
 	float noise = cos(uv.x + TIME * random(uv));
 	float res1 = abs(2.5 + noise - uv.y * 5.0);
-	
+
 	float wave = cos(uv.x + TIME * vel) * ampl;
 	float res2 = abs(2.5 + wave - uv.y * 5.0);
-	
+
 	res1 = max(res1, float(quality_signal));
-	
+
 	float res = res1 * res2;
-    
+
 	float color = 1.0 - (res * tightness);
 	EMISSION = color * modulate.rgb;
 	//ALBEDO =  color * modulate.rgb;

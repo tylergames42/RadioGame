@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=4 uid="uid://cvdvb3r0hoj7f"]
+[gd_scene load_steps=135 format=4 uid="uid://cvdvb3r0hoj7f"]
 
 [ext_resource type="Environment" uid="uid://tdvlqoyf7qjy" path="res://scenes/env_main.tres" id="1_as7pu"]
 [ext_resource type="PackedScene" uid="uid://bgymsig42c8vi" path="res://scenes/levels/level_test.glb" id="3_6uhm8"]
@@ -65,6 +65,7 @@
 [ext_resource type="Script" path="res://scripts/components/InteractableComponent.gd" id="45_nwjcu"]
 [ext_resource type="PackedScene" uid="uid://cyc5oipv4atav" path="res://assets/models/mat_test.glb" id="47_4fchk"]
 [ext_resource type="PackedScene" uid="uid://b0kg55fr0tvpj" path="res://scenes/physics_props/sphere_test.tscn" id="47_jw63w"]
+[ext_resource type="PackedScene" uid="uid://dgejljchkrub4" path="res://assets/models/props/soda_can/soda_can.glb" id="48_b1y4w"]
 [ext_resource type="Material" uid="uid://dfx5mi3fpvnxa" path="res://assets/materials/concrete/concrete_panels_dark.tres" id="50_oaksu"]
 [ext_resource type="Material" uid="uid://dpqtwxocva0k0" path="res://assets/models/viewmodels/camera/materials/camera_base_view.tres" id="52_kiees"]
 [ext_resource type="Material" uid="uid://brau8p3dh66pp" path="res://assets/models/viewmodels/camera/materials/camera_glass_view.tres" id="53_8x6sf"]
@@ -80,10 +81,24 @@
 [ext_resource type="PackedScene" uid="uid://cm5wwggwgkk7o" path="res://scenes/entities/door_sliding.tscn" id="61_l2jyc"]
 [ext_resource type="Material" uid="uid://c8nnduev8m8s4" path="res://assets/materials/dev/flow_test.tres" id="66_hgha1"]
 [ext_resource type="Material" uid="uid://dwva31kxf1dnc" path="res://assets/materials/concrete/concrete_panels_light.tres" id="67_akdyd"]
+[ext_resource type="PackedScene" uid="uid://o3nh71h1l7sv" path="res://addons/gd_planar_reflections/planar_reflection.tscn" id="81_l5qea"]
+[ext_resource type="PackedScene" uid="uid://cphnk8wop57wf" path="res://assets/models/props/godot_plush/godot_plush.tscn" id="82_gobcw"]
+[ext_resource type="Texture2D" uid="uid://omu4h7r1gxwk" path="res://assets/models/props/soda_can/materials/soda_can_color_breen.png" id="84_kj5n6"]
 
-[sub_resource type="Gradient" id="Gradient_lbjkb"]
-offsets = PackedFloat32Array(0, 0.359375, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_r23ur"]
+offsets = PackedFloat32Array(0, 0.59375, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_nd16j"]
+offsets = PackedFloat32Array(0.2, 0.3, 0.4)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_g7s5t"]
+offsets = PackedFloat32Array(0, 0.4, 0.509804, 0.6, 0.9, 0.95, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.65098, 0, 0.65098, 0, 0.941624, 0.000722924, 0.941618, 1, 0.941176, 0, 0.941176, 0, 0.941176, 0, 0.941176, 0, 0.941176, 0, 0.941176, 1, 0.941176, 0, 0.941176, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_03s0d"]
 
@@ -916,6 +931,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1j2ep")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqybt"]
+albedo_texture = ExtResource("84_kj5n6")
+
 [node name="world" type="Node3D"]
 
 [node name="env" type="Node3D" parent="."]
@@ -938,9 +956,7 @@ script = ExtResource("3_7u5qg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.7021, 9, -19)
 script = ExtResource("3_15v7b")
 STREAMS = Array[AudioStream]([ExtResource("5_egyus"), ExtResource("6_h15b5")])
-FREQUENCY = 45.0
-FREQUENCY_MIN = 36.0
-FREQUENCY_MAX = 38.0
+FREQUENCY_MAP = SubResource("Gradient_r23ur")
 RANGE_PARTIAL = 100.0
 RANGE_FULL = 45.0
 
@@ -949,7 +965,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7021, 1, 11)
 script = ExtResource("3_15v7b")
 STREAMS = Array[AudioStream]([ExtResource("7_bh3f1")])
 VOLUME = -10.0
-FREQUENCY = 13.0
+FREQUENCY_MAP = SubResource("Gradient_nd16j")
 RANGE_PARTIAL = 30.0
 RANGE_FULL = 10.0
 
@@ -958,10 +974,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7021, 1, -19)
 script = ExtResource("3_15v7b")
 STREAMS = Array[AudioStream]([ExtResource("6_bfw82"), ExtResource("7_ge2td")])
 VOLUME = -20.0
-FREQUENCY = 11.0
+FREQUENCY_MAP = SubResource("Gradient_g7s5t")
 RANGE_PARTIAL = 15.0
 RANGE_FULL = 5.0
-TEST = SubResource("Gradient_lbjkb")
 
 [node name="level_test" parent="level" instance=ExtResource("3_6uhm8")]
 
@@ -1363,15 +1378,15 @@ bones/0/rotation = Quaternion(0.707106, 0.707106, -0.00101725, 0.00108891)
 bones/2/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
 [node name="door_test10" parent="level" node_paths=PackedStringArray("ANIMATION_PLAYER") instance=ExtResource("16_gx084")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 44.2996, 1.84872, 7.80751)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 44.2996, 1.84872, 30.5413)
 ANIMATION_PLAYER = NodePath("../door_test6/AnimationPlayer")
 
 [node name="door_test12" parent="level" node_paths=PackedStringArray("ANIMATION_PLAYER") instance=ExtResource("16_gx084")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 38.3591, 1.84872, 5.90351)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 38.3591, 1.84872, 28.6373)
 ANIMATION_PLAYER = NodePath("../door_test6/AnimationPlayer")
 
 [node name="door_test13" parent="level" node_paths=PackedStringArray("ANIMATION_PLAYER") instance=ExtResource("16_gx084")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 40.4535, 1.84872, 2.51439)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 40.4535, 1.84872, 25.2482)
 ANIMATION_PLAYER = NodePath("../door_test6/AnimationPlayer")
 
 [node name="door_test7" parent="level" instance=ExtResource("16_gx084")]
@@ -1831,6 +1846,26 @@ limit_upper = 1.5
 [node name="door_sliding" parent="door_sliding2" index="3"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0380802, 0, 0)
 
+[node name="PlanarReflection" parent="." node_paths=PackedStringArray("main_cam") instance=ExtResource("81_l5qea")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -39.2224, 0.25, -49.504)
+visible = false
+main_cam = NodePath("../level/Player/Root/Head/Camera")
+
+[node name="godot_plush" parent="." instance=ExtResource("82_gobcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8976, 1.7136, -5.9024)
+
+[node name="godot_plush2" parent="." instance=ExtResource("82_gobcw")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 0, 1.78976, -72.9232)
+
+[node name="godot_plush3" parent="." instance=ExtResource("82_gobcw")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -23.0384, 12.376, 8.9488)
+
+[node name="soda_can" parent="." instance=ExtResource("48_b1y4w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3165, 1.78976, -6.13088)
+
+[node name="lowpoly" parent="soda_can/lowpoly" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_kqybt")
+
 [connection signal="toggled_off" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_off"]
 [connection signal="toggled_on" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_on"]
 [connection signal="body_entered" from="Water_test/Area3D" to="Water_test/Area3D" method="_on_body_entered"]
@@ -1849,3 +1884,4 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0380
 [editable path="mat_test2"]
 [editable path="mat_test3"]
 [editable path="door_sliding2"]
+[editable path="soda_can"]
