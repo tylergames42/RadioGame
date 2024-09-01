@@ -1,7 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://byok4cul3xvqr"]
+[gd_scene load_steps=27 format=3 uid="uid://byok4cul3xvqr"]
 
-[ext_resource type="Script" path="res://scripts/player/weapons/WeaponFlashlight.gd" id="1_01d8x"]
+[ext_resource type="Script" path="res://scripts/player/weapons/WeaponMatTest.gd" id="1_wn7s6"]
+[ext_resource type="Material" uid="uid://c8nnduev8m8s4" path="res://assets/materials/dev/flow_test.tres" id="2_28tqs"]
+[ext_resource type="Material" uid="uid://cwammnhddv77l" path="res://assets/materials/dev/water_test.tres" id="3_c42nq"]
+[ext_resource type="Material" uid="uid://cea34w27qhaog" path="res://assets/materials/glass/glass_test.tres" id="4_0pouh"]
 [ext_resource type="Material" uid="uid://c36sb25faioat" path="res://assets/materials/metal/metal_slats_rusted_02.tres" id="4_pem55"]
+[ext_resource type="Material" uid="uid://dwva31kxf1dnc" path="res://assets/materials/concrete/concrete_panels_light.tres" id="5_gboir"]
+[ext_resource type="Material" uid="uid://dfx5mi3fpvnxa" path="res://assets/materials/concrete/concrete_panels_dark.tres" id="6_daeit"]
+[ext_resource type="Material" uid="uid://ds1m1h7ucf06n" path="res://assets/materials/concrete/concrete_panels_01.tres" id="7_t3ud6"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n7i3c"]
 animation = &"RESET"
@@ -335,9 +341,10 @@ _data = {
 "rotate": SubResource("Animation_ul7kw")
 }
 
-[node name="WeaponMatTest" type="Node3D"]
-script = ExtResource("1_01d8x")
-WEAPON_NAME = "mat_test"
+[node name="WeaponMatTest" type="Node3D" node_paths=PackedStringArray("LIGHT")]
+script = ExtResource("1_wn7s6")
+MATERIALS = Array[Material]([ExtResource("2_28tqs"), ExtResource("3_c42nq"), ExtResource("4_0pouh"), ExtResource("5_gboir"), ExtResource("6_daeit"), ExtResource("7_t3ud6")])
+LIGHT = NodePath("SpotLight3D")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, -0.456614)

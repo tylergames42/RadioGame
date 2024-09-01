@@ -45,5 +45,6 @@ func input_update(event):
 func update_material() -> void :
 	for child in get_children():
 		if child is CSGShape3D:
-			MATERIALS[current_mat].uv1_scale = uv_scale
+			if "uv1_scale" in MATERIALS[current_mat]:
+				MATERIALS[current_mat].uv1_scale = uv_scale
 			child.material_override = MATERIALS[current_mat]
