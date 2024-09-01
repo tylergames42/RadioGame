@@ -64,7 +64,7 @@ func update_strength(new_strength : float):
 		audio_player.volume_db = VOLUME
 		emit_signal("recieving")
 	else:
-		audio_player.volume_db = remap(new_strength, 0.0, 1.0, VOLUME - 20.0, VOLUME)
+		audio_player.volume_db = remap(new_strength, 0.0, 1.0, VOLUME - 40.0, VOLUME)
 		
 func play_audio(): ##TODO add weight?
 	if STREAMS.size() < 1: #Make sure signal actually has audio
