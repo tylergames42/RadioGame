@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://jjf5us78f064"]
+
+[ext_resource type="Script" path="res://scripts/entities/PhysicsProp.gd" id="1_lr7jj"]
+[ext_resource type="PhysicsMaterial" uid="uid://djtosyqvhltcm" path="res://assets/models/props/soda_can/soda_can.tres" id="1_ucmwr"]
+[ext_resource type="ArrayMesh" uid="uid://b30gu58uf5iar" path="res://assets/models/props/soda_can/soda_can.res" id="2_rnfwa"]
+[ext_resource type="Script" path="res://scripts/components/InteractableComponent.gd" id="3_7kb1n"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x25xn"]
+height = 0.28
+radius = 0.09
+
+[node name="soda_can" type="RigidBody3D"]
+physics_material_override = ExtResource("1_ucmwr")
+script = ExtResource("1_lr7jj")
+
+[node name="lowpoly" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0.0033, 0)
+mesh = ExtResource("2_rnfwa")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0.00552036, 0)
+shape = SubResource("CylinderShape3D_x25xn")
+
+[node name="InteractableComponent" type="Node" parent="."]
+script = ExtResource("3_7kb1n")

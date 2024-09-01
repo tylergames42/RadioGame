@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjgenmdf82tyr"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://djtosyqvhltcm" path="res://assets/models/props/soda_can/soda_can.tres" id="1_qpnim"]
+[ext_resource type="Script" path="res://scripts/entities/PhysicsProp.gd" id="1_ucyxj"]
+[ext_resource type="ArrayMesh" uid="uid://d0tk0ads6sfrr" path="res://assets/models/props/soda_can/soda_can_crushed.res" id="2_dvd2q"]
+[ext_resource type="Script" path="res://scripts/components/InteractableComponent.gd" id="3_7r5i4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6spur"]
+points = PackedVector3Array(0.0782104, 0.0868533, 0.0679015, -0.0920608, 0.0606444, 0.0162251, -0.0213907, -0.166339, 0.0319922, 0.072051, -0.133349, -0.0449397, -0.0323736, 0.146959, -0.0559484, -0.0502862, -0.0417033, 0.102846, 0.0816139, -0.08199, 0.0568863, 0.0170591, 0.168929, 0.0429848, 0.00605684, -0.166339, -0.033931, 0.0390443, 0.157944, -0.000953257, -0.0818368, 0.0967861, 0.0574157, 0.0573588, 0.0607962, 0.0987553, -0.081845, 0.119479, -0.0449397, -0.0772869, -0.0945541, 0.0680431, -0.0323736, -0.166339, 0.00453496, -0.0213907, 0.179948, 0.00453496, 0.0830339, -0.122364, -0.0394515, 0.0465212, -0.0622527, 0.0877336, -0.0247187, 0.059746, 0.0974182, 0.0335431, -0.155354, -0.0504441, 0.0891617, -0.11577, 0.0161001, 0.000594452, 0.157944, -0.0394515, -0.0880824, 0.129214, 0.0108789, -0.0543587, -0.127839, 0.0649699, 0.0390443, 0.152434, 0.0594817, 0.011558, -0.171848, -0.000953257, 0.0056307, -0.0465903, 0.102524, 0.0826122, 0.0706919, 0.0623792, -0.076497, -0.0678569, 0.0830334, -0.0623658, 0.156215, -0.0207085, 0.0924314, -0.0622407, 0.0214249, -0.0618926, -0.131344, 0.047333)
+
+[node name="soda_can_crushed" type="RigidBody3D"]
+physics_material_override = ExtResource("1_qpnim")
+script = ExtResource("1_ucyxj")
+
+[node name="lowpoly" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0.0033, 0)
+mesh = ExtResource("2_dvd2q")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0.0033, 0)
+shape = SubResource("ConvexPolygonShape3D_6spur")
+
+[node name="InteractableComponent" type="Node" parent="."]
+script = ExtResource("3_7r5i4")

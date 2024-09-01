@@ -1,0 +1,36 @@
+[gd_resource type="PhysicsMaterial" script_class="MaterialProperties" load_steps=12 format=3 uid="uid://djtosyqvhltcm"]
+
+[ext_resource type="AudioStream" uid="uid://bjw3sjndiybsn" path="res://assets/sounds/physics/can/can_impact_hard_1.wav" id="1_h787a"]
+[ext_resource type="AudioStream" uid="uid://cogwlqe3y7k4a" path="res://assets/sounds/physics/can/can_impact_hard_2.wav" id="2_vggcb"]
+[ext_resource type="AudioStream" uid="uid://o7ojpftkqmjf" path="res://assets/sounds/physics/can/can_impact_hard_3.wav" id="3_p17pc"]
+[ext_resource type="AudioStream" uid="uid://c8ccckpmthv7m" path="res://assets/sounds/physics/can/can_impact_hard_4.wav" id="4_3xjj1"]
+[ext_resource type="AudioStream" uid="uid://cy71f7sxf8f2m" path="res://assets/sounds/physics/can/can_impact_soft_1.wav" id="5_gg0rf"]
+[ext_resource type="AudioStream" uid="uid://dat262wam4r2h" path="res://assets/sounds/physics/can/can_impact_soft_2.wav" id="6_wdl8m"]
+[ext_resource type="AudioStream" uid="uid://64hfumr6p8pu" path="res://assets/sounds/physics/can/can_impact_soft_3.wav" id="7_w2bl1"]
+[ext_resource type="AudioStream" uid="uid://cgxm871y3441p" path="res://assets/sounds/physics/can/can_impact_soft_4.wav" id="8_wxmty"]
+[ext_resource type="Script" path="res://scripts/MaterialProperties.gd" id="9_xvi5i"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iqwpv"]
+random_pitch = 1.2
+streams_count = 4
+stream_0/stream = ExtResource("1_h787a")
+stream_1/stream = ExtResource("2_vggcb")
+stream_2/stream = ExtResource("3_p17pc")
+stream_3/stream = ExtResource("4_3xjj1")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_aypem"]
+random_pitch = 1.2
+streams_count = 4
+stream_0/stream = ExtResource("5_gg0rf")
+stream_1/stream = ExtResource("6_wdl8m")
+stream_2/stream = ExtResource("7_w2bl1")
+stream_3/stream = ExtResource("8_wxmty")
+
+[resource]
+script = ExtResource("9_xvi5i")
+DISABLE_COLLISIONS = false
+SFX_IMPACT_SOFT = SubResource("AudioStreamRandomizer_aypem")
+SFX_IMPACT_HARD = SubResource("AudioStreamRandomizer_iqwpv")
+REVERB_CONTRIBUTION = 1.0
+DAMPING = 0.5
+OCCLUSION = 1.0
