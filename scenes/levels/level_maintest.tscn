@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=4 uid="uid://cvdvb3r0hoj7f"]
+[gd_scene load_steps=137 format=4 uid="uid://cvdvb3r0hoj7f"]
 
 [ext_resource type="Environment" uid="uid://tdvlqoyf7qjy" path="res://scenes/env_main.tres" id="1_as7pu"]
 [ext_resource type="PackedScene" uid="uid://bgymsig42c8vi" path="res://scenes/levels/level_test.glb" id="3_6uhm8"]
@@ -86,6 +86,7 @@
 [ext_resource type="Material" uid="uid://sj7gwuth8hn8" path="res://assets/models/props/soda_can/materials/soda_can_milk.tres" id="84_8bbfw"]
 [ext_resource type="Material" uid="uid://csyt3v5v8pjwe" path="res://assets/models/props/soda_can/materials/soda_can_breen.tres" id="85_l6fbn"]
 [ext_resource type="PackedScene" uid="uid://bjgenmdf82tyr" path="res://assets/models/props/soda_can/soda_can_crushed.tscn" id="86_0g0rd"]
+[ext_resource type="PackedScene" uid="uid://bdplk02rqka71" path="res://scenes/physics_props/mug.tscn" id="87_u6shd"]
 
 [sub_resource type="Gradient" id="Gradient_r23ur"]
 offsets = PackedFloat32Array(0, 0.59375, 1)
@@ -1829,6 +1830,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2403, 1.75168, -6.22608)
 [node name="lowpoly" parent="soda_can" index="0"]
 material_override = ExtResource("84_8bbfw")
 
+[node name="soda_can6" parent="." instance=ExtResource("83_67gxe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8496, 1.78976, -5.27408)
+
+[node name="lowpoly" parent="soda_can6" index="0"]
+material_override = ExtResource("84_8bbfw")
+
 [node name="soda_can3" parent="." instance=ExtResource("83_67gxe")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -18.107, 1.75168, -6.16896)
 
@@ -1850,6 +1857,42 @@ transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -18.3546
 [node name="lowpoly" parent="soda_can5" index="0"]
 material_override = ExtResource("84_8bbfw")
 
+[node name="mug" parent="." instance=ExtResource("87_u6shd")]
+transform = Transform3D(0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, -18.8496, 1.75168, -5.27408)
+
+[node name="mug2" parent="." instance=ExtResource("87_u6shd")]
+transform = Transform3D(0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, -18.6782, 1.75168, -5.02656)
+
+[node name="mug3" parent="." instance=ExtResource("87_u6shd")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -18.8686, 1.73264, -5.02656)
+
+[node name="mug4" parent="." instance=ExtResource("87_u6shd")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -18.8686, 1.92304, -5.02656)
+
+[node name="mug5" parent="." instance=ExtResource("87_u6shd")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -18.8686, 2.11344, -5.02656)
+
+[node name="mug6" parent="." instance=ExtResource("87_u6shd")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -18.8686, 2.30384, -5.02656)
+
+[node name="mug7" parent="." instance=ExtResource("87_u6shd")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -18.8686, 2.49424, -5.02656)
+
+[node name="mug8" parent="." instance=ExtResource("87_u6shd")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -18.8686, 2.87504, -5.02656)
+
+[node name="mug9" parent="." instance=ExtResource("87_u6shd")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -18.8686, 2.68464, -5.02656)
+
+[node name="mug10" parent="." instance=ExtResource("87_u6shd")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -18.8686, 3.06544, -5.02656)
+
+[node name="mug11" parent="." instance=ExtResource("87_u6shd")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -18.8686, 3.44624, -5.02656)
+
+[node name="mug12" parent="." instance=ExtResource("87_u6shd")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -18.8686, 3.25584, -5.02656)
+
 [connection signal="toggled_off" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_off"]
 [connection signal="toggled_on" from="level/LightswitchTest/ToggleableComponent" to="level/LightTest" method="_on_toggleable_component_toggled_on"]
 [connection signal="body_entered" from="Water_test/Area3D" to="Water_test/Area3D" method="_on_body_entered"]
@@ -1869,6 +1912,7 @@ material_override = ExtResource("84_8bbfw")
 [editable path="mat_test3"]
 [editable path="door_sliding2"]
 [editable path="soda_can"]
+[editable path="soda_can6"]
 [editable path="soda_can3"]
 [editable path="soda_can2"]
 [editable path="soda_can4"]
