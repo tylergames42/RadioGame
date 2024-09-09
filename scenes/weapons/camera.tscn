@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://chjd02ne6t0l3"]
+[gd_scene load_steps=41 format=3 uid="uid://chjd02ne6t0l3"]
 
 [ext_resource type="PackedScene" uid="uid://cntgjphjq4wvp" path="res://assets/models/viewmodels/camera/camera.glb" id="1_b7amg"]
 [ext_resource type="Script" path="res://scripts/player/weapons/WeaponCamera.gd" id="2_0nn4m"]
@@ -12,6 +12,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/camera_effects/broken_glass.gdshader" id="6_dkfh1"]
 [ext_resource type="Texture2D" uid="uid://2r038uj01xx1" path="res://assets/ui/camera/ui_corner.png" id="6_fwf5d"]
 [ext_resource type="AudioStream" uid="uid://ljaffnubgmcj" path="res://assets/sounds/camera/camera_take_photo_flash.wav" id="6_ibl13"]
+[ext_resource type="Shader" path="res://assets/shaders/camera_effects/gray_threshold.gdshader" id="10_bqbpg"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6mgc4"]
 animation = &"camera_deploy"
@@ -92,6 +93,11 @@ shader_parameter/greenVal = 1.0
 shader_parameter/blueVal = 1.0
 shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/tint_effect_factor = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmjgd"]
+shader = ExtResource("10_bqbpg")
+shader_parameter/threshold = 0.5
+shader_parameter/delta = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8vmqy"]
 shader = ExtResource("6_dkfh1")
@@ -203,7 +209,7 @@ shader_parameter/tint_effect_factor = 0.0
 font_size = 28
 shadow_size = 0
 
-[node name="camera" node_paths=PackedStringArray("VIEW_FADE", "CAMERA_CAM", "CAMERA_MESH", "CAMERA_UI", "CAMERA_EFFECTS", "CAMERA_FLASH", "AF_CAST") instance=ExtResource("1_b7amg")]
+[node name="Weapon_Camera" node_paths=PackedStringArray("VIEW_FADE", "CAMERA_CAM", "CAMERA_MESH", "CAMERA_UI", "CAMERA_EFFECTS", "CAMERA_FLASH", "AF_CAST") instance=ExtResource("1_b7amg")]
 script = ExtResource("2_0nn4m")
 VIEW_FADE = NodePath("ColorRect")
 CAMERA_CAM = NodePath("Camera3D")
@@ -297,7 +303,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BrokenFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="3"]
+[node name="ThresholdFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="3"]
+visible = false
+material = SubResource("ShaderMaterial_kmjgd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BrokenFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="4"]
 visible = false
 material = SubResource("ShaderMaterial_8vmqy")
 layout_mode = 1
@@ -307,7 +323,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TestFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="4"]
+[node name="TestFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="5"]
 visible = false
 material = SubResource("ShaderMaterial_ib47l")
 layout_mode = 1
@@ -317,7 +333,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BodycamFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="5"]
+[node name="BodycamFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="6"]
 visible = false
 material = SubResource("ShaderMaterial_u58td")
 layout_mode = 1
@@ -327,7 +343,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CRTFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="6"]
+[node name="CRTFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="7"]
 visible = false
 material = SubResource("ShaderMaterial_fpfe8")
 layout_mode = 1
@@ -337,7 +353,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameboyFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="7"]
+[node name="GameboyFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="8"]
 visible = false
 material = SubResource("ShaderMaterial_sp2uj")
 layout_mode = 1
@@ -359,7 +375,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VirtualboyFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="8"]
+[node name="VirtualboyFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="9"]
 visible = false
 material = SubResource("ShaderMaterial_adkjm")
 layout_mode = 1

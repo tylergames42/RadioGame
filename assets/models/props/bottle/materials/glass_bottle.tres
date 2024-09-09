@@ -1,0 +1,15 @@
+[gd_resource type="ORMMaterial3D" load_steps=4 format=3 uid="uid://1wqyb0dl82ty"]
+
+[ext_resource type="Texture2D" uid="uid://lv4qkoq0dduf" path="res://assets/models/props/bottle/materials/bottle_color.png" id="1_l2osq"]
+[ext_resource type="Texture2D" uid="uid://capr326bdndjs" path="res://assets/models/props/bottle/materials/bottle_normal.png" id="2_cerlj"]
+[ext_resource type="Texture2D" uid="uid://dsrbohba2lms" path="res://assets/models/props/bottle/materials/bottle_orm.png" id="3_1eup2"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_l2osq")
+orm_texture = ExtResource("3_1eup2")
+normal_enabled = true
+normal_texture = ExtResource("2_cerlj")
+refraction_enabled = true
+refraction_scale = 0.01
+texture_filter = 4
