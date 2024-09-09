@@ -341,7 +341,7 @@ _data = {
 "rotate": SubResource("Animation_ul7kw")
 }
 
-[node name="WeaponMatTest" type="Node3D" node_paths=PackedStringArray("LIGHT")]
+[node name="Weapon_MatTest" type="Node3D" node_paths=PackedStringArray("LIGHT")]
 script = ExtResource("1_wn7s6")
 MATERIALS = Array[Material]([ExtResource("2_28tqs"), ExtResource("3_c42nq"), ExtResource("4_0pouh"), ExtResource("5_gboir"), ExtResource("6_daeit"), ExtResource("7_t3ud6")])
 LIGHT = NodePath("SpotLight3D")

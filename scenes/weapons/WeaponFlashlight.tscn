@@ -82,7 +82,7 @@ _data = {
 "rotate": SubResource("Animation_ul7kw")
 }
 
-[node name="WeaponMatTest" type="Node3D" node_paths=PackedStringArray("LIGHT_MAIN", "LIGHT_BOUNCE")]
+[node name="Weapon_Flashlight" type="Node3D" node_paths=PackedStringArray("LIGHT_MAIN", "LIGHT_BOUNCE")]
 script = ExtResource("1_jilmu")
 LIGHT_MAIN = NodePath("FlashlightMain")
 LIGHT_BOUNCE = NodePath("FlashlightBounce")
