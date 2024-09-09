@@ -11,10 +11,26 @@ signal killed
 var health : int
 
 func _enter_tree() -> void:
-	get_parent().set_meta(&"HealthComponent", self)
+	var parent = get_parent()
+	parent.set_meta(&"HealthComponent", self)
+	#Connect signals
+	if parent.has_method("_on_health_component_hurt"):
+		if !hurt.is_connected(parent._on_health_component_hurt):
+			hurt.connect(parent._on_health_component_hurt)
+	if parent.has_method("_on_health_component_killed"):
+		if !killed.is_connected(parent._on_health_component_killed):
+			killed.connect(parent._on_health_component_killed)
 	
 func _exit_tree() -> void:
-	get_parent().remove_meta(&"HealthComponent")
+	var parent = get_parent()
+	parent.remove_meta(&"HealthComponent")
+	#Disconnect signals
+	if parent.has_method("_on_health_component_hurt"):
+		if !hurt.is_connected(parent._on_health_component_hurt):
+			hurt.connect(parent._on_health_component_hurt)
+	if parent.has_method("_on_health_component_killed"):
+		if !killed.is_connected(parent._on_health_component_killed):
+			killed.connect(parent._on_health_component_killed)
 
 func _ready():
 	health = STARTING_HEALTH
