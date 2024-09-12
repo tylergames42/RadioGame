@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cjc7tvi6axd4a"]
 
 [ext_resource type="Material" uid="uid://dpqtwxocva0k0" path="res://assets/models/viewmodels/camera/materials/camera_base_view.tres" id="1_00lig"]
-[ext_resource type="PackedScene" uid="uid://chjd02ne6t0l3" path="res://scenes/weapons/camera.tscn" id="1_32i48"]
+[ext_resource type="PackedScene" uid="uid://chjd02ne6t0l3" path="res://scenes/weapons/WeaponCamera.tscn" id="1_32i48"]
 [ext_resource type="Script" path="res://scripts/entities/WeaponCollectable.gd" id="1_cj2dv"]
 [ext_resource type="Material" uid="uid://brau8p3dh66pp" path="res://assets/models/viewmodels/camera/materials/camera_glass_view.tres" id="2_ih63u"]
 [ext_resource type="Material" uid="uid://bpw2lmbn17sbo" path="res://assets/models/viewmodels/camera/materials/camera_floppy_view.tres" id="3_noe1k"]
