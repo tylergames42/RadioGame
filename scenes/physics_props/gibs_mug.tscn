@@ -24,7 +24,7 @@ points = PackedVector3Array(-0.00150215, -0.0065754, -0.0535283, 0.00775226, -0.
 [node name="Gibs_Mug" type="Node3D"]
 
 [node name="Mug_Gib_1" type="RigidBody3D" parent="."]
-mass = 0.5
+mass = 0.1
 
 [node name="mesh" type="MeshInstance3D" parent="Mug_Gib_1"]
 mesh = ExtResource("1_e716j")
@@ -34,7 +34,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConvexPolygonShape3D_fhk6o")
 
 [node name="Mug_Gib_2" type="RigidBody3D" parent="."]
-mass = 0.5
+mass = 0.1
 
 [node name="mesh" type="MeshInstance3D" parent="Mug_Gib_2"]
 mesh = ExtResource("2_na4iv")
@@ -44,7 +44,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConvexPolygonShape3D_726pc")
 
 [node name="Mug_Gib_3" type="RigidBody3D" parent="."]
-mass = 0.5
+mass = 0.1
 
 [node name="mesh" type="MeshInstance3D" parent="Mug_Gib_3"]
 mesh = ExtResource("3_4ubws")
@@ -54,7 +54,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConvexPolygonShape3D_uha7b")
 
 [node name="Mug_Gib_4" type="RigidBody3D" parent="."]
-mass = 0.5
+mass = 0.1
 
 [node name="mesh" type="MeshInstance3D" parent="Mug_Gib_4"]
 mesh = ExtResource("4_vc0a0")
@@ -64,7 +64,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConvexPolygonShape3D_vdet0")
 
 [node name="Mug_Gib_5" type="RigidBody3D" parent="."]
-mass = 0.5
+mass = 0.1
 
 [node name="mesh" type="MeshInstance3D" parent="Mug_Gib_5"]
 mesh = ExtResource("5_gf3y7")
