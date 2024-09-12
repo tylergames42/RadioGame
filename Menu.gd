@@ -25,10 +25,10 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 func _on_radio_button_pressed() -> void:
-	Global.player.weapon_manager.add_weapon(load("res://scenes/weapons/radio.tscn"))
+	Global.player.weapon_manager.add_weapon(load("res://scenes/weapons/WeaponRadio.tscn"))
 
 func _on_camera_button_pressed() -> void:
-	Global.player.weapon_manager.add_weapon(load("res://scenes/weapons/camera.tscn"))
+	Global.player.weapon_manager.add_weapon(load("res://scenes/weapons/WeaponCamera.tscn"))
 	
 func _on_flashlight_button_pressed() -> void:
 	Global.player.weapon_manager.add_weapon(load("res://scenes/weapons/WeaponFlashlight.tscn"))

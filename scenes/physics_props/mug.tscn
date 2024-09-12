@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bdplk02rqka71"]
 
 [ext_resource type="Script" path="res://scripts/entities/PhysicsProp.gd" id="1_gwc4g"]
-[ext_resource type="PackedScene" uid="uid://cfu17y2vfcn47" path="res://scenes/physics_props/mug_gibs.tscn" id="2_ccsss"]
+[ext_resource type="PackedScene" uid="uid://cfu17y2vfcn47" path="res://scenes/physics_props/gibs_mug.tscn" id="2_ccsss"]
 [ext_resource type="Script" path="res://scripts/components/InteractableComponent.gd" id="2_gq1if"]
 [ext_resource type="ArrayMesh" uid="uid://b1edj0kwirt7x" path="res://assets/models/props/mug/mug.res" id="3_1hnea"]
 [ext_resource type="Script" path="res://scripts/components/HealthComponent.gd" id="4_wsvsy"]
@@ -34,8 +34,8 @@ radius = 0.069
 [sub_resource type="BoxShape3D" id="BoxShape3D_46hxq"]
 size = Vector3(0.0225372, 0.122028, 0.0628929)
 
-[node name="mug" type="RigidBody3D"]
-mass = 2.5
+[node name="PhysProp_Mug" type="RigidBody3D"]
+mass = 0.5
 script = ExtResource("1_gwc4g")
 SELF_PHYS_DAMAGE_MULTIPLIER = 0.5
 GIBS = ExtResource("2_ccsss")

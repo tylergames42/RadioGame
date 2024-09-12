@@ -1,17 +1,18 @@
-[gd_scene load_steps=39 format=3 uid="uid://chjd02ne6t0l3"]
+[gd_scene load_steps=41 format=3 uid="uid://chjd02ne6t0l3"]
 
-[ext_resource type="PackedScene" uid="uid://cntgjphjq4wvp" path="res://assets/models/viewmodels/camera/camera.glb" id="1_b7amg"]
-[ext_resource type="Script" path="res://scripts/player/weapons/WeaponCamera.gd" id="2_0nn4m"]
-[ext_resource type="Texture2D" uid="uid://dj4avucnygc1h" path="res://assets/ui/camera/ui_flash_on.svg" id="3_txqx4"]
-[ext_resource type="Shader" path="res://assets/shaders/camera_effects/crt.gdshader" id="5_0qpe2"]
-[ext_resource type="Shader" path="res://assets/shaders/camera_effects/test.gdshader" id="5_8g52p"]
-[ext_resource type="Shader" path="res://assets/shaders/camera_effects/bodycam.gdshader" id="5_dtk34"]
-[ext_resource type="Texture2D" uid="uid://c6w14p7iavni2" path="res://assets/ui/camera/ui_plus_minus.svg" id="5_gcg6h"]
-[ext_resource type="AudioStream" uid="uid://5nhs1786j6ea" path="res://assets/sounds/camera/camera_take_photo.wav" id="5_n6k0b"]
-[ext_resource type="Shader" path="res://assets/shaders/camera_effects/adjust_color.gdshader" id="6_0nm05"]
-[ext_resource type="Shader" path="res://assets/shaders/camera_effects/broken_glass.gdshader" id="6_dkfh1"]
-[ext_resource type="Texture2D" uid="uid://2r038uj01xx1" path="res://assets/ui/camera/ui_corner.png" id="6_fwf5d"]
-[ext_resource type="AudioStream" uid="uid://ljaffnubgmcj" path="res://assets/sounds/camera/camera_take_photo_flash.wav" id="6_ibl13"]
+[ext_resource type="PackedScene" uid="uid://cntgjphjq4wvp" path="res://assets/models/viewmodels/camera/camera.glb" id="1_yempw"]
+[ext_resource type="Script" path="res://scripts/player/weapons/WeaponCamera.gd" id="2_ufjgi"]
+[ext_resource type="AudioStream" uid="uid://5nhs1786j6ea" path="res://assets/sounds/camera/camera_take_photo.wav" id="3_0tqcr"]
+[ext_resource type="AudioStream" uid="uid://ljaffnubgmcj" path="res://assets/sounds/camera/camera_take_photo_flash.wav" id="4_5ytf2"]
+[ext_resource type="Shader" path="res://assets/shaders/camera_effects/adjust_color.gdshader" id="5_qfmww"]
+[ext_resource type="Shader" path="res://assets/shaders/camera_effects/gray_threshold.gdshader" id="6_kxw41"]
+[ext_resource type="Shader" path="res://assets/shaders/camera_effects/broken_glass.gdshader" id="7_vdol0"]
+[ext_resource type="Shader" path="res://assets/shaders/camera_effects/test.gdshader" id="8_nylng"]
+[ext_resource type="Shader" path="res://assets/shaders/camera_effects/bodycam.gdshader" id="9_ois84"]
+[ext_resource type="Shader" path="res://assets/shaders/camera_effects/crt.gdshader" id="10_4rua6"]
+[ext_resource type="Texture2D" uid="uid://2r038uj01xx1" path="res://assets/ui/camera/ui_corner.png" id="11_cf53e"]
+[ext_resource type="Texture2D" uid="uid://dj4avucnygc1h" path="res://assets/ui/camera/ui_flash_on.svg" id="12_jp3go"]
+[ext_resource type="Texture2D" uid="uid://c6w14p7iavni2" path="res://assets/ui/camera/ui_plus_minus.svg" id="13_8udnn"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6mgc4"]
 animation = &"camera_deploy"
@@ -83,7 +84,7 @@ dof_blur_near_transition = -1.0
 radius = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v2dac"]
-shader = ExtResource("6_0nm05")
+shader = ExtResource("5_qfmww")
 shader_parameter/brightness = 0.2
 shader_parameter/contrast = 1.0
 shader_parameter/saturation = 0.0
@@ -93,8 +94,13 @@ shader_parameter/blueVal = 1.0
 shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/tint_effect_factor = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmjgd"]
+shader = ExtResource("6_kxw41")
+shader_parameter/threshold = 0.5
+shader_parameter/delta = 0.2
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8vmqy"]
-shader = ExtResource("6_dkfh1")
+shader = ExtResource("7_vdol0")
 shader_parameter/crack_depth = 2.236
 shader_parameter/crack_scale = 0.5
 shader_parameter/crack_zebra_scale = 1.0
@@ -107,7 +113,7 @@ shader_parameter/reflection_offset = Vector2(1, 1)
 shader_parameter/reflection_color = Color(0.588, 0.588, 0.588, 0.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ib47l"]
-shader = ExtResource("5_8g52p")
+shader = ExtResource("8_nylng")
 shader_parameter/bits_per_channel = 4.0
 shader_parameter/dither_strength = 0.01
 shader_parameter/bloom_threshold = 0.6
@@ -121,7 +127,7 @@ shader_parameter/threshold_b = 1.0
 shader_parameter/threshold_color = Vector3(1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u58td"]
-shader = ExtResource("5_dtk34")
+shader = ExtResource("9_ois84")
 shader_parameter/aspect = 1.2
 shader_parameter/distortion = 0.9
 shader_parameter/radius = 1.07
@@ -133,7 +139,7 @@ shader_parameter/channel_offset = -0.01
 shader_parameter/noise_strength = 5.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fpfe8"]
-shader = ExtResource("5_0qpe2")
+shader = ExtResource("10_4rua6")
 shader_parameter/resolution = Vector2(320, 180)
 shader_parameter/scan_line_amount = 1.0
 shader_parameter/warp_amount = 0.16
@@ -150,7 +156,7 @@ shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sp2uj"]
-shader = ExtResource("5_8g52p")
+shader = ExtResource("8_nylng")
 shader_parameter/bits_per_channel = 4.0
 shader_parameter/dither_strength = 0.0
 shader_parameter/bloom_threshold = 0.5
@@ -164,7 +170,7 @@ shader_parameter/threshold_b = 1.0
 shader_parameter/threshold_color = Vector3(1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vl0tk"]
-shader = ExtResource("6_0nm05")
+shader = ExtResource("5_qfmww")
 shader_parameter/brightness = 0.0
 shader_parameter/contrast = 1.1
 shader_parameter/saturation = 1.0
@@ -175,7 +181,7 @@ shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/tint_effect_factor = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_adkjm"]
-shader = ExtResource("5_8g52p")
+shader = ExtResource("8_nylng")
 shader_parameter/bits_per_channel = 4.0
 shader_parameter/dither_strength = 0.0
 shader_parameter/bloom_threshold = 0.0
@@ -189,7 +195,7 @@ shader_parameter/threshold_b = 0.5
 shader_parameter/threshold_color = Vector3(1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jwdf1"]
-shader = ExtResource("6_0nm05")
+shader = ExtResource("5_qfmww")
 shader_parameter/brightness = 0.0
 shader_parameter/contrast = 2.0
 shader_parameter/saturation = 1.0
@@ -203,8 +209,8 @@ shader_parameter/tint_effect_factor = 0.0
 font_size = 28
 shadow_size = 0
 
-[node name="camera" node_paths=PackedStringArray("VIEW_FADE", "CAMERA_CAM", "CAMERA_MESH", "CAMERA_UI", "CAMERA_EFFECTS", "CAMERA_FLASH", "AF_CAST") instance=ExtResource("1_b7amg")]
-script = ExtResource("2_0nn4m")
+[node name="Weapon_Camera" node_paths=PackedStringArray("VIEW_FADE", "CAMERA_CAM", "CAMERA_MESH", "CAMERA_UI", "CAMERA_EFFECTS", "CAMERA_FLASH", "AF_CAST") instance=ExtResource("1_yempw")]
+script = ExtResource("2_ufjgi")
 VIEW_FADE = NodePath("ColorRect")
 CAMERA_CAM = NodePath("Camera3D")
 CAMERA_MESH = NodePath("Armature/Skeleton3D/camera")
@@ -212,8 +218,8 @@ CAMERA_UI = NodePath("Camera3D/CameraUI")
 CAMERA_EFFECTS = NodePath("Camera3D/CameraEffects")
 CAMERA_FLASH = NodePath("Camera3D/Flash")
 AF_CAST = NodePath("Camera3D/AFCast")
-SHOOT_SFX = ExtResource("5_n6k0b")
-SHOOT_FLASH_SFX = ExtResource("6_ibl13")
+SHOOT_SFX = ExtResource("3_0tqcr")
+SHOOT_FLASH_SFX = ExtResource("4_5ytf2")
 WEAPON_NAME = "camera"
 
 [node name="Skeleton3D" parent="Armature" index="0"]
@@ -297,7 +303,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BrokenFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="3"]
+[node name="ThresholdFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="3"]
+visible = false
+material = SubResource("ShaderMaterial_kmjgd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BrokenFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="4"]
 visible = false
 material = SubResource("ShaderMaterial_8vmqy")
 layout_mode = 1
@@ -307,7 +323,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TestFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="4"]
+[node name="TestFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="5"]
 visible = false
 material = SubResource("ShaderMaterial_ib47l")
 layout_mode = 1
@@ -317,7 +333,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BodycamFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="5"]
+[node name="BodycamFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="6"]
 visible = false
 material = SubResource("ShaderMaterial_u58td")
 layout_mode = 1
@@ -327,7 +343,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CRTFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="6"]
+[node name="CRTFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="7"]
 visible = false
 material = SubResource("ShaderMaterial_fpfe8")
 layout_mode = 1
@@ -337,7 +353,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameboyFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="7"]
+[node name="GameboyFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="8"]
 visible = false
 material = SubResource("ShaderMaterial_sp2uj")
 layout_mode = 1
@@ -359,7 +375,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VirtualboyFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="8"]
+[node name="VirtualboyFilter" type="ColorRect" parent="Camera3D/CameraEffects" index="9"]
 visible = false
 material = SubResource("ShaderMaterial_adkjm")
 layout_mode = 1
@@ -417,7 +433,7 @@ offset_right = -8.0
 offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_fwf5d")
+texture = ExtResource("11_cf53e")
 expand_mode = 1
 flip_v = true
 
@@ -434,7 +450,7 @@ offset_right = 40.0
 offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_fwf5d")
+texture = ExtResource("11_cf53e")
 expand_mode = 1
 flip_h = true
 flip_v = true
@@ -452,7 +468,7 @@ offset_right = 40.0
 offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_fwf5d")
+texture = ExtResource("11_cf53e")
 expand_mode = 1
 flip_h = true
 
@@ -469,7 +485,7 @@ offset_right = -8.0
 offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_fwf5d")
+texture = ExtResource("11_cf53e")
 expand_mode = 1
 
 [node name="CornerTR" type="TextureRect" parent="Camera3D/CameraUI" index="1"]
@@ -482,7 +498,7 @@ offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 144.0
 grow_horizontal = 0
-texture = ExtResource("6_fwf5d")
+texture = ExtResource("11_cf53e")
 expand_mode = 1
 flip_h = true
 flip_v = true
@@ -493,7 +509,7 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 144.0
 offset_bottom = 144.0
-texture = ExtResource("6_fwf5d")
+texture = ExtResource("11_cf53e")
 expand_mode = 1
 flip_v = true
 
@@ -510,7 +526,7 @@ offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("6_fwf5d")
+texture = ExtResource("11_cf53e")
 expand_mode = 1
 flip_h = true
 
@@ -524,7 +540,7 @@ offset_top = -144.0
 offset_right = 144.0
 offset_bottom = -16.0
 grow_vertical = 0
-texture = ExtResource("6_fwf5d")
+texture = ExtResource("11_cf53e")
 expand_mode = 1
 
 [node name="HSlider" type="HSlider" parent="Camera3D/CameraUI" index="5"]
@@ -558,7 +574,7 @@ offset_top = -104.0
 offset_right = 104.0
 offset_bottom = -56.0
 grow_vertical = 0
-texture = ExtResource("3_txqx4")
+texture = ExtResource("12_jp3go")
 expand_mode = 1
 
 [node name="AFIndicator" type="Label" parent="Camera3D/CameraUI" index="7"]
@@ -590,7 +606,7 @@ offset_right = -56.0
 offset_bottom = -56.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("5_gcg6h")
+texture = ExtResource("13_8udnn")
 expand_mode = 1
 
 [node name="ThirdsLeft" type="ColorRect" parent="Camera3D/CameraUI" index="9"]

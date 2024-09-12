@@ -12,15 +12,6 @@ signal interacted_locked ##Emitted when the object is interacted while it is loc
 @onready var timer = Timer.new()
 
 func _ready():
-	var parent = get_parent()
-	parent.set_collision_layer_value(3, true)
-	#Connect signal automaticaly because I'm lazy
-	if parent.has_method("_on_interactable_component_interacted"):
-		if !interacted.is_connected(parent._on_interactable_component_interacted):
-			interacted.connect(parent._on_interactable_component_interacted)
-	if parent.has_method("_on_interactable_component_interacted_locked"):
-		if !interacted_locked.is_connected(parent._on_interactable_component_interacted_locked):
-			interacted_locked.connect(parent._on_interactable_component_interacted_locked)
 	#Setup cooldown timer
 	if COOLDOWN > 0.0:
 		add_child(timer)
@@ -31,10 +22,28 @@ func _ready():
 		timer.queue_free()
 
 func _enter_tree() -> void:
-	get_parent().set_meta(&"InteractableComponent", self)
+	var parent = get_parent()
+	parent.set_meta(&"InteractableComponent", self)
+	parent.set_collision_layer_value(3, true)
+	#Connect signals
+	if parent.has_method("_on_interactable_component_interacted"):
+		if !interacted.is_connected(parent._on_interactable_component_interacted):
+			interacted.connect(parent._on_interactable_component_interacted)
+	if parent.has_method("_on_interactable_component_interacted_locked"):
+		if !interacted_locked.is_connected(parent._on_interactable_component_interacted_locked):
+			interacted_locked.connect(parent._on_interactable_component_interacted_locked)
 	
 func _exit_tree() -> void:
-	get_parent().remove_meta(&"InteractableComponent")
+	var parent = get_parent()
+	parent.remove_meta(&"InteractableComponent")
+	parent.set_collision_layer_value(3, false)
+	#Disconnect signals
+	if parent.has_method("_on_interactable_component_interacted"):
+		if !interacted.is_connected(parent._on_interactable_component_interacted):
+			interacted.disconnect(parent._on_interactable_component_interacted)
+	if parent.has_method("_on_interactable_component_interacted_locked"):
+		if !interacted_locked.is_connected(parent._on_interactable_component_interacted_locked):
+			interacted_locked.disconnect(parent._on_interactable_component_interacted_locked)
 
 func interact(interactor):
 	if ENABLED:

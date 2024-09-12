@@ -1,13 +1,13 @@
 [gd_scene load_steps=24 format=3 uid="uid://im2obulcl5vg"]
 
-[ext_resource type="PackedScene" uid="uid://c6h07q5hlr7wl" path="res://assets/models/viewmodels/radio/radio.glb" id="1_rc01t"]
-[ext_resource type="Script" path="res://scripts/player/weapons/WeaponRadio.gd" id="2_kf3eb"]
-[ext_resource type="AudioStream" uid="uid://ki0tnb4wlui3" path="res://assets/sounds/static/radio_static.tres" id="3_4tomf"]
-[ext_resource type="Material" uid="uid://otve6lmskaud" path="res://assets/models/viewmodels/radio/materials/radio_oscilloscope.tres" id="4_6rftn"]
-[ext_resource type="Material" uid="uid://bmgxi81m2etkr" path="res://assets/models/viewmodels/radio/materials/radio_power_light.tres" id="5_5mlxi"]
-[ext_resource type="Material" uid="uid://bqt4pytlhhw00" path="res://assets/models/viewmodels/radio/materials/radio_strength_light.tres" id="5_j816w"]
-[ext_resource type="Script" path="res://addons/jigglebones/jigglebone.gd" id="5_lfofe"]
-[ext_resource type="Material" uid="uid://d1k4hw402wm55" path="res://assets/models/viewmodels/radio/materials/radio_spectrogram.tres" id="5_tols3"]
+[ext_resource type="PackedScene" uid="uid://c6h07q5hlr7wl" path="res://assets/models/viewmodels/radio/radio.glb" id="1_vrmio"]
+[ext_resource type="Script" path="res://scripts/player/weapons/WeaponRadio.gd" id="2_dyqy6"]
+[ext_resource type="AudioStream" uid="uid://ki0tnb4wlui3" path="res://assets/sounds/static/radio_static.tres" id="3_ravh1"]
+[ext_resource type="Material" uid="uid://otve6lmskaud" path="res://assets/models/viewmodels/radio/materials/radio_oscilloscope.tres" id="4_b5ofi"]
+[ext_resource type="Material" uid="uid://d1k4hw402wm55" path="res://assets/models/viewmodels/radio/materials/radio_spectrogram.tres" id="5_oju4u"]
+[ext_resource type="Material" uid="uid://bmgxi81m2etkr" path="res://assets/models/viewmodels/radio/materials/radio_power_light.tres" id="6_5opai"]
+[ext_resource type="Material" uid="uid://bqt4pytlhhw00" path="res://assets/models/viewmodels/radio/materials/radio_strength_light.tres" id="7_25jck"]
+[ext_resource type="Script" path="res://addons/jigglebones/jigglebone.gd" id="8_8cug8"]
 
 [sub_resource type="Gradient" id="Gradient_mxjtf"]
 offsets = PackedFloat32Array(0, 0.366667, 0.866667, 0.983333)
@@ -75,15 +75,15 @@ nodes/tune_anim/node = SubResource("AnimationNodeAnimation_cpx2t")
 nodes/tune_anim/position = Vector2(-140, 80)
 node_connections = [&"Blend2", 0, &"TimeSeek", &"Blend2", 1, &"StateMachine", &"TimeScale", 0, &"tune_anim", &"TimeSeek", 0, &"TimeScale", &"output", 0, &"Blend2"]
 
-[node name="radio" instance=ExtResource("1_rc01t")]
-script = ExtResource("2_kf3eb")
-STATIC = ExtResource("3_4tomf")
+[node name="Weapon_Radio" instance=ExtResource("1_vrmio")]
+script = ExtResource("2_dyqy6")
+STATIC = ExtResource("3_ravh1")
 GRADIENT_STRENGTH = SubResource("Gradient_mxjtf")
 GRADIENT_SPECTROGRAM = SubResource("Gradient_h6g60")
-MAT_OSC = ExtResource("4_6rftn")
-MAT_SPECTROGRAM = ExtResource("5_tols3")
-MAT_STRENGTH_IND = ExtResource("5_5mlxi")
-MAT_AUDIO_IND = ExtResource("5_j816w")
+MAT_OSC = ExtResource("4_b5ofi")
+MAT_SPECTROGRAM = ExtResource("5_oju4u")
+MAT_STRENGTH_IND = ExtResource("6_5opai")
+MAT_AUDIO_IND = ExtResource("7_25jck")
 WEAPON_NAME = "radio"
 
 [node name="Skeleton3D" parent="Armature" index="0"]
@@ -102,14 +102,14 @@ bones/10/scale = Vector3(1, 1, 0.999999)
 [node name="Jigglebone" type="Node3D" parent="Armature/Skeleton3D" index="1"]
 transform = Transform3D(-0.0953579, 0.0301129, 0.00030724, 0.0301127, 0.0953584, -0.000103029, -0.000324004, -5.72843e-06, -0.0999995, -0.0175353, 0.0374264, 0.946134)
 top_level = true
-script = ExtResource("5_lfofe")
+script = ExtResource("8_8cug8")
 bone_name = "wire_jiggle_top"
 stiffness = 8.0
 
 [node name="Jigglebone2" type="Node3D" parent="Armature/Skeleton3D" index="2"]
 transform = Transform3D(-0.0938158, -0.0198776, 0.0283456, 0.0310655, -0.0844731, 0.0435802, 0.0152817, 0.0496909, 0.0854241, -0.29762, -0.39944, -0.90812)
 top_level = true
-script = ExtResource("5_lfofe")
+script = ExtResource("8_8cug8")
 bone_name = "wire_jiggle_bot"
 stiffness = 8.0
 

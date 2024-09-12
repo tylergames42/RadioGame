@@ -18,6 +18,7 @@ var holder
 var distance : float
 var held : bool = false
 var prev_velocity : Vector3
+var mass_mult : float = mass
 
 func _ready(): #Set up physics prop properties
 	add_child(audio_player)
@@ -28,16 +29,17 @@ func _ready(): #Set up physics prop properties
 	self.body_exited.connect(_on_body_exited)
 	OTHER_PHYS_DAMAGE_MULTIPLIER = OTHER_PHYS_DAMAGE_MULTIPLIER * (mass * 0.05)
 	BUOYANCY = BUOYANCY * mass
+	mass_mult = clampf(mass, 0.01, 2.5)
 			
 func _integrate_forces(_state):
 	prev_velocity = linear_velocity
 	
 	if held:
 		distance = global_transform.origin.distance_to(holder.hold_point.global_transform.origin)
-		var velocity_multipler = 10 / (snapped(distance, 0.2) + 0.3)
+		var velocity_multipler = 10 / (distance+ 0.3)
 		var target_velocity = (holder.hold_point.global_transform.origin - global_transform.origin) * velocity_multipler
 		var impulse_vector = target_velocity - linear_velocity
-		apply_central_impulse(impulse_vector + holder.linear_velocity)
+		apply_central_impulse((impulse_vector + holder.linear_velocity) * mass_mult)
 			
 	if get_colliding_bodies() != [] and get_colliding_bodies()[0]: #Scrape sfx (kinda jank rn)
 		if held:
@@ -71,7 +73,7 @@ func drop():
 	
 func throw(throw_dir):
 	drop()
-	apply_central_impulse(throw_dir * mass * THROW_FORCE)
+	apply_central_impulse(throw_dir * mass_mult * THROW_FORCE)
 
 func _on_body_entered(body):
 	var velocity = prev_velocity.length()
@@ -87,7 +89,7 @@ func _on_body_entered(body):
 			body.get_meta("HealthComponent", null).damage(velocity * OTHER_PHYS_DAMAGE_MULTIPLIER)
 		if self.has_meta("HealthComponent"):
 			self.get_meta("HealthComponent", null).damage(velocity * SELF_PHYS_DAMAGE_MULTIPLIER)
-	elif velocity > 2: #Do soft physics impact
+	elif velocity > 1: #Do soft physics impact
 		if physics_material_override != null and !audio_player.playing:
 			audio_player.stream = physics_material_override.SFX_IMPACT_SOFT
 			audio_player.spatial_play()
@@ -110,5 +112,5 @@ func _on_health_component_killed():
 		gib.global_transform = global_transform
 		for child in gib.get_children():
 			if child is RigidBody3D:
-				child.apply_central_impulse(linear_velocity / (randf() + 0.6))
+				child.apply_central_impulse((prev_velocity * mass_mult / (randf() + 0.6) * mass_mult))
 	queue_free()
