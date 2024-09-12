@@ -5,7 +5,7 @@ class_name MaterialProperties
 @export var DISABLE_COLLISIONS = false
 
 @export_group("Sound")
-@export_subgroup("General Sounds")
+@export_subgroup("Footstep Sounds")
 @export var SFX_STEP : AudioStream
 @export var SFX_JUMP : AudioStream
 @export_subgroup("Physics Sounds")
