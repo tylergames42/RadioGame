@@ -92,7 +92,6 @@ func update(delta):
 	reciever_signal_strength = 0.0
 	find_signals()
 	static_player.volume_db = remap(reciever_signal_strength, 0.0, 1.0, STATIC_VOLUME, -50.0)
-	print(static_player.volume_db)
 	Global.frequency = frequency
 	Global.signal_strength = reciever_signal_strength
 
