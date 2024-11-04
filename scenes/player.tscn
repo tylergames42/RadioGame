@@ -1,23 +1,19 @@
-[gd_scene load_steps=29 format=3 uid="uid://bdrd7rx11vacv"]
+[gd_scene load_steps=25 format=3 uid="uid://bdrd7rx11vacv"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_gnuhl"]
 [ext_resource type="Environment" uid="uid://tdvlqoyf7qjy" path="res://scenes/env_main.tres" id="2_7og4h"]
 [ext_resource type="Script" path="res://scenes/DebugInfo.gd" id="2_pbxns"]
 [ext_resource type="Texture2D" uid="uid://chwwq3rkwc7ly" path="res://assets/ui/crosshair.png" id="3_8nfak"]
 [ext_resource type="Shader" path="res://assets/shaders/screen_effects/screen_underwater.gdshader" id="3_mlfmr"]
-[ext_resource type="Script" path="res://scripts/state_machine.gd" id="6_nodv1"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="5_l2efs"]
 [ext_resource type="PackedScene" uid="uid://bpwl58ebdmdxn" path="res://assets/models/legs_test.glb" id="7_gp4dq"]
-[ext_resource type="Script" path="res://scripts/player/states/PlayerIdleState.gd" id="7_hu5mr"]
 [ext_resource type="Script" path="res://scripts/player/WeaponManager.gd" id="7_kjtma"]
 [ext_resource type="PackedScene" uid="uid://bwa01k1gb5nx2" path="res://scenes/user_interface/WeaponSelect.tscn" id="8_2ko3q"]
-[ext_resource type="Script" path="res://scripts/player/states/PlayerWalkingState.gd" id="8_mmf44"]
-[ext_resource type="Script" path="res://scripts/player/states/PlayerSprintingState.gd" id="9_6khpb"]
-[ext_resource type="Script" path="res://scripts/player/states/PlayerNoclipState.gd" id="9_fvox2"]
-[ext_resource type="Script" path="res://scripts/player/states/PlayerCrouchingState.gd" id="10_3yhk7"]
-[ext_resource type="Script" path="res://scripts/player/states/PlayerJumpingState.gd" id="11_idaac"]
-[ext_resource type="Script" path="res://scripts/player/states/PlayerClimbingState.gd" id="16_e4hen"]
 [ext_resource type="PackedScene" uid="uid://b01a18qy38ssi" path="res://scenes/user_interface/Menu.tscn" id="17_nyi1l"]
-[ext_resource type="Script" path="res://scripts/player/states/PlayerSwimmingState.gd" id="18_d5830"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="19_5ucv5"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="20_cmvkg"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="21_4as0m"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="23_w37rm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_74fkp"]
 friction = 0.0
@@ -47,7 +43,7 @@ shader_parameter/blur = 2.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jx86m"]
 height = 0.05
-radius = 0.375
+radius = 0.39
 
 [sub_resource type="Animation" id="Animation_iypg4"]
 length = 0.001
@@ -250,13 +246,15 @@ collision_layer = 3
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-mass = 10.0
+mass = 15.0
 physics_material_override = SubResource("PhysicsMaterial_74fkp")
+gravity_scale = 0.0
 can_sleep = false
 lock_rotation = true
+custom_integrator = true
 continuous_cd = true
 contact_monitor = true
-max_contacts_reported = 1
+max_contacts_reported = 16
 script = ExtResource("1_gnuhl")
 
 [node name="ColliderVisualizer" type="CSGMesh3D" parent="."]
@@ -304,7 +302,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="DebugInfo" type="Label" parent="Root/Head/Camera/UI"]
-visible = false
 layout_mode = 1
 offset_left = 10.0
 offset_top = 10.0
@@ -314,6 +311,20 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 8
 theme_override_constants/shadow_offset_y = 8
 script = ExtResource("2_pbxns")
+
+[node name="StateChartDebugger" parent="Root/Head/Camera/UI/DebugInfo" instance=ExtResource("5_l2efs")]
+z_index = 5
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = 322.0
+offset_top = 8.0
+offset_right = 619.0
+offset_bottom = 379.0
+grow_horizontal = 0
+grow_vertical = 1
+initial_node_to_watch = NodePath("../../../../../../StateChart")
 
 [node name="Crosshair" type="TextureRect" parent="Root/Head/Camera/UI"]
 layout_mode = 1
@@ -396,36 +407,104 @@ libraries = {
 "": SubResource("AnimationLibrary_dcjiq")
 }
 
-[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
-script = ExtResource("6_nodv1")
-CURRENT_STATE = NodePath("PlayerIdleState")
-
-[node name="PlayerIdleState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("7_hu5mr")
-
-[node name="PlayerNoclipState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("9_fvox2")
-
-[node name="PlayerWalkingState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("8_mmf44")
-
-[node name="PlayerJumpingState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("11_idaac")
-
-[node name="PlayerSprintingState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("9_6khpb")
-
-[node name="PlayerCrouchingState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("10_3yhk7")
-
-[node name="PlayerSwimmingState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("18_d5830")
-
-[node name="PlayerClimbingState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("16_e4hen")
-
 [node name="Control" parent="." instance=ExtResource("17_nyi1l")]
+visible = false
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("19_5ucv5")
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("20_cmvkg")
+initial_state = NodePath("Standing")
+
+[node name="Standing" type="Node" parent="StateChart/Root"]
+script = ExtResource("20_cmvkg")
+initial_state = NodePath("Grounded")
+
+[node name="Grounded" type="Node" parent="StateChart/Root/Standing"]
+script = ExtResource("20_cmvkg")
+initial_state = NodePath("Idle")
+
+[node name="BecomeAirborne" type="Node" parent="StateChart/Root/Standing/Grounded"]
+script = ExtResource("23_w37rm")
+to = NodePath("../../Airborne")
+event = &"airborne"
+delay_in_seconds = "0.0"
+
+[node name="Jump" type="Node" parent="StateChart/Root/Standing/Grounded"]
+script = ExtResource("23_w37rm")
+to = NodePath("../../Airborne/Jumping")
+event = &"jump"
+delay_in_seconds = "0.0"
+
+[node name="GotoIdle" type="Node" parent="StateChart/Root/Standing/Grounded"]
+script = ExtResource("23_w37rm")
+to = NodePath("../Idle")
+event = &"idle"
+delay_in_seconds = "0.0"
+
+[node name="Idle" type="Node" parent="StateChart/Root/Standing/Grounded"]
+script = ExtResource("21_4as0m")
+
+[node name="Walk" type="Node" parent="StateChart/Root/Standing/Grounded/Idle"]
+script = ExtResource("23_w37rm")
+to = NodePath("../../Walking")
+event = &"walk"
+delay_in_seconds = "0.0"
+
+[node name="Walking" type="Node" parent="StateChart/Root/Standing/Grounded"]
+script = ExtResource("21_4as0m")
+
+[node name="Sprint" type="Node" parent="StateChart/Root/Standing/Grounded/Walking"]
+script = ExtResource("23_w37rm")
+to = NodePath("../../Sprinting")
+event = &"sprint"
+delay_in_seconds = "0.0"
+
+[node name="Sprinting" type="Node" parent="StateChart/Root/Standing/Grounded"]
+script = ExtResource("21_4as0m")
+
+[node name="SlopeSliding" type="Node" parent="StateChart/Root/Standing/Grounded"]
+script = ExtResource("21_4as0m")
+
+[node name="Airborne" type="Node" parent="StateChart/Root/Standing"]
+script = ExtResource("20_cmvkg")
+initial_state = NodePath("Falling")
+
+[node name="BecomeGrounded" type="Node" parent="StateChart/Root/Standing/Airborne"]
+script = ExtResource("23_w37rm")
+to = NodePath("../../Grounded")
+event = &"grounded"
+delay_in_seconds = "0.0"
+
+[node name="Falling" type="Node" parent="StateChart/Root/Standing/Airborne"]
+script = ExtResource("21_4as0m")
+
+[node name="Jumping" type="Node" parent="StateChart/Root/Standing/Airborne"]
+script = ExtResource("21_4as0m")
+
+[node name="Transition" type="Node" parent="StateChart/Root/Standing/Airborne"]
+script = ExtResource("23_w37rm")
+to = NodePath("../Falling")
+event = &"falling"
+delay_in_seconds = "0.1"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="state_input" from="StateChart/Root/Standing/Grounded" to="." method="_on_grounded_state_input"]
+[connection signal="state_physics_processing" from="StateChart/Root/Standing/Grounded" to="." method="_on_grounded_state_physics_processing"]
+[connection signal="state_processing" from="StateChart/Root/Standing/Grounded" to="." method="_on_grounded_state_processing"]
+[connection signal="taken" from="StateChart/Root/Standing/Grounded/Jump" to="." method="_on_jump_taken"]
+[connection signal="state_entered" from="StateChart/Root/Standing/Grounded/Idle" to="." method="_on_idle_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/Root/Standing/Grounded/Idle" to="." method="_on_idle_state_physics_processing"]
+[connection signal="state_processing" from="StateChart/Root/Standing/Grounded/Idle" to="." method="_on_idle_state_processing"]
+[connection signal="state_entered" from="StateChart/Root/Standing/Grounded/Walking" to="." method="_on_walking_state_entered"]
+[connection signal="state_input" from="StateChart/Root/Standing/Grounded/Walking" to="." method="_on_walking_state_input"]
+[connection signal="state_physics_processing" from="StateChart/Root/Standing/Grounded/Walking" to="." method="_on_walking_state_physics_processing"]
+[connection signal="state_processing" from="StateChart/Root/Standing/Grounded/Walking" to="." method="_on_walking_state_processing"]
+[connection signal="state_input" from="StateChart/Root/Standing/Grounded/Sprinting" to="." method="_on_sprinting_state_input"]
+[connection signal="state_physics_processing" from="StateChart/Root/Standing/Grounded/Sprinting" to="." method="_on_sprinting_state_physics_processing"]
+[connection signal="state_processing" from="StateChart/Root/Standing/Grounded/Sprinting" to="." method="_on_sprinting_state_processing"]
+[connection signal="state_processing" from="StateChart/Root/Standing/Airborne" to="." method="_on_airborne_state_processing"]
+[connection signal="state_processing" from="StateChart/Root/Standing/Airborne/Falling" to="." method="_on_falling_state_processing"]
 
 [editable path="Root/legs_test"]

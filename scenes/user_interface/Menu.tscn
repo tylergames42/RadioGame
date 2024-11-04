@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_yv3tn")
 
 [node name="QuitButton" type="Button" parent="."]
@@ -79,9 +80,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -256.0
+offset_left = -857.0
 offset_top = 64.0
-offset_right = -64.0
+offset_right = -665.0
 offset_bottom = 128.0
 grow_horizontal = 0
 text = "Debug GUI"

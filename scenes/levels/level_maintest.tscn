@@ -1117,9 +1117,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -71.38
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96998, -4.00001, 9.93774)
 
 [node name="LightmapGI" type="LightmapGI" parent="level"]
-quality = 3
+quality = 0
 bias = 0.0002
-generate_probes_subdiv = 4
+generate_probes_subdiv = 1
 light_data = ExtResource("4_d0goh")
 
 [node name="Player" parent="level" instance=ExtResource("5_mb7ru")]
@@ -1144,7 +1144,7 @@ use_collision = true
 shape = SubResource("BoxShape3D_03s0d")
 
 [node name="RigidBody3D9" type="RigidBody3D" parent="level/props"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.2, 2.55, 18.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.2, 2.55, 18.6985)
 metadata/_edit_group_ = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="level/props/RigidBody3D9"]
@@ -1471,7 +1471,7 @@ LOCKED = true
 [node name="CSGMesh3D" type="CSGMesh3D" parent="level"]
 
 [node name="Water_test" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9152, 2.61336, -10.9099)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9152, 2.61336, -40.9099)
 mesh = SubResource("PlaneMesh_e0f1o")
 skeleton = NodePath("../level/props/plastic_crate")
 surface_material_override/0 = ExtResource("24_5adkb")

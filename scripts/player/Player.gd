@@ -10,7 +10,7 @@ extends RigidBody3D
 @export_range(0.01, 1.0) var MOUSE_SENSITIVITY_VERTICAL : float = 0.3 ##Mouse sensitivity on Y axis
 @export_group("Movement:")
 @export var MAX_STEP_HEIGHT : float = 0.5 ##Maximum distance the player can step up / down
-@export var MAX_SLOPE_ANGLE : float = 44 ##Maximum angle slope the player can go up before sliding down it (I think this shit is broken, just keep it at 44)
+@export var MAX_SLOPE_ANGLE : float = 45 ##Maximum angle slope the player can go up before sliding down it (I think this shit is broken, just keep it at 44)
 @export var AIR_CONTROL_MULTIPLIER : float = 0.1 ##Multiplier to player input in air
 
 @onready var collider = $Collider #Player collider
@@ -23,7 +23,7 @@ extends RigidBody3D
 @onready var hold_point = $Root/Head/hold_point #Point at which to position held objects
 @onready var hold_orientation = $Root/Head/hold_orientation
 @onready var animation_player = $AnimationPlayer #Animation player
-@onready var state_machine = $PlayerStateMachine #State machine for player
+#@onready var state_machine = $PlayerStateMachine #State machine for player
 @onready var weapon_manager = $Root/Head/WeaponManager
 @onready var leg_anim_player = $Root/legs_test/AnimationPlayer
 @onready var ui = $Root/Head/Camera/UI
@@ -45,6 +45,10 @@ var rotating_held : bool = false
 
 var prev_velocity : Vector3
 var camera_punch : Vector3
+
+var grav_vector : Vector3 = Vector3(0.0, -2.0, 0.0)
+
+@onready var state_chart: StateChart = get_node("StateChart")
 
 func _ready():
 	Global.player = self
@@ -75,11 +79,11 @@ func _input(event):
 	if event.is_action_released("fire_alt"):
 		rotating_held = false
 		
-	if event.is_action_pressed("noclip"):
-		if state_machine.CURRENT_STATE.name != "PlayerNoclipState":
-			state_machine.on_child_transition("PlayerNoclipState")
-		else:
-			state_machine.on_child_transition("PlayerIdleState")
+	#if event.is_action_pressed("noclip"):
+		#if state_machine.CURRENT_STATE.name != "PlayerNoclipState":
+			#state_machine.on_child_transition("PlayerNoclipState")
+		#else:
+			#state_machine.on_child_transition("PlayerIdleState")
 	
 	if event is InputEventMouseMotion: #Get mouse input
 		if view_locked:
@@ -100,6 +104,8 @@ func _input(event):
 	direction = root.transform.basis * input_dir.normalized()
 
 func _physics_process(delta):
+	apply_central_impulse(grav_vector) #custom grav TEST
+	
 	prev_velocity = linear_velocity
 	
 	was_grounded = grounded
@@ -112,27 +118,39 @@ func _physics_process(delta):
 			grounded = false
 			held_object.drop()
 	
-	if grounded:
-		control_multiplier = 1
-	else:
-		control_multiplier = AIR_CONTROL_MULTIPLIER
-		
-	target_velocity = direction * current_speed
-	var impulse_vector = target_velocity - Vector3(linear_velocity.x,0,linear_velocity.z)
-	apply_central_impulse(impulse_vector * control_multiplier)
+	#if grounded:
+		#control_multiplier = 1
+	#else:
+		#control_multiplier = AIR_CONTROL_MULTIPLIER
+		#
+	#target_velocity = direction * current_speed
+	#var impulse_vector = target_velocity - Vector3(linear_velocity.x,0,linear_velocity.z)
+	#apply_central_impulse(impulse_vector * control_multiplier)
 
 func slopeSliding():
 	var normal_average = Vector3.ZERO
 	if grounded:
+		var cols = 0
 		for collision in groundcast.get_collision_count(): #Get average normal of floor stood on
-			if not is_zero_approx(groundcast.get_collision_normal(collision).y):
-				normal_average = groundcast.get_collision_normal(collision)
-		normal_average /= groundcast.get_collision_count()
+			if groundcast.get_collision_normal(collision).y != 0.0:
+				if is_nan(groundcast.get_collision_normal(collision).x):
+					push_error("fuck")
+				normal_average += groundcast.get_collision_normal(collision)
+				cols += 1
+		normal_average /= cols
+		
 		var slide_normal = Vector3(normal_average.x, -1, normal_average.z).normalized() #Vector to slide down
+		
+		#if is_nan(normal_average.dot(Vector3.UP)):
+			#return
+		
+		#if normal_average.dot(Vector3.UP) != 1:
+			#print(normal_average.dot(Vector3.UP))
 		
 		if slide_normal.dot(Vector3.DOWN) <= deg_to_rad(90 - MAX_SLOPE_ANGLE): #Check if slope is too steep
 			apply_central_impulse(slide_normal * (current_speed * 0.6))
-			#camera_punch = slide_normal * -0.04
+			print(normal_average.dot(Vector3.UP))
+			camera_punch = slide_normal * -0.04
 			can_climb = false
 		else:
 			can_climb = true
@@ -237,18 +255,23 @@ func interact():
 		if interacted_object.has_meta("InteractableComponent"):
 			interacted_object.get_meta("InteractableComponent", null).interact(self)
 
-func play_step_sfx():
-	if grounded:
-		var material = load("res://assets/material_properties/mat_default.tres")
-		if !groundcast.is_colliding():
-			return
-		var ground = groundcast.get_collider(0)
-		if "physics_material_override" in ground:
-			if ground.physics_material_override is MaterialProperties:
-				if ground.physics_material_override.SFX_STEP != null:
-					material = ground.physics_material_override
-		audio_player.stream = material.SFX_STEP
-		audio_player.spatial_play()
+func get_floor_mat() -> MaterialProperties:
+	var material = load("res://assets/material_properties/mat_default.tres")
+	if groundcast.is_colliding():
+		if groundcast.get_collider(0) != null:
+			var ground = groundcast.get_collider(0)
+			if "physics_material_override" in ground:
+				material = ground.physics_material_override
+	return material
+
+func play_step_sfx() -> void:
+	var material = load("res://assets/material_properties/mat_default.tres")
+	var floormat = get_floor_mat()
+	if floormat is MaterialProperties:
+		if floormat.SFX_STEP != null:
+			material = floormat
+	audio_player.stream = material.SFX_STEP
+	audio_player.spatial_play()
 		
 func camera_tilt(delta):
 	#View tilt
@@ -260,3 +283,63 @@ func camera_tilt(delta):
 func _on_body_entered(_body): #View punch
 	if linear_velocity.length() - prev_velocity.length() < -6.0:
 		camera_punch = (linear_velocity - prev_velocity) * 0.02
+
+func movement_impulse(speed : float, movement_multiplier : float) -> void:
+	target_velocity = direction * speed
+	var impulse_vector = target_velocity - Vector3(linear_velocity.x,0,linear_velocity.z)
+	apply_central_impulse(impulse_vector * movement_multiplier)
+
+##New state testing:
+
+func _on_grounded_state_physics_processing(delta: float) -> void:
+	if !was_grounded:
+		state_chart.send_event("airborne")
+	stair_step_up()
+	stair_step_down()
+	slopeSliding()
+func _on_grounded_state_input(event: InputEvent) -> void:
+	if event.is_action_pressed("jump"):
+		state_chart.send_event("jump")
+
+func _on_airborne_state_processing(delta: float) -> void:
+	movement_impulse(7.0, 0.5)
+func _on_falling_state_processing(delta: float) -> void:
+	if groundcast.is_colliding():
+		state_chart.send_event("grounded")
+func _on_jump_taken() -> void:
+	apply_central_impulse(Vector3.UP * 4.0 * mass)
+	state_chart.send_event("falling")
+
+func _on_idle_state_entered() -> void:
+	stair_step_up()
+	stair_step_down()
+	if direction.length() != 0.0:
+		state_chart.send_event("walk")
+func _on_idle_state_processing(delta: float) -> void:
+	if direction.length() != 0.0:
+		state_chart.send_event("walk")
+func _on_idle_state_physics_processing(delta: float) -> void:
+	#linear_velocity *= 0.5
+	if get_floor_mat() != null:
+		linear_velocity *=  clampf(1.5 - get_floor_mat().friction, 0.01, 1.0)
+
+func _on_walking_state_entered() -> void:
+	if Input.is_action_pressed("sprint"):
+		state_chart.send_event("sprint")
+func _on_walking_state_processing(delta: float) -> void:
+	if direction.length() == 0.0:
+		state_chart.send_event("idle")
+func _on_walking_state_physics_processing(delta: float) -> void:
+	movement_impulse(7.0, 1.0)
+func _on_walking_state_input(event: InputEvent) -> void:
+	if event.is_action_pressed("sprint"):
+		state_chart.send_event("sprint")
+
+func _on_sprinting_state_processing(delta: float) -> void:
+	if direction.length() == 0.0:
+		state_chart.send_event("idle")
+func _on_sprinting_state_physics_processing(delta: float) -> void:
+	movement_impulse(9.0, 1.0)
+func _on_sprinting_state_input(event: InputEvent) -> void:
+	if event.is_action_released("sprint"):
+		state_chart.send_event("idle")

@@ -17,6 +17,12 @@ func _input(event):
 			Global.paused = true
 			Global.player.weapon_manager.input_enabled = false
 			show()
+	if event.is_action_pressed("debug_menu"):
+		if Global.debug_gui.visible:
+			Global.debug_gui.visible = false
+		else:
+			Global.debug_gui.visible = true
+		
 
 func _on_reload_button_pressed() -> void:
 	var _reload = get_tree().reload_current_scene()

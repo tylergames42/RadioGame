@@ -39,14 +39,9 @@ points = PackedVector3Array(0.0469356, 0.22522, 0.242587, -0.153056, 0.0484139, 
 [sub_resource type="GDScript" id="GDScript_2fkm2"]
 script/source = "extends Skeleton3D
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	physical_bones_start_simulation()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 "
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_emud3"]
@@ -77,7 +72,7 @@ bones/8/rotation = Quaternion(0.118713, 0.00286168, -0.0168206, 0.992782)
 script = SubResource("GDScript_2fkm2")
 
 [node name="JiggleboneLegR" type="Node3D" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.940317, 0.0487083, -0.336796, 0.338204, -0.0241042, 0.940764, 0.0377048, -0.998522, -0.039139, 0.151083, 0.0386455, -1.05102)
+transform = Transform3D(0.940317, 0.0487083, -0.336796, 0.338204, -0.0241042, 0.940764, 0.0377048, -0.998522, -0.039139, 0.151083, 0.0386456, -1.05102)
 top_level = true
 script = ExtResource("3_n520j")
 bone_name = "leg.R"
@@ -139,7 +134,7 @@ forward_axis = 1
 collision_shape = NodePath("../CollisionShape3D")
 
 [node name="JiggleboneHandR" type="Node3D" parent="Armature/Skeleton3D" index="6"]
-transform = Transform3D(-0.859874, 0.23257, -0.454454, -0.161511, -0.968409, -0.189995, -0.484285, -0.0899718, 0.870272, 0.24042, -0.955251, 0.0236763)
+transform = Transform3D(-0.859874, 0.23257, -0.454454, -0.161511, -0.968409, -0.189994, -0.484285, -0.0899718, 0.870272, 0.24042, -0.955251, 0.0236763)
 top_level = true
 script = ExtResource("3_n520j")
 bone_name = "hand.R"
@@ -150,7 +145,7 @@ forward_axis = 1
 collision_shape = NodePath("../CollisionShape3D")
 
 [node name="JiggleboneHandL" type="Node3D" parent="Armature/Skeleton3D" index="7"]
-transform = Transform3D(-0.968599, -0.23257, -0.0878977, 0.238986, -0.968409, -0.0712013, -0.0685616, -0.0899718, 0.993582, -0.243045, -0.955251, 0.0236763)
+transform = Transform3D(-0.968599, -0.23257, -0.0878977, 0.238986, -0.968409, -0.0712013, -0.0685616, -0.0899719, 0.993582, -0.243045, -0.955251, 0.0236763)
 top_level = true
 script = ExtResource("3_n520j")
 bone_name = "hand.L"
