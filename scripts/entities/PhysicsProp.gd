@@ -2,11 +2,12 @@
 class_name PhysicsProp
 extends RigidBody3D
 
+@export var PICKUP_SOUND : AudioStream
 @export_range(0.0, 5.0 , 0.1) var BUOYANCY : float = 0.0
-@export var SELF_PHYS_DAMAGE_MULTIPLIER : float = 0.2 ##Multiplier for physics damage dealt to self on impact
-@export var OTHER_PHYS_DAMAGE_MULTIPLIER : float = 0.8 ##Multiplier for physics damage dealt to others on impact
 #@export_range(0.5, 1.5) var PHYS_IMPACT_SENSITIVITY = 1.0 ##Multipler for the sensitivty of impact sounds
 @export_group("Damage")
+@export var SELF_PHYS_DAMAGE_MULTIPLIER : float = 0.2 ##Multiplier for physics damage dealt to self on impact
+@export var OTHER_PHYS_DAMAGE_MULTIPLIER : float = 0.8 ##Multiplier for physics damage dealt to others on impact
 @export var GIBS : PackedScene ##Gibs to spawn when object is broken (Unused if breakable prop is not breakable)
 @export_group("Carrying")
 @export var DEFAULT_HOLD_VECTOR : Vector3 = Vector3.UP ##Default orientation when picked up
@@ -61,6 +62,9 @@ func carry():
 	holder.held_object = self
 	add_collision_exception_with(holder)
 	holder.weapon_manager.holster_active()
+	if PICKUP_SOUND != null:
+		audio_player.stream = PICKUP_SOUND
+		audio_player.play()
 	
 func drop():
 	sleeping = false
