@@ -321,7 +321,9 @@ func _on_idle_state_processing(delta: float) -> void:
 func _on_idle_state_physics_processing(delta: float) -> void:
 	#linear_velocity *= 0.5
 	if get_floor_mat() != null:
-		linear_velocity *=  clampf(1.5 - get_floor_mat().friction, 0.01, 1.0)
+		linear_velocity *= clampf(1.5 - get_floor_mat().friction, 0.01, 0.98)
+	else:
+		linear_velocity *= 0.5
 
 func _on_walking_state_entered() -> void:
 	if Input.is_action_pressed("sprint"):
