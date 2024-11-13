@@ -18,6 +18,7 @@ extends RigidBody3D
 var holder
 var distance : float
 var held : bool = false
+var jumpable : bool = true
 var prev_velocity : Vector3
 var mass_mult : float = mass
 
@@ -78,6 +79,13 @@ func drop():
 func throw(throw_dir):
 	drop()
 	apply_central_impulse(throw_dir * mass_mult * THROW_FORCE)
+
+func prop_climb_fix():
+	linear_velocity.y = 0
+	drop()
+	jumpable = false
+	await get_tree().create_timer(0.5).timeout
+	jumpable = true
 
 func _on_body_entered(body):
 	var velocity = prev_velocity.length()

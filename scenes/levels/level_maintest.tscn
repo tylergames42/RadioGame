@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=4 uid="uid://cvdvb3r0hoj7f"]
+[gd_scene load_steps=141 format=4 uid="uid://cvdvb3r0hoj7f"]
 
 [ext_resource type="Environment" uid="uid://tdvlqoyf7qjy" path="res://scenes/env_main.tres" id="1_as7pu"]
 [ext_resource type="PackedScene" uid="uid://bgymsig42c8vi" path="res://scenes/levels/level_test.glb" id="3_6uhm8"]
@@ -82,8 +82,10 @@
 [ext_resource type="Material" uid="uid://dwva31kxf1dnc" path="res://assets/materials/concrete/concrete_panels_light.tres" id="67_akdyd"]
 [ext_resource type="PackedScene" uid="uid://o3nh71h1l7sv" path="res://addons/gd_planar_reflections/planar_reflection.tscn" id="81_l5qea"]
 [ext_resource type="PackedScene" uid="uid://cphnk8wop57wf" path="res://assets/models/props/godot_plush/godot_plush.tscn" id="82_gobcw"]
+[ext_resource type="AudioStream" uid="uid://5nhs1786j6ea" path="res://assets/sounds/camera/camera_take_photo.wav" id="83_8r443"]
 [ext_resource type="PackedScene" uid="uid://jjf5us78f064" path="res://assets/models/props/soda_can/soda_can.tscn" id="83_67gxe"]
 [ext_resource type="Material" uid="uid://sj7gwuth8hn8" path="res://assets/models/props/soda_can/materials/soda_can_milk.tres" id="84_8bbfw"]
+[ext_resource type="AudioStream" uid="uid://b8v6bc2glwmkc" path="res://assets/sounds/water/splashes/splash_test.wav" id="84_k5p10"]
 [ext_resource type="Material" uid="uid://csyt3v5v8pjwe" path="res://assets/models/props/soda_can/materials/soda_can_breen.tres" id="85_l6fbn"]
 [ext_resource type="PackedScene" uid="uid://bjgenmdf82tyr" path="res://assets/models/props/soda_can/soda_can_crushed.tscn" id="86_0g0rd"]
 [ext_resource type="PackedScene" uid="uid://bdplk02rqka71" path="res://scenes/physics_props/mug.tscn" id="87_u6shd"]
@@ -1831,6 +1833,17 @@ main_cam = NodePath("../level/Player/Root/Head/Camera")
 
 [node name="godot_plush" parent="." instance=ExtResource("82_gobcw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8976, 1.7136, -5.9024)
+
+[node name="godot_plush4" parent="." instance=ExtResource("82_gobcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8976, 1.7136, -5.9024)
+PICKUP_SOUND = ExtResource("83_8r443")
+THROW_FORCE = 20.0
+
+[node name="godot_plush5" parent="." instance=ExtResource("82_gobcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8976, 1.7136, -5.9024)
+PICKUP_SOUND = ExtResource("84_k5p10")
+OTHER_PHYS_DAMAGE_MULTIPLIER = 2.0
+THROW_FORCE = -5.0
 
 [node name="godot_plush2" parent="." instance=ExtResource("82_gobcw")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 0, 1.78976, -72.9232)

@@ -111,12 +111,20 @@ func _physics_process(delta):
 	was_grounded = grounded
 	grounded = groundcast.is_colliding() #Get if on ground
 	
+	if grounded:
+		var ground = groundcast.get_collider(0)
+		if ground is PhysicsProp:
+			grounded = ground.jumpable
+			if (held_object != null) and (held_object == ground):
+				held_object.prop_climb_fix()
+	
 	camera_tilt(delta)
 	
-	if held_object != null:
-		if grounded && groundcast.get_collider(0) == held_object: #Prevent holding stood on objects
-			grounded = false
-			held_object.drop()
+	#if held_object != null:
+		#if grounded && groundcast.get_collider(0) is PhysicsProp: #Prevent holding stood on objects
+			#if groundcast.get_collider(0).JUMPABLE == false:
+				#grounded = false
+				#held_object.prop_climb_fix()
 	
 	#if grounded:
 		#control_multiplier = 1
